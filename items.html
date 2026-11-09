@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c0e14" />
+    <meta
+      name="description"
+      content="Rift Atlas — независимый справочник Wild Rift: чемпионы, предметы, патчи и таймеры."
+    />
+    <title>Предметы · Rift Atlas</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+      <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
+  </head>
+  <body>
+    <a class="skip" href="#main">К содержанию</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">R</span
+        ><span
+          >RIFT<span class="brand-light">ATLAS</span
+          ><small>WILD RIFT COMPANION</small></span
+        ></a
+      >
+      <p class="nav-caption">НАВИГАЦИЯ</p>
+      <nav aria-label="Основная навигация">
+        <a href="index.html"><span class="nav-icon">◈</span>Обзор</a
+        ><a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a
+        ><a href="items.html" aria-current="page"
+          ><span class="nav-icon">⬡</span>Предметы</a
+        ><a href="matchups.html"><span class="nav-icon">⚔</span>Контрпики</a
+        ><a href="meta.html"><span class="nav-icon">↗</span>Мета</a
+        ><a href="patches.html"><span class="nav-icon">▤</span>Патчи</a
+        ><a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span> Данные проверены<small
+          >08 ноября 2026 · патч 7.3e</small
+        ><a href="sources.html">Источники и обновления ↗</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span>WILD RIFT <b>/</b> Предметы</span>
+        <div>
+          <span class="patch-pill">ПАТЧ 7.3e</span
+          ><a href="champions.html?favorites=1" aria-label="Избранные чемпионы"
+            >☆ <span class="hide-mobile">Мой пул</span></a
+          >
+        </div>
+      </header>
+      <main id="main">
+        <div class="page-heading">
+          <p class="eyebrow">ПРЕДМЕТЫ</p>
+          <h1>Предметы и применение</h1>
+        </div>
+        <div class="toolbar">
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              id="item-search"
+              type="search"
+              placeholder="Найти предмет…"
+              aria-label="Поиск предмета" /></label
+          ><select id="item-kind" aria-label="Тип предмета">
+            <option value="all">Все типы</option>
+            <option>Магия</option>
+            <option>Физический урон</option>
+          </select>
+        </div>
+        <div id="items-list" class="item-grid">
+          <article
+            class="panel item-card"
+            id="luden"
+            data-name="Эхо Людена Luden’s Echo"
+            data-kind="Магия"
+          >
+            <span class="item-glyph" style="--item: #9b9aff">◈</span
+            ><span class="badge">Магия</span>
+            <h2>Эхо Людена</h2>
+          </article>
+          <article
+            class="panel item-card"
+            id="orb"
+            data-name="Сфера бесконечности Infinity Orb"
+            data-kind="Магия"
+          >
+            <span class="item-glyph" style="--item: #e6a6d6">◉</span
+            ><span class="badge">Магия</span>
+            <h2>Сфера бесконечности</h2>
+          </article>
+          <article
+            class="panel item-card"
+            id="rabadon"
+            data-name="Смертельная шляпа Рабадона Rabadon’s Deathcap"
+            data-kind="Магия"
+          >
+            <span class="item-glyph" style="--item: #c674a4">⌁</span
+            ><span class="badge">Магия</span>
+            <h2>Смертельная шляпа Рабадона</h2>
+          </article>
+          <article
+            class="panel item-card"
+            id="divine"
+            data-name="Божественный разделитель Divine Sunderer"
+            data-kind="Физический урон"
+          >
+            <span class="item-glyph" style="--item: #e8c882">✦</span
+            ><span class="badge">Физический урон</span>
+            <h2>Божественный разделитель</h2>
+          </article>
+          <article
+            class="panel item-card"
+            id="essence"
+            data-name="Похититель сущности Essence Reaver"
+            data-kind="Физический урон"
+          >
+            <span class="item-glyph" style="--item: #8bd9cd">⟡</span
+            ><span class="badge">Физический урон</span>
+            <h2>Похититель сущности</h2>
+          </article>
+          <article
+            class="panel item-card"
+            id="storm"
+            data-name="Штормовой клинок Stormrazor"
+            data-kind="Физический урон"
+          >
+            <span class="item-glyph" style="--item: #8dbbeb">ϟ</span
+            ><span class="badge">Физический урон</span>
+            <h2>Штормовой клинок</h2>
+          </article>
+        </div>
+        <p id="items-empty" hidden class="empty">Подходящих предметов нет.</p>
+        <section class="panel strategy">
+          <h2>Не копируй сборку — смотри на противников и создавай её сам.</h2>
+        </section>
+      </main>
+      <footer>
+        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span
+        ><span>Неофициальный фан-проект. Не связан с Riot Games.</span
+        ><a href="sources.html">Источники</a>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c0e14" />
+    <meta
+      name="description"
+      content="Rift Atlas — независимый справочник Wild Rift: чемпионы, предметы, патчи и таймеры."
+    />
+    <title>Контрпики · Rift Atlas</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+      <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
+  </head>
+  <body>
+    <a class="skip" href="#main">К содержанию</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">R</span
+        ><span
+          >RIFT<span class="brand-light">ATLAS</span
+          ><small>WILD RIFT COMPANION</small></span
+        ></a
+      >
+      <p class="nav-caption">НАВИГАЦИЯ</p>
+      <nav aria-label="Основная навигация">
+        <a href="index.html"><span class="nav-icon">◈</span>Обзор</a
+        ><a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a
+        ><a href="items.html"><span class="nav-icon">⬡</span>Предметы</a
+        ><a href="matchups.html" aria-current="page"
+          ><span class="nav-icon">⚔</span>Контрпики</a
+        ><a href="meta.html"><span class="nav-icon">↗</span>Мета</a
+        ><a href="patches.html"><span class="nav-icon">▤</span>Патчи</a
+        ><a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span> Данные проверены<small
+          >08 ноября 2026 · патч 7.3e</small
+        ><a href="sources.html">Источники и обновления ↗</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span>WILD RIFT <b>/</b> Контрпики</span>
+        <div>
+          <span class="patch-pill">ПАТЧ 7.3e</span
+          ><a href="champions.html?favorites=1" aria-label="Избранные чемпионы"
+            >☆ <span class="hide-mobile">Мой пул</span></a
+          >
+        </div>
+      </header>
+      <main id="main">
+        <div class="page-heading">
+          <p class="eyebrow">ПОДГОТОВКА К ЛИНИИ</p>
+          <h1>Матчапы чемпионов</h1>
+          <p>
+            Разбор механик матчапов. Без выдуманных процентов побед и заявления
+            об автоматической победе на выборе.
+          </p>
+        </div>
+        <div class="toolbar">
+          <label for="matchup-champion">Ваш чемпион</label
+          ><select id="matchup-champion">
+            <option value="mel">Мэл</option>
+            <option value="lissandra">Лиссандра</option>
+            <option value="syndra">Синдра</option>
+          </select>
+        </div>
+        <div id="matchup-result"></div>
+        <section class="panel strategy">
+          <h2>Что проверить до первого размена</h2>
+          <div class="item-grid">
+            <div>
+              <h3>Дистанция</h3>
+              <p>
+                Кто может наносить урон, не попадая под ответ? Играйте вокруг
+                дальности ключевого контроля.
+              </p>
+            </div>
+            <div>
+              <h3>Окно уязвимости</h3>
+              <p>
+                Рывок, отражение или отбрасывание потрачены — появляется
+                возможность для размена.
+              </p>
+            </div>
+            <div>
+              <h3>Состав команды</h3>
+              <p>
+                Сильный дуэльный выбор может оказаться слабым решением для общей
+                композиции.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span
+        ><span>Неофициальный фан-проект. Не связан с Riot Games.</span
+        ><a href="sources.html">Источники</a>
+      </footer>
+    </div>
+  </body>
+</html>
