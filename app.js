@@ -209,3 +209,6 @@ document.querySelectorAll('.champion-builds').forEach(section=>{
  });
  mobile.addEventListener('change',()=>setOpen(false,false));document.body.classList.add('nav-enhanced');setOpen(false,false);
 })();
+
+// Подключает порядок прокачки на страницах чемпионов.
+if(document.querySelector('.champion-builds')){const script=document.createElement('script');script.src='skill-orders.js';document.body.append(script);}

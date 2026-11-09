@@ -1444,3 +1444,8 @@ select {
 }
 
 @media(max-width:900px){.mobile-nav-backdrop{left:min(290px,86vw)}}
+
+/* Компактная прокачка: пять уровней в строке на узком экране. */
+.skill-leveling{margin:24px 0;padding:22px;border:1px solid var(--line,#283040);border-radius:18px;background:var(--panel,#111923)}
+.skill-leveling h2{font-size:21px;margin:0 0 16px}.leveling-priority{display:flex;align-items:center;gap:12px;margin-bottom:18px}.leveling-priority>span:first-child{color:#a8b2c4;font-size:13px;margin-right:4px}.leveling-icon{position:relative;display:inline-flex;width:38px;height:38px;flex-shrink:0}.leveling-icon img{width:100%;height:100%;object-fit:cover;border-radius:7px;border:1px solid #475066}.leveling-icon b{position:absolute;bottom:-3px;right:-4px;min-width:17px;padding:1px 4px;border-radius:5px;background:#101722;color:#f4d08a;font-size:10px;text-align:center;border:1px solid #536078}.leveling-arrow{color:#90a0b6;font-size:23px}.leveling-sequence{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:6px}.leveling-sequence li{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 2px 10px;border:1px solid #2d3748;border-radius:8px;background:#0c131e}.leveling-number{font-size:12px;font-weight:700;color:#a6b4c9}.leveling-sequence .leveling-icon{width:30px;height:30px}.leveling-note{font-size:12px;color:#a6b4c9;line-height:1.6;margin:12px 0 0}.leveling-source{display:inline-block;font-size:11px;color:#9eb7db;margin-top:9px}
+@media(max-width:650px){.skill-leveling{padding:15px}.skill-leveling h2{font-size:18px}.leveling-sequence{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.leveling-sequence .leveling-icon{width:34px;height:34px}}
