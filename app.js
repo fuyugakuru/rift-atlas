@@ -1,5 +1,35 @@
 // Общие данные загружаются из data.js. Избранное хранится только в этом браузере.
 const data = window.RIFT_DATA;
+// Пробная галерея образов. YouTube подключается только по нажатию.
+document.querySelectorAll('.champion-skins').forEach(section=>{
+  const strip=section.querySelector('.skin-choices');
+  strip.addEventListener('wheel',event=>{
+    if(event.ctrlKey||event.deltaX||!event.deltaY||strip.scrollWidth<=strip.clientWidth)return;
+    const delta=event.deltaY*(event.deltaMode===1?28:event.deltaMode===2?strip.clientWidth:1);
+    const next=Math.max(0,Math.min(strip.scrollWidth-strip.clientWidth,strip.scrollLeft+delta));
+    if(Math.abs(next-strip.scrollLeft)>0.5){event.preventDefault();strip.scrollLeft=next;}
+  },{passive:false});
+  const skins=JSON.parse(section.querySelector('.skin-data').textContent);
+  const choices=[...section.querySelectorAll('.skin-choice')],image=section.querySelector('.skin-main-image'),name=section.querySelector('.skin-current-name'),watch=section.querySelector('.skin-watch'),slot=section.querySelector('.skin-video-slot'),source=section.querySelector('.skin-video-source'),missing=section.querySelector('.skin-video-missing');
+  let selected=0;
+  choices.forEach((button,index)=>button.addEventListener('click',()=>{
+    selected=index;const skin=skins[index];
+    choices.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+    image.src=skin.image+'&w=1280&auto=format';image.alt=skin.name;name.textContent=skin.name;
+    const badges=section.querySelector('.skin-current-badges');
+    if(badges){badges.replaceChildren();const labels={base:'Базовый',standard:'Обычный',epic:'Эпический',legendary:'Легендарный',prestige:'Престижный',special:'Особый',unknown:'Редкость уточняется'};
+      const badge=document.createElement('span');badge.className='skin-badge rarity-'+(skin.rarity||'unknown');badge.textContent=labels[skin.rarity]||labels.unknown;badges.append(badge);
+      if(skin.exclusive){const tag=document.createElement('span');tag.className='skin-badge skin-exclusive';tag.textContent='Эксклюзивный';tag.title='Особое или ограниченное получение; может возвращаться в событиях';badges.append(tag);}
+    }
+    slot.replaceChildren();slot.hidden=true;watch.hidden=!skin.video;watch.textContent='▶ Смотреть эффекты';watch.setAttribute('aria-expanded','false');missing.hidden=!!skin.video;source.hidden=!skin.video;
+    if(skin.video)source.href=skin.videoSource;
+  }));
+  watch.addEventListener('click',()=>{
+    if(!slot.hidden){slot.replaceChildren();slot.hidden=true;watch.textContent='▶ Смотреть эффекты';watch.setAttribute('aria-expanded','false');return;}
+    const skin=skins[selected];if(!skin.video)return;
+    const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+skin.video+'?playsinline=1'+(skin.videoStart?'&start='+Number(skin.videoStart):'')+(skin.videoEnd?'&end='+Number(skin.videoEnd):'');frame.title='Эффекты образа: '+skin.name;frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';slot.append(frame);slot.hidden=false;watch.textContent='Скрыть видео';watch.setAttribute('aria-expanded','true');
+  });
+});
 let favorites = [];
 try {
   favorites = JSON.parse(localStorage.getItem("rift-favorites") || "[]");
@@ -18,9 +48,16 @@ function paintFavorites() {
         : "☆ В мой пул";
   });
 }
+window.addEventListener('rift-account-favorites',event=>{
+  favorites=Array.isArray(event.detail)?event.detail:[];paintFavorites();
+  if(document.querySelector('#champ-search'))filterChampions();
+});
 document.querySelectorAll("[data-favorite]").forEach((b) =>
-  b.addEventListener("click", () => {
+  b.addEventListener("click", async () => {
     const id = b.dataset.favorite;
+    const account=window.RiftAccount;
+    if(account?.loading){account.message('Подожди, профиль ещё загружается.');return;}
+    if(account?.user){b.disabled=true;try{await account.toggleFavorite(id);}catch{account.message('Не удалось сохранить избранное. Попробуй ещё раз.',true);}finally{b.disabled=false;}return;}
     favorites = favorites.includes(id)
       ? favorites.filter((x) => x !== id)
       : [...favorites, id];
@@ -45,6 +82,7 @@ let scope = new URLSearchParams(location.search).get("favorites")
   ? "favorites"
   : "all";
 const normalize = (x) => String(x).toLocaleLowerCase("ru").replaceAll("ё", "е");
+let championLane = 'all', championRole = 'all';
 function filterChampions() {
   const q = normalize(document.querySelector('#champ-search').value.trim());
   let count = 0;
@@ -54,6 +92,8 @@ function filterChampions() {
     const isGuide = card.dataset.guide === 'true';
     const match = normalize(id + ' ' + name + ' ' + (aliases[id] || '')).includes(q)
       && (scope !== 'favorites' || favorites.includes(id))
+      && (championLane === 'all' || (card.dataset.lanes || '').split(' ').includes(championLane))
+      && (championRole === 'all' || (card.dataset.roles || '').split(' ').includes(championRole))
       && (scope !== 'guides' || isGuide);
     card.hidden = !match;
     if (match) count++;
@@ -63,6 +103,22 @@ function filterChampions() {
   document.querySelectorAll('[data-scope]').forEach(b => b.classList.toggle('active', b.dataset.scope === scope));
 }
 if (document.querySelector("#champ-search")) {
+  const filterToggle=document.querySelector('#champ-filter-toggle');
+  filterToggle?.addEventListener('click',()=>{
+    const expanded=filterToggle.getAttribute('aria-expanded')!=='true';
+    filterToggle.setAttribute('aria-expanded',String(expanded));
+    document.querySelector('#champ-filters').hidden=!expanded;
+  });
+  document.querySelectorAll('.champ-filter').forEach(button=>button.addEventListener('click',()=>{
+    const kind=button.hasAttribute('data-lane')?'lane':'role';
+    if(kind==='lane')championLane=button.dataset.lane;else championRole=button.dataset.role;
+    document.querySelectorAll('.champ-filter[data-'+kind+']').forEach(item=>{
+      const active=item===button;
+      item.classList.toggle('active',active);
+      item.setAttribute('aria-pressed',String(active));
+    });
+    filterChampions();
+  }));
   document
     .querySelector("#champ-search")
     .addEventListener("input", filterChampions);
@@ -114,7 +170,17 @@ document.querySelectorAll('.ability-picker').forEach(picker=>{
       buttons.forEach(item=>{
         const selected=item===button&&open;
         item.setAttribute('aria-expanded',String(selected));
-        document.getElementById(item.getAttribute('aria-controls')).hidden=!selected;
+        const panel=document.getElementById(item.getAttribute('aria-controls'));
+        panel.hidden=!selected;
+        const video=panel.querySelector('.ability-video');
+        if(video){
+          if(!selected){video.pause();}
+          else if(!video.getAttribute('src')){
+            video.addEventListener('error',()=>{panel.querySelector('.ability-video-error').hidden=false;});
+            video.src=video.dataset.videoSrc;
+            video.load();
+          }
+        }
       });
     });
     button.addEventListener('keydown',event=>{
@@ -175,11 +241,16 @@ document.querySelectorAll('.equipment-chooser').forEach(chooser=>{
  chooser.querySelectorAll('.equipment-button').forEach(button=>button.addEventListener('click',()=>{
   chooser.querySelectorAll('.equipment-button').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
   chooser.querySelectorAll('[data-equipment-panel]').forEach(panel=>panel.hidden=panel.dataset.equipmentPanel!==button.dataset.equipment);
+  const buildPanel=chooser.closest('.build-panel');
+  buildPanel.querySelectorAll('[data-equipment-runes]').forEach(panel=>panel.hidden=panel.dataset.equipmentRunes!==button.dataset.equipment);
+  buildPanel.querySelectorAll('[data-equipment-rune-situations]').forEach(panel=>panel.hidden=panel.dataset.equipmentRuneSituations!==button.dataset.equipment);
+  buildPanel.querySelectorAll('.situation-button').forEach(item=>item.setAttribute('aria-expanded','false'));
+  buildPanel.querySelectorAll('.situation-result').forEach(item=>item.hidden=true);
  }));
 });
 // Источник и версия данных принадлежат выбранной сборке.
 document.querySelectorAll('.champion-builds').forEach(section=>{
- function updateSource(){const panel=section.querySelector('.build-panel:not([hidden])');if(!panel)return;const link=section.querySelector('.builds-footer a');link.href=panel.dataset.buildSource;link.textContent='Источник: '+panel.dataset.buildSourceLabel+' ↗';const patch=section.querySelector('.build-patch');if(patch)patch.textContent='Патч '+panel.dataset.buildPatch;}
+ function updateSource(){const panel=section.querySelector('.build-panel:not([hidden])');if(!panel)return;const link=section.querySelector('.builds-footer a');if(link){link.href=panel.dataset.buildSource;link.textContent='Источник: '+panel.dataset.buildSourceLabel+' ↗';}const patch=section.querySelector('.build-patch');if(patch)patch.textContent='Патч '+panel.dataset.buildPatch;}
  section.querySelectorAll('.build-tab').forEach(tab=>{tab.addEventListener('click',updateSource);tab.addEventListener('keyup',updateSource);});
  updateSource();
 });
@@ -212,3 +283,31 @@ document.querySelectorAll('.champion-builds').forEach(section=>{
 
 // Подключает порядок прокачки на страницах чемпионов.
 if(document.querySelector('.champion-builds')){const script=document.createElement('script');script.src='skill-orders.js';document.body.append(script);}
+
+// Матчапы имеют свои вкладки линий; синхронизируются со сборкой, если линия подтверждена.
+document.querySelectorAll('.champion-matchups').forEach(section=>{
+ const tabs=[...section.querySelectorAll('.matchup-role-tab')];
+ function select(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});section.querySelectorAll('details[open]').forEach(d=>d.open=false);}
+ tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',event=>{const n=event.key==='ArrowRight'?(i+1)%tabs.length:event.key==='ArrowLeft'?(i-1+tabs.length)%tabs.length:event.key==='Home'?0:event.key==='End'?tabs.length-1:null;if(n!==null){event.preventDefault();select(tabs[n]);tabs[n].focus();}});});
+ const builds=document.querySelector('.champion-builds');
+ function sync(){const tab=builds?.querySelector('.build-tab[aria-selected="true"]'),label=tab?.textContent.trim(),match=tabs.find(t=>t.textContent.trim()===label);if(match)select(match);}
+ if(builds)new MutationObserver(sync).observe(builds.querySelector('.build-tabs'),{subtree:true,attributes:true,attributeFilter:['aria-selected']});
+});
+
+// Поиск по полным спискам контрпиков: русское имя или латинский идентификатор.
+document.querySelectorAll('.champion-matchups').forEach(section=>{
+ const input=section.querySelector('.matchup-search input');if(!input)return;
+ const normalize=value=>value.normalize('NFKC').toLocaleLowerCase('ru').replaceAll('ё','е').trim();
+ const groups=[...section.querySelectorAll('.matchup-group')].map(group=>{const cards=[...group.querySelectorAll('.matchup-card')],count=group.querySelector('.matchup-count');let empty=null;if(cards.length){empty=document.createElement('p');empty.className='matchup-filter-empty';empty.textContent='Противник не найден.';empty.hidden=true;group.append(empty);}return{cards,count,empty};});
+ input.addEventListener('input',()=>{const query=normalize(input.value);groups.forEach(({cards,count,empty})=>{let shown=0;cards.forEach(card=>{const text=normalize(card.querySelector('summary').textContent+' '+card.querySelector('a').getAttribute('href'));card.hidden=!text.includes(query);if(card.hidden)card.open=false;else shown++;});if(count)count.textContent=query?shown+' / '+cards.length:String(cards.length);if(empty)empty.hidden=shown!==0;});});
+});
+
+// Окна матчапов: стандартный dialog удерживает фокус и закрывается по Escape.
+document.querySelectorAll('[data-matchup-open]').forEach(button=>button.addEventListener('click',()=>{
+ const dialog=document.getElementById(button.dataset.matchupOpen);if(!dialog)return;dialog.showModal();document.body.classList.add('matchup-modal-open');
+}));
+document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
+ dialog.querySelector('.matchup-dialog-close').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
+ dialog.addEventListener('close',()=>{if(!document.querySelector('.matchup-dialog[open]'))document.body.classList.remove('matchup-modal-open');dialog.querySelectorAll('details[open]').forEach(d=>d.open=false);});
+});
