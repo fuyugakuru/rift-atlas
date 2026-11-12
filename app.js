@@ -2,21 +2,22 @@
 
 window.dataLayer = window.dataLayer || [];
 
-window.gtag = window.gtag || function() {
+window.gtag = function() {
   window.dataLayer.push(arguments);
 };
 
 window.gtag('js', new Date());
+window.gtag('config', 'G-QNZ4VFYFE7');
 
-const googleAnalyticsScript = document.createElement('script');
+const analyticsScript = document.createElement('script');
+analyticsScript.async = true;
+analyticsScript.src =
+  'https://www.googletagmanager.com/gtag/js?id=G-QNZ4VFYFE7';
 
-googleAnalyticsScript.async = true;
-googleAnalyticsScript.src =
-  'https://www.googletagmanager.com/gtm.js?id=GTM-K9TH8GLW';
-
-document.head.appendChild(googleAnalyticsScript);
+document.head.appendChild(analyticsScript);
 
 /* Конец подключения Google Analytics */
+
 
 // Общие данные загружаются из data.js. Избранное хранится только в этом браузере.
 const data = window.RIFT_DATA;
