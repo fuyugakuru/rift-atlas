@@ -1,3 +1,23 @@
+/* Google Analytics — Wild Rift Atlas */
+
+window.dataLayer = window.dataLayer || [];
+
+window.gtag = window.gtag || function() {
+  window.dataLayer.push(arguments);
+};
+
+window.gtag('js', new Date());
+
+const googleAnalyticsScript = document.createElement('script');
+
+googleAnalyticsScript.async = true;
+googleAnalyticsScript.src =
+  'https://www.googletagmanager.com/gtm.js?id=GTM-K9TH8GLW';
+
+document.head.appendChild(googleAnalyticsScript);
+
+/* Конец подключения Google Analytics */
+
 // Общие данные загружаются из data.js. Избранное хранится только в этом браузере.
 const data = window.RIFT_DATA;
 // Пробная галерея образов. YouTube подключается только по нажатию.
