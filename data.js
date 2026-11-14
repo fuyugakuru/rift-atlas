@@ -1350,7 +1350,7 @@ window.RIFT_DATA = {
       "id": "sylas",
       "name": "САЙЛАС",
       "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/sylas/",
-      "image": "assets/champions/sylas-portrait.jpg",
+      "image": "assets/champions/sylas-portrait-centered.jpg",
       "subtitle": "Сбросивший оковы",
       "role": "МАГ · УБИЙЦА",
       "difficulty": "Высокая",
