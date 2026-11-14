@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="#0c0e14" name="theme-color" />
+    <meta
+      content="Rift Atlas — каталог предметов Wild Rift с поиском и иллюстрациями."
+      name="description"
+    />
+    <title>Имперский мандат · Предметы · Rift Atlas</title>
+    <link href="style.css" rel="stylesheet" />
+    <script defer="" src="data.js"></script>
+    <script defer="" src="app.js"></script>
+    <script defer="" src="assets/vendor/supabase.js"></script>
+    <script defer="" src="account.js"></script>
+    <link href="favicon.svg?v=1" rel="icon" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="item-pages.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">К содержанию</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">R</span
+        ><span
+          >RIFT<span class="brand-light">ATLAS</span><small>WILD RIFT COMPANION</small></span
+        ></a
+      >
+      <p class="nav-caption">НАВИГАЦИЯ</p>
+      <nav aria-label="Основная навигация">
+        <a href="index.html"><span class="nav-icon">◈</span>Обзор</a>
+        <a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a>
+        <a aria-current="page" href="items.html"><span class="nav-icon">⬡</span>Предметы</a>
+        <a href="matchups.html"><span class="nav-icon">⚔</span>Контрпики</a>
+        <a href="meta.html"><span class="nav-icon">↗</span>Мета</a>
+        <a href="patches.html"><span class="nav-icon">▤</span>Патчи</a>
+        <a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span>Каталог предметов<small
+          >13 ноября 2026 · список предметов 7.3f</small
+        ><a href="sources.html">Источники и обновления ↗</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span>WILD RIFT <b>/</b> Предметы</span>
+        <div>
+          <span class="patch-pill">ПАТЧ 7.3f</span>
+          <a aria-label="Избранные чемпионы" href="champions.html?favorites=1"
+            >☆ <span class="hide-mobile">Мой пул</span></a
+          >
+          <a class="account-top-link" data-account-link="" href="account.html"
+            ><svg
+              aria-hidden="true"
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-width="1.6"
+              viewbox="0 0 24 24"
+              width="18"
+            >
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path></svg
+            ><span data-account-label="">Войти</span></a
+          >
+        </div>
+      </header>
+      <main id="main" class="item-detail-page">
+        <a class="back" href="items.html#imperial-mandate">← Каталог предметов</a>
+        <section class="item-detail-hero panel">
+          <img
+            class="item-detail-icon"
+            src="assets/builds/items/imperial-mandate.png"
+            alt=""
+            width="128"
+            height="128"
+          />
+          <div>
+            <p class="eyebrow">Поддержка</p>
+            <h1>Имперский мандат</h1>
+            <p class="item-detail-english">Imperial Mandate</p>
+            <span class="item-detail-cost">2600 золота</span>
+          </div>
+          <span class="patch-pill">ПАТЧ 7.3f</span>
+        </section>
+        <div class="item-detail-layout">
+          <div class="item-detail-main">
+            <section class="panel item-detail-stats">
+              <h2>Характеристики</h2>
+              <ul>
+                <li>
+                  +<strong class="ability-value stat-ap"
+                    >60
+                    <span class="stat-term stat-ap"
+                      ><svg
+                        class="stat-icon stat-ap"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m8 1 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" /></svg
+                      >силы умений</span
+                    ></strong
+                  >
+                </li>
+                <li>+<strong class="ability-value">15</strong> ускорения умений</li>
+                <li>+<strong class="ability-value">50%</strong> базового восстановления маны</li>
+              </ul>
+            </section>
+            <section class="panel item-detail-effects">
+              <h2>Описание и эффект</h2>
+              <p>
+                Контроль: увеличивает скорость способностей
+                <strong class="ability-value">20</strong> для способностей, которые применяют
+                контроль толпы.
+              </p>
+              <p>
+                Командование: применение контроля толпы к вражескому чемпиону отмечает его на
+                <strong class="ability-value">4</strong> секунд. Отмеченные враги за это время
+                получают на <strong class="ability-value">7%</strong> больше урона.
+              </p>
+            </section>
+          </div>
+          <section class="panel item-detail-advice">
+            <p class="eyebrow">ПРИМЕНЕНИЕ</p>
+            <h2>Кому подходит</h2>
+            <p>Подходит магам и чемпионам, чьи умения усиливаются от AP.</p>
+            <h3>Когда выбирать</h3>
+            <p>
+              Выбирай, когда характеристики и условия эффекта соответствуют твоей роли в бою и
+              угрозам вражеской команды.
+            </p>
+            <h3>Примеры чемпионов</h3>
+            <div class="item-champion-examples">
+              <a href="galio.html"
+                ><img
+                  src="assets/champions/faces/galio.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ГАЛИО</span></a
+              ><a href="maokai.html"
+                ><img
+                  src="assets/champions/faces/maokai.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>МАОКАЙ</span></a
+              ><a href="norra.html"
+                ><img
+                  src="assets/champions/faces/norra.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>НОРРА</span></a
+              ><a href="rakan.html"
+                ><img
+                  src="assets/champions/faces/rakan.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>РЭЙКАН</span></a
+              ><a href="swain.html"
+                ><img
+                  src="assets/champions/faces/swain.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>СВЕЙН</span></a
+              ><a href="morgana.html"
+                ><img
+                  src="assets/champions/faces/morgana.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>МОРГАНА</span></a
+              >
+            </div>
+          </section>
+        </div>
+        <nav class="item-detail-neighbors" aria-label="Другие предметы">
+          <a href="item-harmonic-echo.html">← Мелодичное эхо</a
+          ><a href="items.html">Все 177 предметов</a
+          ><a href="item-knights-vow.html">Клятва рыцаря →</a>
+        </nav>
+      </main>
+      <footer>
+        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span>
+        <span>Неофициальный фан-проект. Не связан с Riot Games.</span>
+        <a href="sources.html">Источники</a>
+      </footer>
+    </div>
+    <p class="account-toast" hidden="" id="account-toast" role="status"></p>
+  </body>
+</html>

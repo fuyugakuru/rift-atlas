@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="#0c0e14" name="theme-color" />
+    <meta
+      content="Rift Atlas — каталог предметов Wild Rift с поиском и иллюстрациями."
+      name="description"
+    />
+    <title>Бортолом · Предметы · Rift Atlas</title>
+    <link href="style.css" rel="stylesheet" />
+    <script defer="" src="data.js"></script>
+    <script defer="" src="app.js"></script>
+    <script defer="" src="assets/vendor/supabase.js"></script>
+    <script defer="" src="account.js"></script>
+    <link href="favicon.svg?v=1" rel="icon" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="item-pages.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">К содержанию</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">R</span
+        ><span
+          >RIFT<span class="brand-light">ATLAS</span><small>WILD RIFT COMPANION</small></span
+        ></a
+      >
+      <p class="nav-caption">НАВИГАЦИЯ</p>
+      <nav aria-label="Основная навигация">
+        <a href="index.html"><span class="nav-icon">◈</span>Обзор</a>
+        <a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a>
+        <a aria-current="page" href="items.html"><span class="nav-icon">⬡</span>Предметы</a>
+        <a href="matchups.html"><span class="nav-icon">⚔</span>Контрпики</a>
+        <a href="meta.html"><span class="nav-icon">↗</span>Мета</a>
+        <a href="patches.html"><span class="nav-icon">▤</span>Патчи</a>
+        <a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span>Каталог предметов<small
+          >13 ноября 2026 · список предметов 7.3f</small
+        ><a href="sources.html">Источники и обновления ↗</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span>WILD RIFT <b>/</b> Предметы</span>
+        <div>
+          <span class="patch-pill">ПАТЧ 7.3f</span>
+          <a aria-label="Избранные чемпионы" href="champions.html?favorites=1"
+            >☆ <span class="hide-mobile">Мой пул</span></a
+          >
+          <a class="account-top-link" data-account-link="" href="account.html"
+            ><svg
+              aria-hidden="true"
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-width="1.6"
+              viewbox="0 0 24 24"
+              width="18"
+            >
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path></svg
+            ><span data-account-label="">Войти</span></a
+          >
+        </div>
+      </header>
+      <main id="main" class="item-detail-page">
+        <a class="back" href="items.html#hullbreaker">← Каталог предметов</a>
+        <section class="item-detail-hero panel">
+          <img
+            class="item-detail-icon"
+            src="assets/builds/items/hullbreaker.png"
+            alt=""
+            width="128"
+            height="128"
+          />
+          <div>
+            <p class="eyebrow">Физический урон</p>
+            <h1>Бортолом</h1>
+            <p class="item-detail-english">Hullbreaker</p>
+            <span class="item-detail-cost">3100 золота</span>
+          </div>
+          <span class="patch-pill">ПАТЧ 7.3f</span>
+        </section>
+        <div class="item-detail-layout">
+          <div class="item-detail-main">
+            <section class="panel item-detail-stats">
+              <h2>Характеристики</h2>
+              <ul>
+                <li>+<strong class="ability-value">400</strong> здоровья</li>
+                <li>
+                  +<strong class="ability-value stat-ad"
+                    >50
+                    <span class="stat-term stat-ad"
+                      ><svg
+                        class="stat-icon stat-ad"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                      >силы атаки</span
+                    ></strong
+                  >
+                </li>
+              </ul>
+            </section>
+            <section class="panel item-detail-effects">
+              <h2>Описание и эффект</h2>
+              <p>
+                Установить парус: +<strong class="ability-value">5%</strong> к скорости
+                передвижения.
+              </p>
+              <p>
+                Шкипер: каждая базовая атака <strong class="ability-value">4</strong> по чемпиону
+                или эпическому монстру наносит дополнительный
+                <span class="stat-term stat-ad"
+                  ><svg
+                    class="stat-icon stat-ad"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.35"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                  >физический урон</span
+                >, равный
+                <strong class="ability-value stat-ad"
+                  >160% базовой
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >силы атаки</span
+                  ></strong
+                >
+                + <strong class="ability-value">5%</strong> здоровья (<strong class="ability-value"
+                  >40%</strong
+                >
+                этого урона для чемпионов дальнего боя). Против построек это увеличивается до
+                <strong class="ability-value stat-ad"
+                  >240% базовой
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >силы атаки</span
+                  ></strong
+                >
+                + <strong class="ability-value">9%</strong> здоровья (<strong class="ability-value"
+                  >40%</strong
+                >
+                для чемпионов дальнего боя).
+              </p>
+              <p>
+                Абордажный отряд: ближайшие союзные миньоны-пушки и суперминьоны получают
+                <span class="stat-term stat-armor"
+                  ><svg
+                    class="stat-icon stat-armor"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.35"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 1 14 3v5c0 3-3 5-6 7-3-2-6-4-6-7V3Zm0 2v9" /></svg
+                  >броню</span
+                >
+                <strong class="ability-value">20</strong>-<strong class="ability-value">130</strong>
+                и
+                <span class="stat-term stat-mr"
+                  ><svg
+                    class="stat-icon stat-mr"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.35"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 1 14 3v5c0 3-3 5-6 7-3-2-6-4-6-7V3Zm0 4 2 3-2 3-2-3Z" /></svg
+                  >сопротивление магии</span
+                >
+                <strong class="ability-value">10</strong>-<strong class="ability-value">120</strong>
+                (в зависимости от уровня), которое увеличивается на
+                <strong class="ability-value">25%</strong>, если вы чемпион дальнего боя.
+              </p>
+            </section>
+          </div>
+          <section class="panel item-detail-advice">
+            <p class="eyebrow">ПРИМЕНЕНИЕ</p>
+            <h2>Кому подходит</h2>
+            <p>
+              Для чемпионов боковой линии, которые давят башни и часто действуют отдельно от
+              команды.
+            </p>
+            <h3>Когда выбирать</h3>
+            <p>
+              Подходит плану на сплитпуш; оцени условия активации и как часто рядом будут союзники.
+            </p>
+            <h3>Примеры чемпионов</h3>
+            <div class="item-champion-examples">
+              <a href="volibear.html"
+                ><img
+                  src="assets/champions/faces/volibear.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ВОЛИБИР</span></a
+              ><a href="jax.html"
+                ><img
+                  src="assets/champions/faces/jax.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ДЖАКС</span></a
+              ><a href="gnar.html"
+                ><img
+                  src="assets/champions/faces/gnar.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ГНАР</span></a
+              ><a href="jayce.html"
+                ><img
+                  src="assets/champions/faces/jayce.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ДЖЕЙС</span></a
+              ><a href="irelia.html"
+                ><img
+                  src="assets/champions/faces/irelia.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>ИРЕЛИЯ</span></a
+              ><a href="camille.html"
+                ><img
+                  src="assets/champions/faces/camille.webp"
+                  alt=""
+                  width="42"
+                  height="42"
+                  loading="lazy"
+                /><span>КАМИЛЛА</span></a
+              >
+            </div>
+          </section>
+        </div>
+        <nav class="item-detail-neighbors" aria-label="Другие предметы">
+          <a href="item-hexoptics-c44.html">← Хекс-прицел С44</a
+          ><a href="items.html">Все 177 предметов</a
+          ><a href="item-immortal-shieldbow.html">Лук бессмертия →</a>
+        </nav>
+      </main>
+      <footer>
+        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span>
+        <span>Неофициальный фан-проект. Не связан с Riot Games.</span>
+        <a href="sources.html">Источники</a>
+      </footer>
+    </div>
+    <p class="account-toast" hidden="" id="account-toast" role="status"></p>
+  </body>
+</html>
