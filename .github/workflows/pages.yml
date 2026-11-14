@@ -41,6 +41,8 @@ jobs:
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -f tools/clean-legacy-filenames.cjs ]; then node tools/clean-legacy-filenames.cjs; fi
+          git add -u
           git add -- '*.html' '*.css' '*.js' '*.svg' '*.json' '*.md' '*.cmd' assets tools .nojekyll .editorconfig .prettierrc.json
           git rm -- site-bundle.part* site-bundle.sha256
           git commit -m 'Import latest Rift Atlas website'
