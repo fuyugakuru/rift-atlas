@@ -152,21 +152,46 @@ if (document.querySelector("#champ-search")) {
   filterChampions();
 }
 if (document.querySelector("#item-search")) {
-  const filter = () => {
-    const q = normalize(document.querySelector("#item-search").value);
-    const kind = document.querySelector("#item-kind").value;
+  const cards = [...document.querySelectorAll('#items-list .item-card')];
+  const itemList = document.querySelector('#items-list');
+  const originalOrder = new Map(cards.map((card, index) => [card, index]));
+  let itemKind = 'all', itemShop = 'all';
+  const filterItems = () => {
+    const query = normalize(document.querySelector('#item-search').value.trim());
     let count = 0;
-    document.querySelectorAll(".item-card").forEach((c) => {
-      c.hidden = !(
-        normalize(c.dataset.name).includes(q) &&
-        (kind === "all" || kind === c.dataset.kind)
-      );
-      if (!c.hidden) count++;
+    cards.forEach(card => {
+      const boots = ['Ботинки', 'Улучшения ботинок'].includes(card.dataset.kind) || card.id === 'boots-of-speed';
+      const kindMatches = itemKind === 'all' || (itemKind === 'Ботинки' ? boots : card.dataset.kind === itemKind);
+      const shopMatches = itemShop === 'all' || card.dataset.shop.split(' ').includes(itemShop);
+      card.hidden = !(normalize(card.dataset.name).includes(query) && kindMatches && shopMatches);
+      if (!card.hidden) count++;
     });
-    document.querySelector("#items-empty").hidden = count > 0;
+    const sorted = [...cards].sort((a, b) => itemShop === 'all'
+      ? originalOrder.get(a) - originalOrder.get(b)
+      : (JSON.parse(a.dataset.shopOrder)[itemShop] ?? 10000) - (JSON.parse(b.dataset.shopOrder)[itemShop] ?? 10000)
+        || originalOrder.get(a) - originalOrder.get(b));
+    sorted.forEach(card => itemList.append(card));
+    document.querySelector('#items-empty').hidden = count > 0;
+    document.querySelector('#item-filter-count').textContent = 'Найдено: ' + count + ' из ' + cards.length;
   };
-  document.querySelector("#item-search").addEventListener("input", filter);
-  document.querySelector("#item-kind").addEventListener("change", filter);
+  const toggle = document.querySelector('#item-filter-toggle');
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(expanded));
+    document.querySelector('#item-filters').hidden = !expanded;
+  });
+  document.querySelectorAll('[data-item-filter]').forEach(button => button.addEventListener('click', () => {
+    const group = button.dataset.itemFilter;
+    if (group === 'kind') itemKind = button.dataset.value; else itemShop = button.dataset.value;
+    document.querySelectorAll('[data-item-filter="' + group + '"]').forEach(other => {
+      const active = other === button;
+      other.classList.toggle('active', active);
+      other.setAttribute('aria-pressed', String(active));
+    });
+    filterItems();
+  }));
+  document.querySelector('#item-search').addEventListener('input', filterItems);
+  filterItems();
 }
 if (document.querySelector("#matchup-champion")) {
   const render = () => {

@@ -12,7 +12,7 @@
     <title>Предметы · Rift Atlas</title>
     <link href="style.css" rel="stylesheet" />
     <script defer="" src="data.js"></script>
-    <script defer="" src="app.js"></script>
+    <script defer="" src="app.js?v=item-filters-1"></script>
     <script defer="" src="assets/vendor/supabase.js"></script>
     <script defer="" src="account.js"></script>
     <link href="favicon.svg?v=1" rel="icon" type="image/svg+xml" />
@@ -192,20 +192,196 @@
               placeholder="Найти предмет…"
               type="search"
           /></label>
-          <select aria-label="Тип предмета" id="item-kind">
-            <option value="all">Все предметы · 177</option>
-            <option value="Физический урон">Физический урон · 46</option>
-            <option value="Магия">Магия · 25</option>
-            <option value="Защита">Защита · 19</option>
-            <option value="Поддержка">Поддержка · 17</option>
-            <option value="Ботинки">Ботинки · 7</option>
-            <option value="Улучшения ботинок">Улучшения ботинок · 7</option>
-            <option value="Компоненты II">Компоненты II · 42</option>
-            <option value="Начальные">Начальные · 10</option>
-            <option value="Автоулучшения">Автоулучшения · 4</option>
-          </select>
         </div>
 
+        <div class="champ-filter-toggle-row">
+          <button
+            type="button"
+            class="chip champ-filter-toggle"
+            id="item-filter-toggle"
+            aria-expanded="false"
+            aria-controls="item-filters"
+          >
+            Фильтры <span aria-hidden="true">⌄</span>
+          </button>
+        </div>
+        <div class="champ-filters" id="item-filters" hidden>
+          <div class="champ-filter-row" role="group" aria-label="Тип">
+            <span class="champ-filter-label">Тип</span
+            ><button
+              type="button"
+              class="champ-filter item-filter active"
+              data-item-filter="kind"
+              data-value="all"
+              aria-pressed="true"
+            >
+              Все</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Физический урон"
+              aria-pressed="false"
+            >
+              Физический урон</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Магия"
+              aria-pressed="false"
+            >
+              Магия</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Защита"
+              aria-pressed="false"
+            >
+              Защита</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Поддержка"
+              aria-pressed="false"
+            >
+              Поддержка</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Ботинки"
+              aria-pressed="false"
+            >
+              Ботинки</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Компоненты II"
+              aria-pressed="false"
+            >
+              Компоненты II</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Начальные"
+              aria-pressed="false"
+            >
+              Начальные</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="kind"
+              data-value="Автоулучшения"
+              aria-pressed="false"
+            >
+              Автоулучшения
+            </button>
+          </div>
+          <div class="champ-filter-row" role="group" aria-label="Магазин">
+            <span class="champ-filter-label">Магазин</span
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="fighter"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/fighter.svg)"
+                aria-hidden="true"
+              ></span
+              >Воин</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="assassin"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/assassin.svg)"
+                aria-hidden="true"
+              ></span
+              >Убийца</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="marksman"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/marksman.svg)"
+                aria-hidden="true"
+              ></span
+              >Стрелок</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="magic"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/mage.svg)"
+                aria-hidden="true"
+              ></span
+              >Магический урон</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="defense"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/tank.svg)"
+                aria-hidden="true"
+              ></span
+              >Защита</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="support"
+              aria-pressed="false"
+            >
+              <span
+                class="role-symbol"
+                style="--role-image:url(assets/roles/support.svg)"
+                aria-hidden="true"
+              ></span
+              >Поддержка</button
+            ><button
+              type="button"
+              class="champ-filter item-filter"
+              data-item-filter="shop"
+              data-value="boots"
+              aria-pressed="false"
+            >
+              Ботинки</button
+            ><button
+              type="button"
+              class="champ-filter item-filter active"
+              data-item-filter="shop"
+              data-value="all"
+              aria-pressed="true"
+            >
+              Все
+            </button>
+          </div>
+        </div>
+        <p class="muted" id="item-filter-count" role="status"></p>
         <p class="catalog-summary">
           <strong>177 предметов</strong> · Обновлено по последнему официальному
           <a
@@ -221,6 +397,8 @@
             data-kind="Физический урон"
             data-name="Чёрная секира Black Cleaver"
             id="black-cleaver"
+            data-shop="fighter"
+            data-shop-order='{"fighter":6}'
           >
             <a class="item-card-link" href="item-black-cleaver.html"
               ><img
@@ -242,6 +420,8 @@
             data-kind="Физический урон"
             data-name="Клинок Падшего короля Blade of the Ruined King"
             id="blade-of-the-ruined-king"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":11,"marksman":22}'
           >
             <a class="item-card-link" href="item-blade-of-the-ruined-king.html"
               ><img
@@ -263,6 +443,8 @@
             data-kind="Физический урон"
             data-name="Кровопийца Bloodthirster"
             id="bloodthirster"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":17,"marksman":24}'
           >
             <a class="item-card-link" href="item-bloodthirster.html"
               ><img
@@ -284,6 +466,8 @@
             data-kind="Физический урон"
             data-name="Танец смерти Death’s Dance"
             id="deaths-dance"
+            data-shop="fighter defense"
+            data-shop-order='{"fighter":19,"defense":28}'
           >
             <a class="item-card-link" href="item-deaths-dance.html"
               ><img
@@ -305,6 +489,8 @@
             data-kind="Физический урон"
             data-name="Сокрушитель богов Divine Sunderer"
             id="divine-sunderer"
+            data-shop="fighter"
+            data-shop-order='{"fighter":21}'
           >
             <a class="item-card-link" href="item-divine-sunderer.html"
               ><img
@@ -326,6 +512,8 @@
             data-kind="Магия"
             data-name="Рассвет и закат Dusk and Dawn"
             id="dusk-and-dawn"
+            data-shop="magic"
+            data-shop-order='{"magic":24}'
           >
             <a class="item-card-link" href="item-dusk-and-dawn.html"
               ><img
@@ -347,6 +535,8 @@
             data-kind="Физический урон"
             data-name="Сумеречный клинок Драктарра Duskblade of Draktharr"
             id="duskblade-of-draktharr"
+            data-shop="assassin"
+            data-shop-order='{"assassin":3}'
           >
             <a class="item-card-link" href="item-duskblade-of-draktharr.html"
               ><img
@@ -368,6 +558,8 @@
             data-kind="Физический урон"
             data-name="Затмение Eclipse"
             id="eclipse"
+            data-shop="fighter"
+            data-shop-order='{"fighter":2}'
           >
             <a class="item-card-link" href="item-eclipse.html"
               ><img
@@ -389,6 +581,8 @@
             data-kind="Физический урон"
             data-name="Грань ночи Edge Of Night"
             id="edge-of-night"
+            data-shop="assassin"
+            data-shop-order='{"assassin":5}'
           >
             <a class="item-card-link" href="item-edge-of-night.html"
               ><img
@@ -410,6 +604,8 @@
             data-kind="Физический урон"
             data-name="Похититель сущности Essence Reaver"
             id="essence-reaver"
+            data-shop="marksman"
+            data-shop-order='{"marksman":14}'
           >
             <a class="item-card-link" href="item-essence-reaver.html"
               ><img
@@ -431,6 +627,8 @@
             data-kind="Физический урон"
             data-name="Стрелы борца с демонами Fiendhunter Bolts"
             id="fiendhunter-bolts"
+            data-shop="marksman"
+            data-shop-order='{"marksman":0}'
           >
             <a class="item-card-link" href="item-fiendhunter-bolts.html"
               ><img
@@ -452,6 +650,8 @@
             data-kind="Физический урон"
             data-name="Сила шторма Galeforce"
             id="galeforce"
+            data-shop="marksman"
+            data-shop-order='{"marksman":20}'
           >
             <a class="item-card-link" href="item-galeforce.html"
               ><img
@@ -473,6 +673,8 @@
             data-kind="Физический урон"
             data-name="Потрошитель Goredrinker"
             id="goredrinker"
+            data-shop="fighter"
+            data-shop-order='{"fighter":9}'
           >
             <a class="item-card-link" href="item-goredrinker.html"
               ><img
@@ -494,6 +696,8 @@
             data-kind="Физический урон"
             data-name="Ангел-хранитель Guardian Angel"
             id="guardian-angel"
+            data-shop="fighter assassin marksman defense"
+            data-shop-order='{"fighter":16,"assassin":9,"marksman":23,"defense":25}'
           >
             <a class="item-card-link" href="item-guardian-angel.html"
               ><img
@@ -515,6 +719,8 @@
             data-kind="Физический урон"
             data-name="Клинок ярости Гинсу Guinsoo’s Rageblade"
             id="guinsoos-rageblade"
+            data-shop="marksman magic"
+            data-shop-order='{"marksman":11,"magic":20}'
           >
             <a class="item-card-link" href="item-guinsoos-rageblade.html"
               ><img
@@ -536,6 +742,8 @@
             data-kind="Физический урон"
             data-name="Хекс-прицел С44 Hexoptics C44"
             id="hexoptics-c44"
+            data-shop="marksman"
+            data-shop-order='{"marksman":6}'
           >
             <a class="item-card-link" href="item-hexoptics-c44.html"
               ><img
@@ -557,6 +765,8 @@
             data-kind="Физический урон"
             data-name="Бортолом Hullbreaker"
             id="hullbreaker"
+            data-shop="fighter"
+            data-shop-order='{"fighter":14}'
           >
             <a class="item-card-link" href="item-hullbreaker.html"
               ><img
@@ -578,6 +788,8 @@
             data-kind="Физический урон"
             data-name="Лук бессмертия Immortal Shieldbow"
             id="immortal-shieldbow"
+            data-shop="marksman"
+            data-shop-order='{"marksman":15}'
           >
             <a class="item-card-link" href="item-immortal-shieldbow.html"
               ><img
@@ -599,6 +811,8 @@
             data-kind="Физический урон"
             data-name="Грань бесконечности Infinity Edge"
             id="infinity-edge"
+            data-shop="marksman"
+            data-shop-order='{"marksman":27}'
           >
             <a class="item-card-link" href="item-infinity-edge.html"
               ><img
@@ -620,6 +834,8 @@
             data-kind="Физический урон"
             data-name="Убийца кракенов Kraken Slayer"
             id="kraken-slayer"
+            data-shop="marksman"
+            data-shop-order='{"marksman":7}'
           >
             <a class="item-card-link" href="item-kraken-slayer.html"
               ><img
@@ -641,6 +857,8 @@
             data-kind="Физический урон"
             data-name="Поклон лорда Доминика Lord Dominik’s Regard"
             id="lord-dominiks-regard"
+            data-shop="marksman"
+            data-shop-order='{"marksman":25}'
           >
             <a class="item-card-link" href="item-lord-dominiks-regard.html"
               ><img
@@ -662,6 +880,8 @@
             data-kind="Физический урон"
             data-name="Манамунэ Manamune"
             id="manamune"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":1,"assassin":1,"marksman":9}'
           >
             <a class="item-card-link" href="item-manamune.html"
               ><img
@@ -683,6 +903,8 @@
             data-kind="Физический урон"
             data-name="Зев Малмортиуса Maw Of Malmortius"
             id="maw-of-malmortius"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":5,"assassin":4,"marksman":13}'
           >
             <a class="item-card-link" href="item-maw-of-malmortius.html"
               ><img
@@ -704,6 +926,8 @@
             data-kind="Физический урон"
             data-name="Ртутный ятаган Mercurial Scimitar"
             id="mercurial-scimitar"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":10,"assassin":7,"marksman":21}'
           >
             <a class="item-card-link" href="item-mercurial-scimitar.html"
               ><img
@@ -725,6 +949,8 @@
             data-kind="Физический урон"
             data-name="Напоминание о смерти Mortal Reminder"
             id="mortal-reminder"
+            data-shop="marksman"
+            data-shop-order='{"marksman":12}'
           >
             <a class="item-card-link" href="item-mortal-reminder.html"
               ><img
@@ -746,6 +972,8 @@
             data-kind="Автоулучшения"
             data-name="Мурамана Muramana"
             id="muramana"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":1.1,"assassin":1.1,"marksman":9.1}'
           >
             <a class="item-card-link" href="item-muramana.html"
               ><img
@@ -767,6 +995,8 @@
             data-kind="Физический урон"
             data-name="Быстрые клинки Навори Navori Quickblades"
             id="navori-quickblades"
+            data-shop="marksman"
+            data-shop-order='{"marksman":4}'
           >
             <a class="item-card-link" href="item-navori-quickblades.html"
               ><img
@@ -788,6 +1018,8 @@
             data-kind="Физический урон"
             data-name="Кровавый доспех владыки Overlords Bloodmail"
             id="overlords-bloodmail"
+            data-shop="fighter defense"
+            data-shop-order='{"fighter":15,"defense":24}'
           >
             <a class="item-card-link" href="item-overlords-bloodmail.html"
               ><img
@@ -809,6 +1041,8 @@
             data-kind="Физический урон"
             data-name="Ураган Рунаан Runaans Hurricane"
             id="runaans-hurricane"
+            data-shop="marksman"
+            data-shop-order='{"marksman":2}'
           >
             <a class="item-card-link" href="item-runaans-hurricane.html"
               ><img
@@ -830,6 +1064,8 @@
             data-kind="Физический урон"
             data-name="Змеиный клык Serpents Fang"
             id="serpents-fang"
+            data-shop="assassin"
+            data-shop-order='{"assassin":0}'
           >
             <a class="item-card-link" href="item-serpents-fang.html"
               ><img
@@ -851,6 +1087,8 @@
             data-kind="Физический урон"
             data-name="Злоба Серильды Seryldas Grudge"
             id="seryldas-grudge"
+            data-shop="fighter assassin"
+            data-shop-order='{"fighter":12,"assassin":8}'
           >
             <a class="item-card-link" href="item-seryldas-grudge.html"
               ><img
@@ -872,6 +1110,8 @@
             data-kind="Физический урон"
             data-name="Копьё Сёдзин Spear Of Shojin"
             id="spear-of-shojin"
+            data-shop="fighter"
+            data-shop-order='{"fighter":13}'
           >
             <a class="item-card-link" href="item-spear-of-shojin.html"
               ><img
@@ -893,6 +1133,8 @@
             data-kind="Физический урон"
             data-name="Заточка Статикка Statikk Shiv"
             id="statikk-shiv"
+            data-shop="marksman magic"
+            data-shop-order='{"marksman":10,"magic":16}'
           >
             <a class="item-card-link" href="item-statikk-shiv.html"
               ><img
@@ -914,6 +1156,8 @@
             data-kind="Физический урон"
             data-name="Испытание Стерака Steraks Gage"
             id="steraks-gage"
+            data-shop="fighter defense"
+            data-shop-order='{"fighter":18,"defense":26}'
           >
             <a class="item-card-link" href="item-steraks-gage.html"
               ><img
@@ -935,6 +1179,8 @@
             data-kind="Физический урон"
             data-name="Штормовой клинок Stormrazor"
             id="stormrazor"
+            data-shop="marksman"
+            data-shop-order='{"marksman":18}'
           >
             <a class="item-card-link" href="item-stormrazor.html"
               ><img
@@ -956,6 +1202,8 @@
             data-kind="Физический урон"
             data-name="Костолом Stridebreaker"
             id="stridebreaker"
+            data-shop="fighter"
+            data-shop-order='{"fighter":8}'
           >
             <a class="item-card-link" href="item-stridebreaker.html"
               ><img
@@ -977,6 +1225,8 @@
             data-kind="Физический урон"
             data-name="Расколотое небо Sundered Sky"
             id="sundered-sky"
+            data-shop="fighter"
+            data-shop-order='{"fighter":3}'
           >
             <a class="item-card-link" href="item-sundered-sky.html"
               ><img
@@ -998,6 +1248,8 @@
             data-kind="Физический урон"
             data-name="Светотень Terminus"
             id="terminus"
+            data-shop="marksman"
+            data-shop-order='{"marksman":17}'
           >
             <a class="item-card-link" href="item-terminus.html"
               ><img
@@ -1019,6 +1271,8 @@
             data-kind="Физический урон"
             data-name="Коллекционер The Collector"
             id="the-collector"
+            data-shop="assassin marksman"
+            data-shop-order='{"assassin":6,"marksman":16}'
           >
             <a class="item-card-link" href="item-the-collector.html"
               ><img
@@ -1040,6 +1294,8 @@
             data-kind="Физический урон"
             data-name="Тройственный союз Trinity Force"
             id="trinity-force"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":20,"marksman":26}'
           >
             <a class="item-card-link" href="item-trinity-force.html"
               ><img
@@ -1061,6 +1317,8 @@
             data-kind="Физический урон"
             data-name="Конец разума Wits End"
             id="wits-end"
+            data-shop="marksman"
+            data-shop-order='{"marksman":5}'
           >
             <a class="item-card-link" href="item-wits-end.html"
               ><img
@@ -1082,6 +1340,8 @@
             data-kind="Физический урон"
             data-name="Призрачный клинок Йомуу Youmuu’s Ghostblade"
             id="youmuus-ghostblade"
+            data-shop="assassin"
+            data-shop-order='{"assassin":2}'
           >
             <a class="item-card-link" href="item-youmuus-ghostblade.html"
               ><img
@@ -1103,6 +1363,8 @@
             data-kind="Физический урон"
             data-name="Дикие стрелы Юн Тал Yun Tal Wildarrows"
             id="yun-tal-wildarrows"
+            data-shop="marksman"
+            data-shop-order='{"marksman":19}'
           >
             <a class="item-card-link" href="item-yun-tal-wildarrows.html"
               ><img
@@ -1124,6 +1386,8 @@
             data-kind="Магия"
             data-name="Посох архангела Archangel’s Staff"
             id="archangels-staff"
+            data-shop="magic"
+            data-shop-order='{"magic":22}'
           >
             <a class="item-card-link" href="item-archangels-staff.html"
               ><img
@@ -1145,6 +1409,8 @@
             data-kind="Магия"
             data-name="Завеса банши Banshee’s Veil"
             id="banshees-veil"
+            data-shop="magic defense"
+            data-shop-order='{"magic":17,"defense":20}'
           >
             <a class="item-card-link" href="item-banshees-veil.html"
               ><img
@@ -1166,6 +1432,8 @@
             data-kind="Магия"
             data-name="Факел чёрного пламени Blackfire Torch"
             id="blackfire-torch"
+            data-shop="magic"
+            data-shop-order='{"magic":11}'
           >
             <a class="item-card-link" href="item-blackfire-torch.html"
               ><img
@@ -1187,6 +1455,8 @@
             data-kind="Магия"
             data-name="Проклятие кровопускателя Bloodletters Curse"
             id="bloodletters-curse"
+            data-shop="magic"
+            data-shop-order='{"magic":14}'
           >
             <a class="item-card-link" href="item-bloodletters-curse.html"
               ><img
@@ -1208,6 +1478,8 @@
             data-kind="Магия"
             data-name="Космический ускоритель Cosmic Drive"
             id="cosmic-drive"
+            data-shop="magic"
+            data-shop-order='{"magic":23}'
           >
             <a class="item-card-link" href="item-cosmic-drive.html"
               ><img
@@ -1229,6 +1501,8 @@
             data-kind="Магия"
             data-name="Криптоцвет Cryptbloom"
             id="cryptbloom"
+            data-shop="magic support"
+            data-shop-order='{"magic":18,"support":21}'
           >
             <a class="item-card-link" href="item-cryptbloom.html"
               ><img
@@ -1250,6 +1524,8 @@
             data-kind="Магия"
             data-name="Хекстековый ракетный ремень Hextech Rocketbelt"
             id="hextech-rocketbelt"
+            data-shop="magic"
+            data-shop-order='{"magic":5}'
           >
             <a class="item-card-link" href="item-hextech-rocketbelt.html"
               ><img
@@ -1271,6 +1547,8 @@
             data-kind="Магия"
             data-name="Фокус горизонта Horizon Focus"
             id="horizon-focus"
+            data-shop="magic"
+            data-shop-order='{"magic":8}'
           >
             <a class="item-card-link" href="item-horizon-focus.html"
               ><img
@@ -1292,6 +1570,8 @@
             data-kind="Магия"
             data-name="Сфера бесконечности Infinity Orb"
             id="infinity-orb"
+            data-shop="magic"
+            data-shop-order='{"magic":25}'
           >
             <a class="item-card-link" href="item-infinity-orb.html"
               ><img
@@ -1313,6 +1593,8 @@
             data-kind="Магия"
             data-name="Мучения Лиандри Liandry’s Torment"
             id="liandrys-torment"
+            data-shop="magic"
+            data-shop-order='{"magic":21}'
           >
             <a class="item-card-link" href="item-liandrys-torment.html"
               ><img
@@ -1334,6 +1616,8 @@
             data-kind="Магия"
             data-name="Гроза Личей Lich Bane"
             id="lich-bane"
+            data-shop="magic"
+            data-shop-order='{"magic":13}'
           >
             <a class="item-card-link" href="item-lich-bane.html"
               ><img
@@ -1355,6 +1639,8 @@
             data-kind="Магия"
             data-name="Эхо Людена Luden’s Echo"
             id="ludens-echo"
+            data-shop="magic"
+            data-shop-order='{"magic":12}'
           >
             <a class="item-card-link" href="item-ludens-echo.html"
               ><img
@@ -1376,6 +1662,8 @@
             data-kind="Магия"
             data-name="Злоба Malignance"
             id="malignance"
+            data-shop="magic"
+            data-shop-order='{"magic":9}'
           >
             <a class="item-card-link" href="item-malignance.html"
               ><img
@@ -1397,6 +1685,8 @@
             data-kind="Магия"
             data-name="Мореллономикон Morellonomicon"
             id="morellonomicon"
+            data-shop="magic support"
+            data-shop-order='{"magic":4,"support":17}'
           >
             <a class="item-card-link" href="item-morellonomicon.html"
               ><img
@@ -1418,6 +1708,8 @@
             data-kind="Магия"
             data-name="Зуб Нашора Nashor’s Tooth"
             id="nashors-tooth"
+            data-shop="marksman magic"
+            data-shop-order='{"marksman":8,"magic":15}'
           >
             <a class="item-card-link" href="item-nashors-tooth.html"
               ><img
@@ -1439,6 +1731,8 @@
             data-kind="Магия"
             data-name="Трезубец Океанида Oceanids Trident"
             id="oceanids-trident"
+            data-shop="magic support"
+            data-shop-order='{"magic":3,"support":16}'
           >
             <a class="item-card-link" href="item-oceanids-trident.html"
               ><img
@@ -1460,6 +1754,8 @@
             data-kind="Магия"
             data-name="Смертельная шляпа Рабадона Rabadon’s Deathcap"
             id="rabadons-deathcap"
+            data-shop="magic"
+            data-shop-order='{"magic":28}'
           >
             <a class="item-card-link" href="item-rabadons-deathcap.html"
               ><img
@@ -1481,6 +1777,8 @@
             data-kind="Магия"
             data-name="Создатель разломов Riftmaker"
             id="riftmaker"
+            data-shop="magic"
+            data-shop-order='{"magic":26}'
           >
             <a class="item-card-link" href="item-riftmaker.html"
               ><img
@@ -1502,6 +1800,8 @@
             data-kind="Магия"
             data-name="Жезл веков Rod Of Ages"
             id="rod-of-ages"
+            data-shop="magic"
+            data-shop-order='{"magic":7}'
           >
             <a class="item-card-link" href="item-rod-of-ages.html"
               ><img
@@ -1523,6 +1823,8 @@
             data-kind="Магия"
             data-name="Хрустальный скипетр Рилай Rylai’s Crystal Scepter"
             id="rylais-crystal-scepter"
+            data-shop="magic"
+            data-shop-order='{"magic":6}'
           >
             <a class="item-card-link" href="item-rylais-crystal-scepter.html"
               ><img
@@ -1544,6 +1846,8 @@
             data-kind="Автоулучшения"
             data-name="Объятия Серафима Seraphs Embrace"
             id="seraphs-embrace"
+            data-shop="magic"
+            data-shop-order='{"magic":22.1}'
           >
             <a class="item-card-link" href="item-seraphs-embrace.html"
               ><img
@@ -1565,6 +1869,8 @@
             data-kind="Магия"
             data-name="Штормовой прилив Stormsurge"
             id="stormsurge"
+            data-shop="magic"
+            data-shop-order='{"magic":10}'
           >
             <a class="item-card-link" href="item-stormsurge.html"
               ><img
@@ -1586,6 +1892,8 @@
             data-kind="Магия"
             data-name="Посох Бездны Void Staff"
             id="void-staff"
+            data-shop="magic"
+            data-shop-order='{"magic":19}'
           >
             <a class="item-card-link" href="item-void-staff.html"
               ><img
@@ -1607,6 +1915,8 @@
             data-kind="Магия"
             data-name="Песочные часы Жони Zhonya’s Hourglass"
             id="zhonyas-hourglass"
+            data-shop="magic defense"
+            data-shop-order='{"magic":27,"defense":29}'
           >
             <a class="item-card-link" href="item-zhonyas-hourglass.html"
               ><img
@@ -1628,6 +1938,8 @@
             data-kind="Защита"
             data-name="Маска Бездны Abyssal Mask"
             id="abyssal-mask"
+            data-shop="defense support"
+            data-shop-order='{"defense":0,"support":2}'
           >
             <a class="item-card-link" href="item-abyssal-mask.html"
               ><img
@@ -1649,6 +1961,8 @@
             data-kind="Защита"
             data-name="Парный страж Амаранта Amaranth’s Twinguard"
             id="amaranths-twinguard"
+            data-shop="defense"
+            data-shop-order='{"defense":27}'
           >
             <a class="item-card-link" href="item-amaranths-twinguard.html"
               ><img
@@ -1670,6 +1984,8 @@
             data-kind="Защита"
             data-name="Покров рассвета Dawnshroud"
             id="dawnshroud"
+            data-shop="defense support"
+            data-shop-order='{"defense":10,"support":20}'
           >
             <a class="item-card-link" href="item-dawnshroud.html"
               ><img
@@ -1691,6 +2007,8 @@
             data-kind="Защита"
             data-name="Броня мертвеца Dead Mans Plate"
             id="dead-mans-plate"
+            data-shop="defense"
+            data-shop-order='{"defense":13}'
           >
             <a class="item-card-link" href="item-dead-mans-plate.html"
               ><img
@@ -1712,6 +2030,8 @@
             data-kind="Защита"
             data-name="Сила природы Force Of Nature"
             id="force-of-nature"
+            data-shop="defense"
+            data-shop-order='{"defense":14}'
           >
             <a class="item-card-link" href="item-force-of-nature.html"
               ><img
@@ -1733,6 +2053,8 @@
             data-kind="Защита"
             data-name="Ледяное сердце Frozen Heart"
             id="frozen-heart"
+            data-shop="defense support"
+            data-shop-order='{"defense":4,"support":12}'
           >
             <a class="item-card-link" href="item-frozen-heart.html"
               ><img
@@ -1754,6 +2076,8 @@
             data-kind="Защита"
             data-name="Каменная пластина гаргульи Gargoyle Stoneplate"
             id="gargoyle-stoneplate"
+            data-shop="defense"
+            data-shop-order='{"defense":18}'
           >
             <a class="item-card-link" href="item-gargoyle-stoneplate.html"
               ><img
@@ -1775,6 +2099,8 @@
             data-kind="Защита"
             data-name="Стальное сердце Heartsteel"
             id="heartsteel"
+            data-shop="defense"
+            data-shop-order='{"defense":15}'
           >
             <a class="item-card-link" href="item-heartsteel.html"
               ><img
@@ -1796,6 +2122,8 @@
             data-kind="Защита"
             data-name="Пустое сияние Hollow Radiance"
             id="hollow-radiance"
+            data-shop="defense"
+            data-shop-order='{"defense":11}'
           >
             <a class="item-card-link" href="item-hollow-radiance.html"
               ><img
@@ -1817,6 +2145,8 @@
             data-kind="Защита"
             data-name="Рукавица ледорождённых Iceborn Gauntlet"
             id="iceborn-gauntlet"
+            data-shop="defense"
+            data-shop-order='{"defense":22}'
           >
             <a class="item-card-link" href="item-iceborn-gauntlet.html"
               ><img
@@ -1838,6 +2168,8 @@
             data-kind="Защита"
             data-name="Каэнический рукерн Kaenic Rookern"
             id="kaenic-rookern"
+            data-shop="defense"
+            data-shop-order='{"defense":16}'
           >
             <a class="item-card-link" href="item-kaenic-rookern.html"
               ><img
@@ -1859,6 +2191,8 @@
             data-kind="Защита"
             data-name="Мантия двенадцатого часа Mantle Of The Twelfth Hour"
             id="mantle-of-the-twelfth-hour"
+            data-shop="defense support"
+            data-shop-order='{"defense":5,"support":13}'
           >
             <a class="item-card-link" href="item-mantle-of-the-twelfth-hour.html"
               ><img
@@ -1880,6 +2214,8 @@
             data-kind="Защита"
             data-name="Сияющая добродетель Radiant Virtue"
             id="radiant-virtue"
+            data-shop="defense support"
+            data-shop-order='{"defense":8,"support":18}'
           >
             <a class="item-card-link" href="item-radiant-virtue.html"
               ><img
@@ -1901,6 +2237,8 @@
             data-kind="Защита"
             data-name="Знамение Рандуина Randuins Omen"
             id="randuins-omen"
+            data-shop="defense"
+            data-shop-order='{"defense":12}'
           >
             <a class="item-card-link" href="item-randuins-omen.html"
               ><img
@@ -1922,6 +2260,8 @@
             data-kind="Защита"
             data-name="Эгида солнечного пламени Sunfire Aegis"
             id="sunfire-aegis"
+            data-shop="defense"
+            data-shop-order='{"defense":19}'
           >
             <a class="item-card-link" href="item-sunfire-aegis.html"
               ><img
@@ -1943,6 +2283,8 @@
             data-kind="Защита"
             data-name="Шипованный доспех Thornmail"
             id="thornmail"
+            data-shop="defense support"
+            data-shop-order='{"defense":9,"support":19}'
           >
             <a class="item-card-link" href="item-thornmail.html"
               ><img
@@ -1964,6 +2306,8 @@
             data-kind="Защита"
             data-name="Бесконечное отчаяние Unending Despair"
             id="unending-despair"
+            data-shop="defense"
+            data-shop-order='{"defense":21}'
           >
             <a class="item-card-link" href="item-unending-despair.html"
               ><img
@@ -1985,6 +2329,8 @@
             data-kind="Защита"
             data-name="Доспех Вармога Warmogs Armor"
             id="warmogs-armor"
+            data-shop="defense"
+            data-shop-order='{"defense":17}'
           >
             <a class="item-card-link" href="item-warmogs-armor.html"
               ><img
@@ -2006,6 +2352,8 @@
             data-kind="Поддержка"
             data-name="Пылающая кадильница Ardent Censer"
             id="ardent-censer"
+            data-shop="support"
+            data-shop-order='{"support":3}'
           >
             <a class="item-card-link" href="item-ardent-censer.html"
               ><img
@@ -2027,6 +2375,8 @@
             data-kind="Поддержка"
             data-name="Коса чёрного тумана Black Mist Scythe"
             id="black-mist-scythe"
+            data-shop="support"
+            data-shop-order='{"support":37.1}'
           >
             <a class="item-card-link" href="item-black-mist-scythe.html"
               ><img
@@ -2048,6 +2398,8 @@
             data-kind="Поддержка"
             data-name="Оплот горы Bulwark Of The Mountain"
             id="bulwark-of-the-mountain"
+            data-shop="support"
+            data-shop-order='{"support":38.1}'
           >
             <a class="item-card-link" href="item-bulwark-of-the-mountain.html"
               ><img
@@ -2069,6 +2421,8 @@
             data-kind="Автоулучшения"
             data-name="Диадема песен Diadem Of Songs"
             id="diadem-of-songs"
+            data-shop="magic support"
+            data-shop-order='{"magic":0.1,"support":1.1}'
           >
             <a class="item-card-link" href="item-diadem-of-songs.html"
               ><img
@@ -2090,6 +2444,8 @@
             data-kind="Поддержка"
             data-name="Эхо Гелии Echoes Of Helia"
             id="echoes-of-helia"
+            data-shop="support"
+            data-shop-order='{"support":0}'
           >
             <a class="item-card-link" href="item-echoes-of-helia.html"
               ><img
@@ -2111,6 +2467,8 @@
             data-kind="Поддержка"
             data-name="Мелодичное эхо Harmonic Echo"
             id="harmonic-echo"
+            data-shop="support"
+            data-shop-order='{"support":11}'
           >
             <a class="item-card-link" href="item-harmonic-echo.html"
               ><img
@@ -2132,6 +2490,8 @@
             data-kind="Поддержка"
             data-name="Имперский мандат Imperial Mandate"
             id="imperial-mandate"
+            data-shop="magic support"
+            data-shop-order='{"magic":2,"support":15}'
           >
             <a class="item-card-link" href="item-imperial-mandate.html"
               ><img
@@ -2153,6 +2513,8 @@
             data-kind="Поддержка"
             data-name="Клятва рыцаря Knights Vow"
             id="knights-vow"
+            data-shop="defense support"
+            data-shop-order='{"defense":3,"support":8}'
           >
             <a class="item-card-link" href="item-knights-vow.html"
               ><img
@@ -2174,6 +2536,8 @@
             data-kind="Поддержка"
             data-name="Благословение Микаэля Mikaels Blessing"
             id="mikaels-blessing"
+            data-shop="support"
+            data-shop-order='{"support":9}'
           >
             <a class="item-card-link" href="item-mikaels-blessing.html"
               ><img
@@ -2195,6 +2559,8 @@
             data-kind="Поддержка"
             data-name="Искупление Redemption"
             id="redemption"
+            data-shop="magic support"
+            data-shop-order='{"magic":1,"support":7}'
           >
             <a class="item-card-link" href="item-redemption.html"
               ><img
@@ -2216,6 +2582,8 @@
             data-kind="Поддержка"
             data-name="Реликтовый щит Relic Shield"
             id="relic-shield"
+            data-shop="support"
+            data-shop-order='{"support":38}'
           >
             <a class="item-card-link" href="item-relic-shield.html"
               ><img
@@ -2237,6 +2605,8 @@
             data-kind="Поддержка"
             data-name="Призрачный серп Spectral Sickle"
             id="spectral-sickle"
+            data-shop="support"
+            data-shop-order='{"support":37}'
           >
             <a class="item-card-link" href="item-spectral-sickle.html"
               ><img
@@ -2258,6 +2628,8 @@
             data-kind="Поддержка"
             data-name="Посох текучей воды Staff Of Flowing Water"
             id="staff-of-flowing-water"
+            data-shop="support"
+            data-shop-order='{"support":4}'
           >
             <a class="item-card-link" href="item-staff-of-flowing-water.html"
               ><img
@@ -2279,6 +2651,8 @@
             data-kind="Поддержка"
             data-name="Шепчущая диадема Whispering Circlet"
             id="whispering-circlet"
+            data-shop="magic support"
+            data-shop-order='{"magic":0,"support":1}'
           >
             <a class="item-card-link" href="item-whispering-circlet.html"
               ><img
@@ -2300,6 +2674,8 @@
             data-kind="Поддержка"
             data-name="Ловушка йордла Yordle Trap"
             id="yordle-trap"
+            data-shop="defense support"
+            data-shop-order='{"defense":2,"support":6}'
           >
             <a class="item-card-link" href="item-yordle-trap.html"
               ><img
@@ -2321,6 +2697,8 @@
             data-kind="Поддержка"
             data-name="Слияние Зика Zekes Convergence"
             id="zekes-convergence"
+            data-shop="defense support"
+            data-shop-order='{"defense":1,"support":5}'
           >
             <a class="item-card-link" href="item-zekes-convergence.html"
               ><img
@@ -2342,6 +2720,8 @@
             data-kind="Ботинки"
             data-name="Наголенники берсерка Berserkers Greaves"
             id="berserkers-greaves"
+            data-shop="boots"
+            data-shop-order='{"boots":9}'
           >
             <a class="item-card-link" href="item-berserkers-greaves.html"
               ><img
@@ -2363,6 +2743,8 @@
             data-kind="Ботинки"
             data-name="Ботинки стремительности Boots Of Dynamism"
             id="boots-of-dynamism"
+            data-shop="boots"
+            data-shop-order='{"boots":13}'
           >
             <a class="item-card-link" href="item-boots-of-dynamism.html"
               ><img
@@ -2384,6 +2766,8 @@
             data-kind="Ботинки"
             data-name="Сапоги маны Boots Of Mana"
             id="boots-of-mana"
+            data-shop="boots"
+            data-shop-order='{"boots":12}'
           >
             <a class="item-card-link" href="item-boots-of-mana.html"
               ><img
@@ -2405,6 +2789,8 @@
             data-kind="Ботинки"
             data-name="Прожорливые поножи Gluttonous Greaves"
             id="gluttonous-greaves"
+            data-shop="boots"
+            data-shop-order='{"boots":7}'
           >
             <a class="item-card-link" href="item-gluttonous-greaves.html"
               ><img
@@ -2426,6 +2812,8 @@
             data-kind="Ботинки"
             data-name="Ионийские сапоги просветления Ionian Boots Of Lucidity"
             id="ionian-boots-of-lucidity"
+            data-shop="boots"
+            data-shop-order='{"boots":8}'
           >
             <a class="item-card-link" href="item-ionian-boots-of-lucidity.html"
               ><img
@@ -2447,6 +2835,8 @@
             data-kind="Ботинки"
             data-name="Поступь Меркурия Mercurys Treads"
             id="mercurys-treads"
+            data-shop="boots"
+            data-shop-order='{"boots":10}'
           >
             <a class="item-card-link" href="item-mercurys-treads.html"
               ><img
@@ -2468,6 +2858,8 @@
             data-kind="Ботинки"
             data-name="Бронированные сапоги Plated Steelcaps"
             id="plated-steelcaps"
+            data-shop="boots"
+            data-shop-order='{"boots":11}'
           >
             <a class="item-card-link" href="item-plated-steelcaps.html"
               ><img
@@ -2489,6 +2881,8 @@
             data-kind="Начальные"
             data-name="Усиливающий фолиант Amplifying Tome"
             id="amplifying-tome"
+            data-shop="magic"
+            data-shop-order='{"magic":50}'
           >
             <a class="item-card-link" href="item-amplifying-tome.html"
               ><img
@@ -2510,6 +2904,8 @@
             data-kind="Начальные"
             data-name="Тканевая броня Cloth Armor"
             id="cloth-armor"
+            data-shop="defense"
+            data-shop-order='{"defense":48}'
           >
             <a class="item-card-link" href="item-cloth-armor.html"
               ><img
@@ -2531,6 +2927,8 @@
             data-kind="Начальные"
             data-name="Длинный меч Long Sword"
             id="long-sword"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":34,"assassin":18,"marksman":43}'
           >
             <a class="item-card-link" href="item-long-sword.html"
               ><img
@@ -2552,6 +2950,8 @@
             data-kind="Начальные"
             data-name="Рубиновый кристалл Ruby Crystal"
             id="ruby-crystal"
+            data-shop="magic defense"
+            data-shop-order='{"magic":49,"defense":47}'
           >
             <a class="item-card-link" href="item-ruby-crystal.html"
               ><img
@@ -2573,6 +2973,8 @@
             data-kind="Начальные"
             data-name="Слеза богини Tear Of The Goddess"
             id="tear-of-the-goddess"
+            data-shop="fighter assassin marksman magic defense"
+            data-shop-order='{"fighter":32,"assassin":17,"marksman":41,"magic":48,"defense":46}'
           >
             <a class="item-card-link" href="item-tear-of-the-goddess.html"
               ><img
@@ -2594,6 +2996,8 @@
             data-kind="Улучшения ботинок"
             data-name="Сапоги бронелома Armorcrusher Boots"
             id="armorcrusher-boots"
+            data-shop="boots"
+            data-shop-order='{"boots":6}'
           >
             <a class="item-card-link" href="item-armorcrusher-boots.html"
               ><img
@@ -2615,6 +3019,8 @@
             data-kind="Улучшения ботинок"
             data-name="Бронированное наступление Armored Advance"
             id="armored-advance"
+            data-shop="boots"
+            data-shop-order='{"boots":4}'
           >
             <a class="item-card-link" href="item-armored-advance.html"
               ><img
@@ -2636,6 +3042,8 @@
             data-kind="Улучшения ботинок"
             data-name="Укреплённые сапоги Chainlaced Crushers"
             id="chainlaced-crushers"
+            data-shop="boots"
+            data-shop-order='{"boots":3}'
           >
             <a class="item-card-link" href="item-chainlaced-crushers.html"
               ><img
@@ -2657,6 +3065,8 @@
             data-kind="Улучшения ботинок"
             data-name="Багровое просветление Crimson Lucidity"
             id="crimson-lucidity"
+            data-shop="boots"
+            data-shop-order='{"boots":1}'
           >
             <a class="item-card-link" href="item-crimson-lucidity.html"
               ><img
@@ -2678,6 +3088,8 @@
             data-kind="Улучшения ботинок"
             data-name="Стальные поножи Gunmetal Greaves"
             id="gunmetal-greaves"
+            data-shop="boots"
+            data-shop-order='{"boots":2}'
           >
             <a class="item-card-link" href="item-gunmetal-greaves.html"
               ><img
@@ -2699,6 +3111,8 @@
             data-kind="Улучшения ботинок"
             data-name="Ботинки бессмертия Immortal Boots"
             id="immortal-boots"
+            data-shop="boots"
+            data-shop-order='{"boots":0}'
           >
             <a class="item-card-link" href="item-immortal-boots.html"
               ><img
@@ -2720,6 +3134,8 @@
             data-kind="Улучшения ботинок"
             data-name="Сапоги заклинателя Spellslingers Shoes"
             id="spellslingers-shoes"
+            data-shop="boots"
+            data-shop-order='{"boots":5}'
           >
             <a class="item-card-link" href="item-spellslingers-shoes.html"
               ><img
@@ -2741,6 +3157,8 @@
             data-kind="Физический урон"
             data-name="Нож-пила химпанка Chempunk Chainsword"
             id="chempunk-chainsword"
+            data-shop="fighter"
+            data-shop-order='{"fighter":0}'
           >
             <a class="item-card-link" href="item-chempunk-chainsword.html"
               ><img
@@ -2762,6 +3180,8 @@
             data-kind="Физический урон"
             data-name="Экспериментальная хекстековая броня Experimental Hexplate"
             id="experimental-hexplate"
+            data-shop="fighter"
+            data-shop-order='{"fighter":4}'
           >
             <a class="item-card-link" href="item-experimental-hexplate.html"
               ><img
@@ -2783,6 +3203,8 @@
             data-kind="Физический урон"
             data-name="Титаническая гидра Titanic Hydra"
             id="titanic-hydra"
+            data-shop="fighter defense"
+            data-shop-order='{"fighter":7,"defense":23}'
           >
             <a class="item-card-link" href="item-titanic-hydra.html"
               ><img
@@ -2804,6 +3226,8 @@
             data-kind="Физический урон"
             data-name="Призрачный танцор Phantom Dancer"
             id="phantom-dancer"
+            data-shop="marksman"
+            data-shop-order='{"marksman":3}'
           >
             <a class="item-card-link" href="item-phantom-dancer.html"
               ><img
@@ -2825,6 +3249,8 @@
             data-kind="Физический урон"
             data-name="Скорострельная пушка Rapid Firecannon"
             id="rapid-firecannon"
+            data-shop="marksman"
+            data-shop-order='{"marksman":1}'
           >
             <a class="item-card-link" href="item-rapid-firecannon.html"
               ><img
@@ -2846,6 +3272,8 @@
             data-kind="Защита"
             data-name="Вестник зимы Winter’s Approach"
             id="winters-approach"
+            data-shop="defense"
+            data-shop-order='{"defense":7}'
           >
             <a class="item-card-link" href="item-winters-approach.html"
               ><img
@@ -2867,6 +3295,8 @@
             data-kind="Автоулучшения"
             data-name="Великанская зима Fimbulwinter"
             id="fimbulwinter"
+            data-shop="defense"
+            data-shop-order='{"defense":7.1}'
           >
             <a class="item-card-link" href="item-fimbulwinter.html"
               ><img
@@ -2888,6 +3318,8 @@
             data-kind="Поддержка"
             data-name="Боевая песнь Шурелии Shurelya’s Battlesong"
             id="shurelyas-battlesong"
+            data-shop="support"
+            data-shop-order='{"support":10}'
           >
             <a class="item-card-link" href="item-shurelyas-battlesong.html"
               ><img
@@ -2909,6 +3341,8 @@
             data-kind="Поддержка"
             data-name="Медальон Железных Солари Locket of the Iron Solari"
             id="locket-of-the-iron-solari"
+            data-shop="defense support"
+            data-shop-order='{"defense":6,"support":14}'
           >
             <a class="item-card-link" href="item-locket-of-the-iron-solari.html"
               ><img
@@ -2930,6 +3364,8 @@
             data-kind="Магия"
             data-name="Пожиратель душ Меджай Mejai’s Soulstealer"
             id="mejais-soulstealer"
+            data-shop="magic"
+            data-shop-order='{"magic":46}'
           >
             <a class="item-card-link" href="item-mejais-soulstealer.html"
               ><img
@@ -2951,6 +3387,8 @@
             data-kind="Компоненты II"
             data-name="Самый Лучший Меч B. F. Sword"
             id="bf-sword"
+            data-shop="marksman"
+            data-shop-order='{"marksman":40}'
           >
             <a class="item-card-link" href="item-bf-sword.html"
               ><img
@@ -2972,6 +3410,8 @@
             data-kind="Компоненты II"
             data-name="Рвение Zeal"
             id="zeal"
+            data-shop="marksman"
+            data-shop-order='{"marksman":39}'
           >
             <a class="item-card-link" href="item-zeal.html"
               ><img
@@ -2993,6 +3433,8 @@
             data-kind="Компоненты II"
             data-name="Полуденный колчан Noonquiver"
             id="noonquiver"
+            data-shop="marksman"
+            data-shop-order='{"marksman":38}'
           >
             <a class="item-card-link" href="item-noonquiver.html"
               ><img
@@ -3014,6 +3456,8 @@
             data-kind="Компоненты II"
             data-name="Боевой молот Колфилда Caulfield’s Warhammer"
             id="caulfields-warhammer"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":31,"assassin":16,"marksman":37}'
           >
             <a class="item-card-link" href="item-caulfields-warhammer.html"
               ><img
@@ -3035,6 +3479,8 @@
             data-kind="Компоненты II"
             data-name="Предсмертный шепот Last Whisper"
             id="last-whisper"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":29,"assassin":15,"marksman":36}'
           >
             <a class="item-card-link" href="item-last-whisper.html"
               ><img
@@ -3056,6 +3502,8 @@
             data-kind="Компоненты II"
             data-name="Кулак Чаурим Jaurim’s Fist"
             id="jaurims-fist"
+            data-shop="defense"
+            data-shop-order='{"defense":43}'
           >
             <a class="item-card-link" href="item-jaurims-fist.html"
               ><img
@@ -3077,6 +3525,8 @@
             data-kind="Компоненты II"
             data-name="Пожиратель заклятий Hexdrinker"
             id="hexdrinker"
+            data-shop="fighter"
+            data-shop-order='{"fighter":30}'
           >
             <a class="item-card-link" href="item-hexdrinker.html"
               ><img
@@ -3098,6 +3548,8 @@
             data-kind="Компоненты II"
             data-name="Вампирский скипетр Vampiric Scepter"
             id="vampiric-scepter"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":28,"marksman":35}'
           >
             <a class="item-card-link" href="item-vampiric-scepter.html"
               ><img
@@ -3119,6 +3571,8 @@
             data-kind="Компоненты II"
             data-name="Топор Теплолюбивых Hearthbound Axe"
             id="hearthbound-axe"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":27,"marksman":34}'
           >
             <a class="item-card-link" href="item-hearthbound-axe.html"
               ><img
@@ -3140,6 +3594,8 @@
             data-kind="Компоненты II"
             data-name="Кушак стремительного серебра Quicksilver Sash"
             id="quicksilver-sash"
+            data-shop="fighter assassin marksman defense"
+            data-shop-order='{"fighter":26,"assassin":14,"marksman":33,"defense":39}'
           >
             <a class="item-card-link" href="item-quicksilver-sash.html"
               ><img
@@ -3161,6 +3617,8 @@
             data-kind="Компоненты II"
             data-name="Воспламеняющий камень Kindlegem"
             id="kindlegem"
+            data-shop="magic defense support"
+            data-shop-order='{"magic":38,"defense":34,"support":31}'
           >
             <a class="item-card-link" href="item-kindlegem.html"
               ><img
@@ -3182,6 +3640,8 @@
             data-kind="Компоненты II"
             data-name="Зазубренный кинжал Serrated Dirk"
             id="serrated-dirk"
+            data-shop="assassin"
+            data-shop-order='{"assassin":13}'
           >
             <a class="item-card-link" href="item-serrated-dirk.html"
               ><img
@@ -3203,6 +3663,8 @@
             data-kind="Компоненты II"
             data-name="Поглотитель Phage"
             id="phage"
+            data-shop="fighter"
+            data-shop-order='{"fighter":25}'
           >
             <a class="item-card-link" href="item-phage.html"
               ><img
@@ -3224,6 +3686,8 @@
             data-kind="Компоненты II"
             data-name="Изогнутый лук Recurve Bow"
             id="recurve-bow"
+            data-shop="marksman"
+            data-shop-order='{"marksman":32}'
           >
             <a class="item-card-link" href="item-recurve-bow.html"
               ><img
@@ -3245,6 +3709,8 @@
             data-kind="Компоненты II"
             data-name="Сияние Sheen"
             id="sheen"
+            data-shop="fighter assassin marksman magic defense"
+            data-shop-order='{"fighter":23,"assassin":11,"marksman":29,"magic":31,"defense":30}'
           >
             <a class="item-card-link" href="item-sheen.html"
               ><img
@@ -3266,6 +3732,8 @@
             data-kind="Компоненты II"
             data-name="Призвание Палача Executioner’s Calling"
             id="executioners-calling"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":24,"assassin":12,"marksman":31}'
           >
             <a class="item-card-link" href="item-executioners-calling.html"
               ><img
@@ -3287,6 +3755,8 @@
             data-kind="Компоненты II"
             data-name="Осколок Кирхайс Kircheis Shard"
             id="kircheis-shard"
+            data-shop="marksman"
+            data-shop-order='{"marksman":30}'
           >
             <a class="item-card-link" href="item-kircheis-shard.html"
               ><img
@@ -3308,6 +3778,8 @@
             data-kind="Компоненты II"
             data-name="Кирка Pickaxe"
             id="pickaxe"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":22,"assassin":10,"marksman":28}'
           >
             <a class="item-card-link" href="item-pickaxe.html"
               ><img
@@ -3329,6 +3801,8 @@
             data-kind="Компоненты II"
             data-name="Слишком Большой Жезл Needlessly Large Rod"
             id="needlessly-large-rod"
+            data-shop="magic"
+            data-shop-order='{"magic":43}'
           >
             <a class="item-card-link" href="item-needlessly-large-rod.html"
               ><img
@@ -3350,6 +3824,8 @@
             data-kind="Компоненты II"
             data-name="Наручи Искательницы Seeker’s Armguard"
             id="seekers-armguard"
+            data-shop="magic defense"
+            data-shop-order='{"magic":44,"defense":44}'
           >
             <a class="item-card-link" href="item-seekers-armguard.html"
               ><img
@@ -3371,6 +3847,8 @@
             data-kind="Компоненты II"
             data-name="Преследующая маска Haunting Guise"
             id="haunting-guise"
+            data-shop="magic"
+            data-shop-order='{"magic":42}'
           >
             <a class="item-card-link" href="item-haunting-guise.html"
               ><img
@@ -3392,6 +3870,8 @@
             data-kind="Компоненты II"
             data-name="Потерянная глава Lost Chapter"
             id="lost-chapter"
+            data-shop="magic"
+            data-shop-order='{"magic":41}'
           >
             <a class="item-card-link" href="item-lost-chapter.html"
               ><img
@@ -3413,6 +3893,8 @@
             data-kind="Компоненты II"
             data-name="Хекстек-альтернатор Hextech Alternator"
             id="hextech-alternator"
+            data-shop="magic"
+            data-shop-order='{"magic":40}'
           >
             <a class="item-card-link" href="item-hextech-alternator.html"
               ><img
@@ -3434,6 +3916,8 @@
             data-kind="Компоненты II"
             data-name="Катализатор эонов Catalyst of Aeons"
             id="catalyst-of-aeons"
+            data-shop="magic defense"
+            data-shop-order='{"magic":39,"defense":40}'
           >
             <a class="item-card-link" href="item-catalyst-of-aeons.html"
               ><img
@@ -3455,6 +3939,8 @@
             data-kind="Компоненты II"
             data-name="Аметист Бездны Void Amethyst"
             id="void-amethyst"
+            data-shop="magic support"
+            data-shop-order='{"magic":37,"support":30}'
           >
             <a class="item-card-link" href="item-void-amethyst.html"
               ><img
@@ -3476,6 +3962,8 @@
             data-kind="Компоненты II"
             data-name="Эфирный всполох Aether Wisp"
             id="aether-wisp"
+            data-shop="magic support"
+            data-shop-order='{"magic":36,"support":29}'
           >
             <a class="item-card-link" href="item-aether-wisp.html"
               ><img
@@ -3497,6 +3985,8 @@
             data-kind="Компоненты II"
             data-name="Бесовской манускрипт Fiendish Codex"
             id="fiendish-codex"
+            data-shop="magic support"
+            data-shop-order='{"magic":34,"support":25}'
           >
             <a class="item-card-link" href="item-fiendish-codex.html"
               ><img
@@ -3518,6 +4008,8 @@
             data-kind="Компоненты II"
             data-name="Сфера забвения Oblivion Orb"
             id="oblivion-orb"
+            data-shop="magic support"
+            data-shop-order='{"magic":35,"support":26}'
           >
             <a class="item-card-link" href="item-oblivion-orb.html"
               ><img
@@ -3539,6 +4031,8 @@
             data-kind="Компоненты II"
             data-name="Роковой пепел Fated Ashes"
             id="fated-ashes"
+            data-shop="magic"
+            data-shop-order='{"magic":33}'
           >
             <a class="item-card-link" href="item-fated-ashes.html"
               ><img
@@ -3560,6 +4054,8 @@
             data-kind="Компоненты II"
             data-name="Зеркало йордлов Bandleglass Mirror"
             id="bandleglass-mirror"
+            data-shop="magic support"
+            data-shop-order='{"magic":32,"support":24}'
           >
             <a class="item-card-link" href="item-bandleglass-mirror.html"
               ><img
@@ -3581,6 +4077,8 @@
             data-kind="Компоненты II"
             data-name="Разящий жезл Blasting Wand"
             id="blasting-wand"
+            data-shop="magic support"
+            data-shop-order='{"magic":30,"support":23}'
           >
             <a class="item-card-link" href="item-blasting-wand.html"
               ><img
@@ -3602,6 +4100,8 @@
             data-kind="Компоненты II"
             data-name="Запретный идол Forbidden Idol"
             id="forbidden-idol"
+            data-shop="magic support"
+            data-shop-order='{"magic":29,"support":22}'
           >
             <a class="item-card-link" href="item-forbidden-idol.html"
               ><img
@@ -3623,6 +4123,8 @@
             data-kind="Компоненты II"
             data-name="Изумрудный барьер Verdant Barrier"
             id="verdant-barrier"
+            data-shop="magic defense"
+            data-shop-order='{"magic":45,"defense":45}'
           >
             <a class="item-card-link" href="item-verdant-barrier.html"
               ><img
@@ -3644,6 +4146,8 @@
             data-kind="Компоненты II"
             data-name="Пепел Бами Bami’s Cinder"
             id="bamis-cinder"
+            data-shop="defense"
+            data-shop-order='{"defense":42}'
           >
             <a class="item-card-link" href="item-bamis-cinder.html"
               ><img
@@ -3665,6 +4169,8 @@
             data-kind="Компоненты II"
             data-name="Ледяная пелена Glacial Shroud"
             id="glacial-shroud"
+            data-shop="defense support"
+            data-shop-order='{"defense":37,"support":34}'
           >
             <a class="item-card-link" href="item-glacial-shroud.html"
               ><img
@@ -3686,6 +4192,8 @@
             data-kind="Компоненты II"
             data-name="Капюшон призрака Spectre’s Cowl"
             id="spectres-cowl"
+            data-shop="defense support"
+            data-shop-order='{"defense":41,"support":36}'
           >
             <a class="item-card-link" href="item-spectres-cowl.html"
               ><img
@@ -3707,6 +4215,8 @@
             data-kind="Компоненты II"
             data-name="Доспех хранителя Warden’s Mail"
             id="wardens-mail"
+            data-shop="defense support"
+            data-shop-order='{"defense":38,"support":35}'
           >
             <a class="item-card-link" href="item-wardens-mail.html"
               ><img
@@ -3728,6 +4238,8 @@
             data-kind="Компоненты II"
             data-name="Терновый жилет Bramble Vest"
             id="bramble-vest"
+            data-shop="defense support"
+            data-shop-order='{"defense":36,"support":33}'
           >
             <a class="item-card-link" href="item-bramble-vest.html"
               ><img
@@ -3749,6 +4261,8 @@
             data-kind="Компоненты II"
             data-name="Пояс великана Giant’s Belt"
             id="giants-belt"
+            data-shop="defense support"
+            data-shop-order='{"defense":35,"support":32}'
           >
             <a class="item-card-link" href="item-giants-belt.html"
               ><img
@@ -3770,6 +4284,8 @@
             data-kind="Компоненты II"
             data-name="Кольчуга Chain Vest"
             id="chain-vest"
+            data-shop="defense support"
+            data-shop-order='{"defense":31,"support":27}'
           >
             <a class="item-card-link" href="item-chain-vest.html"
               ><img
@@ -3791,6 +4307,8 @@
             data-kind="Компоненты II"
             data-name="Крылья луны Winged Moonplate"
             id="winged-moonplate"
+            data-shop="defense"
+            data-shop-order='{"defense":32}'
           >
             <a class="item-card-link" href="item-winged-moonplate.html"
               ><img
@@ -3812,6 +4330,8 @@
             data-kind="Компоненты II"
             data-name="Поглощающий плащ Negatron Cloak"
             id="negatron-cloak"
+            data-shop="defense support"
+            data-shop-order='{"defense":33,"support":28}'
           >
             <a class="item-card-link" href="item-negatron-cloak.html"
               ><img
@@ -3833,6 +4353,8 @@
             data-kind="Начальные"
             data-name="Перчатки дебошира Brawler’s Gloves"
             id="brawlers-gloves"
+            data-shop="fighter assassin marksman"
+            data-shop-order='{"fighter":35,"assassin":19,"marksman":44}'
           >
             <a class="item-card-link" href="item-brawlers-gloves.html"
               ><img
@@ -3854,6 +4376,8 @@
             data-kind="Начальные"
             data-name="Кинжал Dagger"
             id="dagger"
+            data-shop="fighter marksman"
+            data-shop-order='{"fighter":33,"marksman":42}'
           >
             <a class="item-card-link" href="item-dagger.html"
               ><img
@@ -3875,6 +4399,8 @@
             data-kind="Начальные"
             data-name="Кольцо откровений Ring of Revelation"
             id="ring-of-revelation"
+            data-shop="magic"
+            data-shop-order='{"magic":47}'
           >
             <a class="item-card-link" href="item-ring-of-revelation.html"
               ><img
@@ -3896,6 +4422,8 @@
             data-kind="Начальные"
             data-name="Антимагическая мантия Null-Magic Mantle"
             id="null-magic-mantle"
+            data-shop="defense"
+            data-shop-order='{"defense":49}'
           >
             <a class="item-card-link" href="item-null-magic-mantle.html"
               ><img
@@ -3917,6 +4445,8 @@
             data-kind="Начальные"
             data-name="Простые сапоги Boots of Speed"
             id="boots-of-speed"
+            data-shop="boots"
+            data-shop-order='{"boots":14}'
           >
             <a class="item-card-link" href="item-boots-of-speed.html"
               ><img
