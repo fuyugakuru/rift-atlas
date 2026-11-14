@@ -37,6 +37,7 @@ jobs:
           echo "$expected  $RUNNER_TEMP/site-bundle.zip" | sha256sum --check
           git fetch --depth=1 origin 2a9fe3f0b20e11ca33422610ab915fbc361e6c74
           git restore --source=2a9fe3f0b20e11ca33422610ab915fbc361e6c74 --staged --worktree -- .
+          git restore --source=HEAD --staged --worktree -- .github/workflows/pages.yml
           unzip -o -q "$RUNNER_TEMP/site-bundle.zip" -d .
           test -s index.html
           test -d assets
