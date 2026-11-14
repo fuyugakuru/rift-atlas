@@ -1347,6 +1347,17 @@ window.RIFT_DATA = {
       "hasGuide": false
     },
     {
+      "id": "sylas",
+      "name": "САЙЛАС",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/sylas/",
+      "image": "assets/champions/sylas-portrait.jpg",
+      "subtitle": "Сбросивший оковы",
+      "role": "МАГ · УБИЙЦА",
+      "difficulty": "Высокая",
+      "hero": "assets/champions/sylas-hero.jpg",
+      "hasGuide": false
+    },
+    {
       "id": "samira",
       "name": "САМИРА",
       "url": "https://wildrift.leagueoflegends.com/ru-ru/champions/samira/",
