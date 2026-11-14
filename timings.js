@@ -18,7 +18,8 @@
   function time(value) {
     const el = document.createElement("span");
     el.className = value === null ? "timing-pending" : "timing-number";
-    el.textContent = value === null ? "На проверке" : hide ? "••:••" : format(value);
+    el.textContent =
+      value === null ? "На проверке" : hide ? "••:••" : format(value);
     return el;
   }
   function render() {
@@ -41,7 +42,8 @@
       const title = document.createElement("strong");
       title.textContent = o.name;
       const sub = document.createElement("small");
-      sub.textContent = labels[o.category] + (o.reference ? " · справочные замеры" : "");
+      sub.textContent =
+        labels[o.category] + (o.reference ? " · справочные замеры" : "");
       name.append(title, sub);
       tr.append(name);
       for (const key of ["first", "respawn"]) {
@@ -78,12 +80,15 @@
       tr.append(source);
       rows.append(tr);
     }
-    document.querySelector("#timing-count").textContent = "Объектов: " + filtered.length;
+    document.querySelector("#timing-count").textContent =
+      "Объектов: " + filtered.length;
     document.querySelector("#timing-empty").hidden = filtered.length > 0;
     const timeline = document.querySelector("#spawn-timeline");
     timeline.replaceChildren();
     const groups = new Map();
-    for (const o of data.filter((o) => o.first !== null).sort((a, b) => a.first - b.first)) {
+    for (const o of data
+      .filter((o) => o.first !== null)
+      .sort((a, b) => a.first - b.first)) {
       if (!groups.has(o.first)) groups.set(o.first, []);
       groups.get(o.first).push(o);
     }
@@ -93,11 +98,15 @@
       card.append(time(at));
       const title = document.createElement("h3");
       title.textContent =
-        objects.length > 3 ? "Лесные лагеря" : objects.map((o) => o.name).join(" / ");
+        objects.length > 3
+          ? "Лесные лагеря"
+          : objects.map((o) => o.name).join(" / ");
       const patch = document.createElement("small");
       patch.textContent =
         "Источник: " +
-        [...new Set(objects.map((o) => o.firstLabel || "патч " + o.patch))].join(", ");
+        [
+          ...new Set(objects.map((o) => o.firstLabel || "патч " + o.patch)),
+        ].join(", ");
       card.append(title, patch);
       timeline.append(card);
     }
@@ -107,7 +116,9 @@
   document.querySelector("#hide-timings").addEventListener("click", (e) => {
     hide = !hide;
     e.currentTarget.setAttribute("aria-pressed", String(hide));
-    e.currentTarget.textContent = hide ? "Показать время" : "Скрыть время для повторения";
+    e.currentTarget.textContent = hide
+      ? "Показать время"
+      : "Скрыть время для повторения";
     render();
   });
   render();
@@ -132,7 +143,8 @@
     restart.hidden = true;
     const q = questions[index];
     document.querySelector("#practice-question").textContent = q.text;
-    document.querySelector("#practice-progress").textContent = index + 1 + " / 20";
+    document.querySelector("#practice-progress").textContent =
+      index + 1 + " / 20";
     const options = document.querySelector("#practice-options");
     options.replaceChildren();
     for (const answer of q.options) {
@@ -150,8 +162,10 @@
         });
         if (!correct) b.classList.add("incorrect");
         feedback.textContent =
-          (correct ? "Верно. " : "Правильный ответ: " + q.answer + ". ") + q.explanation;
-        next.textContent = index === 19 ? "Показать результат" : "Следующий вопрос →";
+          (correct ? "Верно. " : "Правильный ответ: " + q.answer + ". ") +
+          q.explanation;
+        next.textContent =
+          index === 19 ? "Показать результат" : "Следующий вопрос →";
         next.hidden = false;
       });
       options.append(b);
@@ -164,10 +178,13 @@
       show();
       return;
     }
-    document.querySelector("#practice-question").textContent = "Результат: " + score + " из 20";
+    document.querySelector("#practice-question").textContent =
+      "Результат: " + score + " из 20";
     document.querySelector("#practice-options").replaceChildren();
-    document.querySelector("#practice-progress").textContent = "20 / 20 · Завершено";
-    feedback.textContent = "Можно повторить: получите новую случайную подборку.";
+    document.querySelector("#practice-progress").textContent =
+      "20 / 20 · Завершено";
+    feedback.textContent =
+      "Можно повторить: получите новую случайную подборку.";
     next.hidden = true;
     restart.hidden = false;
   });

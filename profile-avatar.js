@@ -1,128 +1,15 @@
 // Визуальный выбор чемпиона и образа. Хранится в существующем поле avatar.
-window.createProfileAvatarPicker = (root, onChange) => {
-  if (!root) return null;
-  const dataNode = root.querySelector("#profile-avatar-data");
-  if (!dataNode) return null;
-  const champions = JSON.parse(dataNode.textContent),
-    byId = new Map(champions.map((c) => [c.id, c]));
-  const dialog = root.querySelector("#avatar-dialog"),
-    grid = root.querySelector("#avatar-champions"),
-    skins = root.querySelector("#avatar-skins"),
-    search = root.querySelector("#avatar-search"),
-    select = root.querySelector("#profile-avatar"),
-    preview = root.querySelector("#avatar-preview"),
-    skinPanel = root.querySelector("#avatar-skin-panel"),
-    champPanel = root.querySelector("#avatar-champ-panel");
-  let chosen = select.value,
-    skinId = chosen + "-0";
-  const thumb = (s) => s.avatar || s.image + "&w=256&h=256&fit=crop&auto=format";
-  function current() {
-    const c = byId.get(chosen) || champions[0];
-    const skin = c.skins.find((s) => s.id === skinId) || c.skins[0];
-    return { champion: c, skin, base: skin === c.skins[0] };
-  }
-  function renderPreview() {
-    const { champion, skin, base } = current();
-    preview.querySelector("img").src = base ? champion.face : thumb(skin);
-    preview.querySelector("strong").textContent = champion.name;
-    preview.querySelector("small").textContent = base ? "Базовый образ" : skin.name;
-  }
-  function renderSkins(id) {
-    const c = byId.get(id);
-    if (!c) return;
-    root.querySelector("#avatar-skin-title").textContent = c.name;
-    skins.replaceChildren();
-    for (const s of c.skins) {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "avatar-skin-choice";
-      b.dataset.skin = s.id;
-      b.setAttribute("aria-pressed", String(chosen === id && skinId === s.id));
-      const img = document.createElement("img");
-      img.src = s.image + "&w=400&auto=format";
-      img.alt = "";
-      img.loading = "lazy";
-      const name = document.createElement("span");
-      name.textContent = s === c.skins[0] ? "Базовый образ" : s.name;
-      b.append(img, name);
-      if (s.animation) {
-        const badge = document.createElement("small");
-        badge.className = "avatar-motion-badge";
-        badge.textContent = "▷ Анимация";
-        b.append(badge);
-      }
-      b.addEventListener("click", () => {
-        chosen = id;
-        skinId = s.id;
-        select.value = id;
-        renderPreview();
-        onChange();
-        dialog.close();
-      });
-      skins.append(b);
-    }
-    champPanel.hidden = true;
-    skinPanel.hidden = false;
-    root.querySelector("#avatar-back").focus();
-  }
-  for (const c of champions) {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "avatar-champion-choice";
-    b.dataset.name = c.name.toLocaleLowerCase("ru").replaceAll("ё", "е") + " " + c.id;
-    const img = document.createElement("img");
-    img.src = c.face;
-    img.alt = "";
-    img.loading = "lazy";
-    const text = document.createElement("span");
-    text.textContent = c.name;
-    b.append(img, text);
-    b.addEventListener("click", () => renderSkins(c.id));
-    grid.append(b);
-  }
-  search.addEventListener("input", () => {
-    const q = search.value.trim().toLocaleLowerCase("ru").replaceAll("ё", "е");
-    let count = 0;
-    for (const b of grid.children) {
-      b.hidden = !b.dataset.name.includes(q);
-      if (!b.hidden) count++;
-    }
-    root.querySelector("#avatar-no-results").hidden = count > 0;
-  });
-  preview.addEventListener("click", () => {
-    champPanel.hidden = false;
-    skinPanel.hidden = true;
-    dialog.showModal();
-    search.focus();
-  });
-  root.querySelector("#avatar-close").addEventListener("click", () => dialog.close());
-  root.querySelector("#avatar-back").addEventListener("click", () => {
-    champPanel.hidden = false;
-    skinPanel.hidden = true;
-    search.focus();
-  });
-  dialog.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") e.stopPropagation();
-  });
-  dialog.addEventListener("close", () => preview.focus());
-  dialog.addEventListener("click", (e) => {
-    if (e.target !== dialog) return;
-    const r = dialog.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)
-      dialog.close();
-  });
-  return {
-    current,
-    encoded: () => {
-      const c = current();
-      return c.base ? chosen : chosen + "--" + skinId;
-    },
-    apply(value) {
-      const [champ, skin] = String(value || "mel").split("--");
-      chosen = byId.has(champ) ? champ : "mel";
-      select.value = chosen;
-      skinId = byId.get(chosen).skins.some((s) => s.id === skin) ? skin : chosen + "-0";
-      renderPreview();
-    },
-  };
+window.createProfileAvatarPicker=(root,onChange)=>{
+ if(!root)return null;const dataNode=root.querySelector('#profile-avatar-data');if(!dataNode)return null;
+ const champions=JSON.parse(dataNode.textContent),byId=new Map(champions.map(c=>[c.id,c]));
+ const dialog=root.querySelector('#avatar-dialog'),grid=root.querySelector('#avatar-champions'),skins=root.querySelector('#avatar-skins'),search=root.querySelector('#avatar-search'),select=root.querySelector('#profile-avatar'),preview=root.querySelector('#avatar-preview'),skinPanel=root.querySelector('#avatar-skin-panel'),champPanel=root.querySelector('#avatar-champ-panel');let chosen=select.value,skinId=chosen+'-0';
+ const thumb=s=>s.avatar||s.image+'&w=256&h=256&fit=crop&auto=format';
+ function current(){const c=byId.get(chosen)||champions[0];const skin=c.skins.find(s=>s.id===skinId)||c.skins[0];return{champion:c,skin,base:skin===c.skins[0]};}
+ function renderPreview(){const {champion,skin,base}=current();preview.querySelector('img').src=base?champion.face:thumb(skin);preview.querySelector('strong').textContent=champion.name;preview.querySelector('small').textContent=base?'Базовый образ':skin.name;}
+ function renderSkins(id){const c=byId.get(id);if(!c)return;root.querySelector('#avatar-skin-title').textContent=c.name;skins.replaceChildren();for(const s of c.skins){const b=document.createElement('button');b.type='button';b.className='avatar-skin-choice';b.dataset.skin=s.id;b.setAttribute('aria-pressed',String(chosen===id&&skinId===s.id));const img=document.createElement('img');img.src=s.image+'&w=400&auto=format';img.alt='';img.loading='lazy';const name=document.createElement('span');name.textContent=s===c.skins[0]?'Базовый образ':s.name;b.append(img,name);if(s.animation){const badge=document.createElement('small');badge.className='avatar-motion-badge';badge.textContent='▷ Анимация';b.append(badge);}b.addEventListener('click',()=>{chosen=id;skinId=s.id;select.value=id;renderPreview();onChange();dialog.close();});skins.append(b);}champPanel.hidden=true;skinPanel.hidden=false;root.querySelector('#avatar-back').focus();}
+ for(const c of champions){const b=document.createElement('button');b.type='button';b.className='avatar-champion-choice';b.dataset.name=c.name.toLocaleLowerCase('ru').replaceAll('ё','е')+' '+c.id;const img=document.createElement('img');img.src=c.face;img.alt='';img.loading='lazy';const text=document.createElement('span');text.textContent=c.name;b.append(img,text);b.addEventListener('click',()=>renderSkins(c.id));grid.append(b);}
+ search.addEventListener('input',()=>{const q=search.value.trim().toLocaleLowerCase('ru').replaceAll('ё','е');let count=0;for(const b of grid.children){b.hidden=!b.dataset.name.includes(q);if(!b.hidden)count++;}root.querySelector('#avatar-no-results').hidden=count>0;});
+ preview.addEventListener('click',()=>{champPanel.hidden=false;skinPanel.hidden=true;dialog.showModal();search.focus();});
+ root.querySelector('#avatar-close').addEventListener('click',()=>dialog.close());root.querySelector('#avatar-back').addEventListener('click',()=>{champPanel.hidden=false;skinPanel.hidden=true;search.focus();});dialog.addEventListener('keydown',e=>{if(e.key==='Escape')e.stopPropagation();});dialog.addEventListener('close',()=>preview.focus());dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});
+ return {current,encoded:()=>{const c=current();return c.base?chosen:chosen+'--'+skinId;},apply(value){const[champ,skin]=String(value||'mel').split('--');chosen=byId.has(champ)?champ:'mel';select.value=chosen;skinId=byId.get(chosen).skins.some(s=>s.id===skin)?skin:chosen+'-0';renderPreview();}};
 };
