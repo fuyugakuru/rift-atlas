@@ -35,16 +35,16 @@ jobs:
           cat site-bundle.part* > "$RUNNER_TEMP/site-bundle.zip"
           expected=$(cut -d ' ' -f 1 site-bundle.sha256)
           echo "$expected  $RUNNER_TEMP/site-bundle.zip" | sha256sum --check
+          git fetch --depth=1 origin 2a9fe3f0b20e11ca33422610ab915fbc361e6c74
+          git restore --source=2a9fe3f0b20e11ca33422610ab915fbc361e6c74 --staged --worktree -- .
           unzip -o -q "$RUNNER_TEMP/site-bundle.zip" -d .
           test -s index.html
           test -d assets
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if [ -f tools/clean-legacy-filenames.cjs ]; then node tools/clean-legacy-filenames.cjs; fi
-          git add -u
-          git add -- '*.html' '*.css' '*.js' '*.svg' '*.json' '*.md' '*.cmd' assets tools .nojekyll .editorconfig .prettierrc.json
-          git rm -- site-bundle.part* site-bundle.sha256
+          git add -- '*.html' '*.css' '*.js' '*.svg' assets .nojekyll
+          git rm --ignore-unmatch -- site-bundle.part* site-bundle.sha256
           git commit -m 'Import latest Rift Atlas website'
           git push origin HEAD:main
 
@@ -65,13 +65,6 @@ jobs:
           ref: main
 
       - uses: actions/configure-pages@v5
-
-      - name: Apply editable skin video links
-        shell: bash
-        run: |
-          if [ -f "Видео скинов.json" ] && [ -f tools/update-skin-videos.cjs ]; then
-            node tools/update-skin-videos.cjs
-          fi
 
       - name: Prepare public website
         shell: bash
