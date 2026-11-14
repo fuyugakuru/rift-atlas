@@ -41,7 +41,7 @@ jobs:
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '*.html' '*.css' '*.js' '*.svg' assets .nojekyll
+          git add -- '*.html' '*.css' '*.js' '*.svg' '*.json' '*.md' '*.cmd' assets tools .nojekyll .editorconfig .prettierrc.json
           git rm -- site-bundle.part* site-bundle.sha256
           git commit -m 'Import latest Rift Atlas website'
           git push origin HEAD:main
@@ -63,6 +63,13 @@ jobs:
           ref: main
 
       - uses: actions/configure-pages@v5
+
+      - name: Apply editable skin video links
+        shell: bash
+        run: |
+          if [ -f "Видео скинов.json" ] && [ -f tools/update-skin-videos.cjs ]; then
+            node tools/update-skin-videos.cjs
+          fi
 
       - name: Prepare public website
         shell: bash
