@@ -1,0 +1,570 @@
+{
+  "ambessa": {
+    "icon": "assets/champions/faces/ambessa.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ambessa.webp"
+  },
+  "irelia": {
+    "icon": "assets/champions/faces/irelia.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/irelia.webp"
+  },
+  "sion": {
+    "icon": "assets/champions/faces/sion.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/sion.webp"
+  },
+  "vayne": {
+    "icon": "assets/champions/faces/vayne.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/vayne.webp"
+  },
+  "gwen": {
+    "icon": "assets/champions/faces/gwen.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/gwen.webp"
+  },
+  "fiora": {
+    "icon": "assets/champions/faces/fiora.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/fiora.webp"
+  },
+  "kalista": {
+    "icon": "assets/champions/faces/kalista.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kalista.webp"
+  },
+  "yasuo": {
+    "icon": "assets/champions/faces/yasuo.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/yasuo.webp"
+  },
+  "jax": {
+    "icon": "assets/champions/faces/jax.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/jax.webp"
+  },
+  "yone": {
+    "icon": "assets/champions/faces/yone.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/yone.webp"
+  },
+  "poppy": {
+    "icon": "assets/champions/faces/poppy.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/poppy.webp"
+  },
+  "olaf": {
+    "icon": "assets/champions/faces/olaf.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/olaf.webp"
+  },
+  "akali": {
+    "icon": "assets/champions/faces/akali.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/akali.webp"
+  },
+  "heimerdinger": {
+    "icon": "assets/champions/faces/heimerdinger.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/heimerdinger.webp"
+  },
+  "kennen": {
+    "icon": "assets/champions/faces/kennen.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kennen.webp"
+  },
+  "smolder": {
+    "icon": "assets/champions/faces/smolder.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/smolder.webp"
+  },
+  "wukong": {
+    "icon": "assets/champions/faces/wukong.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/wukong.webp"
+  },
+  "warwick": {
+    "icon": "assets/champions/faces/warwick.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/warwick.webp"
+  },
+  "jayce": {
+    "icon": "assets/champions/faces/jayce.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/jayce.webp"
+  },
+  "volibear": {
+    "icon": "assets/champions/faces/volibear.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/volibear.webp"
+  },
+  "renekton": {
+    "icon": "assets/champions/faces/renekton.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/renekton.webp"
+  },
+  "camille": {
+    "icon": "assets/champions/faces/camille.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/camille.webp"
+  },
+  "darius": {
+    "icon": "assets/champions/faces/darius.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/darius.webp"
+  },
+  "riven": {
+    "icon": "assets/champions/faces/riven.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/riven.webp"
+  },
+  "ksante": {
+    "icon": "assets/champions/faces/ksante.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/k-sante.webp"
+  },
+  "tryndamere": {
+    "icon": "assets/champions/faces/tryndamere.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/tryndamere.webp"
+  },
+  "aurora": {
+    "icon": "assets/champions/faces/aurora.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/aurora.webp"
+  },
+  "gnar": {
+    "icon": "assets/champions/faces/gnar.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/gnar.webp"
+  },
+  "gragas": {
+    "icon": "assets/champions/faces/gragas.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/gragas.webp"
+  },
+  "ryze": {
+    "icon": "assets/champions/faces/ryze.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ryze.webp"
+  },
+  "mordekaiser": {
+    "icon": "assets/champions/faces/mordekaiser.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/mordekaiser.webp"
+  },
+  "rengar": {
+    "icon": "assets/champions/faces/rengar.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/rengar.webp"
+  },
+  "malphite": {
+    "icon": "assets/champions/faces/malphite.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/malphite.webp"
+  },
+  "sett": {
+    "icon": "assets/champions/faces/sett.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/sett.webp"
+  },
+  "garen": {
+    "icon": "assets/champions/faces/garen.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/garen.webp"
+  },
+  "ornn": {
+    "icon": "assets/champions/faces/ornn.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ornn.webp"
+  },
+  "teemo": {
+    "icon": "assets/champions/faces/teemo.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/teemo.webp"
+  },
+  "pantheon": {
+    "icon": "assets/champions/faces/pantheon.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/pantheon.webp"
+  },
+  "dr-mundo": {
+    "icon": "assets/champions/faces/dr-mundo.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/dr-mundo.webp"
+  },
+  "vladimir": {
+    "icon": "assets/champions/faces/vladimir.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/vladimir.webp"
+  },
+  "chogath": {
+    "icon": "assets/champions/faces/chogath.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/cho-gath.webp"
+  },
+  "nasus": {
+    "icon": "assets/champions/faces/nasus.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nasus.webp"
+  },
+  "maokai": {
+    "icon": "assets/champions/faces/maokai.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/maokai.webp"
+  },
+  "kayle": {
+    "icon": "assets/champions/faces/kayle.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kayle.webp"
+  },
+  "nautilus": {
+    "icon": "assets/champions/faces/nautilus.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nautilus.webp"
+  },
+  "rumble": {
+    "icon": "assets/champions/faces/rumble.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/rumble.webp"
+  },
+  "singed": {
+    "icon": "assets/champions/faces/singed.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/singed.webp"
+  },
+  "swain": {
+    "icon": "assets/champions/faces/swain.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/swain.webp"
+  },
+  "urgot": {
+    "icon": "assets/champions/faces/urgot.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/urgot.webp"
+  },
+  "shen": {
+    "icon": "assets/champions/faces/shen.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/shen.webp"
+  },
+  "lillia": {
+    "icon": "assets/champions/faces/lillia.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lillia.webp"
+  },
+  "fiddlesticks": {
+    "icon": "assets/champions/faces/fiddlesticks.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/fiddlesticks.webp"
+  },
+  "master-yi": {
+    "icon": "assets/champions/faces/master-yi.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/master-yi.webp"
+  },
+  "kindred": {
+    "icon": "assets/champions/faces/kindred.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kindred.webp"
+  },
+  "rammus": {
+    "icon": "assets/champions/faces/rammus.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/rammus.webp"
+  },
+  "kayn": {
+    "icon": "assets/champions/faces/kayn.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kayn.webp"
+  },
+  "graves": {
+    "icon": "assets/champions/faces/graves.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/graves.webp"
+  },
+  "nocturne": {
+    "icon": "assets/champions/faces/nocturne.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nocturne.webp"
+  },
+  "hecarim": {
+    "icon": "assets/champions/faces/hecarim.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/hecarim.webp"
+  },
+  "lee-sin": {
+    "icon": "assets/champions/faces/lee-sin.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lee-sin.webp"
+  },
+  "khazix": {
+    "icon": "assets/champions/faces/khazix.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kha-zix.webp"
+  },
+  "vi": {
+    "icon": "assets/champions/faces/vi.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/vi.webp"
+  },
+  "xin-zhao": {
+    "icon": "assets/champions/faces/xin-zhao.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/xin-zhao.webp"
+  },
+  "jarvan-iv": {
+    "icon": "assets/champions/faces/jarvan-iv.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/jarvan-iv.webp"
+  },
+  "diana": {
+    "icon": "assets/champions/faces/diana.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/diana.webp"
+  },
+  "shyvana": {
+    "icon": "assets/champions/faces/shyvana.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/shyvana.webp"
+  },
+  "ekko": {
+    "icon": "assets/champions/faces/ekko.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ekko.webp"
+  },
+  "nilah": {
+    "icon": "assets/champions/faces/nilah.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nilah.webp"
+  },
+  "viego": {
+    "icon": "assets/champions/faces/viego.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/viego.webp"
+  },
+  "nidalee": {
+    "icon": "assets/champions/faces/nidalee.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nidalee.webp"
+  },
+  "amumu": {
+    "icon": "assets/champions/faces/amumu.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/amumu.webp"
+  },
+  "evelynn": {
+    "icon": "assets/champions/faces/evelynn.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/evelynn.webp"
+  },
+  "nunu-and-willump": {
+    "icon": "assets/champions/faces/nunu-and-willump.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nunu-willump.webp"
+  },
+  "fizz": {
+    "icon": "assets/champions/faces/fizz.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/fizz.webp"
+  },
+  "twitch": {
+    "icon": "assets/champions/faces/twitch.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/twitch.webp"
+  },
+  "aatrox": {
+    "icon": "assets/champions/faces/aatrox.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/aatrox.webp"
+  },
+  "talon": {
+    "icon": "assets/champions/faces/talon.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/talon.webp"
+  },
+  "zed": {
+    "icon": "assets/champions/faces/zed.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/zed.webp"
+  },
+  "lissandra": {
+    "icon": "assets/champions/faces/lissandra.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lissandra.webp"
+  },
+  "skarner": {
+    "icon": "assets/champions/faces/skarner.webp",
+    "source": "https://wildriftcore.com/assets/images/skarner.webp"
+  },
+  "orianna": {
+    "icon": "assets/champions/faces/orianna.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/orianna.webp"
+  },
+  "twisted-fate": {
+    "icon": "assets/champions/faces/twisted-fate.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/twisted-fate.webp"
+  },
+  "vex": {
+    "icon": "assets/champions/faces/vex.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/vex.webp"
+  },
+  "galio": {
+    "icon": "assets/champions/faces/galio.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/galio.webp"
+  },
+  "syndra": {
+    "icon": "assets/champions/faces/syndra.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/syndra.webp"
+  },
+  "annie": {
+    "icon": "assets/champions/faces/annie.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/annie.webp"
+  },
+  "morgana": {
+    "icon": "assets/champions/faces/morgana.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/morgana.webp"
+  },
+  "kassadin": {
+    "icon": "assets/champions/faces/kassadin.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kassadin.webp"
+  },
+  "zyra": {
+    "icon": "assets/champions/faces/zyra.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/zyra.webp"
+  },
+  "lucian": {
+    "icon": "assets/champions/faces/lucian.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lucian.webp"
+  },
+  "varus": {
+    "icon": "assets/champions/faces/varus.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/varus.webp"
+  },
+  "zoe": {
+    "icon": "assets/champions/faces/zoe.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/zoe.webp"
+  },
+  "katarina": {
+    "icon": "assets/champions/faces/katarina.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/katarina.webp"
+  },
+  "lux": {
+    "icon": "assets/champions/faces/lux.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lux.webp"
+  },
+  "veigar": {
+    "icon": "assets/champions/faces/veigar.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/veigar.webp"
+  },
+  "mel": {
+    "icon": "assets/champions/faces/mel.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/mel.webp"
+  },
+  "viktor": {
+    "icon": "assets/champions/faces/viktor.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/viktor.webp"
+  },
+  "aurelion-sol": {
+    "icon": "assets/champions/faces/aurelion-sol.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/aurelion-sol.webp"
+  },
+  "akshan": {
+    "icon": "assets/champions/faces/akshan.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/akshan.webp"
+  },
+  "brand": {
+    "icon": "assets/champions/faces/brand.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/brand.webp"
+  },
+  "tristana": {
+    "icon": "assets/champions/faces/tristana.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/tristana.webp"
+  },
+  "pyke": {
+    "icon": "assets/champions/faces/pyke.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/pyke.webp"
+  },
+  "hwei": {
+    "icon": "assets/champions/faces/hwei.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/hwei.webp"
+  },
+  "ahri": {
+    "icon": "assets/champions/faces/ahri.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ahri.webp"
+  },
+  "ziggs": {
+    "icon": "assets/champions/faces/ziggs.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ziggs.webp"
+  },
+  "taliyah": {
+    "icon": "assets/champions/faces/taliyah.webp",
+    "source": "https://wildriftcore.com/assets/images/taliyah.webp"
+  },
+  "norra": {
+    "icon": "assets/champions/faces/norra.webp",
+    "source": "https://wildriftcore.com/assets/images/norraIcon.webp"
+  },
+  "karma": {
+    "icon": "assets/champions/faces/karma.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/karma.webp"
+  },
+  "draven": {
+    "icon": "assets/champions/faces/draven.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/draven.webp"
+  },
+  "corki": {
+    "icon": "assets/champions/faces/corki.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/corki.webp"
+  },
+  "ashe": {
+    "icon": "assets/champions/faces/ashe.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ashe.webp"
+  },
+  "caitlyn": {
+    "icon": "assets/champions/faces/caitlyn.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/caitlyn.webp"
+  },
+  "xayah": {
+    "icon": "assets/champions/faces/xayah.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/xayah.webp"
+  },
+  "yunara": {
+    "icon": "assets/champions/faces/yunara.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/yunara.webp"
+  },
+  "samira": {
+    "icon": "assets/champions/faces/samira.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/samira.webp"
+  },
+  "kaisa": {
+    "icon": "assets/champions/faces/kaisa.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kai-sa.webp"
+  },
+  "jhin": {
+    "icon": "assets/champions/faces/jhin.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/jhin.webp"
+  },
+  "ezreal": {
+    "icon": "assets/champions/faces/ezreal.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/ezreal.webp"
+  },
+  "sivir": {
+    "icon": "assets/champions/faces/sivir.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/sivir.webp"
+  },
+  "jinx": {
+    "icon": "assets/champions/faces/jinx.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/jinx.webp"
+  },
+  "miss-fortune": {
+    "icon": "assets/champions/faces/miss-fortune.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/miss-fortune.webp"
+  },
+  "kogmaw": {
+    "icon": "assets/champions/faces/kogmaw.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/kog-maw.webp"
+  },
+  "leona": {
+    "icon": "assets/champions/faces/leona.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/leona.webp"
+  },
+  "senna": {
+    "icon": "assets/champions/faces/senna.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/senna.webp"
+  },
+  "janna": {
+    "icon": "assets/champions/faces/janna.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/janna.webp"
+  },
+  "zeri": {
+    "icon": "assets/champions/faces/zeri.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/zeri.webp"
+  },
+  "milio": {
+    "icon": "assets/champions/faces/milio.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/milio.webp"
+  },
+  "lulu": {
+    "icon": "assets/champions/faces/lulu.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/lulu.webp"
+  },
+  "thresh": {
+    "icon": "assets/champions/faces/thresh.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/thresh.webp"
+  },
+  "nami": {
+    "icon": "assets/champions/faces/nami.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/nami.webp"
+  },
+  "braum": {
+    "icon": "assets/champions/faces/braum.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/braum.webp"
+  },
+  "soraka": {
+    "icon": "assets/champions/faces/soraka.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/soraka.webp"
+  },
+  "velkoz": {
+    "icon": "assets/champions/faces/velkoz.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/vel-koz.webp"
+  },
+  "sona": {
+    "icon": "assets/champions/faces/sona.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/sona.webp"
+  },
+  "bard": {
+    "icon": "assets/champions/faces/bard.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/bard.webp"
+  },
+  "rakan": {
+    "icon": "assets/champions/faces/rakan.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/rakan.webp"
+  },
+  "rell": {
+    "icon": "assets/champions/faces/rell.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/rell.webp"
+  },
+  "zilean": {
+    "icon": "assets/champions/faces/zilean.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/zilean.webp"
+  },
+  "seraphine": {
+    "icon": "assets/champions/faces/seraphine.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/seraphine.webp"
+  },
+  "yuumi": {
+    "icon": "assets/champions/faces/yuumi.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/yuumi.webp"
+  },
+  "blitzcrank": {
+    "icon": "assets/champions/faces/blitzcrank.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/blitzcrank.webp"
+  },
+  "alistar": {
+    "icon": "assets/champions/faces/alistar.webp",
+    "source": "https://wildriftcore.com/assets/champions/icons/alistar.webp"
+  }
+}

@@ -1,0 +1,104 @@
+<div class="page-heading">
+  <p class="eyebrow">СПРАВОЧНИК · ОБЫЧНЫЙ РЕЖИМ WILD RIFT</p>
+  <h1>Время появления объектов</h1>
+</div>
+<div class="timing-summary">
+  <span class="badge">Проверка источников: 08.11.2026</span
+  ><a href="#timing-table">Таблица объектов ↓</a
+  ><a href="#practice">Проверить себя ↓</a>
+</div>
+<section class="panel timing-important">
+  <h2>Что означают два времени в таблице</h2>
+  <div class="bottom-grid">
+    <div>
+      <h3>Первое появление</h3>
+      <p>
+        Момент, когда монстр впервые появляется на карте. В таблице указано
+        время от начала матча: например, 06:00 — через 6 минут после старта
+        игры.
+      </p>
+    </div>
+    <div>
+      <h3>Возрождение</h3>
+      <p>
+        Время, через которое убитый монстр появляется снова. Единой минуты матча
+        для этого нет: всё зависит от того, когда его убили. Например, если
+        монстра убили в 05:00, а возрождение занимает 02:30, он вернётся в
+        07:30. Для лагеря отсчёт связан с его полной зачисткой.
+      </p>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="section-title">
+    <h2>Первые появления</h2>
+    <button id="hide-timings" class="chip" aria-pressed="false">
+      Скрыть время для повторения
+    </button>
+  </div>
+  <p class="muted">
+    Для крупных целей использованы публикации Riot; для обычных лагерей и
+    миньонов — справочные замеры сообщества. Происхождение данных указано в
+    таблице.
+  </p>
+  <div id="spawn-timeline" class="spawn-timeline"></div>
+</section>
+<section id="timing-table">
+  <div class="section-title">
+    <h2>Таблица объектов</h2>
+    <span id="timing-count" class="muted" role="status"></span>
+  </div>
+  <div class="toolbar">
+    <label class="search"
+      ><span>⌕</span
+      ><input
+        id="timing-search"
+        type="search"
+        aria-label="Поиск объекта"
+        placeholder="Дракон, Барон, миньоны…" /></label
+    ><select id="timing-category" aria-label="Категория объекта">
+      <option value="all">Все объекты</option>
+      <option value="epic">Эпические монстры</option>
+      <option value="jungle">Лес и река</option>
+      <option value="lane">Линии</option>
+    </select>
+  </div>
+  <div class="timing-table-wrap">
+    <table class="timing-table">
+      <thead>
+        <tr>
+          <th scope="col">Объект</th>
+          <th scope="col">Первое появление</th>
+          <th scope="col">Возрождение</th>
+          <th scope="col">Источник</th>
+        </tr>
+      </thead>
+      <tbody id="timing-rows"></tbody>
+    </table>
+  </div>
+  <p id="timing-empty" hidden class="empty">Объектов по этому запросу нет.</p>
+  <p class="muted">
+    Возрождение указано как интервал после убийства или полной зачистки. Миньоны
+    — исключение: новые волны выходят по расписанию, независимо от гибели
+    предыдущих.
+  </p>
+</section>
+<section id="practice" class="panel practice-panel">
+  <div class="section-title">
+    <div>
+      <p class="eyebrow">ПОВТОРЕНИЕ ПО СПРАВОЧНИКУ</p>
+      <h2>Проверьте, что запомнили</h2>
+    </div>
+    <span id="practice-progress" class="badge"></span>
+  </div>
+  <p class="muted">
+    20 случайных вопросов по таблице: первые появления, возрождение и правила
+    объектов. При повторе порядок вопросов и ответов меняется.
+  </p>
+
+  <h3 id="practice-question"></h3>
+  <div id="practice-options" class="practice-options"></div>
+  <p id="practice-feedback" role="status" class="practice-feedback"></p>
+  <button id="practice-next" class="button" hidden>Следующий вопрос →</button
+  ><button id="practice-restart" class="chip" hidden>Повторить</button>
+</section>

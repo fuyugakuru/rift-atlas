@@ -28,12 +28,10 @@
       if (Number.isFinite(o.first))
         result.push({
           id: o.id + "-first",
-          text:
-            "Когда впервые появляется " + o.name.toLocaleLowerCase("ru") + "?",
+          text: "Когда впервые появляется " + o.name.toLocaleLowerCase("ru") + "?",
           answer: format(o.first),
           options: options(o.first),
-          explanation:
-            "Первое появление — " + format(o.first) + " от начала матча.",
+          explanation: "Первое появление — " + format(o.first) + " от начала матча.",
         });
       if (Number.isFinite(o.respawn))
         result.push({
@@ -58,19 +56,13 @@
         text: "Сколько раз за матч появляется Герольд Бездны?",
         answer: "Один раз",
         options: ["Один раз", "Два раза", "Каждые 4 минуты", "Неограниченно"],
-        explanation:
-          "Герольд появляется один раз. Барон в той же яме — другой монстр.",
+        explanation: "Герольд появляется один раз. Барон в той же яме — другой монстр.",
       },
       {
         id: "minions-period",
         text: "Как часто выходят обычные волны миньонов до позднего ускорения по таблице?",
         answer: "Каждые 25 секунд",
-        options: [
-          "Каждые 15 секунд",
-          "Каждые 20 секунд",
-          "Каждые 25 секунд",
-          "Каждые 30 секунд",
-        ],
+        options: ["Каждые 15 секунд", "Каждые 20 секунд", "Каждые 25 секунд", "Каждые 30 секунд"],
         explanation:
           "По указанному расписанию волны идут через 25 секунд; позднее — через 20 секунд.",
       },
@@ -110,8 +102,7 @@
       pool.filter((q) => q.id !== mandatory.id),
       random,
     ).slice(0, 19);
-    if (selected.length !== 19)
-      throw Error("Для теста нужно минимум 20 вопросов");
+    if (selected.length !== 19) throw Error("Для теста нужно минимум 20 вопросов");
     return shuffle([mandatory, ...selected], random).map((q) => ({
       ...q,
       options: shuffle(q.options, random),

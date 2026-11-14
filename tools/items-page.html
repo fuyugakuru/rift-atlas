@@ -1,0 +1,3205 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="#0c0e14" name="theme-color" />
+    <meta
+      content="Rift Atlas — каталог предметов Wild Rift с поиском и иллюстрациями."
+      name="description"
+    />
+    <title>Предметы · Rift Atlas</title>
+    <link href="style.css" rel="stylesheet" />
+    <script defer="" src="data.js"></script>
+    <script defer="" src="app.js"></script>
+    <script defer="" src="assets/vendor/supabase.js"></script>
+    <script defer="" src="account.js"></script>
+    <link href="favicon.svg?v=1" rel="icon" type="image/svg+xml" />
+    <style>
+      .catalog-note {
+        margin: 0 0 20px;
+        color: #a69bb6;
+        font-size: 13px;
+        line-height: 1.65;
+      }
+      .catalog-summary {
+        margin: 0 0 22px;
+        color: #bdb3cd;
+        font-size: 13px;
+      }
+      .catalog-item-icon {
+        display: block;
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #171521;
+        border: 1px solid #494056;
+        margin-bottom: 16px;
+      }
+      .item-card .catalog-en {
+        display: block;
+        margin: 6px 0 0;
+        color: #988eaa;
+        font-size: 11px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .item-card h2 {
+        font-size: 18px;
+        margin: 0;
+        line-height: 1.3;
+      }
+      .item-card .badge {
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+      .item-card {
+        min-width: 0;
+      }
+      @media (max-width: 650px) {
+        .item-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .item-card {
+          padding: 14px;
+        }
+        .item-card h2 {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 360px) {
+        .item-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <style>
+      .catalog-item-placeholder {
+        display: grid;
+        place-items: center;
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        aspect-ratio: 1;
+        border: 1px solid #51415f;
+        border-radius: 9px;
+        background: linear-gradient(135deg, #271f36, #131821);
+        color: #b78de3;
+        font-size: 25px;
+        margin-bottom: 14px;
+      }
+      .catalog-intro {
+        margin: 16px 0 21px;
+        padding: 14px 18px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        border: 1px solid #393044;
+        border-radius: 10px;
+        background: #151720;
+        color: #b9b0c8;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .catalog-intro strong {
+        color: #ece5f6;
+      }
+      .catalog-intro span {
+        flex: 1 1 300px;
+      }
+      .catalog-sources {
+        color: #a8a0b1;
+        font-size: 12px;
+        line-height: 1.65;
+        margin: 24px 0;
+      }
+      .catalog-sources a {
+        color: #c8acf6;
+      }
+      .item-card .catalog-en {
+        display: block;
+        margin: 6px 0 0;
+        color: #9e98ab;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">К содержанию</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">R</span
+        ><span
+          >RIFT<span class="brand-light">ATLAS</span><small>WILD RIFT COMPANION</small></span
+        ></a
+      >
+      <p class="nav-caption">НАВИГАЦИЯ</p>
+      <nav aria-label="Основная навигация">
+        <a href="index.html"><span class="nav-icon">◈</span>Обзор</a>
+        <a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a>
+        <a aria-current="page" href="items.html"><span class="nav-icon">⬡</span>Предметы</a>
+        <a href="matchups.html"><span class="nav-icon">⚔</span>Контрпики</a>
+        <a href="meta.html"><span class="nav-icon">↗</span>Мета</a>
+        <a href="patches.html"><span class="nav-icon">▤</span>Патчи</a>
+        <a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="live-dot"></span>Каталог предметов<small
+          >13 ноября 2026 · список предметов 7.3f</small
+        ><a href="sources.html">Источники и обновления ↗</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span>WILD RIFT <b>/</b> Предметы</span>
+        <div>
+          <span class="patch-pill">ПАТЧ 7.3f</span>
+          <a aria-label="Избранные чемпионы" href="champions.html?favorites=1"
+            >☆ <span class="hide-mobile">Мой пул</span></a
+          >
+          <a class="account-top-link" data-account-link="" href="account.html"
+            ><svg
+              aria-hidden="true"
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-width="1.6"
+              viewbox="0 0 24 24"
+              width="18"
+            >
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path></svg
+            ><span data-account-label="">Войти</span></a
+          >
+        </div>
+      </header>
+      <main id="main">
+        <div class="page-heading">
+          <p class="eyebrow">ПРЕДМЕТЫ · ПАТЧ 7.3f</p>
+          <h1>Каталог предметов Wild Rift</h1>
+        </div>
+        <p class="catalog-note">
+          Иллюстрированный каталог на основе изображений, уже хранящихся в Rift Atlas. Здесь есть
+          обычные и улучшенные предметы, компоненты и отдельные специальные позиции. Наличие в
+          списке не гарантирует доступность в каждом игровом режиме. Характеристики и пассивные
+          эффекты будем добавлять после проверки.
+        </p>
+        <div class="toolbar">
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              aria-label="Поиск предмета"
+              id="item-search"
+              placeholder="Найти предмет…"
+              type="search"
+          /></label>
+          <select aria-label="Тип предмета" id="item-kind">
+            <option value="all">Все предметы · 177</option>
+            <option value="Физический урон">Физический урон · 46</option>
+            <option value="Магия">Магия · 25</option>
+            <option value="Защита">Защита · 19</option>
+            <option value="Поддержка">Поддержка · 17</option>
+            <option value="Ботинки">Ботинки · 7</option>
+            <option value="Улучшения ботинок">Улучшения ботинок · 7</option>
+            <option value="Компоненты II">Компоненты II · 42</option>
+            <option value="Начальные">Начальные · 10</option>
+            <option value="Автоулучшения">Автоулучшения · 4</option>
+          </select>
+        </div>
+        <p class="catalog-summary">
+          Сейчас в каталоге <strong>120 карточек</strong> с изображениями из репозитория. Источник
+          изменений:
+          <a
+            href="https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3f/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >официальный патч 7.3f ↗</a
+          >.
+        </p>
+        <div class="catalog-intro" role="note">
+          <strong>Каталог предметов</strong
+          ><span
+            >173 позиции по сводному каталогу 7.3f и 4 предмета, автоматически улучшающихся во время
+            матча. Часть новых иконок ещё нужно добавить в проект. Цены, рецепты и эффекты заполним
+            после отдельной проверки.</span
+          >
+        </div>
+        <div class="item-grid" id="items-list">
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Чёрная секира Black Cleaver"
+            id="black-cleaver"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/black-cleaver.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Чёрная секира</h2>
+            <small class="catalog-en">Black Cleaver</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Клинок Падшего короля Blade of the Ruined King"
+            id="blade-of-the-ruined-king"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/blade-of-the-ruined-king.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Клинок Падшего короля</h2>
+            <small class="catalog-en">Blade of the Ruined King</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Кровопийца Bloodthirster"
+            id="bloodthirster"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/bloodthirster.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Кровопийца</h2>
+            <small class="catalog-en">Bloodthirster</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Танец смерти Death’s Dance"
+            id="deaths-dance"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/deaths-dance.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Танец смерти</h2>
+            <small class="catalog-en">Death’s Dance</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Сокрушитель богов Divine Sunderer"
+            id="divine-sunderer"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/divine-sunderer.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Сокрушитель богов</h2>
+            <small class="catalog-en">Divine Sunderer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Рассвет и закат Dusk and Dawn"
+            id="dusk-and-dawn"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/dusk-and-dawn.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Рассвет и закат</h2>
+            <small class="catalog-en">Dusk and Dawn</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Сумеречный клинок Драктарра Duskblade of Draktharr"
+            id="duskblade-of-draktharr"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/duskblade-of-draktharr.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Сумеречный клинок Драктарра</h2>
+            <small class="catalog-en">Duskblade of Draktharr</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Затмение Eclipse"
+            id="eclipse"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/eclipse.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Затмение</h2>
+            <small class="catalog-en">Eclipse</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Грань ночи Edge Of Night"
+            id="edge-of-night"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/edge-of-night.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Грань ночи</h2>
+            <small class="catalog-en">Edge Of Night</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Похититель сущности Essence Reaver"
+            id="essence-reaver"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/essence-reaver.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Похититель сущности</h2>
+            <small class="catalog-en">Essence Reaver</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Стрелы борца с демонами Fiendhunter Bolts"
+            id="fiendhunter-bolts"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/fiendhunter-bolts.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Стрелы борца с демонами</h2>
+            <small class="catalog-en">Fiendhunter Bolts</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Сила шторма Galeforce"
+            id="galeforce"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/galeforce.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Сила шторма</h2>
+            <small class="catalog-en">Galeforce</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Потрошитель Goredrinker"
+            id="goredrinker"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/goredrinker.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Потрошитель</h2>
+            <small class="catalog-en">Goredrinker</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Ангел-хранитель Guardian Angel"
+            id="guardian-angel"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/guardian-angel.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Ангел-хранитель</h2>
+            <small class="catalog-en">Guardian Angel</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Клинок ярости Гинсу Guinsoo’s Rageblade"
+            id="guinsoos-rageblade"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/guinsoos-rageblade.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Клинок ярости Гинсу</h2>
+            <small class="catalog-en">Guinsoo’s Rageblade</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Хекс-прицел С44 Hexoptics C44"
+            id="hexoptics-c44"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/hexoptics-c44.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Хекс-прицел С44</h2>
+            <small class="catalog-en">Hexoptics C44</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Бортолом Hullbreaker"
+            id="hullbreaker"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/hullbreaker.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Бортолом</h2>
+            <small class="catalog-en">Hullbreaker</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Лук бессмертия Immortal Shieldbow"
+            id="immortal-shieldbow"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/immortal-shieldbow.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Лук бессмертия</h2>
+            <small class="catalog-en">Immortal Shieldbow</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Грань бесконечности Infinity Edge"
+            id="infinity-edge"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/infinity-edge.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Грань бесконечности</h2>
+            <small class="catalog-en">Infinity Edge</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Убийца кракенов Kraken Slayer"
+            id="kraken-slayer"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/kraken-slayer.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Убийца кракенов</h2>
+            <small class="catalog-en">Kraken Slayer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Поклон лорда Доминика Lord Dominik’s Regard"
+            id="lord-dominiks-regard"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/lord-dominiks-regard.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Поклон лорда Доминика</h2>
+            <small class="catalog-en">Lord Dominik’s Regard</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Манамунэ Manamune"
+            id="manamune"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/manamune.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Манамунэ</h2>
+            <small class="catalog-en">Manamune</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Зев Малмортиуса Maw Of Malmortius"
+            id="maw-of-malmortius"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/maw-of-malmortius.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Зев Малмортиуса</h2>
+            <small class="catalog-en">Maw Of Malmortius</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Ртутный ятаган Mercurial Scimitar"
+            id="mercurial-scimitar"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/mercurial-scimitar.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Ртутный ятаган</h2>
+            <small class="catalog-en">Mercurial Scimitar</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Напоминание о смерти Mortal Reminder"
+            id="mortal-reminder"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/mortal-reminder.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Напоминание о смерти</h2>
+            <small class="catalog-en">Mortal Reminder</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Автоулучшения"
+            data-name="Мурамана Muramana"
+            id="muramana"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/muramana.png"
+              width="70"
+            />
+            <span class="badge">Автоулучшения</span>
+            <h2>Мурамана</h2>
+            <small class="catalog-en">Muramana</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Быстрые клинки Навори Navori Quickblades"
+            id="navori-quickblades"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/navori-quickblades.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Быстрые клинки Навори</h2>
+            <small class="catalog-en">Navori Quickblades</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Кровавый доспех владыки Overlords Bloodmail"
+            id="overlords-bloodmail"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/overlords-bloodmail.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Кровавый доспех владыки</h2>
+            <small class="catalog-en">Overlords Bloodmail</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Ураган Рунаан Runaans Hurricane"
+            id="runaans-hurricane"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/runaans-hurricane.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Ураган Рунаан</h2>
+            <small class="catalog-en">Runaans Hurricane</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Змеиный клык Serpents Fang"
+            id="serpents-fang"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/serpents-fang.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Змеиный клык</h2>
+            <small class="catalog-en">Serpents Fang</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Злоба Серильды Seryldas Grudge"
+            id="seryldas-grudge"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/seryldas-grudge.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Злоба Серильды</h2>
+            <small class="catalog-en">Seryldas Grudge</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Копьё Сёдзин Spear Of Shojin"
+            id="spear-of-shojin"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/spear-of-shojin.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Копьё Сёдзин</h2>
+            <small class="catalog-en">Spear Of Shojin</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Заточка Статикка Statikk Shiv"
+            id="statikk-shiv"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/statikk-shiv.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Заточка Статикка</h2>
+            <small class="catalog-en">Statikk Shiv</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Испытание Стерака Steraks Gage"
+            id="steraks-gage"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/steraks-gage.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Испытание Стерака</h2>
+            <small class="catalog-en">Steraks Gage</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Штормовой клинок Stormrazor"
+            id="stormrazor"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/stormrazor.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Штормовой клинок</h2>
+            <small class="catalog-en">Stormrazor</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Костолом Stridebreaker"
+            id="stridebreaker"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/stridebreaker.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Костолом</h2>
+            <small class="catalog-en">Stridebreaker</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Расколотое небо Sundered Sky"
+            id="sundered-sky"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/sundered-sky.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Расколотое небо</h2>
+            <small class="catalog-en">Sundered Sky</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Светотень Terminus"
+            id="terminus"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/terminus.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Светотень</h2>
+            <small class="catalog-en">Terminus</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Коллекционер The Collector"
+            id="the-collector"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/the-collector.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Коллекционер</h2>
+            <small class="catalog-en">The Collector</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Тройственный союз Trinity Force"
+            id="trinity-force"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/trinity-force.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Тройственный союз</h2>
+            <small class="catalog-en">Trinity Force</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Конец разума Wits End"
+            id="wits-end"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/wits-end.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Конец разума</h2>
+            <small class="catalog-en">Wits End</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Призрачный клинок Йомуу Youmuu’s Ghostblade"
+            id="youmuus-ghostblade"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/youmuus-ghostblade.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Призрачный клинок Йомуу</h2>
+            <small class="catalog-en">Youmuu’s Ghostblade</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Дикие стрелы Юн Тал Yun Tal Wildarrows"
+            id="yun-tal-wildarrows"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/yun-tal-wildarrows.png"
+              width="70"
+            />
+            <span class="badge">Физический урон</span>
+            <h2>Дикие стрелы Юн Тал</h2>
+            <small class="catalog-en">Yun Tal Wildarrows</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Посох архангела Archangel’s Staff"
+            id="archangels-staff"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/archangels-staff.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Посох архангела</h2>
+            <small class="catalog-en">Archangel’s Staff</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Завеса банши Banshee’s Veil"
+            id="banshees-veil"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/banshees-veil.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Завеса банши</h2>
+            <small class="catalog-en">Banshee’s Veil</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Факел чёрного пламени Blackfire Torch"
+            id="blackfire-torch"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/blackfire-torch.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Факел чёрного пламени</h2>
+            <small class="catalog-en">Blackfire Torch</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Проклятие кровопускателя Bloodletters Curse"
+            id="bloodletters-curse"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/bloodletters-curse.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Проклятие кровопускателя</h2>
+            <small class="catalog-en">Bloodletters Curse</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Космический ускоритель Cosmic Drive"
+            id="cosmic-drive"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/cosmic-drive.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Космический ускоритель</h2>
+            <small class="catalog-en">Cosmic Drive</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Криптоцвет Cryptbloom"
+            id="cryptbloom"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/cryptbloom.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Криптоцвет</h2>
+            <small class="catalog-en">Cryptbloom</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Хекстековый ракетный ремень Hextech Rocketbelt"
+            id="hextech-rocketbelt"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/hextech-rocketbelt.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Хекстековый ракетный ремень</h2>
+            <small class="catalog-en">Hextech Rocketbelt</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Фокус горизонта Horizon Focus"
+            id="horizon-focus"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/horizon-focus.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Фокус горизонта</h2>
+            <small class="catalog-en">Horizon Focus</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Сфера бесконечности Infinity Orb"
+            id="infinity-orb"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/infinity-orb.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Сфера бесконечности</h2>
+            <small class="catalog-en">Infinity Orb</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Мучения Лиандри Liandry’s Torment"
+            id="liandrys-torment"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/liandrys-torment.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Мучения Лиандри</h2>
+            <small class="catalog-en">Liandry’s Torment</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Гроза Личей Lich Bane"
+            id="lich-bane"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/lich-bane.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Гроза Личей</h2>
+            <small class="catalog-en">Lich Bane</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Эхо Людена Luden’s Echo"
+            id="ludens-echo"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/ludens-echo.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Эхо Людена</h2>
+            <small class="catalog-en">Luden’s Echo</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Злоба Malignance"
+            id="malignance"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/malignance.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Злоба</h2>
+            <small class="catalog-en">Malignance</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Мореллономикон Morellonomicon"
+            id="morellonomicon"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/morellonomicon.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Мореллономикон</h2>
+            <small class="catalog-en">Morellonomicon</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Зуб Нашора Nashor’s Tooth"
+            id="nashors-tooth"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/nashors-tooth.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Зуб Нашора</h2>
+            <small class="catalog-en">Nashor’s Tooth</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Трезубец Океанида Oceanids Trident"
+            id="oceanids-trident"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/oceanids-trident.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Трезубец Океанида</h2>
+            <small class="catalog-en">Oceanids Trident</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Смертельная шляпа Рабадона Rabadon’s Deathcap"
+            id="rabadons-deathcap"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/rabadons-deathcap.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Смертельная шляпа Рабадона</h2>
+            <small class="catalog-en">Rabadon’s Deathcap</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Создатель разломов Riftmaker"
+            id="riftmaker"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/riftmaker.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Создатель разломов</h2>
+            <small class="catalog-en">Riftmaker</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Жезл веков Rod Of Ages"
+            id="rod-of-ages"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/rod-of-ages.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Жезл веков</h2>
+            <small class="catalog-en">Rod Of Ages</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Хрустальный скипетр Рилай Rylai’s Crystal Scepter"
+            id="rylais-crystal-scepter"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/rylais-crystal-scepter.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Хрустальный скипетр Рилай</h2>
+            <small class="catalog-en">Rylai’s Crystal Scepter</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Автоулучшения"
+            data-name="Объятия Серафима Seraphs Embrace"
+            id="seraphs-embrace"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/seraphs-embrace.png"
+              width="70"
+            />
+            <span class="badge">Автоулучшения</span>
+            <h2>Объятия Серафима</h2>
+            <small class="catalog-en">Seraphs Embrace</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Штормовой прилив Stormsurge"
+            id="stormsurge"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/stormsurge.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Штормовой прилив</h2>
+            <small class="catalog-en">Stormsurge</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Посох Бездны Void Staff"
+            id="void-staff"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/void-staff.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Посох Бездны</h2>
+            <small class="catalog-en">Void Staff</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Песочные часы Жони Zhonya’s Hourglass"
+            id="zhonyas-hourglass"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/zhonyas-hourglass.png"
+              width="70"
+            />
+            <span class="badge">Магия</span>
+            <h2>Песочные часы Жони</h2>
+            <small class="catalog-en">Zhonya’s Hourglass</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Маска Бездны Abyssal Mask"
+            id="abyssal-mask"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/abyssal-mask.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Маска Бездны</h2>
+            <small class="catalog-en">Abyssal Mask</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Парный страж Амаранта Amaranth’s Twinguard"
+            id="amaranths-twinguard"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/amaranths-twinguard.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Парный страж Амаранта</h2>
+            <small class="catalog-en">Amaranth’s Twinguard</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Покров рассвета Dawnshroud"
+            id="dawnshroud"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/dawnshroud.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Покров рассвета</h2>
+            <small class="catalog-en">Dawnshroud</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Броня мертвеца Dead Mans Plate"
+            id="dead-mans-plate"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/dead-mans-plate.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Броня мертвеца</h2>
+            <small class="catalog-en">Dead Mans Plate</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Сила природы Force Of Nature"
+            id="force-of-nature"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/force-of-nature.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Сила природы</h2>
+            <small class="catalog-en">Force Of Nature</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Ледяное сердце Frozen Heart"
+            id="frozen-heart"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/frozen-heart.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Ледяное сердце</h2>
+            <small class="catalog-en">Frozen Heart</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Каменная пластина гаргульи Gargoyle Stoneplate"
+            id="gargoyle-stoneplate"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/gargoyle-stoneplate.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Каменная пластина гаргульи</h2>
+            <small class="catalog-en">Gargoyle Stoneplate</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Стальное сердце Heartsteel"
+            id="heartsteel"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/heartsteel.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Стальное сердце</h2>
+            <small class="catalog-en">Heartsteel</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Пустое сияние Hollow Radiance"
+            id="hollow-radiance"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/hollow-radiance.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Пустое сияние</h2>
+            <small class="catalog-en">Hollow Radiance</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Рукавица ледорождённых Iceborn Gauntlet"
+            id="iceborn-gauntlet"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/iceborn-gauntlet.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Рукавица ледорождённых</h2>
+            <small class="catalog-en">Iceborn Gauntlet</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Каэнический рукерн Kaenic Rookern"
+            id="kaenic-rookern"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/kaenic-rookern.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Каэнический рукерн</h2>
+            <small class="catalog-en">Kaenic Rookern</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Мантия двенадцатого часа Mantle Of The Twelfth Hour"
+            id="mantle-of-the-twelfth-hour"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/mantle-of-the-twelfth-hour.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Мантия двенадцатого часа</h2>
+            <small class="catalog-en">Mantle Of The Twelfth Hour</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Сияющая добродетель Radiant Virtue"
+            id="radiant-virtue"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/radiant-virtue.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Сияющая добродетель</h2>
+            <small class="catalog-en">Radiant Virtue</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Знамение Рандуина Randuins Omen"
+            id="randuins-omen"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/randuins-omen.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Знамение Рандуина</h2>
+            <small class="catalog-en">Randuins Omen</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Эгида солнечного пламени Sunfire Aegis"
+            id="sunfire-aegis"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/sunfire-aegis.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Эгида солнечного пламени</h2>
+            <small class="catalog-en">Sunfire Aegis</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Шипованный доспех Thornmail"
+            id="thornmail"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/thornmail.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Шипованный доспех</h2>
+            <small class="catalog-en">Thornmail</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Бесконечное отчаяние Unending Despair"
+            id="unending-despair"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/unending-despair.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Бесконечное отчаяние</h2>
+            <small class="catalog-en">Unending Despair</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Доспех Вармога Warmogs Armor"
+            id="warmogs-armor"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/warmogs-armor.png"
+              width="70"
+            />
+            <span class="badge">Защита</span>
+            <h2>Доспех Вармога</h2>
+            <small class="catalog-en">Warmogs Armor</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Пылающая кадильница Ardent Censer"
+            id="ardent-censer"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/ardent-censer.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Пылающая кадильница</h2>
+            <small class="catalog-en">Ardent Censer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Коса чёрного тумана Black Mist Scythe"
+            id="black-mist-scythe"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/black-mist-scythe.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Коса чёрного тумана</h2>
+            <small class="catalog-en">Black Mist Scythe</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Оплот горы Bulwark Of The Mountain"
+            id="bulwark-of-the-mountain"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/bulwark-of-the-mountain.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Оплот горы</h2>
+            <small class="catalog-en">Bulwark Of The Mountain</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Автоулучшения"
+            data-name="Диадема песен Diadem Of Songs"
+            id="diadem-of-songs"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/diadem-of-songs.png"
+              width="70"
+            />
+            <span class="badge">Автоулучшения</span>
+            <h2>Диадема песен</h2>
+            <small class="catalog-en">Diadem Of Songs</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Эхо Гелии Echoes Of Helia"
+            id="echoes-of-helia"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/echoes-of-helia.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Эхо Гелии</h2>
+            <small class="catalog-en">Echoes Of Helia</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Мелодичное эхо Harmonic Echo"
+            id="harmonic-echo"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/harmonic-echo.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Мелодичное эхо</h2>
+            <small class="catalog-en">Harmonic Echo</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Имперский мандат Imperial Mandate"
+            id="imperial-mandate"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/imperial-mandate.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Имперский мандат</h2>
+            <small class="catalog-en">Imperial Mandate</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Клятва рыцаря Knights Vow"
+            id="knights-vow"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/knights-vow.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Клятва рыцаря</h2>
+            <small class="catalog-en">Knights Vow</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Благословение Микаэля Mikaels Blessing"
+            id="mikaels-blessing"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/mikaels-blessing.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Благословение Микаэля</h2>
+            <small class="catalog-en">Mikaels Blessing</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Искупление Redemption"
+            id="redemption"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/redemption.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Искупление</h2>
+            <small class="catalog-en">Redemption</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Реликтовый щит Relic Shield"
+            id="relic-shield"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/relic-shield.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Реликтовый щит</h2>
+            <small class="catalog-en">Relic Shield</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Призрачный серп Spectral Sickle"
+            id="spectral-sickle"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/spectral-sickle.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Призрачный серп</h2>
+            <small class="catalog-en">Spectral Sickle</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Посох текучей воды Staff Of Flowing Water"
+            id="staff-of-flowing-water"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/staff-of-flowing-water.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Посох текучей воды</h2>
+            <small class="catalog-en">Staff Of Flowing Water</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Шепчущая диадема Whispering Circlet"
+            id="whispering-circlet"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/whispering-circlet.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Шепчущая диадема</h2>
+            <small class="catalog-en">Whispering Circlet</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Ловушка йордла Yordle Trap"
+            id="yordle-trap"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/yordle-trap.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Ловушка йордла</h2>
+            <small class="catalog-en">Yordle Trap</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Слияние Зика Zekes Convergence"
+            id="zekes-convergence"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/zekes-convergence.png"
+              width="70"
+            />
+            <span class="badge">Поддержка</span>
+            <h2>Слияние Зика</h2>
+            <small class="catalog-en">Zekes Convergence</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Наголенники берсерка Berserkers Greaves"
+            id="berserkers-greaves"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/berserkers-greaves.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Наголенники берсерка</h2>
+            <small class="catalog-en">Berserkers Greaves</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Ботинки стремительности Boots Of Dynamism"
+            id="boots-of-dynamism"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/boots-of-dynamism.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Ботинки стремительности</h2>
+            <small class="catalog-en">Boots Of Dynamism</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Сапоги маны Boots Of Mana"
+            id="boots-of-mana"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/boots-of-mana.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Сапоги маны</h2>
+            <small class="catalog-en">Boots Of Mana</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Прожорливые поножи Gluttonous Greaves"
+            id="gluttonous-greaves"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/gluttonous-greaves.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Прожорливые поножи</h2>
+            <small class="catalog-en">Gluttonous Greaves</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Ионийские сапоги просветления Ionian Boots Of Lucidity"
+            id="ionian-boots-of-lucidity"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/ionian-boots-of-lucidity.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Ионийские сапоги просветления</h2>
+            <small class="catalog-en">Ionian Boots Of Lucidity</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Поступь Меркурия Mercurys Treads"
+            id="mercurys-treads"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/mercurys-treads.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Поступь Меркурия</h2>
+            <small class="catalog-en">Mercurys Treads</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Ботинки"
+            data-name="Бронированные сапоги Plated Steelcaps"
+            id="plated-steelcaps"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/plated-steelcaps.png"
+              width="70"
+            />
+            <span class="badge">Ботинки</span>
+            <h2>Бронированные сапоги</h2>
+            <small class="catalog-en">Plated Steelcaps</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Усиливающий фолиант Amplifying Tome"
+            id="amplifying-tome"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/amplifying-tome.png"
+              width="70"
+            />
+            <span class="badge">Начальные</span>
+            <h2>Усиливающий фолиант</h2>
+            <small class="catalog-en">Amplifying Tome</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Тканевая броня Cloth Armor"
+            id="cloth-armor"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/cloth-armor.png"
+              width="70"
+            />
+            <span class="badge">Начальные</span>
+            <h2>Тканевая броня</h2>
+            <small class="catalog-en">Cloth Armor</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Длинный меч Long Sword"
+            id="long-sword"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/long-sword.png"
+              width="70"
+            />
+            <span class="badge">Начальные</span>
+            <h2>Длинный меч</h2>
+            <small class="catalog-en">Long Sword</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Рубиновый кристалл Ruby Crystal"
+            id="ruby-crystal"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/ruby-crystal.png"
+              width="70"
+            />
+            <span class="badge">Начальные</span>
+            <h2>Рубиновый кристалл</h2>
+            <small class="catalog-en">Ruby Crystal</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Слеза богини Tear Of The Goddess"
+            id="tear-of-the-goddess"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/items/tear-of-the-goddess.png"
+              width="70"
+            />
+            <span class="badge">Начальные</span>
+            <h2>Слеза богини</h2>
+            <small class="catalog-en">Tear Of The Goddess</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Сапоги бронелома Armorcrusher Boots"
+            id="armorcrusher-boots"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/armorcrusher-boots.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Сапоги бронелома</h2>
+            <small class="catalog-en">Armorcrusher Boots</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Бронированное наступление Armored Advance"
+            id="armored-advance"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/armored-advance.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Бронированное наступление</h2>
+            <small class="catalog-en">Armored Advance</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Укреплённые сапоги Chainlaced Crushers"
+            id="chainlaced-crushers"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/chainlaced-crushers.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Укреплённые сапоги</h2>
+            <small class="catalog-en">Chainlaced Crushers</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Багровое просветление Crimson Lucidity"
+            id="crimson-lucidity"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/crimson-lucidity.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Багровое просветление</h2>
+            <small class="catalog-en">Crimson Lucidity</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Стальные поножи Gunmetal Greaves"
+            id="gunmetal-greaves"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/gunmetal-greaves.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Стальные поножи</h2>
+            <small class="catalog-en">Gunmetal Greaves</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Ботинки бессмертия Immortal Boots"
+            id="immortal-boots"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/immortal-boots.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Ботинки бессмертия</h2>
+            <small class="catalog-en">Immortal Boots</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Улучшения ботинок"
+            data-name="Сапоги заклинателя Spellslingers Shoes"
+            id="spellslingers-shoes"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/upgraded-boots/spellslingers-shoes.png"
+              width="70"
+            />
+            <span class="badge">Улучшения ботинок</span>
+            <h2>Сапоги заклинателя</h2>
+            <small class="catalog-en">Spellslingers Shoes</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Нож-пила химпанка Chempunk Chainsword"
+            id="chempunk-chainsword"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Физический урон</span>
+            <h2>Нож-пила химпанка</h2>
+            <small class="catalog-en">Chempunk Chainsword</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Экспериментальная хекстековая броня Experimental Hexplate"
+            id="experimental-hexplate"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/core/experimental-hexplate.webp"
+              width="70"
+            /><span class="badge">Физический урон</span>
+            <h2>Экспериментальная хекстековая броня</h2>
+            <small class="catalog-en">Experimental Hexplate</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Титаническая гидра Titanic Hydra"
+            id="titanic-hydra"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Физический урон</span>
+            <h2>Титаническая гидра</h2>
+            <small class="catalog-en">Titanic Hydra</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Призрачный танцор Phantom Dancer"
+            id="phantom-dancer"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/core/phantom_dancer.webp"
+              width="70"
+            /><span class="badge">Физический урон</span>
+            <h2>Призрачный танцор</h2>
+            <small class="catalog-en">Phantom Dancer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Физический урон"
+            data-name="Скорострельная пушка Rapid Firecannon"
+            id="rapid-firecannon"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/core/rapid-firecannon.webp"
+              width="70"
+            /><span class="badge">Физический урон</span>
+            <h2>Скорострельная пушка</h2>
+            <small class="catalog-en">Rapid Firecannon</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Защита"
+            data-name="Вестник зимы Winter’s Approach"
+            id="winters-approach"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/core/winters-approach.webp"
+              width="70"
+            /><span class="badge">Защита</span>
+            <h2>Вестник зимы</h2>
+            <small class="catalog-en">Winter’s Approach</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Автоулучшения"
+            data-name="Великанская зима Fimbulwinter"
+            id="fimbulwinter"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Автоулучшения</span>
+            <h2>Великанская зима</h2>
+            <small class="catalog-en">Fimbulwinter</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Боевая песнь Шурелии Shurelya’s Battlesong"
+            id="shurelyas-battlesong"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Поддержка</span>
+            <h2>Боевая песнь Шурелии</h2>
+            <small class="catalog-en">Shurelya’s Battlesong</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Поддержка"
+            data-name="Медальон Железных Солари Locket of the Iron Solari"
+            id="locket-of-the-iron-solari"
+          >
+            <img
+              alt=""
+              class="catalog-item-icon"
+              decoding="async"
+              height="70"
+              loading="lazy"
+              src="assets/builds/core/locket-of-the-iron-solari.webp"
+              width="70"
+            /><span class="badge">Поддержка</span>
+            <h2>Медальон Железных Солари</h2>
+            <small class="catalog-en">Locket of the Iron Solari</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Магия"
+            data-name="Пожиратель душ Меджай Mejai’s Soulstealer"
+            id="mejais-soulstealer"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Магия</span>
+            <h2>Пожиратель душ Меджай</h2>
+            <small class="catalog-en">Mejai’s Soulstealer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Самый Лучший Меч B. F. Sword"
+            id="bf-sword"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Самый Лучший Меч</h2>
+            <small class="catalog-en">B. F. Sword</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Рвение Zeal"
+            id="zeal"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Рвение</h2>
+            <small class="catalog-en">Zeal</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Полуденный колчан Noonquiver"
+            id="noonquiver"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Полуденный колчан</h2>
+            <small class="catalog-en">Noonquiver</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Боевой молот Колфилда Caulfield’s Warhammer"
+            id="caulfields-warhammer"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Боевой молот Колфилда</h2>
+            <small class="catalog-en">Caulfield’s Warhammer</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Предсмертный шепот Last Whisper"
+            id="last-whisper"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Предсмертный шепот</h2>
+            <small class="catalog-en">Last Whisper</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Кулак Чаурим Jaurim’s Fist"
+            id="jaurims-fist"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Кулак Чаурим</h2>
+            <small class="catalog-en">Jaurim’s Fist</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Пожиратель заклятий Hexdrinker"
+            id="hexdrinker"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Пожиратель заклятий</h2>
+            <small class="catalog-en">Hexdrinker</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Вампирский скипетр Vampiric Scepter"
+            id="vampiric-scepter"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Вампирский скипетр</h2>
+            <small class="catalog-en">Vampiric Scepter</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Топор Теплолюбивых Hearthbound Axe"
+            id="hearthbound-axe"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Топор Теплолюбивых</h2>
+            <small class="catalog-en">Hearthbound Axe</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Кушак стремительного серебра Quicksilver Sash"
+            id="quicksilver-sash"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Кушак стремительного серебра</h2>
+            <small class="catalog-en">Quicksilver Sash</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Воспламеняющий камень Kindlegem"
+            id="kindlegem"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Воспламеняющий камень</h2>
+            <small class="catalog-en">Kindlegem</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Зазубренный кинжал Serrated Dirk"
+            id="serrated-dirk"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Зазубренный кинжал</h2>
+            <small class="catalog-en">Serrated Dirk</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Поглотитель Phage"
+            id="phage"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Поглотитель</h2>
+            <small class="catalog-en">Phage</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Изогнутый лук Recurve Bow"
+            id="recurve-bow"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Изогнутый лук</h2>
+            <small class="catalog-en">Recurve Bow</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Сияние Sheen"
+            id="sheen"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Сияние</h2>
+            <small class="catalog-en">Sheen</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Призвание Палача Executioner’s Calling"
+            id="executioners-calling"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Призвание Палача</h2>
+            <small class="catalog-en">Executioner’s Calling</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Осколок Кирхайс Kircheis Shard"
+            id="kircheis-shard"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Осколок Кирхайс</h2>
+            <small class="catalog-en">Kircheis Shard</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Кирка Pickaxe"
+            id="pickaxe"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Кирка</h2>
+            <small class="catalog-en">Pickaxe</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Слишком Большой Жезл Needlessly Large Rod"
+            id="needlessly-large-rod"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Слишком Большой Жезл</h2>
+            <small class="catalog-en">Needlessly Large Rod</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Наручи Искательницы Seeker’s Armguard"
+            id="seekers-armguard"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Наручи Искательницы</h2>
+            <small class="catalog-en">Seeker’s Armguard</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Преследующая маска Haunting Guise"
+            id="haunting-guise"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Преследующая маска</h2>
+            <small class="catalog-en">Haunting Guise</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Потерянная глава Lost Chapter"
+            id="lost-chapter"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Потерянная глава</h2>
+            <small class="catalog-en">Lost Chapter</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Хекстек-альтернатор Hextech Alternator"
+            id="hextech-alternator"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Хекстек-альтернатор</h2>
+            <small class="catalog-en">Hextech Alternator</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Катализатор эонов Catalyst of Aeons"
+            id="catalyst-of-aeons"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Катализатор эонов</h2>
+            <small class="catalog-en">Catalyst of Aeons</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Аметист Бездны Void Amethyst"
+            id="void-amethyst"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Аметист Бездны</h2>
+            <small class="catalog-en">Void Amethyst</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Эфирный всполох Aether Wisp"
+            id="aether-wisp"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Эфирный всполох</h2>
+            <small class="catalog-en">Aether Wisp</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Бесовской манускрипт Fiendish Codex"
+            id="fiendish-codex"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Бесовской манускрипт</h2>
+            <small class="catalog-en">Fiendish Codex</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Сфера забвения Oblivion Orb"
+            id="oblivion-orb"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Сфера забвения</h2>
+            <small class="catalog-en">Oblivion Orb</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Роковой пепел Fated Ashes"
+            id="fated-ashes"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Роковой пепел</h2>
+            <small class="catalog-en">Fated Ashes</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Зеркало йордлов Bandleglass Mirror"
+            id="bandleglass-mirror"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Зеркало йордлов</h2>
+            <small class="catalog-en">Bandleglass Mirror</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Разящий жезл Blasting Wand"
+            id="blasting-wand"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Разящий жезл</h2>
+            <small class="catalog-en">Blasting Wand</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Запретный идол Forbidden Idol"
+            id="forbidden-idol"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Запретный идол</h2>
+            <small class="catalog-en">Forbidden Idol</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Изумрудный барьер Verdant Barrier"
+            id="verdant-barrier"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Изумрудный барьер</h2>
+            <small class="catalog-en">Verdant Barrier</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Пепел Бами Bami’s Cinder"
+            id="bamis-cinder"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Пепел Бами</h2>
+            <small class="catalog-en">Bami’s Cinder</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Ледяная пелена Glacial Shroud"
+            id="glacial-shroud"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Ледяная пелена</h2>
+            <small class="catalog-en">Glacial Shroud</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Капюшон призрака Spectre’s Cowl"
+            id="spectres-cowl"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Капюшон призрака</h2>
+            <small class="catalog-en">Spectre’s Cowl</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Доспех хранителя Warden’s Mail"
+            id="wardens-mail"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Доспех хранителя</h2>
+            <small class="catalog-en">Warden’s Mail</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Терновый жилет Bramble Vest"
+            id="bramble-vest"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Терновый жилет</h2>
+            <small class="catalog-en">Bramble Vest</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Пояс великана Giant’s Belt"
+            id="giants-belt"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Пояс великана</h2>
+            <small class="catalog-en">Giant’s Belt</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Кольчуга Chain Vest"
+            id="chain-vest"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Кольчуга</h2>
+            <small class="catalog-en">Chain Vest</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Крылья луны Winged Moonplate"
+            id="winged-moonplate"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Крылья луны</h2>
+            <small class="catalog-en">Winged Moonplate</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Компоненты II"
+            data-name="Поглощающий плащ Negatron Cloak"
+            id="negatron-cloak"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Компоненты II</span>
+            <h2>Поглощающий плащ</h2>
+            <small class="catalog-en">Negatron Cloak</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Перчатки дебошира Brawler’s Gloves"
+            id="brawlers-gloves"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Начальные</span>
+            <h2>Перчатки дебошира</h2>
+            <small class="catalog-en">Brawler’s Gloves</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Кинжал Dagger"
+            id="dagger"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Начальные</span>
+            <h2>Кинжал</h2>
+            <small class="catalog-en">Dagger</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Кольцо откровений Ring of Revelation"
+            id="ring-of-revelation"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Начальные</span>
+            <h2>Кольцо откровений</h2>
+            <small class="catalog-en">Ring of Revelation</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Антимагическая мантия Null-Magic Mantle"
+            id="null-magic-mantle"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Начальные</span>
+            <h2>Антимагическая мантия</h2>
+            <small class="catalog-en">Null-Magic Mantle</small>
+          </article>
+          <article
+            class="panel item-card"
+            data-kind="Начальные"
+            data-name="Простые сапоги Boots of Speed"
+            id="boots-of-speed"
+          >
+            <span aria-hidden="true" class="catalog-item-icon catalog-item-placeholder">✦</span
+            ><span class="badge">Начальные</span>
+            <h2>Простые сапоги</h2>
+            <small class="catalog-en">Boots of Speed</small>
+          </article>
+        </div>
+        <p class="catalog-sources">
+          Сверка названий и списка:
+          <a
+            href="https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Riot 7.3</a
+          >,
+          <a
+            href="https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3f/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Riot 7.3f</a
+          >,
+          <a href="https://wildrifter.com/en/items" rel="noopener noreferrer" target="_blank"
+            >WildRifter — перечень предметов</a
+          >. Rift Atlas — независимый справочник.
+        </p>
+        <p class="empty" hidden="" id="items-empty">Подходящих предметов нет.</p>
+        <section class="panel strategy">
+          <h2>Не копируй сборку — смотри на противников и создавай её сам.</h2>
+        </section>
+      </main>
+      <footer>
+        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span>
+        <span>Неофициальный фан-проект. Не связан с Riot Games.</span>
+        <a href="sources.html">Источники</a>
+      </footer>
+    </div>
+    <p class="account-toast" hidden="" id="account-toast" role="status"></p>
+  </body>
+</html>

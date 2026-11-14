@@ -1,0 +1,542 @@
+{
+  "source": "https://www.wildriftfire.com/tier-list",
+  "checked": "2026-11-09",
+  "positions": {
+    "aurora": [
+      "mid",
+      "baron"
+    ],
+    "akali": [
+      "mid",
+      "baron"
+    ],
+    "akshan": [
+      "mid",
+      "dragon"
+    ],
+    "alistar": [
+      "support"
+    ],
+    "ambessa": [
+      "jungle",
+      "baron"
+    ],
+    "amumu": [
+      "jungle"
+    ],
+    "ahri": [
+      "mid"
+    ],
+    "aatrox": [
+      "baron",
+      "jungle"
+    ],
+    "aurelion-sol": [
+      "mid"
+    ],
+    "bard": [
+      "support"
+    ],
+    "blitzcrank": [
+      "support"
+    ],
+    "braum": [
+      "support"
+    ],
+    "brand": [
+      "mid",
+      "support"
+    ],
+    "vi": [
+      "jungle",
+      "baron"
+    ],
+    "warwick": [
+      "jungle",
+      "baron"
+    ],
+    "varus": [
+      "dragon",
+      "mid"
+    ],
+    "veigar": [
+      "mid",
+      "support"
+    ],
+    "vayne": [
+      "baron",
+      "dragon"
+    ],
+    "vex": [
+      "mid",
+      "support"
+    ],
+    "velkoz": [
+      "mid",
+      "support"
+    ],
+    "viego": [
+      "jungle",
+      "baron"
+    ],
+    "viktor": [
+      "mid"
+    ],
+    "vladimir": [
+      "mid",
+      "baron"
+    ],
+    "volibear": [
+      "baron",
+      "jungle"
+    ],
+    "wukong": [
+      "baron",
+      "jungle"
+    ],
+    "galio": [
+      "mid",
+      "support"
+    ],
+    "garen": [
+      "baron"
+    ],
+    "gwen": [
+      "baron",
+      "jungle"
+    ],
+    "hecarim": [
+      "jungle"
+    ],
+    "gnar": [
+      "baron"
+    ],
+    "gragas": [
+      "jungle",
+      "baron",
+      "mid"
+    ],
+    "graves": [
+      "jungle",
+      "baron"
+    ],
+    "darius": [
+      "baron",
+      "jungle"
+    ],
+    "jax": [
+      "baron",
+      "jungle"
+    ],
+    "jarvan-iv": [
+      "jungle",
+      "baron"
+    ],
+    "jayce": [
+      "mid",
+      "baron"
+    ],
+    "jhin": [
+      "dragon"
+    ],
+    "jinx": [
+      "dragon"
+    ],
+    "diana": [
+      "jungle",
+      "mid"
+    ],
+    "dr-mundo": [
+      "baron",
+      "jungle"
+    ],
+    "draven": [
+      "dragon"
+    ],
+    "yone": [
+      "mid",
+      "baron",
+      "jungle"
+    ],
+    "janna": [
+      "support"
+    ],
+    "zyra": [
+      "mid",
+      "support"
+    ],
+    "zed": [
+      "jungle",
+      "mid"
+    ],
+    "zeri": [
+      "dragon"
+    ],
+    "ziggs": [
+      "mid",
+      "dragon"
+    ],
+    "zilean": [
+      "support",
+      "mid"
+    ],
+    "zoe": [
+      "mid",
+      "support"
+    ],
+    "irelia": [
+      "baron",
+      "mid"
+    ],
+    "ksante": [
+      "baron"
+    ],
+    "khazix": [
+      "jungle"
+    ],
+    "kayn": [
+      "jungle"
+    ],
+    "kaisa": [
+      "dragon",
+      "mid"
+    ],
+    "kalista": [
+      "dragon",
+      "baron"
+    ],
+    "camille": [
+      "baron",
+      "jungle"
+    ],
+    "karma": [
+      "support",
+      "mid"
+    ],
+    "kassadin": [
+      "mid"
+    ],
+    "katarina": [
+      "mid"
+    ],
+    "kayle": [
+      "baron",
+      "mid"
+    ],
+    "caitlyn": [
+      "dragon"
+    ],
+    "kennen": [
+      "mid",
+      "baron"
+    ],
+    "kindred": [
+      "jungle"
+    ],
+    "kogmaw": [
+      "dragon"
+    ],
+    "corki": [
+      "dragon",
+      "mid"
+    ],
+    "xin-zhao": [
+      "jungle",
+      "baron"
+    ],
+    "leona": [
+      "support"
+    ],
+    "lee-sin": [
+      "jungle",
+      "baron"
+    ],
+    "lillia": [
+      "jungle"
+    ],
+    "lissandra": [
+      "mid",
+      "support"
+    ],
+    "lulu": [
+      "support"
+    ],
+    "lux": [
+      "mid",
+      "support"
+    ],
+    "lucian": [
+      "dragon",
+      "mid"
+    ],
+    "malphite": [
+      "baron",
+      "mid",
+      "support"
+    ],
+    "maokai": [
+      "support",
+      "jungle",
+      "baron"
+    ],
+    "master-yi": [
+      "jungle"
+    ],
+    "milio": [
+      "support"
+    ],
+    "miss-fortune": [
+      "dragon",
+      "support"
+    ],
+    "morgana": [
+      "mid",
+      "support",
+      "jungle"
+    ],
+    "mordekaiser": [
+      "baron",
+      "jungle"
+    ],
+    "mel": [
+      "mid"
+    ],
+    "nami": [
+      "support"
+    ],
+    "nasus": [
+      "baron",
+      "jungle",
+      "mid"
+    ],
+    "nautilus": [
+      "support",
+      "jungle",
+      "baron"
+    ],
+    "nidalee": [
+      "jungle"
+    ],
+    "nilah": [
+      "jungle",
+      "dragon"
+    ],
+    "nocturne": [
+      "jungle",
+      "baron"
+    ],
+    "norra": [
+      "mid",
+      "support"
+    ],
+    "nunu-and-willump": [
+      "jungle",
+      "support"
+    ],
+    "olaf": [
+      "jungle",
+      "baron"
+    ],
+    "orianna": [
+      "mid",
+      "support"
+    ],
+    "ornn": [
+      "support",
+      "baron"
+    ],
+    "pyke": [
+      "support",
+      "mid"
+    ],
+    "pantheon": [
+      "jungle",
+      "baron",
+      "mid"
+    ],
+    "poppy": [
+      "baron",
+      "jungle",
+      "support"
+    ],
+    "ryze": [
+      "mid",
+      "baron"
+    ],
+    "rumble": [
+      "baron",
+      "mid"
+    ],
+    "rammus": [
+      "jungle"
+    ],
+    "rell": [
+      "support"
+    ],
+    "rengar": [
+      "jungle",
+      "baron"
+    ],
+    "renekton": [
+      "baron",
+      "jungle"
+    ],
+    "riven": [
+      "baron",
+      "jungle"
+    ],
+    "rakan": [
+      "support"
+    ],
+    "samira": [
+      "dragon"
+    ],
+    "swain": [
+      "mid",
+      "support",
+      "baron"
+    ],
+    "senna": [
+      "support",
+      "dragon"
+    ],
+    "seraphine": [
+      "support",
+      "mid"
+    ],
+    "sett": [
+      "baron",
+      "jungle",
+      "support"
+    ],
+    "sivir": [
+      "dragon"
+    ],
+    "singed": [
+      "baron",
+      "support"
+    ],
+    "syndra": [
+      "mid",
+      "support"
+    ],
+    "sion": [
+      "baron",
+      "jungle"
+    ],
+    "skarner": [
+      "jungle",
+      "baron"
+    ],
+    "smolder": [
+      "dragon",
+      "baron"
+    ],
+    "sona": [
+      "support"
+    ],
+    "soraka": [
+      "support"
+    ],
+    "taliyah": [
+      "mid",
+      "jungle"
+    ],
+    "talon": [
+      "jungle",
+      "mid"
+    ],
+    "twisted-fate": [
+      "mid"
+    ],
+    "twitch": [
+      "dragon",
+      "jungle"
+    ],
+    "teemo": [
+      "mid",
+      "baron"
+    ],
+    "thresh": [
+      "support"
+    ],
+    "tryndamere": [
+      "jungle",
+      "baron"
+    ],
+    "tristana": [
+      "dragon",
+      "mid"
+    ],
+    "urgot": [
+      "baron"
+    ],
+    "fiddlesticks": [
+      "jungle",
+      "support"
+    ],
+    "fizz": [
+      "jungle",
+      "mid"
+    ],
+    "fiora": [
+      "baron"
+    ],
+    "hwei": [
+      "mid",
+      "support"
+    ],
+    "heimerdinger": [
+      "mid",
+      "baron"
+    ],
+    "chogath": [
+      "jungle",
+      "baron",
+      "mid",
+      "support"
+    ],
+    "xayah": [
+      "dragon"
+    ],
+    "shen": [
+      "baron",
+      "support",
+      "jungle"
+    ],
+    "shyvana": [
+      "jungle"
+    ],
+    "evelynn": [
+      "jungle"
+    ],
+    "ezreal": [
+      "dragon"
+    ],
+    "ekko": [
+      "jungle",
+      "mid"
+    ],
+    "annie": [
+      "mid",
+      "support"
+    ],
+    "ashe": [
+      "dragon",
+      "support"
+    ],
+    "yuumi": [
+      "support"
+    ],
+    "yunara": [
+      "dragon"
+    ],
+    "yasuo": [
+      "mid",
+      "baron"
+    ]
+  },
+  "additionalSources": [
+    "https://wildriftcore.com/en/champions/"
+  ]
+}
