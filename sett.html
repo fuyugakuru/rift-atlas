@@ -183,7 +183,9 @@
                 <button type="button" class="equipment-button" data-equipment="0" aria-pressed="true">
                   Стальное сердце</button
                 ><button type="button" class="equipment-button" data-equipment="1" aria-pressed="false">
-                  Брузер
+                  Брузер</button
+                ><button type="button" class="equipment-button" data-equipment="2" aria-pressed="false">
+                  Сплитпуш
                 </button>
               </div>
               <div data-equipment-panel="0">
@@ -470,6 +472,147 @@
                   </div>
                 </div>
               </div>
+              <div data-equipment-panel="2" hidden>
+                <div class="build-group build-group-items">
+                  <h3>Предметы</h3>
+                  <ol class="build-assets build-assets-items">
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Бортолом"
+                        aria-label="Бортолом"
+                        data-item-name="Бортолом"
+                        data-item-key="item:Hullbreaker"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/hullbreaker.png" alt="" loading="lazy" /><span
+                          >1</span
+                        >
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Кровавая кольчуга господина"
+                        aria-label="Кровавая кольчуга господина"
+                        data-item-name="Кровавая кольчуга господина"
+                        data-item-key="item:Overlord&#39;s Bloodmail"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/overlords-bloodmail.png" alt="" loading="lazy" /><span
+                          >2</span
+                        >
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Костолом"
+                        aria-label="Костолом"
+                        data-item-name="Костолом"
+                        data-item-key="item:Stridebreaker"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/stridebreaker.png" alt="" loading="lazy" /><span
+                          >3</span
+                        >
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Бронированные сапоги"
+                        aria-label="Бронированные сапоги"
+                        data-item-name="Бронированные сапоги"
+                        data-item-key="item:Plated Steelcaps"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/plated-steelcaps.png" alt="" loading="lazy" /><span
+                          >4</span
+                        >
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Сила шторма"
+                        aria-label="Сила шторма"
+                        data-item-name="Сила шторма"
+                        data-item-key="item:Galeforce"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/galeforce.png" alt="" loading="lazy" /><span>5</span>
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Двойная защита Амаранта"
+                        aria-label="Двойная защита Амаранта"
+                        data-item-name="Двойная защита Амаранта"
+                        data-item-key="item:Amaranth&#39;s Twinguard"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/items/amaranths-twinguard.png" alt="" loading="lazy" /><span
+                          >6</span
+                        >
+                      </button>
+                    </li>
+                  </ol>
+                </div>
+                <div class="build-group build-group-boot-upgrade">
+                  <div class="boot-upgrade-heading">
+                    <h3>Улучшение ботинок</h3>
+                    <span>Вне очереди · с 10:00</span>
+                  </div>
+                  <div class="boot-upgrade-line">
+                    <ol class="build-assets">
+                      <li class="build-asset">
+                        <button
+                          type="button"
+                          class="build-item-button"
+                          title="Бронированные сапоги"
+                          aria-label="Бронированные сапоги"
+                          data-item-name="Бронированные сапоги"
+                          data-item-key="item:Plated Steelcaps"
+                          aria-expanded="false"
+                        >
+                          <img src="assets/builds/items/plated-steelcaps.png" alt="" loading="lazy" />
+                        </button>
+                      </li>
+                    </ol>
+                    <span class="boot-upgrade-arrow" aria-hidden="true">→</span>
+                    <ol class="build-assets">
+                      <li class="build-asset">
+                        <button
+                          type="button"
+                          class="build-item-button"
+                          title="Тяжелое наступление"
+                          aria-label="Тяжелое наступление"
+                          data-item-name="Тяжелое наступление"
+                          data-item-key="item:Armored Advance"
+                          aria-expanded="false"
+                        >
+                          <img
+                            src="assets/builds/upgraded-boots/armored-advance.png"
+                            alt=""
+                            loading="lazy"
+                          />
+                        </button>
+                      </li>
+                    </ol>
+                    <span class="boot-upgrade-caption"
+                      >Тяжелое наступление<small>+1000 золота · тот же слот</small></span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="build-extras">
               <div class="build-group build-group-starting">
@@ -665,6 +808,78 @@
                   </ol>
                 </div>
               </div>
+              <div data-equipment-runes="2" hidden>
+                <div class="build-group build-group-runes">
+                  <h3>Руны</h3>
+                  <ol class="build-assets build-assets-runes">
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Завоеватель"
+                        aria-label="Завоеватель"
+                        data-item-name="Завоеватель"
+                        data-item-key="rune:Conqueror"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/conqueror.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Снос"
+                        aria-label="Снос"
+                        data-item-name="Снос"
+                        data-item-key="rune:Demolish"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/demolish.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Второе дыхание"
+                        aria-label="Второе дыхание"
+                        data-item-name="Второе дыхание"
+                        data-item-key="rune:Second Wind"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/second-wind.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Разрастание"
+                        aria-label="Разрастание"
+                        data-item-name="Разрастание"
+                        data-item-key="rune:Overgrowth"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/overgrowth.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Боевой пыл"
+                        aria-label="Боевой пыл"
+                        data-item-name="Боевой пыл"
+                        data-item-key="rune:Battle Zeal"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/battle-zeal.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                  </ol>
+                </div>
+              </div>
             </div>
             <div class="build-situations">
               <h3>Ситуативные предметы</h3>
@@ -766,6 +981,57 @@
               </div>
             </div>
             <div data-equipment-rune-situations="1" hidden>
+              <div class="build-situations">
+                <h3>Ситуативные руны</h3>
+                <div class="situation-buttons">
+                  <button
+                    type="button"
+                    class="situation-button"
+                    aria-expanded="false"
+                    data-situation="runes-0"
+                  >
+                    Против взрывного урона
+                  </button>
+                </div>
+                <div class="situation-result" data-situation-result="runes-0" hidden>
+                  <span class="swap-label">Заменить</span>
+                  <ol class="build-assets swap-assets">
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Второе дыхание"
+                        aria-label="Второе дыхание"
+                        data-item-name="Второе дыхание"
+                        data-item-key="rune:Second Wind"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/second-wind.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                  </ol>
+                  <span class="swap-arrow" aria-hidden="true">→</span>
+                  <ol class="build-assets swap-assets">
+                    <li class="build-asset">
+                      <button
+                        type="button"
+                        class="build-item-button"
+                        title="Костяная пластина"
+                        aria-label="Костяная пластина"
+                        data-item-name="Костяная пластина"
+                        data-item-key="rune:Bone Plating"
+                        aria-expanded="false"
+                      >
+                        <img src="assets/builds/runes/bone-plating.png" alt="" loading="lazy" />
+                      </button>
+                    </li>
+                  </ol>
+                  <span class="swap-name">Костяная пластина</span
+                  ><span class="rune-context">Если опасен короткий взрывной урон.</span>
+                </div>
+              </div>
+            </div>
+            <div data-equipment-rune-situations="2" hidden>
               <div class="build-situations">
                 <h3>Ситуативные руны</h3>
                 <div class="situation-buttons">
@@ -1782,15 +2048,264 @@
               </article>
               <article
                 class="build-asset-detail"
-                data-detail-key="item:Armored Advance"
+                data-detail-key="item:Hullbreaker"
                 aria-labelledby="asset-detail-title-0-19"
+                hidden
+              >
+                <div class="asset-detail-header">
+                  <img src="assets/builds/items/hullbreaker.png" alt="" />
+                  <div>
+                    <p class="ability-type">Предмет</p>
+                    <h3 id="asset-detail-title-0-19">Бортолом</h3>
+                    <span class="asset-detail-cost">3100 золота</span>
+                  </div>
+                </div>
+                <div class="ability-description asset-detail-description">
+                  +<strong class="ability-value">400</strong> Здоровье<br />
+                  +<strong class="ability-value stat-ad"
+                    >50
+                    <span class="stat-term stat-ad"
+                      ><svg
+                        class="stat-icon stat-ad"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                      >силы атаки</span
+                    ></strong
+                  ><br /><br />УНИКАЛЬНО — УСТАНОВКА ПАРУСА: +<strong class="ability-value">5%</strong> к
+                  скорости движения.<br />УНИКАЛЬНО — Абордажный отряд: ближайшие союзные осадители и
+                  суперминьоны получают <strong class="ability-value">20</strong>~<strong
+                    class="ability-value stat-mr"
+                    >130</strong
+                  >
+                  <span class="stat-term stat-armor"
+                    ><svg
+                      class="stat-icon stat-armor"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 1 14 3v5c0 3-3 5-6 7-3-2-6-4-6-7V3Zm0 2v9" /></svg
+                    >броню</span
+                  >
+                  и <strong class="ability-value">10</strong>~<strong class="ability-value stat-mr"
+                    >120</strong
+                  >
+                  <span class="stat-term stat-mr"
+                    ><svg
+                      class="stat-icon stat-mr"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 1 14 3v5c0 3-3 5-6 7-3-2-6-4-6-7V3Zm0 4 2 3-2 3-2-3Z" /></svg
+                    >сопротивление магии</span
+                  >
+                  (<strong class="ability-value">25%</strong>, если вы чемпион дальнего боя)<br />УНИКАЛЬНО
+                  — ШКИПЕР: каждая атака <strong class="ability-value">4</strong> по чемпионам и эпическим
+                  монстрам наносит дополнительный
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >физический урон</span
+                  >, равный <strong class="ability-value">160%</strong> базового
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >силы атаки</span
+                  >
+                  + <strong class="ability-value">5%</strong> максимального здоровья (чемпионы дальнего боя
+                  наносят <strong class="ability-value">40%</strong> урона), увеличенного до
+                  <strong class="ability-value stat-ad"
+                    >240%
+                    <span class="stat-term stat-ad"
+                      ><svg
+                        class="stat-icon stat-ad"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                      >силы атаки</span
+                    ></strong
+                  >
+                  + <strong class="ability-value">9%</strong> максимального бонуса здоровья в виде
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >физического урона</span
+                  >
+                  по строениям. (чемпионы дальнего боя наносят
+                  <strong class="ability-value">40%</strong> урона).
+                </div>
+                <a
+                  class="asset-detail-source"
+                  href="https://www.wildriftfire.com/ajax/tooltip?relation_type=Item&amp;relation_id=127&amp;lang=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Источник ↗</a
+                >
+              </article>
+              <article
+                class="build-asset-detail"
+                data-detail-key="item:Galeforce"
+                aria-labelledby="asset-detail-title-0-20"
+                hidden
+              >
+                <div class="asset-detail-header">
+                  <img src="assets/builds/items/galeforce.png" alt="" />
+                  <div>
+                    <p class="ability-type">Предмет</p>
+                    <h3 id="asset-detail-title-0-20">Сила шторма</h3>
+                    <span class="asset-detail-cost">3100 золота</span>
+                  </div>
+                </div>
+                <div class="ability-description asset-detail-description">
+                  +<strong class="ability-value stat-ad"
+                    >60
+                    <span class="stat-term stat-ad"
+                      ><svg
+                        class="stat-icon stat-ad"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.35"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                      >силы атаки</span
+                    ></strong
+                  ><br />
+                  +<strong class="ability-value stat-crit">25%</strong>
+                  <span class="stat-term stat-crit"
+                    ><svg
+                      class="stat-icon stat-crit"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m9 1-1 5 6-3-4 6 5 1-6 2-2 4-1-5-5 2 3-5-3-2 5 0Z" /></svg
+                    >Шанс критического удара</span
+                  ><br />
+                  +<strong class="ability-value">4</strong> Скорость движения<br /><br />ОБЛАЧНЫЙ ВЗРЫВ —
+                  совершите рывок в заданном направлении и выстрелите снарядами
+                  <strong class="ability-value">3</strong> по врагу с самым низким уровнем здоровья рядом с
+                  местом назначения, нанося в общей сложности
+                  <strong class="ability-value">40</strong>-<strong class="ability-value">125</strong> (в
+                  зависимости от уровня) +
+                  <strong class="ability-value stat-ad">35%</strong> дополнительного физического
+                  <span class="stat-term stat-ad"
+                    ><svg
+                      class="stat-icon stat-ad"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.35"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m11 1 4 0 0 4-8 8-4-4Zm-7 9-3 4m0-4 4 4" /></svg
+                    >силы атаки</span
+                  >. (перезарядка <strong class="ability-value">60</strong> с)
+                </div>
+                <a
+                  class="asset-detail-source"
+                  href="https://www.wildriftfire.com/ajax/tooltip?relation_type=Item&amp;relation_id=212&amp;lang=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Источник ↗</a
+                >
+              </article>
+              <article
+                class="build-asset-detail"
+                data-detail-key="rune:Battle Zeal"
+                aria-labelledby="asset-detail-title-0-21"
+                hidden
+              >
+                <div class="asset-detail-header">
+                  <img src="assets/builds/runes/battle-zeal.png" alt="" />
+                  <div>
+                    <p class="ability-type">Руна</p>
+                    <h3 id="asset-detail-title-0-21">Боевой пыл</h3>
+                  </div>
+                </div>
+                <div class="ability-description asset-detail-description">
+                  В бою с вражеским чемпионом вы получаете увеличение урона от базовых способностей на
+                  <strong class="ability-value">1.4%</strong> каждые
+                  <strong class="ability-value">1</strong>, вплоть до максимального значения
+                  <strong class="ability-value">6%</strong>.
+                </div>
+                <a
+                  class="asset-detail-source"
+                  href="https://www.wildriftfire.com/ajax/tooltip?relation_type=Rune&amp;relation_id=141&amp;lang=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Источник ↗</a
+                >
+              </article>
+              <article
+                class="build-asset-detail"
+                data-detail-key="item:Armored Advance"
+                aria-labelledby="asset-detail-title-0-22"
                 hidden
               >
                 <div class="asset-detail-header">
                   <img src="assets/builds/upgraded-boots/armored-advance.png" alt="" />
                   <div>
                     <p class="ability-type">Предмет</p>
-                    <h3 id="asset-detail-title-0-19">Тяжелое наступление</h3>
+                    <h3 id="asset-detail-title-0-22">Тяжелое наступление</h3>
                     <span class="asset-detail-cost">2200 золота</span>
                   </div>
                 </div>
@@ -1859,14 +2374,14 @@
               <article
                 class="build-asset-detail"
                 data-detail-key="item:Mercury&#39;s Treads"
-                aria-labelledby="asset-detail-title-0-20"
+                aria-labelledby="asset-detail-title-0-23"
                 hidden
               >
                 <div class="asset-detail-header">
                   <img src="assets/builds/items/mercurys-treads.png" alt="" />
                   <div>
                     <p class="ability-type">Предмет</p>
-                    <h3 id="asset-detail-title-0-20">Поступь Меркурия</h3>
+                    <h3 id="asset-detail-title-0-23">Поступь Меркурия</h3>
                     <span class="asset-detail-cost">1200 золота</span>
                   </div>
                 </div>

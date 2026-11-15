@@ -4829,6 +4829,11 @@
               "icon": "assets/builds/items/berserkers-greaves.png"
             },
             {
+              "name": "Essence Reaver",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+              "icon": "assets/builds/items/essence-reaver.png"
+            },
+            {
               "name": "The Collector",
               "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
               "icon": "assets/builds/items/the-collector.png"
@@ -4842,11 +4847,6 @@
               "name": "Lord Dominik's Regard",
               "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
               "icon": "assets/builds/items/lord-dominiks-regard.png"
-            },
-            {
-              "name": "Immortal Shieldbow",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/immortal-shieldbow.png",
-              "icon": "assets/builds/items/immortal-shieldbow.png"
             },
             {
               "name": "Bloodthirster",
@@ -4863,6 +4863,11 @@
           ],
           "core": [
             {
+              "name": "Essence Reaver",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+              "icon": "assets/builds/items/essence-reaver.png"
+            },
+            {
               "name": "The Collector",
               "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
               "icon": "assets/builds/items/the-collector.png"
@@ -4871,11 +4876,6 @@
               "name": "Infinity Edge",
               "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-edge.png",
               "icon": "assets/builds/items/infinity-edge.png"
-            },
-            {
-              "name": "Lord Dominik's Regard",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
-              "icon": "assets/builds/items/lord-dominiks-regard.png"
             }
           ],
           "boots": [
@@ -4967,15 +4967,168 @@
               }
             }
           ],
-          "situationalRunes": []
+          "situationalRunes": [],
+          "sourceLabel": "Сборка сообщества",
+          "source": "community-review"
+        },
+        {
+          "items": [
+            {
+              "name": "Berserker's Greaves",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+              "icon": "assets/builds/items/berserkers-greaves.png"
+            },
+            {
+              "name": "Essence Reaver",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+              "icon": "assets/builds/items/essence-reaver.png"
+            },
+            {
+              "name": "The Collector",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
+              "icon": "assets/builds/items/the-collector.png"
+            },
+            {
+              "name": "Lord Dominik's Regard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+              "icon": "assets/builds/items/lord-dominiks-regard.png"
+            },
+            {
+              "name": "Infinity Edge",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+              "icon": "assets/builds/items/infinity-edge.png"
+            },
+            {
+              "name": "Guardian Angel",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
+              "icon": "assets/builds/items/guardian-angel.png"
+            }
+          ],
+          "starting": [
+            {
+              "name": "Long Sword",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/long-sword.png",
+              "icon": "assets/builds/items/long-sword.png"
+            }
+          ],
+          "core": [
+            {
+              "name": "Essence Reaver",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+              "icon": "assets/builds/items/essence-reaver.png"
+            },
+            {
+              "name": "The Collector",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
+              "icon": "assets/builds/items/the-collector.png"
+            },
+            {
+              "name": "Lord Dominik's Regard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+              "icon": "assets/builds/items/lord-dominiks-regard.png"
+            }
+          ],
+          "boots": [
+            {
+              "name": "Berserker's Greaves",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+              "icon": "assets/builds/items/berserkers-greaves.png"
+            }
+          ],
+          "runes": [
+            {
+              "name": "Conqueror",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
+              "icon": "assets/builds/runes/conqueror.png"
+            },
+            {
+              "name": "Brutal",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/brutal.png",
+              "icon": "assets/builds/runes/brutal.png"
+            },
+            {
+              "name": "Cut Down",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
+              "icon": "assets/builds/runes/cut-down.png"
+            },
+            {
+              "name": "Legend: Alacrity",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+              "icon": "assets/builds/runes/legend-alacrity.png"
+            },
+            {
+              "name": "Second Wind",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/second-wind.png",
+              "icon": "assets/builds/runes/second-wind.png"
+            }
+          ],
+          "spells": [
+            {
+              "name": "Flash",
+              "sourceIcon": "https://www.wildriftfire.com/images/summoners/flash.png",
+              "icon": "assets/builds/summoners/flash.png"
+            },
+            {
+              "name": "Ignite",
+              "sourceIcon": "https://www.wildriftfire.com/images/summoners/ignite.png",
+              "icon": "assets/builds/summoners/ignite.png"
+            }
+          ],
+          "lane": "solo",
+          "label": "Solo",
+          "situational": [
+            {
+              "label": "vs Healing",
+              "replace": {
+                "name": "Lord Dominik's Regard",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                "icon": "assets/builds/items/lord-dominiks-regard.png"
+              },
+              "item": {
+                "name": "Mortal Reminder",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                "icon": "assets/builds/items/mortal-reminder.png"
+              }
+            },
+            {
+              "label": "vs Crowd Control",
+              "replace": {
+                "name": "Guardian Angel",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
+                "icon": "assets/builds/items/guardian-angel.png"
+              },
+              "item": {
+                "name": "Mercurial Scimitar",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/mercurial-scimitar.png",
+                "icon": "assets/builds/items/mercurial-scimitar.png"
+              }
+            },
+            {
+              "label": "vs Ability Power",
+              "replace": {
+                "name": "Guardian Angel",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
+                "icon": "assets/builds/items/guardian-angel.png"
+              },
+              "item": {
+                "name": "Maw of Malmortius",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/maw-of-malmortius.png",
+                "icon": "assets/builds/items/maw-of-malmortius.png"
+              }
+            }
+          ],
+          "situationalRunes": [],
+          "sourceLabel": "TheNexus · адаптация для Барона",
+          "source": "https://thenexus.store/wild-rift/champions/viego",
+          "patch": "7.3d",
+          "note": "Критическая основа из TheNexus; адаптация для линии Барона: Воспламенение вместо Кары, Второе дыхание для разменов, Ангел-хранитель последним."
         }
       ],
       "additionalSources": [
-        "https://wildriftcore.com/en/champions/viego/builds/"
+        "https://wildriftcore.com/en/champions/viego/builds/",
+        "https://thenexus.store/wild-rift/champions/viego"
       ],
-      "extraPositions": [
-        "baron"
-      ]
+      "extraPositions": []
     },
     "veigar": {
       "source": "https://www.wildriftfire.com/guide/veigar",
@@ -32607,6 +32760,86 @@
                   }
                 }
               ]
+            },
+            {
+              "key": "sett-splitpush",
+              "label": "Сплитпуш",
+              "source": "https://thenexus.store/wild-rift/champions/sett",
+              "note": "Основа TheNexus; порядок предметов и Амарант последним — по выбору владельца сайта.",
+              "items": [
+                {
+                  "name": "Hullbreaker",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/hullbreaker.png",
+                  "icon": "assets/builds/items/hullbreaker.png"
+                },
+                {
+                  "name": "Overlord's Bloodmail",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/overlords-bloodmail.png",
+                  "icon": "assets/builds/items/overlords-bloodmail.png"
+                },
+                {
+                  "name": "Stridebreaker",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/stridebreaker.png",
+                  "icon": "assets/builds/items/stridebreaker.png"
+                },
+                {
+                  "name": "Plated Steelcaps",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+                  "icon": "assets/builds/items/plated-steelcaps.png"
+                },
+                {
+                  "name": "Galeforce",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
+                  "icon": "assets/builds/items/galeforce.png"
+                },
+                {
+                  "name": "Amaranth's Twinguard",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+                  "icon": "assets/builds/items/amaranths-twinguard.png"
+                }
+              ],
+              "runes": [
+                {
+                  "name": "Conqueror",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
+                  "icon": "assets/builds/runes/conqueror.png"
+                },
+                {
+                  "name": "Demolish",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/demolish.png",
+                  "icon": "assets/builds/runes/demolish.png"
+                },
+                {
+                  "name": "Second Wind",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/second-wind.png",
+                  "icon": "assets/builds/runes/second-wind.png"
+                },
+                {
+                  "name": "Overgrowth",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/overgrowth.png",
+                  "icon": "assets/builds/runes/overgrowth.png"
+                },
+                {
+                  "name": "Battle Zeal",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/battle-zeal.png",
+                  "icon": "assets/builds/runes/battle-zeal.png"
+                }
+              ],
+              "situationalRunes": [
+                {
+                  "label": "vs Burst Damage",
+                  "replace": {
+                    "name": "Second Wind",
+                    "sourceIcon": "https://www.wildriftfire.com/images/runes/second-wind.png",
+                    "icon": "assets/builds/runes/second-wind.png"
+                  },
+                  "item": {
+                    "name": "Bone Plating",
+                    "sourceIcon": "https://www.wildriftfire.com/images/runes/bone-plating.png",
+                    "icon": "assets/builds/runes/bone-plating.png"
+                  }
+                }
+              ]
             }
           ],
           "patch": "7.3f"
@@ -42206,11 +42439,6 @@
               "name": "Guardian Angel",
               "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
               "icon": "assets/builds/items/guardian-angel.png"
-            },
-            {
-              "name": "Galeforce",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
-              "icon": "assets/builds/items/galeforce.png"
             }
           ],
           "starting": [
@@ -42242,11 +42470,6 @@
               "name": "Berserker's Greaves",
               "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
               "icon": "assets/builds/items/berserkers-greaves.png"
-            },
-            {
-              "name": "Galeforce",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
-              "icon": "assets/builds/items/galeforce.png"
             }
           ],
           "runes": [
@@ -42329,7 +42552,136 @@
               }
             }
           ],
-          "situationalRunes": []
+          "situationalRunes": [],
+          "equipmentBaseLabel": "Первая сборка",
+          "equipmentVariants": [
+            {
+              "key": "yasuo-community",
+              "label": "Вторая сборка",
+              "source": "community-review",
+              "note": "Сборка со скриншота и ситуативные замены по рекомендации владельца сайта.",
+              "items": [
+                {
+                  "name": "Blade of the Ruined King",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/blade-of-the-ruined-king.png",
+                  "icon": "assets/builds/items/blade-of-the-ruined-king.png"
+                },
+                {
+                  "name": "Essence Reaver",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+                  "icon": "assets/builds/items/essence-reaver.png"
+                },
+                {
+                  "name": "Mortal Reminder",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                  "icon": "assets/builds/items/mortal-reminder.png"
+                },
+                {
+                  "name": "Berserker's Greaves",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+                  "icon": "assets/builds/items/berserkers-greaves.png"
+                },
+                {
+                  "name": "Death's Dance",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/deaths-dance.png",
+                  "icon": "assets/builds/items/deaths-dance.png"
+                },
+                {
+                  "name": "Guardian Angel",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
+                  "icon": "assets/builds/items/guardian-angel.png"
+                }
+              ],
+              "runes": [
+                {
+                  "name": "Conqueror",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
+                  "icon": "assets/builds/runes/conqueror.png"
+                },
+                {
+                  "name": "Brutal",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/brutal.png",
+                  "icon": "assets/builds/runes/brutal.png"
+                },
+                {
+                  "name": "Cut Down",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
+                  "icon": "assets/builds/runes/cut-down.png"
+                },
+                {
+                  "name": "Legend: Alacrity",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+                  "icon": "assets/builds/runes/legend-alacrity.png"
+                },
+                {
+                  "name": "Sudden Impact",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/sudden-impact.png",
+                  "icon": "assets/builds/runes/sudden-impact.png"
+                }
+              ],
+              "situational": [
+                {
+                  "label": "vs Tanks",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Lord Dominik's Regard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                    "icon": "assets/builds/items/lord-dominiks-regard.png"
+                  }
+                },
+                {
+                  "label": "vs Ability Power",
+                  "replace": {
+                    "name": "Death's Dance",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/deaths-dance.png",
+                    "icon": "assets/builds/items/deaths-dance.png"
+                  },
+                  "item": {
+                    "name": "Force of Nature",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/force-of-nature.png",
+                    "icon": "assets/builds/items/force-of-nature.png"
+                  },
+                  "alternatives": [
+                    {
+                      "name": "Maw of Malmortius",
+                      "sourceIcon": "https://www.wildriftfire.com/images/items/maw-of-malmortius.png",
+                      "icon": "assets/builds/items/maw-of-malmortius.png"
+                    }
+                  ]
+                },
+                {
+                  "label": "For Survivability",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Amaranth's Twinguard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+                    "icon": "assets/builds/items/amaranths-twinguard.png"
+                  }
+                },
+                {
+                  "label": "For Gap Closing",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Galeforce",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
+                    "icon": "assets/builds/items/galeforce.png"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "label": "Solo",
@@ -42365,11 +42717,6 @@
               "name": "Guardian Angel",
               "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
               "icon": "assets/builds/items/guardian-angel.png"
-            },
-            {
-              "name": "Galeforce",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
-              "icon": "assets/builds/items/galeforce.png"
             }
           ],
           "starting": [
@@ -42401,11 +42748,6 @@
               "name": "Berserker's Greaves",
               "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
               "icon": "assets/builds/items/berserkers-greaves.png"
-            },
-            {
-              "name": "Galeforce",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
-              "icon": "assets/builds/items/galeforce.png"
             }
           ],
           "runes": [
@@ -42488,7 +42830,136 @@
               }
             }
           ],
-          "situationalRunes": []
+          "situationalRunes": [],
+          "equipmentBaseLabel": "Первая сборка",
+          "equipmentVariants": [
+            {
+              "key": "yasuo-community",
+              "label": "Вторая сборка",
+              "source": "community-review",
+              "note": "Сборка со скриншота и ситуативные замены по рекомендации владельца сайта.",
+              "items": [
+                {
+                  "name": "Blade of the Ruined King",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/blade-of-the-ruined-king.png",
+                  "icon": "assets/builds/items/blade-of-the-ruined-king.png"
+                },
+                {
+                  "name": "Essence Reaver",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+                  "icon": "assets/builds/items/essence-reaver.png"
+                },
+                {
+                  "name": "Mortal Reminder",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                  "icon": "assets/builds/items/mortal-reminder.png"
+                },
+                {
+                  "name": "Berserker's Greaves",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/berserkers-greaves.png",
+                  "icon": "assets/builds/items/berserkers-greaves.png"
+                },
+                {
+                  "name": "Death's Dance",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/deaths-dance.png",
+                  "icon": "assets/builds/items/deaths-dance.png"
+                },
+                {
+                  "name": "Guardian Angel",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/guardian-angel.png",
+                  "icon": "assets/builds/items/guardian-angel.png"
+                }
+              ],
+              "runes": [
+                {
+                  "name": "Conqueror",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
+                  "icon": "assets/builds/runes/conqueror.png"
+                },
+                {
+                  "name": "Brutal",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/brutal.png",
+                  "icon": "assets/builds/runes/brutal.png"
+                },
+                {
+                  "name": "Cut Down",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
+                  "icon": "assets/builds/runes/cut-down.png"
+                },
+                {
+                  "name": "Legend: Alacrity",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+                  "icon": "assets/builds/runes/legend-alacrity.png"
+                },
+                {
+                  "name": "Sudden Impact",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/sudden-impact.png",
+                  "icon": "assets/builds/runes/sudden-impact.png"
+                }
+              ],
+              "situational": [
+                {
+                  "label": "vs Tanks",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Lord Dominik's Regard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                    "icon": "assets/builds/items/lord-dominiks-regard.png"
+                  }
+                },
+                {
+                  "label": "vs Ability Power",
+                  "replace": {
+                    "name": "Death's Dance",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/deaths-dance.png",
+                    "icon": "assets/builds/items/deaths-dance.png"
+                  },
+                  "item": {
+                    "name": "Force of Nature",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/force-of-nature.png",
+                    "icon": "assets/builds/items/force-of-nature.png"
+                  },
+                  "alternatives": [
+                    {
+                      "name": "Maw of Malmortius",
+                      "sourceIcon": "https://www.wildriftfire.com/images/items/maw-of-malmortius.png",
+                      "icon": "assets/builds/items/maw-of-malmortius.png"
+                    }
+                  ]
+                },
+                {
+                  "label": "For Survivability",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Amaranth's Twinguard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+                    "icon": "assets/builds/items/amaranths-twinguard.png"
+                  }
+                },
+                {
+                  "label": "For Gap Closing",
+                  "replace": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  },
+                  "item": {
+                    "name": "Galeforce",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
+                    "icon": "assets/builds/items/galeforce.png"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ],
       "additionalSources": [
