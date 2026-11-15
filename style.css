@@ -66,6 +66,7 @@ button {
   flex-direction: column;
 }
 .brand {
+  font-family: "Segoe UI", Arial, sans-serif;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -82,17 +83,17 @@ button {
   height: 37px;
   width: 32px;
   color: #c7b3ff;
-  font-family: var(--font-display);
+  font-family: Georgia, serif;
   font-weight: 800;
   font-size: 25px;
 }
 .brand-light {
-  font-weight: 400;
+  font-weight: 300;
   color: #c5c0d5;
 }
 .brand small {
   display: block;
-  font-size: 10px;
+  font-size: 7px;
   letter-spacing: 2px;
   color: #7d8295;
   margin-top: 6px;
@@ -1406,7 +1407,7 @@ select {
  .nav-enhanced .workspace{margin-left:0;width:100%;min-width:0}
  .nav-enhanced .sidebar{position:fixed;inset:0 auto 0 0;width:min(290px,86vw);height:100dvh;padding:30px 22px 24px;border-right:1px solid #353043;border-bottom:0;background:#0e1017;z-index:140;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;transform:translateX(-100%);visibility:hidden;pointer-events:none;transition:transform .2s ease,visibility .2s;box-shadow:15px 0 45px #0008}
  .nav-enhanced.nav-open .sidebar{transform:translateX(0);visibility:visible;pointer-events:auto}
- .nav-enhanced .sidebar .brand{font-size:17px;gap:10px;padding-right:22px}.nav-enhanced .sidebar .brand-mark{height:37px;width:32px}.nav-enhanced .sidebar .brand small{font-size:10px}
+ .nav-enhanced .sidebar .brand{font-size:17px;gap:10px;padding-right:22px}.nav-enhanced .sidebar .brand-mark{height:37px;width:32px}.nav-enhanced .sidebar .brand small{font-size:7px}
  .nav-enhanced .sidebar .nav-caption{display:block;margin:30px 12px 15px;font-size:11px}
  .nav-enhanced .sidebar nav{display:grid;overflow:visible;gap:8px;margin:0}
  .nav-enhanced .sidebar nav a{padding:12px;font-size:14px;gap:14px;white-space:normal}
@@ -1663,7 +1664,6 @@ body {
 h1,
 h2,
 h3,
-.brand,
 .button,
 .chip,
 .patch-number,
@@ -1706,23 +1706,6 @@ p {
 .sidebar {
   background: linear-gradient(180deg, #10121b, #0c0e15);
   border-right-color: #232838;
-}
-.brand {
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-.brand-light {
-  font-weight: 500;
-}
-.brand-mark {
-  border-radius: 8px;
-  border-color: #a98cf5;
-  background: linear-gradient(145deg, #2a2146, #1a1530);
-  box-shadow: 0 0 22px #ae93fb2e;
-}
-.brand small {
-  font-weight: 600;
-  letter-spacing: 0.14em;
 }
 .nav-caption {
   color: #7a8198;
