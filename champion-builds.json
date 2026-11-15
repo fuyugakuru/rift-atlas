@@ -6166,7 +6166,103 @@
               }
             }
           ],
-          "situationalRunes": []
+          "situationalRunes": [],
+          "equipmentVariants": [
+            {
+              "key": "wukong-assassin",
+              "label": "Убийца",
+              "source": "community-review",
+              "note": "Сборка и руны по рекомендации владельца сайта. Ботинки добавлены в шестой слот; порядок их покупки зависит от матча.",
+              "items": [
+                {
+                  "name": "Essence Reaver",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+                  "icon": "assets/builds/items/essence-reaver.png"
+                },
+                {
+                  "name": "The Collector",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
+                  "icon": "assets/builds/items/the-collector.png"
+                },
+                {
+                  "name": "Lord Dominik's Regard",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                  "icon": "assets/builds/items/lord-dominiks-regard.png"
+                },
+                {
+                  "name": "Infinity Edge",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+                  "icon": "assets/builds/items/infinity-edge.png"
+                },
+                {
+                  "name": "Edge of Night",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/edge-of-night.png",
+                  "icon": "assets/builds/items/edge-of-night.png"
+                },
+                {
+                  "name": "Boots of Dynamism",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
+                  "icon": "assets/builds/items/boots-of-dynamism.png"
+                }
+              ],
+              "runes": [
+                {
+                  "name": "First Strike",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/first-strike.png",
+                  "icon": "assets/builds/runes/first-strike.png"
+                },
+                {
+                  "name": "Sudden Impact",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/sudden-impact.png",
+                  "icon": "assets/builds/runes/sudden-impact.png"
+                },
+                {
+                  "name": "Tyrant",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/tyrant.png",
+                  "icon": "assets/builds/runes/tyrant.png"
+                },
+                {
+                  "name": "Eyeball Collector",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+                  "icon": "assets/builds/runes/eyeball-collector.png"
+                },
+                {
+                  "name": "Coup de Grace",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+                  "icon": "assets/builds/runes/coup-de-grace.png"
+                }
+              ],
+              "situational": [
+                {
+                  "label": "vs Healing",
+                  "replace": {
+                    "name": "Lord Dominik's Regard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                    "icon": "assets/builds/items/lord-dominiks-regard.png"
+                  },
+                  "item": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  }
+                },
+                {
+                  "label": "vs Shielding",
+                  "replace": {
+                    "name": "Edge of Night",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/edge-of-night.png",
+                    "icon": "assets/builds/items/edge-of-night.png"
+                  },
+                  "item": {
+                    "name": "Serpent's Fang",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/serpents-fang.png",
+                    "icon": "assets/builds/items/serpents-fang.png"
+                  },
+                  "note": "Покупайте Змеиный клык вторым: Похититель сущности → Змеиный клык → Сборщик долгов → Доминик → Грань бесконечности. Грань ночи уступает ему слот; ботинки остаются."
+                }
+              ]
+            }
+          ]
         },
         {
           "label": "Solo",
@@ -6338,6 +6434,102 @@
                 "sourceIcon": "https://www.wildriftfire.com/images/runes/perseverance.png",
                 "icon": "assets/builds/runes/perseverance.png"
               }
+            }
+          ],
+          "equipmentVariants": [
+            {
+              "key": "wukong-assassin",
+              "label": "Убийца",
+              "source": "community-review",
+              "note": "Сборка и руны по рекомендации владельца сайта. Ботинки добавлены в шестой слот; порядок их покупки зависит от матча.",
+              "items": [
+                {
+                  "name": "Essence Reaver",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/essence-reaver.png",
+                  "icon": "assets/builds/items/essence-reaver.png"
+                },
+                {
+                  "name": "The Collector",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/the-collector.png",
+                  "icon": "assets/builds/items/the-collector.png"
+                },
+                {
+                  "name": "Lord Dominik's Regard",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                  "icon": "assets/builds/items/lord-dominiks-regard.png"
+                },
+                {
+                  "name": "Infinity Edge",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-edge.png",
+                  "icon": "assets/builds/items/infinity-edge.png"
+                },
+                {
+                  "name": "Edge of Night",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/edge-of-night.png",
+                  "icon": "assets/builds/items/edge-of-night.png"
+                },
+                {
+                  "name": "Boots of Dynamism",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
+                  "icon": "assets/builds/items/boots-of-dynamism.png"
+                }
+              ],
+              "runes": [
+                {
+                  "name": "First Strike",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/first-strike.png",
+                  "icon": "assets/builds/runes/first-strike.png"
+                },
+                {
+                  "name": "Sudden Impact",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/sudden-impact.png",
+                  "icon": "assets/builds/runes/sudden-impact.png"
+                },
+                {
+                  "name": "Tyrant",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/tyrant.png",
+                  "icon": "assets/builds/runes/tyrant.png"
+                },
+                {
+                  "name": "Eyeball Collector",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/eyeball-collector.png",
+                  "icon": "assets/builds/runes/eyeball-collector.png"
+                },
+                {
+                  "name": "Coup de Grace",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+                  "icon": "assets/builds/runes/coup-de-grace.png"
+                }
+              ],
+              "situational": [
+                {
+                  "label": "vs Healing",
+                  "replace": {
+                    "name": "Lord Dominik's Regard",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/lord-dominiks-regard.png",
+                    "icon": "assets/builds/items/lord-dominiks-regard.png"
+                  },
+                  "item": {
+                    "name": "Mortal Reminder",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/mortal-reminder.png",
+                    "icon": "assets/builds/items/mortal-reminder.png"
+                  }
+                },
+                {
+                  "label": "vs Shielding",
+                  "replace": {
+                    "name": "Edge of Night",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/edge-of-night.png",
+                    "icon": "assets/builds/items/edge-of-night.png"
+                  },
+                  "item": {
+                    "name": "Serpent's Fang",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/serpents-fang.png",
+                    "icon": "assets/builds/items/serpents-fang.png"
+                  },
+                  "note": "Покупайте Змеиный клык вторым: Похититель сущности → Змеиный клык → Сборщик долгов → Доминик → Грань бесконечности. Грань ночи уступает ему слот; ботинки остаются."
+                }
+              ]
             }
           ]
         }
