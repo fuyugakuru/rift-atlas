@@ -1922,3 +1922,35 @@ select:focus {
 footer {
   color: #8f95aa;
 }
+
+/* Телефоны: полное изображение героя и компактный диагональный блок матчапов. */
+@media(max-width:760px){
+ .nav-enhanced .character-profile{grid-template-columns:minmax(0,1fr);gap:0;min-height:0}
+ .nav-enhanced .character-photo{height:auto;min-height:0;aspect-ratio:16/9;background:#11141d}
+ .nav-enhanced .character-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+ .nav-enhanced .character-info{padding:17px 18px;display:block}
+ .nav-enhanced .character-info h1{font-size:27px;margin:0 0 7px;line-height:1.15}
+ .nav-enhanced .character-subtitle{font-size:13px}
+ .nav-enhanced .character-facts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 16px;margin:16px 0}
+ .nav-enhanced .character-facts>div:last-child{grid-column:1/-1}
+ .nav-enhanced .character-facts .lane-list{flex-direction:row;flex-wrap:wrap;gap:6px 10px}
+ .nav-enhanced .character-facts .difficulty-indicator{display:inline-flex;padding:7px 10px}
+ .nav-enhanced .character-info>.button{font-size:12px;padding:9px 12px}
+}
+@media(max-width:650px){
+ .nav-enhanced .matchup-gate,.nav-enhanced .matchup-gate-content{min-height:188px}
+ .nav-enhanced .matchup-gate-hard{width:calc(100% + 17px);clip-path:polygon(0 0,calc(100% - 4px) 0,calc(100% - 34px) 100%,0 100%)}
+ .nav-enhanced .matchup-gate-easy{width:calc(100% + 17px);transform:translateX(-17px);clip-path:polygon(34px 0,100% 0,100% 100%,4px 100%)}
+ .nav-enhanced .matchup-gate-hard .matchup-gate-content{padding:14px 28px 12px 10px}
+ .nav-enhanced .matchup-gate-easy .matchup-gate-content{padding:14px 8px 12px 36px}
+ .nav-enhanced .champion-matchups .matchup-gate h3{font-size:15px;line-height:1.25;margin:9px 0 12px;min-height:38px}
+ .nav-enhanced .matchup-gate-count{font-size:9px;letter-spacing:.1px}
+ .nav-enhanced .matchup-gate-faces{gap:3px;margin-bottom:12px}
+ .nav-enhanced .matchup-gate-faces img{width:22px;height:22px}
+ .nav-enhanced .matchup-open-button{font-size:10.5px;line-height:1.3;min-height:36px;padding:7px 5px;gap:0;width:100%;justify-content:center;text-align:center;white-space:normal}
+ .nav-enhanced .matchup-duel-seam{transform:skewX(-9.1deg)}
+ .nav-enhanced .matchup-duel-seam>span{width:23px;height:23px;transform:translate(-50%,-50%) skewX(9.1deg) rotate(45deg)}
+ .nav-enhanced .matchup-duel-seam>span::after{font-size:15px}
+}
+
+.leveling-grid-scroll{position:relative}
