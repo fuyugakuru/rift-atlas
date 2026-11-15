@@ -1,0 +1,61 @@
+.profile-cover-video {
+  transition: opacity 0.7s linear;
+  will-change: opacity;
+}
+#account-root[aria-busy="true"] #account-guest,
+#account-root[aria-busy="true"] #account-member {
+  display: none !important;
+}
+.profile-loading {
+  min-height: 280px;
+  border: 1px solid #302b3a;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #181521, #201b2c, #181521);
+  padding: 34px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: #aaa0b7;
+}
+.profile-loading-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 24px;
+  background: #30273e;
+  flex-shrink: 0;
+}
+.profile-loading-lines {
+  flex: 1;
+}
+.profile-loading-lines i {
+  display: block;
+  height: 14px;
+  width: min(220px, 80%);
+  background: #30273e;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+.profile-loading-lines i:nth-child(2) {
+  width: min(140px, 60%);
+}
+@media (max-width: 600px) {
+  .profile-loading {
+    min-height: 250px;
+    padding: 24px;
+    gap: 16px;
+  }
+  .profile-loading-avatar {
+    width: 76px;
+    height: 76px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profile-cover-video {
+    transition: none;
+    will-change: auto;
+  }
+}
+
+.profile-riot-id{margin:8px 0;color:#d0b8ed;font-size:14px;letter-spacing:.03em;overflow-wrap:anywhere}
+#profile-riot-id-help{display:block;margin-top:6px;color:#aaa0b7;font-size:12px}

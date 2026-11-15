@@ -32834,9 +32834,9 @@
               "icon": "assets/builds/summoners/flash.png"
             },
             {
-              "name": "Ignite",
-              "sourceIcon": "https://www.wildriftfire.com/images/summoners/ignite.png",
-              "icon": "assets/builds/summoners/ignite.png"
+              "name": "Teleport",
+              "sourceIcon": "https://www.wildriftfire.com/images/summoners/teleport.png",
+              "icon": "assets/builds/summoners/teleport.png"
             }
           ],
           "lane": "solo",

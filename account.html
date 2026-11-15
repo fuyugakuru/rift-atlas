@@ -14,6 +14,8 @@
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
     <script src="profile-avatar.js" defer></script>
+    <link rel="stylesheet" href="profile-loading.css" />
+    <script src="profile-motion.js" defer></script>
     <script src="account.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
   </head>
@@ -66,14 +68,14 @@
         </div>
       </header>
       <main id="main">
-        <div id="account-root">
+        <div id="account-root" aria-busy="true">
           <div class="page-heading">
             <p class="eyebrow">RIFT ATLAS</p>
             <h1>Личный кабинет</h1>
           </div>
           <p id="account-message" class="account-message" role="status" hidden></p>
-          <p id="account-loading" class="muted">Проверяем вход…</p>
-          <section id="account-guest" class="account-card">
+          <div id="account-loading" class="profile-loading" role="status" aria-label="Загрузка профиля"><span class="profile-loading-avatar" aria-hidden="true"></span><div class="profile-loading-lines"><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Загружаем профиль…</span></div></div>
+          <section id="account-guest" class="account-card" hidden>
             <h2>Твои чемпионы — на любом устройстве</h2>
             <p class="muted">Войди, чтобы сохранять избранное в аккаунте.</p>
             <div class="account-modes">
@@ -144,6 +146,7 @@
                 <div class="profile-identity">
                   <p class="profile-kicker">ЛИЧНЫЙ ПРОФИЛЬ</p>
                   <h2 id="profile-display-name">Игрок</h2>
+                  <p id="profile-riot-id-display" class="profile-riot-id" hidden></p>
                   <span class="profile-private">Доступен только тебе</span>
                 </div>
                 <button
@@ -197,6 +200,7 @@
                       required
                       autocomplete="nickname"
                   /></label>
+                  <label>Riot ID · ник и тег<input id="profile-riot-id" maxlength="22" placeholder="Ник#ТЕГ" autocomplete="off" spellcheck="false" aria-describedby="profile-riot-id-help" /><small id="profile-riot-id-help">Необязательно. Укажи игровой ник и тег после #.</small></label>
                   <div class="avatar-field">
                     <span class="avatar-field-label">Аватар</span
                     ><button type="button" id="avatar-preview" class="avatar-preview">

@@ -348,6 +348,14 @@ document.querySelectorAll('.champion-matchups').forEach(section=>{
  input.addEventListener('input',()=>{const query=normalize(input.value);groups.forEach(({cards,count,empty})=>{let shown=0;cards.forEach(card=>{const text=normalize(card.querySelector('summary').textContent+' '+card.querySelector('a').getAttribute('href'));card.hidden=!text.includes(query);if(card.hidden)card.open=false;else shown++;});if(count)count.textContent=query?shown+' / '+cards.length:String(cards.length);if(empty)empty.hidden=shown!==0;});});
 });
 
+// Счётчик присутствия подключается на всех страницах с верхней панелью.
+function loadSitePresence(){
+ if(!document.querySelector('.topbar'))return;
+ const css=document.createElement('link');css.rel='stylesheet';css.href='site-presence.css';document.head.append(css);
+ const script=document.createElement('script');script.src='site-presence.js';document.body.append(script);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadSitePresence,{once:true});else loadSitePresence();
+
 // Конструктор пользователей загружается только на страницах чемпионов.
 function loadPlayerBuilds(){
  const isProfile=!!document.querySelector('#account-member');
