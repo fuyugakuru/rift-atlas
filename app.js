@@ -348,6 +348,17 @@ document.querySelectorAll('.champion-matchups').forEach(section=>{
  input.addEventListener('input',()=>{const query=normalize(input.value);groups.forEach(({cards,count,empty})=>{let shown=0;cards.forEach(card=>{const text=normalize(card.querySelector('summary').textContent+' '+card.querySelector('a').getAttribute('href'));card.hidden=!text.includes(query);if(card.hidden)card.open=false;else shown++;});if(count)count.textContent=query?shown+' / '+cards.length:String(cards.length);if(empty)empty.hidden=shown!==0;});});
 });
 
+// Конструктор пользователей загружается только на страницах чемпионов.
+function loadPlayerBuilds(){
+ const isProfile=!!document.querySelector('#account-member');
+ if(!document.querySelector('.champion-builds')&&!isProfile)return;
+ const css=document.createElement('link');css.rel='stylesheet';css.href='player-builds.css';document.head.append(css);
+ const catalog=document.createElement('script');catalog.src='player-build-catalog.js';
+ catalog.onload=()=>{const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js':'player-builds.js';document.body.append(editor);};
+ document.body.append(catalog);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadPlayerBuilds,{once:true});else loadPlayerBuilds();
+
 // Окна матчапов: стандартный dialog удерживает фокус и закрывается по Escape.
 document.querySelectorAll('[data-matchup-open]').forEach(button=>button.addEventListener('click',()=>{
  const dialog=document.getElementById(button.dataset.matchupOpen);if(!dialog)return;dialog.showModal();document.body.classList.add('matchup-modal-open');
