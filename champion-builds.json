@@ -32788,9 +32788,9 @@
                   "icon": "assets/builds/items/plated-steelcaps.png"
                 },
                 {
-                  "name": "Galeforce",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/galeforce.png",
-                  "icon": "assets/builds/items/galeforce.png"
+                  "name": "Sterak's Gage",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/steraks-gage.png",
+                  "icon": "assets/builds/items/steraks-gage.png"
                 },
                 {
                   "name": "Amaranth's Twinguard",
@@ -32820,9 +32820,9 @@
                   "icon": "assets/builds/runes/overgrowth.png"
                 },
                 {
-                  "name": "Battle Zeal",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/battle-zeal.png",
-                  "icon": "assets/builds/runes/battle-zeal.png"
+                  "name": "Legend: Alacrity",
+                  "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
+                  "icon": "assets/builds/runes/legend-alacrity.png"
                 }
               ],
               "situationalRunes": [
