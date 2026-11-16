@@ -38512,9 +38512,9 @@
           "runeSource": "https://www.wildriftmeta.com/champions/heimerdinger/builds/baron/",
           "items": [
             {
-              "name": "Boots of Dynamism",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-              "icon": "assets/builds/items/boots-of-dynamism.png"
+              "name": "Boots of Mana",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+              "icon": "assets/builds/items/boots-of-mana.png"
             },
             {
               "name": "Rabadon's Deathcap",
@@ -38578,9 +38578,9 @@
           ],
           "boots": [
             {
-              "name": "Boots of Dynamism",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-              "icon": "assets/builds/items/boots-of-dynamism.png"
+              "name": "Boots of Mana",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+              "icon": "assets/builds/items/boots-of-mana.png"
             }
           ],
           "runes": [
@@ -38630,9 +38630,9 @@
               "label": "Anti-resist",
               "items": [
                 {
-                  "name": "Boots of Dynamism",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-                  "icon": "assets/builds/items/boots-of-dynamism.png"
+                  "name": "Boots of Mana",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+                  "icon": "assets/builds/items/boots-of-mana.png"
                 },
                 {
                   "name": "Rabadon's Deathcap",
@@ -38696,9 +38696,9 @@
               "label": "Safety — vs burst/dive",
               "items": [
                 {
-                  "name": "Boots of Dynamism",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-                  "icon": "assets/builds/items/boots-of-dynamism.png"
+                  "name": "Boots of Mana",
+                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+                  "icon": "assets/builds/items/boots-of-mana.png"
                 },
                 {
                   "name": "Rabadon's Deathcap",

@@ -2946,7 +2946,18 @@
               tabindex="0"
               data-matchup-role="mid"
             >
-              <img src="assets/lanes/mid.png" alt="" />Мид
+              <img src="assets/lanes/mid.png" alt="" />Мид</button
+            ><button
+              type="button"
+              class="matchup-role-tab"
+              role="tab"
+              id="matchup-tab-1"
+              aria-controls="matchup-panel-1"
+              aria-selected="false"
+              tabindex="-1"
+              data-matchup-role="baron"
+            >
+              <img src="assets/lanes/baron.png" alt="" />Барона (топ)
             </button>
           </div>
           <div
@@ -2995,9 +3006,7 @@
                     <span class="matchup-dialog-lane">ЗАЙРА · Мид</span>
                     <h3 id="matchup-dialog-0-hard-title">Контрпики</h3>
                   </div>
-                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">
-                    ×
-                  </button>
+                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">×</button>
                 </div>
                 <div class="matchup-cards">
                   <details class="matchup-card matchup-hard" name="champion-matchup-open">
@@ -3013,12 +3022,12 @@
                     </summary>
                     <div class="matchup-advice">
                       <p>
-                        <strong>Чем опасен</strong>Может уйти от ключевого умения и быстро выйти на
-                        уязвимую цель.
+                        <strong>Чем опасен</strong>Может уйти от ключевого умения и быстро выйти на уязвимую
+                        цель.
                       </p>
                       <p>
-                        <strong>Как играть</strong>Не выпускайте весь урон до его защитного прыжка;
-                        после него ищите ответный размен.
+                        <strong>Как играть</strong>Не выпускайте весь урон до его защитного прыжка; после
+                        него ищите ответный размен.
                       </p>
                       <a href="fizz.html">Страница чемпиона ↗</a>
                     </div>
@@ -3036,12 +3045,12 @@
                     </summary>
                     <div class="matchup-advice">
                       <p>
-                        <strong>Чем опасен</strong>Угрожает выходом через тень и короткой
-                        комбинацией с абсолютным умением.
+                        <strong>Чем опасен</strong>Угрожает выходом через тень и короткой комбинацией с
+                        абсолютным умением.
                       </p>
                       <p>
-                        <strong>Как играть</strong>Следите за тенью и сохраняйте защитный ответ на
-                        его выход из абсолютного умения.
+                        <strong>Как играть</strong>Следите за тенью и сохраняйте защитный ответ на его выход
+                        из абсолютного умения.
                       </p>
                       <a href="zed.html">Страница чемпиона ↗</a>
                     </div>
@@ -3076,9 +3085,112 @@
                     <span class="matchup-dialog-lane">ЗАЙРА · Мид</span>
                     <h3 id="matchup-dialog-0-easy-title">Удобные соперники</h3>
                   </div>
-                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">
-                    ×
+                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">×</button>
+                </div>
+                <p class="matchup-empty">Для этой линии нет подтверждённых удобных матчапов.</p>
+              </dialog>
+            </div>
+          </div>
+          <div
+            class="matchup-role-panel"
+            role="tabpanel"
+            id="matchup-panel-1"
+            aria-labelledby="matchup-tab-1"
+            hidden
+          >
+            <div class="matchup-duel-stage">
+              <div class="matchup-gate matchup-gate-hard">
+                <img
+                  class="matchup-gate-art"
+                  src="assets/champions/nasus-hero.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="matchup-gate-shade"></div>
+                <div class="matchup-gate-content">
+                  <span class="matchup-gate-count">1 контрпик</span>
+                  <h3>Контрпики</h3>
+                  <div class="matchup-gate-faces" aria-hidden="true">
+                    <img src="assets/champions/faces/nasus.webp" alt="" loading="lazy" />
+                  </div>
+                  <button
+                    type="button"
+                    class="matchup-open-button"
+                    data-matchup-open="matchup-dialog-1-hard"
+                    aria-haspopup="dialog"
+                  >
+                    Открыть контрпики<span aria-hidden="true">↗</span>
                   </button>
+                </div>
+              </div>
+              <dialog
+                class="matchup-dialog"
+                id="matchup-dialog-1-hard"
+                aria-labelledby="matchup-dialog-1-hard-title"
+              >
+                <div class="matchup-dialog-heading">
+                  <div>
+                    <span class="matchup-dialog-lane">ЗАЙРА · Барона (топ)</span>
+                    <h3 id="matchup-dialog-1-hard-title">Контрпики</h3>
+                  </div>
+                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">×</button>
+                </div>
+                <div class="matchup-cards">
+                  <details class="matchup-card matchup-hard" name="champion-matchup-open">
+                    <summary>
+                      <img
+                        width="56"
+                        height="56"
+                        src="assets/champions/faces/nasus.webp"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      /><span>НАСУС</span><b aria-hidden="true">+</b>
+                    </summary>
+                    <div class="matchup-advice">
+                      <p>
+                        <strong>Чем опасен</strong>Сложный матчап по рекомендации игроков. Учитывайте
+                        уровень, предметы и преимущество соперника.
+                      </p>
+                      <p>
+                        <strong>Как играть</strong>Следите за готовностью ключевых умений соперника и
+                        выбирайте момент для размена с учётом обзора и преимущества по предметам.
+                      </p>
+                      <a href="nasus.html">Страница чемпиона ↗</a>
+                    </div>
+                  </details>
+                </div>
+              </dialog>
+              <div class="matchup-duel-seam" aria-hidden="true"><span>R</span></div>
+              <div class="matchup-gate matchup-gate-easy">
+                <div class="matchup-gate-shade"></div>
+                <div class="matchup-gate-content">
+                  <span class="matchup-gate-count">0 соперников</span>
+                  <h3>Удобные соперники</h3>
+                  <p class="matchup-empty">Подборка ещё не подтверждена.</p>
+                  <button
+                    type="button"
+                    class="matchup-open-button"
+                    data-matchup-open="matchup-dialog-1-easy"
+                    aria-haspopup="dialog"
+                    disabled
+                  >
+                    Открыть соперников<span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+              <dialog
+                class="matchup-dialog"
+                id="matchup-dialog-1-easy"
+                aria-labelledby="matchup-dialog-1-easy-title"
+              >
+                <div class="matchup-dialog-heading">
+                  <div>
+                    <span class="matchup-dialog-lane">ЗАЙРА · Барона (топ)</span>
+                    <h3 id="matchup-dialog-1-easy-title">Удобные соперники</h3>
+                  </div>
+                  <button type="button" class="matchup-dialog-close" aria-label="Закрыть окно">×</button>
                 </div>
                 <p class="matchup-empty">Для этой линии нет подтверждённых удобных матчапов.</p>
               </dialog>
