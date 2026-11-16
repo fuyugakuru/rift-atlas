@@ -1,0 +1,14 @@
+{
+  "background": {
+    "author": "Riot Games",
+    "page": "https://wildrift.leagueoflegends.com/en-us/game-overview/",
+    "url": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/398560ce63623deff4f3e3b759663463aee1f863-3840x1280.png",
+    "file": "home-background.webp"
+  },
+  "logo": {
+    "author": "Riot Games",
+    "page": "https://commons.wikimedia.org/wiki/File:League_of_Legends_Wild_Rift_logo.png",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/42/League_of_Legends_Wild_Rift_logo.png",
+    "file": "wild-rift-logo.png"
+  }
+}

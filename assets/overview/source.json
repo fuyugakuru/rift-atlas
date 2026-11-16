@@ -1,0 +1,22 @@
+{
+  "image": "wild-rift-map.jpg",
+  "author": "Riot Games",
+  "page": "https://www.eurogamer.pt/league-of-legends-wild-rift-dicas-truques-iniciantes-veteranos-mobile",
+  "url": "https://assetsio.reedpopcdn.com/mapa_wild_rift.jpg",
+  "note": "Базовая игровая карта Wild Rift. Не отражает актуальные изменения стен и кустов Ионии 7.0; точные точки вардов не размечаются.",
+  "structureStatsSources": [
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3/",
+    "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3a/"
+  ],
+  "cleanedMap": {
+    "file": "wild-rift-map-clean.jpg",
+    "method": "AI-assisted removal of UI badges from the original reference; reconstructed areas are illustrative, not current in-game geometry.",
+    "original": "wild-rift-map.jpg"
+  },
+  "elderIcon": {
+    "file": "elder-dragon.png",
+    "url": "https://raw.communitydragon.org/latest/game/assets/characters/sru_dragon_elder/hud/dragon_circle_elder.png",
+    "note": "Riot Elder Dragon portrait from League of Legends game assets via CommunityDragon; not claimed as a Wild Rift minimap icon."
+  },
+  "monsterHealthSource": "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3/"
+}

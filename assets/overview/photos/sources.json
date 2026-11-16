@@ -1,0 +1,95 @@
+{
+  "note": "Wild Rift gameplay screenshots and Riot promotional artwork. Images illustrate appearance; HUD values in older screenshots are not current stat data.",
+  "sources": [
+    {
+      "id": "blue",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/blue-sentinel-wild-rift-monster.jpg",
+      "file": "blue.webp"
+    },
+    {
+      "id": "red",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/red-brambleback-wild-rift-monster.jpg",
+      "file": "red.webp"
+    },
+    {
+      "id": "scuttle",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/rift-scuttlers-wild-rift-monster.jpg",
+      "file": "scuttle.jpg"
+    },
+    {
+      "id": "dragon",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/dragon-wild-rift-monster.jpg",
+      "file": "dragon.jpg"
+    },
+    {
+      "id": "herald",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/rift-herald-wild-rift-monster.jpg",
+      "file": "herald.jpg"
+    },
+    {
+      "id": "baron",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/baron-wild-rift-monster.jpg",
+      "file": "baron.jpg"
+    },
+    {
+      "id": "gromp",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/gromp-wild-rift-monster.jpg",
+      "file": "gromp.webp"
+    },
+    {
+      "id": "wolves",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/wolves-wild-rift-monster.jpg",
+      "file": "wolves.webp"
+    },
+    {
+      "id": "raptors",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/razorbeaks-wild-rift-monster.jpg",
+      "file": "raptors.jpg"
+    },
+    {
+      "id": "krugs",
+      "url": "https://zilliongamer.com/uploads/league-of-legends-wild-rift/guides/league-of-legends-wild-rift-monsters/krugs-wild-rift-monster.jpg",
+      "file": "krugs.webp"
+    },
+    {
+      "id": "nexus",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/Nexus.jpg",
+      "file": "nexus.jpg"
+    },
+    {
+      "id": "tower",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/Turrets.jpg",
+      "file": "tower.jpg"
+    },
+    {
+      "id": "minions",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/Minions.jpg",
+      "file": "minions.jpg"
+    },
+    {
+      "id": "blastcone",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/Blast.jpg",
+      "file": "blastcone.jpg"
+    },
+    {
+      "id": "honeyfruit",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/honeyfruit.jpg",
+      "file": "honeyfruit.jpg"
+    },
+    {
+      "id": "scryer",
+      "url": "https://i0.wp.com/gamingonphone.com/wp-content/uploads/2021/03/scryer.jpg",
+      "file": "scryer.jpg"
+    },
+    {
+      "id": "elder",
+      "url": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/188591162a11f924f8107443f4a134692758c633-1920x1080.jpg",
+      "file": "elder.jpg"
+    },
+    {
+      "id": "fountain",
+      "url": "https://cdn.oneesports.gg/wp-content/uploads/2021/02/WildRift_StartOfGame_Fountain_Base_Nexsus-1024x576.jpg",
+      "file": "fountain.jpg"
+    }
+  ]
+}
