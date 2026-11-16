@@ -62,7 +62,7 @@
       items.append(img);
     }
     const runes = el("div", "profile-build-runes");
-    for (const key of build.runes || []) {
+    for (const key of [...(build.runes || []), ...(build.spells || [])]) {
       const a = assets.get(key);
       if (!a) continue;
       const img = el("img");
@@ -115,7 +115,7 @@
       const result = await Promise.race([
         account.client
           .from("player_builds")
-          .select("champion_id,lane,patch,items,runes,updated_at", { count: "exact" })
+          .select("champion_id,lane,patch,items,runes,spells,updated_at", { count: "exact" })
           .eq("user_id", next)
           .order("updated_at", { ascending: false })
           .order("champion_id")

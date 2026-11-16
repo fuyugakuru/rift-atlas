@@ -1954,3 +1954,11 @@ footer {
 }
 
 .leveling-grid-scroll{position:relative}
+/* Общая палитра характеристик в описаниях. */
+.stat-health,.ability-value.stat-health { color:#7cdaa1; }
+.stat-mana,.ability-value.stat-mana { color:#6ec9ff; }
+.stat-magic,.ability-value.stat-magic { color:#9cb8ff; }
+.stat-haste,.ability-value.stat-haste { color:#a4d8e8; }
+.stat-speed,.ability-value.stat-speed { color:#e8d5a0; }
+.pb-community-detail .ability-value,.pb-dialog-detail .ability-value { font-size:inherit; }
+.pb-community-detail .stat-icon,.pb-dialog-detail .stat-icon { width:11px; height:11px; margin-right:3px; }

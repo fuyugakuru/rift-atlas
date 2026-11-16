@@ -377,3 +377,117 @@
     height: 32px;
   }
 }
+
+/* Популярные сборки: последовательность покупки и статистика каждого слота. */
+.pb-stats { display:block; }
+.pb-combinations { display:grid; gap:12px; margin:14px 0; }
+.pb-community-card { padding:14px; border:1px solid #493651; border-radius:12px; background:linear-gradient(115deg,#261e30,#191723); }
+.pb-community-heading { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:12px; font-size:13px; }
+.pb-community-heading>span { color:#c5acd9; }
+.pb-community-items { list-style:none; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; padding:0; margin:0; }
+.pb-community-items li { min-width:0; text-align:center; }
+.pb-community-item { position:relative; display:inline-flex; align-items:center; justify-content:center; padding:5px; border:1px solid #55415f; border-radius:9px; background:#17131f; color:#eee; cursor:pointer; }
+.pb-community-item:hover,.pb-community-item[aria-expanded=true] { border-color:#cfabef; background:#382744; }
+.pb-community-item img { width:44px; height:44px; object-fit:contain; border-radius:5px; }
+.pb-order-number { position:absolute; left:-5px; top:-5px; display:grid; place-items:center; width:19px; height:19px; border-radius:50%; background:#8f63ad; color:white; font-size:11px; font-weight:700; }
+.pb-community-name { display:block; font-size:10px; line-height:1.3; margin-top:7px; color:#bfb1c9; overflow-wrap:anywhere; }
+.pb-community-detail { margin:12px 0 0; color:#d0c4db; font-size:12px; white-space:pre-line; line-height:1.6; }
+.pb-order-tabs { display:flex; gap:8px; margin:12px 0; }
+.pb-order-tab { width:38px; height:36px; border:1px solid #51415c; border-radius:8px; background:#211b2b; color:#bdaccb; cursor:pointer; }
+.pb-order-tab[aria-pressed=true] { background:#67477d; border-color:#c39fe0; color:#fff; }
+.pb-order-results { display:grid; gap:8px; }
+.pb-slot-card { display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center; border:1px solid #3f344c; padding:10px; border-radius:10px; background:#1b1724; }
+.pb-slot-card>div { display:grid; gap:5px; font-size:13px; }
+.pb-slot-card .pb-community-detail { grid-column:1/-1; }
+.player-builds [hidden] { display:none!important; }
+@media(max-width:600px) {
+ .pb-community-card { padding:12px 9px; }
+ .pb-community-items { gap:6px; }
+ .pb-community-item { padding:3px; border-radius:6px; }
+ .pb-community-item img { width:clamp(24px,6.5vw,38px); height:clamp(24px,6.5vw,38px); }
+ .pb-community-name { display:none; }
+ .pb-community-heading { font-size:12px; }
+ .pb-slot-card .pb-community-item img { width:38px; height:38px; }
+}
+
+.pb-stats>.pb-button { display:inline-block; margin:8px 0 14px; text-decoration:none; }
+.pb-item-percentage { display:block; margin-top:7px; font-size:13px; color:#d2afea; }
+.pb-percentage-label { display:block; font-size:10px; color:#ad9cbb; }
+.pb-position-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:9px; margin-top:16px; align-items:start; }
+.pb-position-column { min-width:0; background:#201a29; border:1px solid #43324f; border-radius:10px; padding:12px 8px; text-align:center; }
+.pb-position-column h4 { margin:0 0 16px; font-size:12px; color:#c8b4d8; }
+.pb-position-options { display:grid; gap:16px; }
+.pb-position-option { min-width:0; }
+.pb-position-more { margin-top:12px; border:0; background:transparent; color:#d0acec; cursor:pointer; font-size:11px; }
+.pb-position-column .pb-community-detail { overflow-wrap:anywhere; text-align:left; max-height:240px; overflow:auto; }
+.community-directory { margin-top:24px; }
+.community-directory [hidden] { display:none!important; }
+.pb-author-runes { display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+.pb-author-runes img { width:30px; height:30px; }
+.pb-author-runes .pb-community-item { border-radius:50%; }
+@media(max-width:700px){.pb-position-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.pb-position-column{padding:12px 7px;}.pb-position-column .pb-community-item img{width:36px;height:36px;}.pb-item-percentage{font-size:12px;}.pb-position-column .pb-community-name{display:block;font-size:9px;}}
+.community-directory h1 { font-size:clamp(23px,3vw,34px); line-height:1.25; overflow-wrap:anywhere; margin:12px 0 22px; }
+.pb-author { display:flex; align-items:center; gap:10px; min-width:0; }
+.pb-author-avatar { width:38px; height:38px; object-fit:cover; border-radius:50%; border:1px solid #9875b1; }
+.pb-author-spells { display:flex; align-items:center; gap:8px; margin-top:12px; }
+.pb-author-spells img { width:32px; height:32px; }
+.pb-spell-slots { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:240px; }
+.pb-popular-extras { display:flex; flex-wrap:wrap; align-items:center; gap:14px 26px; margin-top:16px; padding-top:12px; border-top:1px solid #43334e; }
+.pb-popular-small-group,.pb-popular-small-icons { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
+.pb-popular-small-group .pb-community-item { padding:3px; border-radius:6px; }
+.pb-popular-small-group .pb-community-item img { width:25px; height:25px; }
+.pb-popular-small-group>.pb-caption { font-size:11px; }
+.pb-rune-popularity { display:grid; justify-items:center; gap:4px; color:#cfa9e9; font-size:10px; }
+.pb-mini-order { position:absolute; top:-5px; left:-4px; font-size:8px; background:#74518d; border-radius:50%; width:12px; height:12px; display:grid; place-items:center; }
+.pb-author { color:inherit; text-decoration:none; }
+a.pb-author:hover strong { color:#d8b2f1; }
+.public-player-header { padding:18px; background:linear-gradient(115deg,#31233e,#171823); border:1px solid #503660; border-radius:13px; }
+.public-player-identity { display:flex; align-items:center; gap:18px; }
+.public-player-identity>.pb-author-avatar { width:90px; height:90px; }
+.public-player-identity h1 { margin:0; }
+.public-player-favorites { margin:24px 0; }
+.public-favorite-grid { display:flex; gap:12px; flex-wrap:wrap; }
+.public-favorite { display:grid; width:80px; gap:6px; font-size:10px; text-align:center; color:#cbb4dd; text-decoration:none; }
+.public-favorite img { width:56px; height:56px; border-radius:50%; margin:auto; }
+.social-list { display:grid; gap:10px; }
+.social-person { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:12px; background:#201a29; border:1px solid #43324f; border-radius:10px; }
+.social-person .pb-actions { margin:0; }
+.visibility-controls { display:grid; gap:12px; margin:14px 0; color:#cbbbd6; font-size:13px; }
+.social-tabs button[aria-pressed=true] { background:#62407d; border-color:#c6a0e4; }
+@media(max-width:600px){.public-player-identity>.pb-author-avatar{width:62px;height:62px;}.public-player-identity{gap:12px;}.public-player-identity h1{font-size:22px;}.social-person .pb-actions{gap:7px;}}
+.public-player-header { position:relative; isolation:isolate; overflow:hidden; padding:0; min-height:240px; }
+.public-profile-media,.public-profile-cover,.public-profile-video,.public-profile-shade { position:absolute; inset:0; width:100%; height:100%; }
+.public-profile-media { z-index:-3; }
+.public-profile-cover,.public-profile-video { object-fit:cover; object-position:center 35%; }
+.public-profile-video { opacity:0; transition:opacity .7s linear; }
+.public-profile-video.is-playing { opacity:1; }
+.public-profile-shade { z-index:-2; background:linear-gradient(90deg,#17131fe8,#17131f70 65%,#17131f35),linear-gradient(0deg,#17131fbb,transparent); }
+.public-profile-content { min-height:240px; padding:32px; display:flex; flex-direction:column; justify-content:center; }
+.public-profile-content .pb-actions { margin-top:22px; }
+.public-profile-motion { position:absolute; top:12px; right:12px; font-size:11px; padding:6px 9px; background:#15121dbb; }
+.public-friends { margin:24px 0; }
+.public-friends .social-list { grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); margin-bottom:12px; }
+.public-friends .pb-author { min-width:0; }
+.public-friends .pb-author strong { overflow-wrap:anywhere; }
+.community-directory>a.pb-button { display:inline-block; margin:0 0 16px; }
+.community-directory>.pb-button { display:inline-block; text-decoration:none; }
+@media(max-width:600px){.public-player-header,.public-profile-content{min-height:225px;}.public-profile-content{padding:46px 18px 24px;}.public-profile-cover,.public-profile-video{object-position:60% center;}.public-friends .social-list{grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.public-profile-video{transition:none;}}
+/* Общая шапка публичного профиля и личного кабинета. */
+.unified-profile-page { max-width:1200px; margin:0 auto; padding:0; background:none; border:0; border-radius:0; }
+.unified-profile-page>.page-heading h1 { font-size:clamp(28px,4vw,43px); }
+.public-profile-hero .profile-hero-content { display:flex; flex-direction:row; }
+.public-profile-hero .profile-avatar-frame>.pb-author-avatar { width:108px; height:108px; border:0; border-radius:18px; }
+.public-profile-hero .profile-hero-actions { align-self:flex-start; margin:0 0 0 auto; justify-content:flex-end; }
+.public-profile-hero .profile-hero-actions .pb-button { background:#17131da8; backdrop-filter:blur(10px); }
+.profile-hero-bottom>.profile-friends-tile { margin-left:0; }
+.profile-stat-cell { display:inline-flex; align-items:center; gap:2px; padding:5px 0; white-space:nowrap; }
+.profile-friends-tile { padding:6px 13px; border:1px solid #a281bf40; border-radius:8px; background:#aa7fce08; color:#cdb6e0; text-decoration:none; }
+.profile-friends-tile:hover { background:#aa7fce20; border-color:#b58bd0; }
+.profile-friends-tile:focus-visible { outline:2px solid #d1a8ef; outline-offset:3px; }
+.unified-profile-page .profile-pool { margin-bottom:24px; }
+.unified-profile-page .profile-pool h3 { font-size:23px; margin-top:8px; }
+.unified-profile-page .public-favorite-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); margin-top:20px; }
+@media(max-width:800px){.public-profile-hero .profile-avatar-frame>.pb-author-avatar{width:83px;height:83px;}.public-profile-hero .profile-hero-actions{margin:0;}}
+@media(max-width:480px){.public-profile-hero .profile-avatar-frame>.pb-author-avatar{width:70px;height:70px;border-radius:13px;}.public-profile-hero .profile-hero-actions{width:100%;justify-content:flex-start;}.profile-friends-tile{padding:5px 9px;}.profile-stat-cell{white-space:normal;}.unified-profile-page .public-favorite-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.profile-hero-bottom { justify-content:flex-start; }

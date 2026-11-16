@@ -39,7 +39,7 @@
   const section = el("section", "player-builds");
   section.setAttribute("aria-labelledby", "player-builds-title");
   section.innerHTML =
-    '<div class="pb-heading"><div><p class="pb-kicker">Сообщество Rift Atlas</p><h2 id="player-builds-title">Сборки игроков</h2></div></div><p class="pb-caption">Сохрани свою сборку и посмотри, какие предметы выбирают другие игроки.</p><div class="pb-toolbar"><label>Линия <select aria-label="Линия пользовательской сборки"></select></label><span class="pb-caption"></span></div><p class="pb-status" role="status" aria-live="polite"></p><div class="pb-mine"></div><div class="pb-editor" hidden><h3>Порядок покупки · 6 предметов</h3><p class="pb-caption">Нажми на ячейку, чтобы выбрать предмет. Стрелки меняют порядок. Ботинки занимают один слот.</p><ol class="pb-slots pb-item-slots"></ol><h3>Руны <small>· необязательно</small></h3><p class="pb-caption">Первая — ключевая. Затем выбери три руны основной ветки и одну дополнительной по правилам игрового клиента.</p><ol class="pb-slots pb-rune-slots"></ol><div class="pb-actions"></div></div><h3>Популярные предметы</h3><p class="pb-caption pb-count"></p><div class="pb-stats"></div>';
+    '<div class="pb-heading"><div><p class="pb-kicker">Сообщество Rift Atlas</p><h2 id="player-builds-title">Сборки игроков</h2></div></div><p class="pb-caption">Сохрани свою сборку и посмотри, какие предметы выбирают другие игроки.</p><div class="pb-toolbar"><label>Линия <select aria-label="Линия пользовательской сборки"></select></label><span class="pb-caption"></span></div><p class="pb-status" role="status" aria-live="polite"></p><div class="pb-mine"></div><div class="pb-editor" hidden><h3>Порядок покупки · 6 предметов</h3><p class="pb-caption">Сохранённая сборка публикуется под твоим ником на странице сборок игроков.</p><p class="pb-caption">Нажми на ячейку, чтобы выбрать предмет. Стрелки меняют порядок. Ботинки занимают один слот.</p><ol class="pb-slots pb-item-slots"></ol><h3>Заклинания</h3><ol class="pb-slots pb-spell-slots"></ol><h3>Руны <small>· необязательно</small></h3><p class="pb-caption">Первая — ключевая. Затем выбери три руны основной ветки и одну дополнительной по правилам игрового клиента.</p><ol class="pb-slots pb-rune-slots"></ol><div class="pb-actions"></div></div><h3>Популярная сборка</h3><p class="pb-caption pb-count"></p><div class="pb-stats"></div>';
   anchor.after(section);
   const heading = section.querySelector(".pb-heading"),
     laneSelect = section.querySelector("select"),
@@ -48,18 +48,10 @@
     editor = section.querySelector(".pb-editor"),
     itemSlots = section.querySelector(".pb-item-slots"),
     runeSlots = section.querySelector(".pb-rune-slots"),
+    spellSlots = section.querySelector(".pb-spell-slots"),
     actions = section.querySelector(".pb-actions"),
     stats = section.querySelector(".pb-stats"),
     count = section.querySelector(".pb-count");
-  const moreStats = button("Все предметы", () => {
-    const expanded = moreStats.getAttribute("aria-expanded") !== "true";
-    moreStats.setAttribute("aria-expanded", String(expanded));
-    [...stats.children].forEach((card, index) => (card.hidden = !expanded && index >= 12));
-    moreStats.textContent = expanded ? "Свернуть" : "Все предметы (" + stats.children.length + ")";
-  });
-  moreStats.hidden = true;
-  moreStats.setAttribute("aria-expanded", "false");
-  stats.after(moreStats);
   for (const lane of champion.lanes) {
     const o = el("option", "", laneNames[lane] || lane);
     o.value = lane;
@@ -71,6 +63,7 @@
   let lane = laneSelect.value,
     items = Array(6).fill(null),
     runes = Array(5).fill(null),
+    spells = Array(2).fill(null),
     saved = null,
     busy = false,
     generation = 0,
@@ -142,7 +135,13 @@
     search.value = "";
     description.textContent = "";
     dialog.querySelector("h3").textContent =
-      type === "item" ? "Выбрать предмет" : index === 0 ? "Ключевая руна" : "Выбрать руну";
+      type === "item"
+        ? "Выбрать предмет"
+        : type === "spell"
+          ? "Выбрать заклинание"
+          : index === 0
+            ? "Ключевая руна"
+            : "Выбрать руну";
     renderPicker();
     dialog.showModal();
     search.focus();
@@ -151,7 +150,7 @@
     if (!selection) return;
     list.replaceChildren();
     const { type, index } = selection,
-      selected = type === "item" ? items : runes,
+      selected = type === "item" ? items : type === "spell" ? spells : runes,
       needle = search.value.trim().toLocaleLowerCase("ru");
     let shown = 0;
     for (const a of catalog.assets) {
@@ -194,6 +193,7 @@
     for (const [type, values, container] of [
       ["item", items, itemSlots],
       ["rune", runes, runeSlots],
+      ["spell", spells, spellSlots],
     ]) {
       container.replaceChildren();
       values.forEach((key, index) => {
@@ -204,15 +204,20 @@
               ? a.name
               : type === "item"
                 ? "Предмет " + (index + 1)
-                : index === 0
-                  ? "Ключевая"
-                  : "Руна " + index,
+                : type === "spell"
+                  ? "Заклинание " + (index + 1)
+                  : index === 0
+                    ? "Ключевая"
+                    : "Руна " + index,
             () => openPicker(type, index),
             "pb-slot-pick",
           );
         pick.setAttribute(
           "aria-label",
-          (type === "item" ? "Предмет " : "Руна ") + (index + 1) + ": " + (a?.name || "выбрать"),
+          (type === "item" ? "Предмет " : type === "spell" ? "Заклинание " : "Руна ") +
+            (index + 1) +
+            ": " +
+            (a?.name || "выбрать"),
         );
         if (a) {
           pick.textContent = "";
@@ -255,7 +260,9 @@
         clear.disabled = !a;
         clear.setAttribute(
           "aria-label",
-          "Очистить " + (type === "item" ? "предмет " : "руну ") + (index + 1),
+          "Очистить " +
+            (type === "item" ? "предмет " : type === "spell" ? "заклинание " : "руну ") +
+            (index + 1),
         );
         controls.append(clear);
         li.append(controls);
@@ -270,6 +277,7 @@
       dirty = false;
       items = saved ? [...saved.items] : Array(6).fill(null);
       runes = saved?.runes.length ? [...saved.runes] : Array(5).fill(null);
+      spells = saved?.spells?.length ? [...saved.spells] : Array(2).fill(null);
       notify("");
     }),
     clearRunes = button("Без рун", () => {
@@ -301,6 +309,15 @@
       box.append(el("strong", "", "Моя сборка"));
       const row = el("div", "pb-selected");
       for (const key of saved.items) {
+        const a = assets.get(key);
+        if (a) {
+          const img = describe(a);
+          img.title = a.name;
+          img.alt = a.name;
+          row.append(img);
+        }
+      }
+      for (const key of saved.spells || []) {
         const a = assets.get(key);
         if (a) {
           const img = describe(a);
@@ -345,6 +362,7 @@
     editor.hidden = true;
     items = Array(6).fill(null);
     runes = Array(5).fill(null);
+    spells = Array(2).fill(null);
     busy = !!uid;
     renderMine();
     if (!uid) return;
@@ -352,7 +370,7 @@
       const { data, error } = await timeout(
         client
           .from("player_builds")
-          .select("items,runes,updated_at")
+          .select("items,runes,spells,updated_at")
           .eq("user_id", uid)
           .eq("champion_id", id)
           .eq("lane", lane)
@@ -364,6 +382,7 @@
       saved = data;
       items = data ? [...data.items] : items;
       runes = data?.runes.length ? [...data.runes] : runes;
+      spells = data?.spells?.length ? [...data.spells] : Array(2).fill(null);
       notify("");
     } catch (e) {
       if (turn === generation) {
@@ -379,45 +398,148 @@
   }
   async function loadStats() {
     const turn = ++statsGeneration;
-    count.textContent = "Загружаем статистику…";
+    count.textContent = "Загружаем сборки…";
     stats.replaceChildren();
-    moreStats.hidden = true;
-    moreStats.setAttribute("aria-expanded", "false");
+    const publicLink = el("a", "pb-button", "Сборки игроков ↗");
+    publicLink.href =
+      "community-builds.html?champion=" +
+      encodeURIComponent(id) +
+      "&lane=" +
+      encodeURIComponent(lane) +
+      "&patch=" +
+      encodeURIComponent(patch);
+    stats.append(publicLink);
+    const pct = (value) => Number(value).toLocaleString("ru") + "%";
+    function itemButton(a, number, detail, percentage) {
+      const pick = button(
+        "",
+        () => {
+          const active = pick.getAttribute("aria-expanded") !== "true";
+          pick
+            .closest(".pb-community-card,.pb-position-column")
+            .querySelectorAll("[aria-expanded]")
+            .forEach((b) => b.setAttribute("aria-expanded", "false"));
+          pick.setAttribute("aria-expanded", String(active));
+          detail.hidden = !active;
+          detail.textContent = a.name + (a.description ? " · " + a.description : "");
+        },
+        "pb-community-item",
+      );
+      pick.title = a.name + " · " + pct(percentage) + " игроков";
+      pick.setAttribute("aria-label", number + ". " + a.name + ", " + pct(percentage) + " игроков");
+      pick.setAttribute("aria-expanded", "false");
+      pick.append(el("span", "pb-order-number", String(number)), describe(a));
+      return pick;
+    }
     try {
       const { data, error } = await timeout(
-        client.rpc("build_item_popularity", { p_champion: id, p_lane: lane, p_patch: patch }),
+        client.rpc("build_community_stats", {
+          p_champion: id,
+          p_lane: lane,
+          p_patch: patch,
+          p_offset: 0,
+        }),
       );
       if (error) throw error;
       if (turn !== statsGeneration) return;
-      const total = Number(data?.[0]?.participants || 0);
+      const total = Number(data?.participants || 0),
+        overall = new Map((data.items || []).map((r) => [r.item_id, r]));
       count.textContent = total
-        ? "Участников: " +
+        ? "Игроков: " +
           total +
           " · " +
           laneNames[lane] +
           " · патч " +
           patch +
-          (total < 20 ? " · Пока мало сборок для устойчивых выводов." : "")
+          (total < 20 ? " · Пока мало сборок." : "")
         : "Сборок пока нет. Стань первым участником на этой линии.";
-      for (const row of data || []) {
-        const a = assets.get(row.item_id);
-        if (!a) continue;
-        const card = el("div", "pb-stat"),
-          text = el("div");
-        text.append(
-          el("strong", "", Number(row.percentage).toLocaleString("ru") + "%"),
-          el("span", "", a.name),
-          el("small", "", row.picks + " из " + total),
-        );
-        card.append(describe(a), text);
-        card.hidden = stats.children.length >= 12;
-        stats.append(card);
+      if (!total) return;
+      // Выбираем наиболее популярные позиции без повторов предметов и пар ботинок.
+      let choices = new Map([[0, { score: 0, rows: Array(6).fill(null) }]]);
+      const candidates = new Map();
+      for (const row of data.slots || []) {
+        if (!assets.has(row.item_id)) continue;
+        if (!candidates.has(row.item_id)) candidates.set(row.item_id, []);
+        candidates.get(row.item_id).push(row);
       }
-      moreStats.hidden = stats.children.length <= 12;
-      moreStats.textContent = "Все предметы (" + stats.children.length + ")";
+      for (const [key, rows] of candidates) {
+        const next = new Map(choices),
+          boot = assets.get(key).boot;
+        for (const [state, value] of choices) {
+          if (boot && state & 64) continue;
+          for (const row of rows) {
+            const index = Number(row.slot) - 1,
+              bit = 1 << index;
+            if (state & bit) continue;
+            const target = state | bit | (boot ? 64 : 0),
+              score = value.score + Number(row.picks);
+            if (!next.has(target) || score > next.get(target).score) {
+              const selected = value.rows.slice();
+              selected[index] = row;
+              next.set(target, { score, rows: selected });
+            }
+          }
+        }
+        choices = next;
+      }
+      const best = [choices.get(63), choices.get(127)]
+        .filter(Boolean)
+        .sort((a, b) => b.score - a.score)[0];
+      const selected = best?.rows || [];
+      const card = el("article", "pb-community-card"),
+        head = el("div", "pb-community-heading"),
+        line = el("ol", "pb-community-items"),
+        detail = el("p", "pb-community-detail");
+      head.append(el("strong", "", "Самая популярная сборка"));
+      detail.hidden = true;
+      selected.forEach((row, index) => {
+        const a = assets.get(row.item_id),
+          li = el("li");
+        li.append(
+          itemButton(a, index + 1, detail, row.percentage),
+          el("span", "pb-community-name", a.name),
+          el("strong", "pb-item-percentage", pct(row.percentage)),
+          el("small", "pb-percentage-label", "на этом месте"),
+        );
+        li.title =
+          "В любой позиции: " + pct(overall.get(row.item_id)?.percentage || 0) + " игроков";
+        line.append(li);
+      });
+      const extras = el('div','pb-popular-extras');
+      const runeRows = data.rune_slots || [], selectedRunes = [];
+      for (let slot = 1; slot <= 5; slot++) {
+        const tree = assets.get(selectedRunes[1]?.rune_id)?.tree;
+        const options = runeRows.filter(row => Number(row.slot) === slot && assets.has(row.rune_id)).filter(row => {
+          const rune = assets.get(row.rune_id);
+          return slot < 3 || (slot < 5 ? rune.tree === tree : rune.tree !== tree);
+        }).sort((a,b) => Number(b.picks)-Number(a.picks) || a.rune_id.localeCompare(b.rune_id));
+        if(options[0]) selectedRunes.push(options[0]);
+      }
+      const runeSetup = selectedRunes.length === 5 ? {ids:selectedRunes.map(row=>row.rune_id)} : null;
+      for (const [label, setup] of [['Руны',runeSetup],['Заклинания',data.spell_pair]]) {
+        const group = el('div','pb-popular-small-group');
+        group.append(el('span','pb-caption',label));
+        if (setup?.ids?.length) {
+          const icons=el('div','pb-popular-small-icons');
+          setup.ids.forEach((key,index)=>{
+            const a=assets.get(key);if(!a)return;
+            const b=button('',()=>{const open=b.getAttribute('aria-expanded')!=='true';card.querySelectorAll('[aria-expanded]').forEach(v=>v.setAttribute('aria-expanded','false'));b.setAttribute('aria-expanded',String(open));detail.hidden=!open;detail.textContent=a.name+(a.description?' · '+a.description:'');},'pb-community-item');
+            b.title=a.name;b.setAttribute('aria-label',a.name);b.setAttribute('aria-expanded','false');b.append(describe(a));
+            if(label==='Руны') { const cell=el('div','pb-rune-popularity');b.prepend(el('span','pb-mini-order',String(index+1)));b.title=a.name+' · '+pct(selectedRunes[index].percentage)+' на этом месте';cell.append(b,el('small','',pct(selectedRunes[index].percentage)));icons.append(cell); } else icons.append(b);
+          });
+          group.append(icons);if(label!=='Руны') group.append(el('small','pb-caption',pct(setup.percentage)));
+        } else group.append(el('small','pb-caption','Пока не указаны'));
+        extras.append(group);
+      }
+      card.append(head, line, extras, detail);
+      stats.append(
+        card,
+        el("p", "pb-caption", "По популярности на каждом месте покупки. Предметы не повторяются."),
+      );
     } catch {
-      if (turn === statsGeneration)
-        count.textContent = "Статистика временно недоступна. Попробуй обновить страницу.";
+      if (turn !== statsGeneration) return;
+      count.textContent = "Статистика временно недоступна.";
+      stats.append(button("Повторить", loadStats));
     }
   }
   async function saveBuild() {
@@ -428,6 +550,11 @@
     }
     if (items.some((v) => !v) || new Set(items).size !== 6) {
       notify("Выбери шесть разных предметов.", true);
+      return;
+    }
+    const selectedSpells = spells.filter(Boolean);
+    if (selectedSpells.length !== 2 || new Set(selectedSpells).size !== 2) {
+      notify("Выбери два разных заклинания.", true);
       return;
     }
     const selectedRunes = runes.filter(Boolean);
@@ -458,6 +585,7 @@
         patch,
         items: [...items],
         runes: [...selectedRunes],
+        spells: [...selectedSpells],
       };
     busy = true;
     editor.inert = true;
@@ -521,6 +649,7 @@
       editor.hidden = true;
       items = Array(6).fill(null);
       runes = Array(5).fill(null);
+      spells = Array(2).fill(null);
       notify("Сборка удалена.");
       await loadStats();
     } catch {

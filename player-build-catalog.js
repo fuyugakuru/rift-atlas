@@ -2371,3 +2371,56 @@ window.RIFT_BUILD_CATALOG = {
     },
   ],
 };
+
+// Заклинания для пользовательских сборок.
+window.RIFT_BUILD_CATALOG.assets.push(...[
+  {
+    "id": "spell:Flash",
+    "name": "Скачок",
+    "icon": "assets/builds/summoners/flash.png",
+    "type": "spell",
+    "description": "Скачок"
+  },
+  {
+    "id": "spell:Ignite",
+    "name": "Воспламенение",
+    "icon": "assets/builds/summoners/ignite.png",
+    "type": "spell",
+    "description": "Воспламенение"
+  },
+  {
+    "id": "spell:Smite",
+    "name": "Кара",
+    "icon": "assets/builds/summoners/smite.png",
+    "type": "spell",
+    "description": "Кара"
+  },
+  {
+    "id": "spell:Barrier",
+    "name": "Барьер",
+    "icon": "assets/builds/summoners/barrier.png",
+    "type": "spell",
+    "description": "Барьер"
+  },
+  {
+    "id": "spell:Heal",
+    "name": "Исцеление",
+    "icon": "assets/builds/summoners/heal.png",
+    "type": "spell",
+    "description": "Исцеление"
+  },
+  {
+    "id": "spell:Ghost",
+    "name": "Призрак",
+    "icon": "assets/builds/summoners/ghost.png",
+    "type": "spell",
+    "description": "Призрак"
+  },
+  {
+    "id": "spell:Teleport",
+    "name": "Телепорт",
+    "icon": "assets/builds/summoners/teleport.png",
+    "type": "spell",
+    "description": "Телепорт"
+  }
+]);
