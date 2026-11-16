@@ -379,3 +379,13 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
 
 // Общие цвета в статических и динамических описаниях.
 (()=>{const script=document.createElement("script");script.src="stat-colors.js";script.defer=true;document.head.append(script);})();
+
+// Shared patch label: release date, not a claim that all guide data was checked.
+(() => {
+  const currentPatch = {version:'7.3f',released:'11 ноября 2026'};
+  document.querySelectorAll('.patch-pill').forEach(el=>{el.textContent='ПАТЧ '+currentPatch.version;});
+  document.querySelectorAll('.sidebar-bottom').forEach(el=>{
+    for(const node of el.childNodes) if(node.nodeType===Node.TEXT_NODE&&node.textContent.includes('Данные проверены')) node.textContent=node.textContent.replace('Данные проверены','Текущий патч');
+    const date=el.querySelector('small');if(date)date.textContent=currentPatch.version+' · '+currentPatch.released;
+  });
+})();

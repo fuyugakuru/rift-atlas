@@ -10,13 +10,17 @@
     />
     <title>Обзор · Rift Atlas</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="overview.css" />
+    <script src="timings-data.js" defer></script>
+    <script src="overview.js" defer></script>
     <script src="data.js" defer></script>
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
     <script src="account.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
   </head>
-  <body>
+  <body class="home-overview">
+    <div class="home-artwork" aria-hidden="true"></div>
     <a class="skip" href="#main">К содержанию</a>
     <aside class="sidebar">
       <a class="brand" href="index.html"
@@ -36,7 +40,7 @@
         ><a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
       </nav>
       <div class="sidebar-bottom">
-        <span class="live-dot"></span> Данные проверены<small>08 ноября 2026 · патч 7.3e</small
+        <span class="live-dot"></span> Текущий патч<small>7.3f · 11 ноября 2026</small
         ><a href="sources.html">Источники и обновления ↗</a>
       </div>
     </aside>
@@ -44,10 +48,7 @@
       <header class="topbar">
         <span>WILD RIFT <b>/</b> Обзор</span>
         <div>
-          <span class="patch-pill">ПАТЧ 7.3f</span
-          ><a href="champions.html?favorites=1" aria-label="Избранные чемпионы"
-            >☆ <span class="hide-mobile">Мой пул</span></a
-          >
+          <span class="patch-pill">ПАТЧ 7.3f</span>
           <a class="account-top-link" data-account-link href="account.html"
             ><svg
               viewBox="0 0 24 24"
@@ -65,120 +66,3028 @@
         </div>
       </header>
       <main id="main">
-        <section class="hero">
-          <img class="hero-image" src="assets/syndra.jpg" alt="Синдра" />
-          <div class="hero-shade"></div>
-          <div class="hero-content">
-            <p class="eyebrow"><span class="live-dot"></span> WILD RIFT</p>
-            <h1>Справочник<br /><em>Wild Rift</em></h1>
-            <p>Твои чемпионы, осмысленные сборки<br />и важные изменения — в одном месте.</p>
-            <div class="actions">
-              <a class="button" href="champions.html">Найти чемпиона <span>↗</span></a
-              ><a class="text-button" href="patches.html">Что изменилось в 7.3f →</a>
+        <section class="rift-overview" aria-labelledby="overview-title">
+          <div class="atlas-masthead">
+            <div class="atlas-masthead-brands">
+              <a class="atlas-brand" href="index.html" aria-label="Rift Atlas — главная"
+                ><img src="favicon.svg?v=1" width="54" height="54" alt="" /><span
+                  ><strong>RIFT<span>ATLAS</span></strong
+                  ><small>СПРАВОЧНИК WILD RIFT</small></span
+                ></a
+              ><img
+                class="atlas-wildrift-logo"
+                src="assets/overview/wild-rift-logo.png"
+                alt="League of Legends: Wild Rift"
+                width="110"
+                height="73"
+              />
             </div>
+            <a class="atlas-login" data-account-link href="account.html"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="3.5" />
+                <path d="M5 21v-2a7 7 0 0 1 14 0v2" /></svg
+              ><span data-account-label>Войти</span><span aria-hidden="true">↗</span></a
+            >
           </div>
-          <div class="hero-label">
-            <span>В ФОКУСЕ</span><b>СИНДРА</b><small>Темная властительница</small>
-          </div>
-        </section>
-        <div class="quick-grid">
-          <a href="champions.html"
-            ><span>01 / ЧЕМПИОНЫ</span><strong>143 в каталоге <b>↗</b></strong
-            ><small>Страницы всех чемпионов</small></a
-          ><a href="items.html"
-            ><span>02 / СБОРКИ</span><strong>Подбор предметов <b>↗</b></strong
-            ><small>Что выбрать и в какой ситуации</small></a
-          ><a href="timers.html"
-            ><span>03 / МАКРО</span><strong>Тайминги объектов <b>↗</b></strong
-            ><small>Время первого появления</small></a
-          >
-        </div>
-        <section>
-          <div class="section-title">
+          <section class="atlas-champion-strip" aria-labelledby="atlas-champions-title">
+            <div class="atlas-champion-strip-head">
+              <h2 id="atlas-champions-title">Чемпионы</h2>
+              <div>
+                <button
+                  class="atlas-champions-pause"
+                  type="button"
+                  aria-label="Приостановить движение чемпионов"
+                  aria-pressed="false"
+                >
+                  Ⅱ</button
+                ><a class="atlas-all-champions" href="champions.html"
+                  >Все чемпионы <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+            <div class="atlas-champion-window">
+              <div class="atlas-champion-track" style="--champion-cycle: 257.40000000000003s">
+                <div class="atlas-champion-group">
+                  <a class="atlas-champion" href="aurora.html" title="АВРОРА"
+                    ><img
+                      src="assets/champions/faces/aurora.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АВРОРА</span></a
+                  >
+                  <a class="atlas-champion" href="akali.html" title="АКАЛИ"
+                    ><img
+                      src="assets/champions/faces/akali.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АКАЛИ</span></a
+                  >
+                  <a class="atlas-champion" href="akshan.html" title="АКШАН"
+                    ><img
+                      src="assets/champions/faces/akshan.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АКШАН</span></a
+                  >
+                  <a class="atlas-champion" href="alistar.html" title="АЛИСТАР"
+                    ><img
+                      src="assets/champions/faces/alistar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АЛИСТАР</span></a
+                  >
+                  <a class="atlas-champion" href="ambessa.html" title="АМБЕССА"
+                    ><img
+                      src="assets/champions/faces/ambessa.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АМБЕССА</span></a
+                  >
+                  <a class="atlas-champion" href="amumu.html" title="АМУМУ"
+                    ><img
+                      src="assets/champions/faces/amumu.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АМУМУ</span></a
+                  >
+                  <a class="atlas-champion" href="ahri.html" title="АРИ"
+                    ><img
+                      src="assets/champions/faces/ahri.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АРИ</span></a
+                  >
+                  <a class="atlas-champion" href="aatrox.html" title="АТРОКС"
+                    ><img
+                      src="assets/champions/faces/aatrox.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АТРОКС</span></a
+                  >
+                  <a class="atlas-champion" href="aurelion-sol.html" title="АУРЕЛИОН СОЛ"
+                    ><img
+                      src="assets/champions/faces/aurelion-sol.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АУРЕЛИОН СОЛ</span></a
+                  >
+                  <a class="atlas-champion" href="bard.html" title="БАРД"
+                    ><img
+                      src="assets/champions/faces/bard.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БАРД</span></a
+                  >
+                  <a class="atlas-champion" href="blitzcrank.html" title="БЛИЦКРАНК"
+                    ><img
+                      src="assets/champions/faces/blitzcrank.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БЛИЦКРАНК</span></a
+                  >
+                  <a class="atlas-champion" href="braum.html" title="БРАУМ"
+                    ><img
+                      src="assets/champions/faces/braum.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БРАУМ</span></a
+                  >
+                  <a class="atlas-champion" href="brand.html" title="БРЭНД"
+                    ><img
+                      src="assets/champions/faces/brand.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БРЭНД</span></a
+                  >
+                  <a class="atlas-champion" href="vi.html" title="ВАЙ"
+                    ><img
+                      src="assets/champions/faces/vi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАЙ</span></a
+                  >
+                  <a class="atlas-champion" href="warwick.html" title="ВАРВИК"
+                    ><img
+                      src="assets/champions/faces/warwick.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАРВИК</span></a
+                  >
+                  <a class="atlas-champion" href="varus.html" title="ВАРУС"
+                    ><img
+                      src="assets/champions/faces/varus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАРУС</span></a
+                  >
+                  <a class="atlas-champion" href="veigar.html" title="ВЕЙГАР"
+                    ><img
+                      src="assets/champions/faces/veigar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЙГАР</span></a
+                  >
+                  <a class="atlas-champion" href="vayne.html" title="ВЕЙН"
+                    ><img
+                      src="assets/champions/faces/vayne.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЙН</span></a
+                  >
+                  <a class="atlas-champion" href="vex.html" title="ВЕКС"
+                    ><img
+                      src="assets/champions/faces/vex.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕКС</span></a
+                  >
+                  <a class="atlas-champion" href="velkoz.html" title="ВЕЛ&#39;КОЗ"
+                    ><img
+                      src="assets/champions/faces/velkoz.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЛ&#39;КОЗ</span></a
+                  >
+                  <a class="atlas-champion" href="viego.html" title="ВИЕГО"
+                    ><img
+                      src="assets/champions/faces/viego.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВИЕГО</span></a
+                  >
+                  <a class="atlas-champion" href="viktor.html" title="ВИКТОР"
+                    ><img
+                      src="assets/champions/faces/viktor.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВИКТОР</span></a
+                  >
+                  <a class="atlas-champion" href="vladimir.html" title="ВЛАДИМИР"
+                    ><img
+                      src="assets/champions/faces/vladimir.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЛАДИМИР</span></a
+                  >
+                  <a class="atlas-champion" href="volibear.html" title="ВОЛИБИР"
+                    ><img
+                      src="assets/champions/faces/volibear.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВОЛИБИР</span></a
+                  >
+                  <a class="atlas-champion" href="wukong.html" title="ВУКОНГ"
+                    ><img
+                      src="assets/champions/faces/wukong.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВУКОНГ</span></a
+                  >
+                  <a class="atlas-champion" href="galio.html" title="ГАЛИО"
+                    ><img
+                      src="assets/champions/faces/galio.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГАЛИО</span></a
+                  >
+                  <a class="atlas-champion" href="garen.html" title="ГАРЕН"
+                    ><img
+                      src="assets/champions/faces/garen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГАРЕН</span></a
+                  >
+                  <a class="atlas-champion" href="gwen.html" title="ГВЕН"
+                    ><img
+                      src="assets/champions/faces/gwen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="hecarim.html" title="ГЕКАРИМ"
+                    ><img
+                      src="assets/champions/faces/hecarim.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГЕКАРИМ</span></a
+                  >
+                  <a class="atlas-champion" href="gnar.html" title="ГНАР"
+                    ><img
+                      src="assets/champions/faces/gnar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГНАР</span></a
+                  >
+                  <a class="atlas-champion" href="gragas.html" title="ГРАГАС"
+                    ><img
+                      src="assets/champions/faces/gragas.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГРАГАС</span></a
+                  >
+                  <a class="atlas-champion" href="graves.html" title="ГРЕЙВЗ"
+                    ><img
+                      src="assets/champions/faces/graves.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГРЕЙВЗ</span></a
+                  >
+                  <a class="atlas-champion" href="darius.html" title="ДАРИУС"
+                    ><img
+                      src="assets/champions/faces/darius.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДАРИУС</span></a
+                  >
+                  <a class="atlas-champion" href="jax.html" title="ДЖАКС"
+                    ><img
+                      src="assets/champions/faces/jax.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖАКС</span></a
+                  >
+                  <a class="atlas-champion" href="jarvan-iv.html" title="ДЖАРВАН IV"
+                    ><img
+                      src="assets/champions/faces/jarvan-iv.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖАРВАН IV</span></a
+                  >
+                  <a class="atlas-champion" href="jayce.html" title="ДЖЕЙС"
+                    ><img
+                      src="assets/champions/faces/jayce.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖЕЙС</span></a
+                  >
+                  <a class="atlas-champion" href="jhin.html" title="ДЖИН"
+                    ><img
+                      src="assets/champions/faces/jhin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖИН</span></a
+                  >
+                  <a class="atlas-champion" href="jinx.html" title="ДЖИНКС"
+                    ><img
+                      src="assets/champions/faces/jinx.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖИНКС</span></a
+                  >
+                  <a class="atlas-champion" href="diana.html" title="ДИАНА"
+                    ><img
+                      src="assets/champions/faces/diana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДИАНА</span></a
+                  >
+                  <a class="atlas-champion" href="dr-mundo.html" title="ДОКТОР МУНДО"
+                    ><img
+                      src="assets/champions/faces/dr-mundo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДОКТОР МУНДО</span></a
+                  >
+                  <a class="atlas-champion" href="draven.html" title="ДРЕЙВЕН"
+                    ><img
+                      src="assets/champions/faces/draven.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДРЕЙВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="yone.html" title="ЁНЭ"
+                    ><img
+                      src="assets/champions/faces/yone.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЁНЭ</span></a
+                  >
+                  <a class="atlas-champion" href="janna.html" title="ЖАННА"
+                    ><img
+                      src="assets/champions/faces/janna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЖАННА</span></a
+                  >
+                  <a class="atlas-champion" href="zyra.html" title="ЗАЙРА"
+                    ><img
+                      src="assets/champions/faces/zyra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗАЙРА</span></a
+                  >
+                  <a class="atlas-champion" href="zed.html" title="ЗЕД"
+                    ><img
+                      src="assets/champions/faces/zed.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗЕД</span></a
+                  >
+                  <a class="atlas-champion" href="zeri.html" title="ЗЕРИ"
+                    ><img
+                      src="assets/champions/faces/zeri.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗЕРИ</span></a
+                  >
+                  <a class="atlas-champion" href="ziggs.html" title="ЗИГГС"
+                    ><img
+                      src="assets/champions/faces/ziggs.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗИГГС</span></a
+                  >
+                  <a class="atlas-champion" href="zilean.html" title="ЗИЛЕАН"
+                    ><img
+                      src="assets/champions/faces/zilean.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗИЛЕАН</span></a
+                  >
+                  <a class="atlas-champion" href="zoe.html" title="ЗОИ"
+                    ><img
+                      src="assets/champions/faces/zoe.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗОИ</span></a
+                  >
+                  <a class="atlas-champion" href="irelia.html" title="ИРЕЛИЯ"
+                    ><img
+                      src="assets/champions/faces/irelia.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ИРЕЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="ksante.html" title="К&#39;Санте"
+                    ><img
+                      src="assets/champions/faces/ksante.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>К&#39;Санте</span></a
+                  >
+                  <a class="atlas-champion" href="khazix.html" title="КА&#39;ЗИКС"
+                    ><img
+                      src="assets/champions/faces/khazix.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КА&#39;ЗИКС</span></a
+                  >
+                  <a class="atlas-champion" href="kayn.html" title="КАИН"
+                    ><img
+                      src="assets/champions/faces/kayn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАИН</span></a
+                  >
+                  <a class="atlas-champion" href="kaisa.html" title="КАЙ&#39;СА"
+                    ><img
+                      src="assets/champions/faces/kaisa.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАЙ&#39;СА</span></a
+                  >
+                  <a class="atlas-champion" href="kalista.html" title="КАЛИСТА"
+                    ><img
+                      src="assets/champions/faces/kalista.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАЛИСТА</span></a
+                  >
+                  <a class="atlas-champion" href="camille.html" title="КАМИЛЛА"
+                    ><img
+                      src="assets/champions/faces/camille.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАМИЛЛА</span></a
+                  >
+                  <a class="atlas-champion" href="karma.html" title="КАРМА"
+                    ><img
+                      src="assets/champions/faces/karma.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАРМА</span></a
+                  >
+                  <a class="atlas-champion" href="kassadin.html" title="КАССАДИН"
+                    ><img
+                      src="assets/champions/faces/kassadin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАССАДИН</span></a
+                  >
+                  <a class="atlas-champion" href="katarina.html" title="КАТАРИНА"
+                    ><img
+                      src="assets/champions/faces/katarina.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАТАРИНА</span></a
+                  >
+                  <a class="atlas-champion" href="kayle.html" title="КЕЙЛ"
+                    ><img
+                      src="assets/champions/faces/kayle.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕЙЛ</span></a
+                  >
+                  <a class="atlas-champion" href="caitlyn.html" title="КЕЙТЛИН"
+                    ><img
+                      src="assets/champions/faces/caitlyn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕЙТЛИН</span></a
+                  >
+                  <a class="atlas-champion" href="kennen.html" title="КЕННЕН"
+                    ><img
+                      src="assets/champions/faces/kennen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕННЕН</span></a
+                  >
+                  <a class="atlas-champion" href="kindred.html" title="КИНДРЕД"
+                    ><img
+                      src="assets/champions/faces/kindred.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КИНДРЕД</span></a
+                  >
+                  <a class="atlas-champion" href="kogmaw.html" title="КОГ&#39;МАО"
+                    ><img
+                      src="assets/champions/faces/kogmaw.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КОГ&#39;МАО</span></a
+                  >
+                  <a class="atlas-champion" href="corki.html" title="КОРКИ"
+                    ><img
+                      src="assets/champions/faces/corki.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КОРКИ</span></a
+                  >
+                  <a class="atlas-champion" href="xin-zhao.html" title="КСИН ЖАО"
+                    ><img
+                      src="assets/champions/faces/xin-zhao.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КСИН ЖАО</span></a
+                  >
+                  <a class="atlas-champion" href="leona.html" title="ЛЕОНА"
+                    ><img
+                      src="assets/champions/faces/leona.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЕОНА</span></a
+                  >
+                  <a class="atlas-champion" href="lee-sin.html" title="ЛИ СИН"
+                    ><img
+                      src="assets/champions/faces/lee-sin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛИ СИН</span></a
+                  >
+                  <a class="atlas-champion" href="lillia.html" title="ЛИЛЛИЯ"
+                    ><img
+                      src="assets/champions/faces/lillia.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛИЛЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="lissandra.html" title="Лиссандра"
+                    ><img
+                      src="assets/champions/faces/lissandra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Лиссандра</span></a
+                  >
+                  <a class="atlas-champion" href="lulu.html" title="ЛУЛУ"
+                    ><img
+                      src="assets/champions/faces/lulu.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛУЛУ</span></a
+                  >
+                  <a class="atlas-champion" href="lux.html" title="ЛЮКС"
+                    ><img
+                      src="assets/champions/faces/lux.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЮКС</span></a
+                  >
+                  <a class="atlas-champion" href="lucian.html" title="ЛЮЦИАН"
+                    ><img
+                      src="assets/champions/faces/lucian.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЮЦИАН</span></a
+                  >
+                  <a class="atlas-champion" href="malphite.html" title="МАЛЬФИТ"
+                    ><img
+                      src="assets/champions/faces/malphite.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАЛЬФИТ</span></a
+                  >
+                  <a class="atlas-champion" href="maokai.html" title="МАОКАЙ"
+                    ><img
+                      src="assets/champions/faces/maokai.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАОКАЙ</span></a
+                  >
+                  <a class="atlas-champion" href="master-yi.html" title="МАСТЕР ЙИ"
+                    ><img
+                      src="assets/champions/faces/master-yi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАСТЕР ЙИ</span></a
+                  >
+                  <a class="atlas-champion" href="milio.html" title="МИЛИО"
+                    ><img
+                      src="assets/champions/faces/milio.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МИЛИО</span></a
+                  >
+                  <a class="atlas-champion" href="miss-fortune.html" title="МИСС ФОРТУНА"
+                    ><img
+                      src="assets/champions/faces/miss-fortune.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МИСС ФОРТУНА</span></a
+                  >
+                  <a class="atlas-champion" href="morgana.html" title="МОРГАНА"
+                    ><img
+                      src="assets/champions/faces/morgana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МОРГАНА</span></a
+                  >
+                  <a class="atlas-champion" href="mordekaiser.html" title="МОРДЕКАЙЗЕР"
+                    ><img
+                      src="assets/champions/faces/mordekaiser.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МОРДЕКАЙЗЕР</span></a
+                  >
+                  <a class="atlas-champion" href="mel.html" title="Мэл"
+                    ><img
+                      src="assets/champions/faces/mel.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Мэл</span></a
+                  >
+                  <a class="atlas-champion" href="nami.html" title="НАМИ"
+                    ><img
+                      src="assets/champions/faces/nami.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАМИ</span></a
+                  >
+                  <a class="atlas-champion" href="nasus.html" title="НАСУС"
+                    ><img
+                      src="assets/champions/faces/nasus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАСУС</span></a
+                  >
+                  <a class="atlas-champion" href="nautilus.html" title="НАУТИЛУС"
+                    ><img
+                      src="assets/champions/faces/nautilus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАУТИЛУС</span></a
+                  >
+                  <a class="atlas-champion" href="nidalee.html" title="НИДАЛИ"
+                    ><img
+                      src="assets/champions/faces/nidalee.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НИДАЛИ</span></a
+                  >
+                  <a class="atlas-champion" href="nilah.html" title="НИЛА"
+                    ><img
+                      src="assets/champions/faces/nilah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НИЛА</span></a
+                  >
+                  <a class="atlas-champion" href="nocturne.html" title="НОКТЮРН"
+                    ><img
+                      src="assets/champions/faces/nocturne.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НОКТЮРН</span></a
+                  >
+                  <a class="atlas-champion" href="norra.html" title="НОРРА"
+                    ><img
+                      src="assets/champions/faces/norra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НОРРА</span></a
+                  >
+                  <a class="atlas-champion" href="nunu-and-willump.html" title="НУНУ и ВИЛЛУМП"
+                    ><img
+                      src="assets/champions/faces/nunu-and-willump.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НУНУ и ВИЛЛУМП</span></a
+                  >
+                  <a class="atlas-champion" href="olaf.html" title="ОЛАФ"
+                    ><img
+                      src="assets/champions/faces/olaf.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОЛАФ</span></a
+                  >
+                  <a class="atlas-champion" href="orianna.html" title="ОРИАННА"
+                    ><img
+                      src="assets/champions/faces/orianna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОРИАННА</span></a
+                  >
+                  <a class="atlas-champion" href="ornn.html" title="ОРН"
+                    ><img
+                      src="assets/champions/faces/ornn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОРН</span></a
+                  >
+                  <a class="atlas-champion" href="pyke.html" title="ПАЙК"
+                    ><img
+                      src="assets/champions/faces/pyke.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПАЙК</span></a
+                  >
+                  <a class="atlas-champion" href="pantheon.html" title="ПАНТЕОН"
+                    ><img
+                      src="assets/champions/faces/pantheon.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПАНТЕОН</span></a
+                  >
+                  <a class="atlas-champion" href="poppy.html" title="ПОППИ"
+                    ><img
+                      src="assets/champions/faces/poppy.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПОППИ</span></a
+                  >
+                  <a class="atlas-champion" href="ryze.html" title="РАЙЗ"
+                    ><img
+                      src="assets/champions/faces/ryze.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАЙЗ</span></a
+                  >
+                  <a class="atlas-champion" href="rumble.html" title="РАМБЛ"
+                    ><img
+                      src="assets/champions/faces/rumble.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАМБЛ</span></a
+                  >
+                  <a class="atlas-champion" href="rammus.html" title="РАММУС"
+                    ><img
+                      src="assets/champions/faces/rammus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАММУС</span></a
+                  >
+                  <a class="atlas-champion" href="rell.html" title="РЕЛЛ"
+                    ><img
+                      src="assets/champions/faces/rell.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕЛЛ</span></a
+                  >
+                  <a class="atlas-champion" href="rengar.html" title="РЕНГАР"
+                    ><img
+                      src="assets/champions/faces/rengar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕНГАР</span></a
+                  >
+                  <a class="atlas-champion" href="renekton.html" title="РЕНЕКТОН"
+                    ><img
+                      src="assets/champions/faces/renekton.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕНЕКТОН</span></a
+                  >
+                  <a class="atlas-champion" href="riven.html" title="РИВЕН"
+                    ><img
+                      src="assets/champions/faces/riven.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РИВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="rakan.html" title="РЭЙКАН"
+                    ><img
+                      src="assets/champions/faces/rakan.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЭЙКАН</span></a
+                  >
+                  <a class="atlas-champion" href="sylas.html" title="САЙЛАС"
+                    ><img
+                      src="assets/champions/faces/sylas.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>САЙЛАС</span></a
+                  >
+                  <a class="atlas-champion" href="samira.html" title="САМИРА"
+                    ><img
+                      src="assets/champions/faces/samira.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>САМИРА</span></a
+                  >
+                  <a class="atlas-champion" href="swain.html" title="СВЕЙН"
+                    ><img
+                      src="assets/champions/faces/swain.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СВЕЙН</span></a
+                  >
+                  <a class="atlas-champion" href="senna.html" title="СЕННА"
+                    ><img
+                      src="assets/champions/faces/senna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕННА</span></a
+                  >
+                  <a class="atlas-champion" href="seraphine.html" title="СЕРАФИНА"
+                    ><img
+                      src="assets/champions/faces/seraphine.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕРАФИНА</span></a
+                  >
+                  <a class="atlas-champion" href="sett.html" title="СЕТТ"
+                    ><img
+                      src="assets/champions/faces/sett.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕТТ</span></a
+                  >
+                  <a class="atlas-champion" href="sivir.html" title="СИВИР"
+                    ><img
+                      src="assets/champions/faces/sivir.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИВИР</span></a
+                  >
+                  <a class="atlas-champion" href="singed.html" title="СИНДЖЕД"
+                    ><img
+                      src="assets/champions/faces/singed.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИНДЖЕД</span></a
+                  >
+                  <a class="atlas-champion" href="syndra.html" title="Синдра"
+                    ><img
+                      src="assets/champions/faces/syndra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Синдра</span></a
+                  >
+                  <a class="atlas-champion" href="sion.html" title="СИОН"
+                    ><img
+                      src="assets/champions/faces/sion.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИОН</span></a
+                  >
+                  <a class="atlas-champion" href="skarner.html" title="СКАРНЕР"
+                    ><img
+                      src="assets/champions/faces/skarner.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СКАРНЕР</span></a
+                  >
+                  <a class="atlas-champion" href="smolder.html" title="СМОЛДЕР"
+                    ><img
+                      src="assets/champions/faces/smolder.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СМОЛДЕР</span></a
+                  >
+                  <a class="atlas-champion" href="sona.html" title="СОНА"
+                    ><img
+                      src="assets/champions/faces/sona.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СОНА</span></a
+                  >
+                  <a class="atlas-champion" href="soraka.html" title="СОРАКА"
+                    ><img
+                      src="assets/champions/faces/soraka.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СОРАКА</span></a
+                  >
+                  <a class="atlas-champion" href="taliyah.html" title="ТАЛИЯ"
+                    ><img
+                      src="assets/champions/faces/taliyah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТАЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="talon.html" title="ТАЛОН"
+                    ><img
+                      src="assets/champions/faces/talon.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТАЛОН</span></a
+                  >
+                  <a class="atlas-champion" href="twisted-fate.html" title="ТВИСТЕД ФЭЙТ"
+                    ><img
+                      src="assets/champions/faces/twisted-fate.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТВИСТЕД ФЭЙТ</span></a
+                  >
+                  <a class="atlas-champion" href="twitch.html" title="ТВИЧ"
+                    ><img
+                      src="assets/champions/faces/twitch.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТВИЧ</span></a
+                  >
+                  <a class="atlas-champion" href="teemo.html" title="ТИМО"
+                    ><img
+                      src="assets/champions/faces/teemo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТИМО</span></a
+                  >
+                  <a class="atlas-champion" href="thresh.html" title="ТРЕШ"
+                    ><img
+                      src="assets/champions/faces/thresh.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРЕШ</span></a
+                  >
+                  <a class="atlas-champion" href="tryndamere.html" title="ТРИНДАМИР"
+                    ><img
+                      src="assets/champions/faces/tryndamere.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРИНДАМИР</span></a
+                  >
+                  <a class="atlas-champion" href="tristana.html" title="ТРИСТАНА"
+                    ><img
+                      src="assets/champions/faces/tristana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРИСТАНА</span></a
+                  >
+                  <a class="atlas-champion" href="urgot.html" title="УРГОТ"
+                    ><img
+                      src="assets/champions/faces/urgot.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>УРГОТ</span></a
+                  >
+                  <a class="atlas-champion" href="fiddlesticks.html" title="ФИДДЛСТИКС"
+                    ><img
+                      src="assets/champions/faces/fiddlesticks.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИДДЛСТИКС</span></a
+                  >
+                  <a class="atlas-champion" href="fizz.html" title="ФИЗЗ"
+                    ><img
+                      src="assets/champions/faces/fizz.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИЗЗ</span></a
+                  >
+                  <a class="atlas-champion" href="fiora.html" title="ФИОРА"
+                    ><img
+                      src="assets/champions/faces/fiora.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИОРА</span></a
+                  >
+                  <a class="atlas-champion" href="hwei.html" title="ХВЭЙ"
+                    ><img
+                      src="assets/champions/faces/hwei.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ХВЭЙ</span></a
+                  >
+                  <a class="atlas-champion" href="heimerdinger.html" title="ХЕЙМЕРДИНГЕР"
+                    ><img
+                      src="assets/champions/faces/heimerdinger.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ХЕЙМЕРДИНГЕР</span></a
+                  >
+                  <a class="atlas-champion" href="chogath.html" title="ЧО&#39;ГАТ"
+                    ><img
+                      src="assets/champions/faces/chogath.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЧО&#39;ГАТ</span></a
+                  >
+                  <a class="atlas-champion" href="xayah.html" title="ШАЯ"
+                    ><img
+                      src="assets/champions/faces/xayah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШАЯ</span></a
+                  >
+                  <a class="atlas-champion" href="shen.html" title="ШЕН"
+                    ><img
+                      src="assets/champions/faces/shen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШЕН</span></a
+                  >
+                  <a class="atlas-champion" href="shyvana.html" title="ШИВАНА"
+                    ><img
+                      src="assets/champions/faces/shyvana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШИВАНА</span></a
+                  >
+                  <a class="atlas-champion" href="evelynn.html" title="ЭВЕЛИНН"
+                    ><img
+                      src="assets/champions/faces/evelynn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭВЕЛИНН</span></a
+                  >
+                  <a class="atlas-champion" href="ezreal.html" title="ЭЗРЕАЛЬ"
+                    ><img
+                      src="assets/champions/faces/ezreal.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭЗРЕАЛЬ</span></a
+                  >
+                  <a class="atlas-champion" href="ekko.html" title="ЭККО"
+                    ><img
+                      src="assets/champions/faces/ekko.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭККО</span></a
+                  >
+                  <a class="atlas-champion" href="annie.html" title="ЭННИ"
+                    ><img
+                      src="assets/champions/faces/annie.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭННИ</span></a
+                  >
+                  <a class="atlas-champion" href="ashe.html" title="ЭШ"
+                    ><img
+                      src="assets/champions/faces/ashe.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭШ</span></a
+                  >
+                  <a class="atlas-champion" href="yuumi.html" title="ЮМИ"
+                    ><img
+                      src="assets/champions/faces/yuumi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЮМИ</span></a
+                  >
+                  <a class="atlas-champion" href="yunara.html" title="ЮНАРА"
+                    ><img
+                      src="assets/champions/faces/yunara.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЮНАРА</span></a
+                  >
+                  <a class="atlas-champion" href="yasuo.html" title="ЯСУО"
+                    ><img
+                      src="assets/champions/faces/yasuo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЯСУО</span></a
+                  >
+                </div>
+                <div class="atlas-champion-group" aria-hidden="true" inert>
+                  <a class="atlas-champion" href="aurora.html" title="АВРОРА"
+                    ><img
+                      src="assets/champions/faces/aurora.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АВРОРА</span></a
+                  >
+                  <a class="atlas-champion" href="akali.html" title="АКАЛИ"
+                    ><img
+                      src="assets/champions/faces/akali.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АКАЛИ</span></a
+                  >
+                  <a class="atlas-champion" href="akshan.html" title="АКШАН"
+                    ><img
+                      src="assets/champions/faces/akshan.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АКШАН</span></a
+                  >
+                  <a class="atlas-champion" href="alistar.html" title="АЛИСТАР"
+                    ><img
+                      src="assets/champions/faces/alistar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АЛИСТАР</span></a
+                  >
+                  <a class="atlas-champion" href="ambessa.html" title="АМБЕССА"
+                    ><img
+                      src="assets/champions/faces/ambessa.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АМБЕССА</span></a
+                  >
+                  <a class="atlas-champion" href="amumu.html" title="АМУМУ"
+                    ><img
+                      src="assets/champions/faces/amumu.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АМУМУ</span></a
+                  >
+                  <a class="atlas-champion" href="ahri.html" title="АРИ"
+                    ><img
+                      src="assets/champions/faces/ahri.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АРИ</span></a
+                  >
+                  <a class="atlas-champion" href="aatrox.html" title="АТРОКС"
+                    ><img
+                      src="assets/champions/faces/aatrox.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АТРОКС</span></a
+                  >
+                  <a class="atlas-champion" href="aurelion-sol.html" title="АУРЕЛИОН СОЛ"
+                    ><img
+                      src="assets/champions/faces/aurelion-sol.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>АУРЕЛИОН СОЛ</span></a
+                  >
+                  <a class="atlas-champion" href="bard.html" title="БАРД"
+                    ><img
+                      src="assets/champions/faces/bard.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БАРД</span></a
+                  >
+                  <a class="atlas-champion" href="blitzcrank.html" title="БЛИЦКРАНК"
+                    ><img
+                      src="assets/champions/faces/blitzcrank.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БЛИЦКРАНК</span></a
+                  >
+                  <a class="atlas-champion" href="braum.html" title="БРАУМ"
+                    ><img
+                      src="assets/champions/faces/braum.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БРАУМ</span></a
+                  >
+                  <a class="atlas-champion" href="brand.html" title="БРЭНД"
+                    ><img
+                      src="assets/champions/faces/brand.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>БРЭНД</span></a
+                  >
+                  <a class="atlas-champion" href="vi.html" title="ВАЙ"
+                    ><img
+                      src="assets/champions/faces/vi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАЙ</span></a
+                  >
+                  <a class="atlas-champion" href="warwick.html" title="ВАРВИК"
+                    ><img
+                      src="assets/champions/faces/warwick.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАРВИК</span></a
+                  >
+                  <a class="atlas-champion" href="varus.html" title="ВАРУС"
+                    ><img
+                      src="assets/champions/faces/varus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВАРУС</span></a
+                  >
+                  <a class="atlas-champion" href="veigar.html" title="ВЕЙГАР"
+                    ><img
+                      src="assets/champions/faces/veigar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЙГАР</span></a
+                  >
+                  <a class="atlas-champion" href="vayne.html" title="ВЕЙН"
+                    ><img
+                      src="assets/champions/faces/vayne.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЙН</span></a
+                  >
+                  <a class="atlas-champion" href="vex.html" title="ВЕКС"
+                    ><img
+                      src="assets/champions/faces/vex.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕКС</span></a
+                  >
+                  <a class="atlas-champion" href="velkoz.html" title="ВЕЛ&#39;КОЗ"
+                    ><img
+                      src="assets/champions/faces/velkoz.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЕЛ&#39;КОЗ</span></a
+                  >
+                  <a class="atlas-champion" href="viego.html" title="ВИЕГО"
+                    ><img
+                      src="assets/champions/faces/viego.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВИЕГО</span></a
+                  >
+                  <a class="atlas-champion" href="viktor.html" title="ВИКТОР"
+                    ><img
+                      src="assets/champions/faces/viktor.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВИКТОР</span></a
+                  >
+                  <a class="atlas-champion" href="vladimir.html" title="ВЛАДИМИР"
+                    ><img
+                      src="assets/champions/faces/vladimir.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВЛАДИМИР</span></a
+                  >
+                  <a class="atlas-champion" href="volibear.html" title="ВОЛИБИР"
+                    ><img
+                      src="assets/champions/faces/volibear.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВОЛИБИР</span></a
+                  >
+                  <a class="atlas-champion" href="wukong.html" title="ВУКОНГ"
+                    ><img
+                      src="assets/champions/faces/wukong.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ВУКОНГ</span></a
+                  >
+                  <a class="atlas-champion" href="galio.html" title="ГАЛИО"
+                    ><img
+                      src="assets/champions/faces/galio.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГАЛИО</span></a
+                  >
+                  <a class="atlas-champion" href="garen.html" title="ГАРЕН"
+                    ><img
+                      src="assets/champions/faces/garen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГАРЕН</span></a
+                  >
+                  <a class="atlas-champion" href="gwen.html" title="ГВЕН"
+                    ><img
+                      src="assets/champions/faces/gwen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="hecarim.html" title="ГЕКАРИМ"
+                    ><img
+                      src="assets/champions/faces/hecarim.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГЕКАРИМ</span></a
+                  >
+                  <a class="atlas-champion" href="gnar.html" title="ГНАР"
+                    ><img
+                      src="assets/champions/faces/gnar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГНАР</span></a
+                  >
+                  <a class="atlas-champion" href="gragas.html" title="ГРАГАС"
+                    ><img
+                      src="assets/champions/faces/gragas.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГРАГАС</span></a
+                  >
+                  <a class="atlas-champion" href="graves.html" title="ГРЕЙВЗ"
+                    ><img
+                      src="assets/champions/faces/graves.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ГРЕЙВЗ</span></a
+                  >
+                  <a class="atlas-champion" href="darius.html" title="ДАРИУС"
+                    ><img
+                      src="assets/champions/faces/darius.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДАРИУС</span></a
+                  >
+                  <a class="atlas-champion" href="jax.html" title="ДЖАКС"
+                    ><img
+                      src="assets/champions/faces/jax.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖАКС</span></a
+                  >
+                  <a class="atlas-champion" href="jarvan-iv.html" title="ДЖАРВАН IV"
+                    ><img
+                      src="assets/champions/faces/jarvan-iv.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖАРВАН IV</span></a
+                  >
+                  <a class="atlas-champion" href="jayce.html" title="ДЖЕЙС"
+                    ><img
+                      src="assets/champions/faces/jayce.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖЕЙС</span></a
+                  >
+                  <a class="atlas-champion" href="jhin.html" title="ДЖИН"
+                    ><img
+                      src="assets/champions/faces/jhin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖИН</span></a
+                  >
+                  <a class="atlas-champion" href="jinx.html" title="ДЖИНКС"
+                    ><img
+                      src="assets/champions/faces/jinx.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДЖИНКС</span></a
+                  >
+                  <a class="atlas-champion" href="diana.html" title="ДИАНА"
+                    ><img
+                      src="assets/champions/faces/diana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДИАНА</span></a
+                  >
+                  <a class="atlas-champion" href="dr-mundo.html" title="ДОКТОР МУНДО"
+                    ><img
+                      src="assets/champions/faces/dr-mundo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДОКТОР МУНДО</span></a
+                  >
+                  <a class="atlas-champion" href="draven.html" title="ДРЕЙВЕН"
+                    ><img
+                      src="assets/champions/faces/draven.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ДРЕЙВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="yone.html" title="ЁНЭ"
+                    ><img
+                      src="assets/champions/faces/yone.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЁНЭ</span></a
+                  >
+                  <a class="atlas-champion" href="janna.html" title="ЖАННА"
+                    ><img
+                      src="assets/champions/faces/janna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЖАННА</span></a
+                  >
+                  <a class="atlas-champion" href="zyra.html" title="ЗАЙРА"
+                    ><img
+                      src="assets/champions/faces/zyra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗАЙРА</span></a
+                  >
+                  <a class="atlas-champion" href="zed.html" title="ЗЕД"
+                    ><img
+                      src="assets/champions/faces/zed.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗЕД</span></a
+                  >
+                  <a class="atlas-champion" href="zeri.html" title="ЗЕРИ"
+                    ><img
+                      src="assets/champions/faces/zeri.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗЕРИ</span></a
+                  >
+                  <a class="atlas-champion" href="ziggs.html" title="ЗИГГС"
+                    ><img
+                      src="assets/champions/faces/ziggs.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗИГГС</span></a
+                  >
+                  <a class="atlas-champion" href="zilean.html" title="ЗИЛЕАН"
+                    ><img
+                      src="assets/champions/faces/zilean.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗИЛЕАН</span></a
+                  >
+                  <a class="atlas-champion" href="zoe.html" title="ЗОИ"
+                    ><img
+                      src="assets/champions/faces/zoe.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЗОИ</span></a
+                  >
+                  <a class="atlas-champion" href="irelia.html" title="ИРЕЛИЯ"
+                    ><img
+                      src="assets/champions/faces/irelia.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ИРЕЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="ksante.html" title="К&#39;Санте"
+                    ><img
+                      src="assets/champions/faces/ksante.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>К&#39;Санте</span></a
+                  >
+                  <a class="atlas-champion" href="khazix.html" title="КА&#39;ЗИКС"
+                    ><img
+                      src="assets/champions/faces/khazix.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КА&#39;ЗИКС</span></a
+                  >
+                  <a class="atlas-champion" href="kayn.html" title="КАИН"
+                    ><img
+                      src="assets/champions/faces/kayn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАИН</span></a
+                  >
+                  <a class="atlas-champion" href="kaisa.html" title="КАЙ&#39;СА"
+                    ><img
+                      src="assets/champions/faces/kaisa.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАЙ&#39;СА</span></a
+                  >
+                  <a class="atlas-champion" href="kalista.html" title="КАЛИСТА"
+                    ><img
+                      src="assets/champions/faces/kalista.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАЛИСТА</span></a
+                  >
+                  <a class="atlas-champion" href="camille.html" title="КАМИЛЛА"
+                    ><img
+                      src="assets/champions/faces/camille.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАМИЛЛА</span></a
+                  >
+                  <a class="atlas-champion" href="karma.html" title="КАРМА"
+                    ><img
+                      src="assets/champions/faces/karma.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАРМА</span></a
+                  >
+                  <a class="atlas-champion" href="kassadin.html" title="КАССАДИН"
+                    ><img
+                      src="assets/champions/faces/kassadin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАССАДИН</span></a
+                  >
+                  <a class="atlas-champion" href="katarina.html" title="КАТАРИНА"
+                    ><img
+                      src="assets/champions/faces/katarina.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КАТАРИНА</span></a
+                  >
+                  <a class="atlas-champion" href="kayle.html" title="КЕЙЛ"
+                    ><img
+                      src="assets/champions/faces/kayle.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕЙЛ</span></a
+                  >
+                  <a class="atlas-champion" href="caitlyn.html" title="КЕЙТЛИН"
+                    ><img
+                      src="assets/champions/faces/caitlyn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕЙТЛИН</span></a
+                  >
+                  <a class="atlas-champion" href="kennen.html" title="КЕННЕН"
+                    ><img
+                      src="assets/champions/faces/kennen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КЕННЕН</span></a
+                  >
+                  <a class="atlas-champion" href="kindred.html" title="КИНДРЕД"
+                    ><img
+                      src="assets/champions/faces/kindred.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КИНДРЕД</span></a
+                  >
+                  <a class="atlas-champion" href="kogmaw.html" title="КОГ&#39;МАО"
+                    ><img
+                      src="assets/champions/faces/kogmaw.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КОГ&#39;МАО</span></a
+                  >
+                  <a class="atlas-champion" href="corki.html" title="КОРКИ"
+                    ><img
+                      src="assets/champions/faces/corki.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КОРКИ</span></a
+                  >
+                  <a class="atlas-champion" href="xin-zhao.html" title="КСИН ЖАО"
+                    ><img
+                      src="assets/champions/faces/xin-zhao.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>КСИН ЖАО</span></a
+                  >
+                  <a class="atlas-champion" href="leona.html" title="ЛЕОНА"
+                    ><img
+                      src="assets/champions/faces/leona.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЕОНА</span></a
+                  >
+                  <a class="atlas-champion" href="lee-sin.html" title="ЛИ СИН"
+                    ><img
+                      src="assets/champions/faces/lee-sin.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛИ СИН</span></a
+                  >
+                  <a class="atlas-champion" href="lillia.html" title="ЛИЛЛИЯ"
+                    ><img
+                      src="assets/champions/faces/lillia.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛИЛЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="lissandra.html" title="Лиссандра"
+                    ><img
+                      src="assets/champions/faces/lissandra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Лиссандра</span></a
+                  >
+                  <a class="atlas-champion" href="lulu.html" title="ЛУЛУ"
+                    ><img
+                      src="assets/champions/faces/lulu.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛУЛУ</span></a
+                  >
+                  <a class="atlas-champion" href="lux.html" title="ЛЮКС"
+                    ><img
+                      src="assets/champions/faces/lux.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЮКС</span></a
+                  >
+                  <a class="atlas-champion" href="lucian.html" title="ЛЮЦИАН"
+                    ><img
+                      src="assets/champions/faces/lucian.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЛЮЦИАН</span></a
+                  >
+                  <a class="atlas-champion" href="malphite.html" title="МАЛЬФИТ"
+                    ><img
+                      src="assets/champions/faces/malphite.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАЛЬФИТ</span></a
+                  >
+                  <a class="atlas-champion" href="maokai.html" title="МАОКАЙ"
+                    ><img
+                      src="assets/champions/faces/maokai.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАОКАЙ</span></a
+                  >
+                  <a class="atlas-champion" href="master-yi.html" title="МАСТЕР ЙИ"
+                    ><img
+                      src="assets/champions/faces/master-yi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МАСТЕР ЙИ</span></a
+                  >
+                  <a class="atlas-champion" href="milio.html" title="МИЛИО"
+                    ><img
+                      src="assets/champions/faces/milio.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МИЛИО</span></a
+                  >
+                  <a class="atlas-champion" href="miss-fortune.html" title="МИСС ФОРТУНА"
+                    ><img
+                      src="assets/champions/faces/miss-fortune.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МИСС ФОРТУНА</span></a
+                  >
+                  <a class="atlas-champion" href="morgana.html" title="МОРГАНА"
+                    ><img
+                      src="assets/champions/faces/morgana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МОРГАНА</span></a
+                  >
+                  <a class="atlas-champion" href="mordekaiser.html" title="МОРДЕКАЙЗЕР"
+                    ><img
+                      src="assets/champions/faces/mordekaiser.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>МОРДЕКАЙЗЕР</span></a
+                  >
+                  <a class="atlas-champion" href="mel.html" title="Мэл"
+                    ><img
+                      src="assets/champions/faces/mel.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Мэл</span></a
+                  >
+                  <a class="atlas-champion" href="nami.html" title="НАМИ"
+                    ><img
+                      src="assets/champions/faces/nami.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАМИ</span></a
+                  >
+                  <a class="atlas-champion" href="nasus.html" title="НАСУС"
+                    ><img
+                      src="assets/champions/faces/nasus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАСУС</span></a
+                  >
+                  <a class="atlas-champion" href="nautilus.html" title="НАУТИЛУС"
+                    ><img
+                      src="assets/champions/faces/nautilus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НАУТИЛУС</span></a
+                  >
+                  <a class="atlas-champion" href="nidalee.html" title="НИДАЛИ"
+                    ><img
+                      src="assets/champions/faces/nidalee.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НИДАЛИ</span></a
+                  >
+                  <a class="atlas-champion" href="nilah.html" title="НИЛА"
+                    ><img
+                      src="assets/champions/faces/nilah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НИЛА</span></a
+                  >
+                  <a class="atlas-champion" href="nocturne.html" title="НОКТЮРН"
+                    ><img
+                      src="assets/champions/faces/nocturne.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НОКТЮРН</span></a
+                  >
+                  <a class="atlas-champion" href="norra.html" title="НОРРА"
+                    ><img
+                      src="assets/champions/faces/norra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НОРРА</span></a
+                  >
+                  <a class="atlas-champion" href="nunu-and-willump.html" title="НУНУ и ВИЛЛУМП"
+                    ><img
+                      src="assets/champions/faces/nunu-and-willump.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>НУНУ и ВИЛЛУМП</span></a
+                  >
+                  <a class="atlas-champion" href="olaf.html" title="ОЛАФ"
+                    ><img
+                      src="assets/champions/faces/olaf.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОЛАФ</span></a
+                  >
+                  <a class="atlas-champion" href="orianna.html" title="ОРИАННА"
+                    ><img
+                      src="assets/champions/faces/orianna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОРИАННА</span></a
+                  >
+                  <a class="atlas-champion" href="ornn.html" title="ОРН"
+                    ><img
+                      src="assets/champions/faces/ornn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ОРН</span></a
+                  >
+                  <a class="atlas-champion" href="pyke.html" title="ПАЙК"
+                    ><img
+                      src="assets/champions/faces/pyke.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПАЙК</span></a
+                  >
+                  <a class="atlas-champion" href="pantheon.html" title="ПАНТЕОН"
+                    ><img
+                      src="assets/champions/faces/pantheon.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПАНТЕОН</span></a
+                  >
+                  <a class="atlas-champion" href="poppy.html" title="ПОППИ"
+                    ><img
+                      src="assets/champions/faces/poppy.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ПОППИ</span></a
+                  >
+                  <a class="atlas-champion" href="ryze.html" title="РАЙЗ"
+                    ><img
+                      src="assets/champions/faces/ryze.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАЙЗ</span></a
+                  >
+                  <a class="atlas-champion" href="rumble.html" title="РАМБЛ"
+                    ><img
+                      src="assets/champions/faces/rumble.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАМБЛ</span></a
+                  >
+                  <a class="atlas-champion" href="rammus.html" title="РАММУС"
+                    ><img
+                      src="assets/champions/faces/rammus.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РАММУС</span></a
+                  >
+                  <a class="atlas-champion" href="rell.html" title="РЕЛЛ"
+                    ><img
+                      src="assets/champions/faces/rell.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕЛЛ</span></a
+                  >
+                  <a class="atlas-champion" href="rengar.html" title="РЕНГАР"
+                    ><img
+                      src="assets/champions/faces/rengar.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕНГАР</span></a
+                  >
+                  <a class="atlas-champion" href="renekton.html" title="РЕНЕКТОН"
+                    ><img
+                      src="assets/champions/faces/renekton.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЕНЕКТОН</span></a
+                  >
+                  <a class="atlas-champion" href="riven.html" title="РИВЕН"
+                    ><img
+                      src="assets/champions/faces/riven.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РИВЕН</span></a
+                  >
+                  <a class="atlas-champion" href="rakan.html" title="РЭЙКАН"
+                    ><img
+                      src="assets/champions/faces/rakan.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>РЭЙКАН</span></a
+                  >
+                  <a class="atlas-champion" href="sylas.html" title="САЙЛАС"
+                    ><img
+                      src="assets/champions/faces/sylas.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>САЙЛАС</span></a
+                  >
+                  <a class="atlas-champion" href="samira.html" title="САМИРА"
+                    ><img
+                      src="assets/champions/faces/samira.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>САМИРА</span></a
+                  >
+                  <a class="atlas-champion" href="swain.html" title="СВЕЙН"
+                    ><img
+                      src="assets/champions/faces/swain.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СВЕЙН</span></a
+                  >
+                  <a class="atlas-champion" href="senna.html" title="СЕННА"
+                    ><img
+                      src="assets/champions/faces/senna.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕННА</span></a
+                  >
+                  <a class="atlas-champion" href="seraphine.html" title="СЕРАФИНА"
+                    ><img
+                      src="assets/champions/faces/seraphine.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕРАФИНА</span></a
+                  >
+                  <a class="atlas-champion" href="sett.html" title="СЕТТ"
+                    ><img
+                      src="assets/champions/faces/sett.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СЕТТ</span></a
+                  >
+                  <a class="atlas-champion" href="sivir.html" title="СИВИР"
+                    ><img
+                      src="assets/champions/faces/sivir.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИВИР</span></a
+                  >
+                  <a class="atlas-champion" href="singed.html" title="СИНДЖЕД"
+                    ><img
+                      src="assets/champions/faces/singed.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИНДЖЕД</span></a
+                  >
+                  <a class="atlas-champion" href="syndra.html" title="Синдра"
+                    ><img
+                      src="assets/champions/faces/syndra.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>Синдра</span></a
+                  >
+                  <a class="atlas-champion" href="sion.html" title="СИОН"
+                    ><img
+                      src="assets/champions/faces/sion.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СИОН</span></a
+                  >
+                  <a class="atlas-champion" href="skarner.html" title="СКАРНЕР"
+                    ><img
+                      src="assets/champions/faces/skarner.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СКАРНЕР</span></a
+                  >
+                  <a class="atlas-champion" href="smolder.html" title="СМОЛДЕР"
+                    ><img
+                      src="assets/champions/faces/smolder.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СМОЛДЕР</span></a
+                  >
+                  <a class="atlas-champion" href="sona.html" title="СОНА"
+                    ><img
+                      src="assets/champions/faces/sona.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СОНА</span></a
+                  >
+                  <a class="atlas-champion" href="soraka.html" title="СОРАКА"
+                    ><img
+                      src="assets/champions/faces/soraka.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>СОРАКА</span></a
+                  >
+                  <a class="atlas-champion" href="taliyah.html" title="ТАЛИЯ"
+                    ><img
+                      src="assets/champions/faces/taliyah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТАЛИЯ</span></a
+                  >
+                  <a class="atlas-champion" href="talon.html" title="ТАЛОН"
+                    ><img
+                      src="assets/champions/faces/talon.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТАЛОН</span></a
+                  >
+                  <a class="atlas-champion" href="twisted-fate.html" title="ТВИСТЕД ФЭЙТ"
+                    ><img
+                      src="assets/champions/faces/twisted-fate.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТВИСТЕД ФЭЙТ</span></a
+                  >
+                  <a class="atlas-champion" href="twitch.html" title="ТВИЧ"
+                    ><img
+                      src="assets/champions/faces/twitch.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТВИЧ</span></a
+                  >
+                  <a class="atlas-champion" href="teemo.html" title="ТИМО"
+                    ><img
+                      src="assets/champions/faces/teemo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТИМО</span></a
+                  >
+                  <a class="atlas-champion" href="thresh.html" title="ТРЕШ"
+                    ><img
+                      src="assets/champions/faces/thresh.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРЕШ</span></a
+                  >
+                  <a class="atlas-champion" href="tryndamere.html" title="ТРИНДАМИР"
+                    ><img
+                      src="assets/champions/faces/tryndamere.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРИНДАМИР</span></a
+                  >
+                  <a class="atlas-champion" href="tristana.html" title="ТРИСТАНА"
+                    ><img
+                      src="assets/champions/faces/tristana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ТРИСТАНА</span></a
+                  >
+                  <a class="atlas-champion" href="urgot.html" title="УРГОТ"
+                    ><img
+                      src="assets/champions/faces/urgot.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>УРГОТ</span></a
+                  >
+                  <a class="atlas-champion" href="fiddlesticks.html" title="ФИДДЛСТИКС"
+                    ><img
+                      src="assets/champions/faces/fiddlesticks.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИДДЛСТИКС</span></a
+                  >
+                  <a class="atlas-champion" href="fizz.html" title="ФИЗЗ"
+                    ><img
+                      src="assets/champions/faces/fizz.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИЗЗ</span></a
+                  >
+                  <a class="atlas-champion" href="fiora.html" title="ФИОРА"
+                    ><img
+                      src="assets/champions/faces/fiora.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ФИОРА</span></a
+                  >
+                  <a class="atlas-champion" href="hwei.html" title="ХВЭЙ"
+                    ><img
+                      src="assets/champions/faces/hwei.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ХВЭЙ</span></a
+                  >
+                  <a class="atlas-champion" href="heimerdinger.html" title="ХЕЙМЕРДИНГЕР"
+                    ><img
+                      src="assets/champions/faces/heimerdinger.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ХЕЙМЕРДИНГЕР</span></a
+                  >
+                  <a class="atlas-champion" href="chogath.html" title="ЧО&#39;ГАТ"
+                    ><img
+                      src="assets/champions/faces/chogath.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЧО&#39;ГАТ</span></a
+                  >
+                  <a class="atlas-champion" href="xayah.html" title="ШАЯ"
+                    ><img
+                      src="assets/champions/faces/xayah.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШАЯ</span></a
+                  >
+                  <a class="atlas-champion" href="shen.html" title="ШЕН"
+                    ><img
+                      src="assets/champions/faces/shen.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШЕН</span></a
+                  >
+                  <a class="atlas-champion" href="shyvana.html" title="ШИВАНА"
+                    ><img
+                      src="assets/champions/faces/shyvana.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ШИВАНА</span></a
+                  >
+                  <a class="atlas-champion" href="evelynn.html" title="ЭВЕЛИНН"
+                    ><img
+                      src="assets/champions/faces/evelynn.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭВЕЛИНН</span></a
+                  >
+                  <a class="atlas-champion" href="ezreal.html" title="ЭЗРЕАЛЬ"
+                    ><img
+                      src="assets/champions/faces/ezreal.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭЗРЕАЛЬ</span></a
+                  >
+                  <a class="atlas-champion" href="ekko.html" title="ЭККО"
+                    ><img
+                      src="assets/champions/faces/ekko.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭККО</span></a
+                  >
+                  <a class="atlas-champion" href="annie.html" title="ЭННИ"
+                    ><img
+                      src="assets/champions/faces/annie.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭННИ</span></a
+                  >
+                  <a class="atlas-champion" href="ashe.html" title="ЭШ"
+                    ><img
+                      src="assets/champions/faces/ashe.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЭШ</span></a
+                  >
+                  <a class="atlas-champion" href="yuumi.html" title="ЮМИ"
+                    ><img
+                      src="assets/champions/faces/yuumi.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЮМИ</span></a
+                  >
+                  <a class="atlas-champion" href="yunara.html" title="ЮНАРА"
+                    ><img
+                      src="assets/champions/faces/yunara.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЮНАРА</span></a
+                  >
+                  <a class="atlas-champion" href="yasuo.html" title="ЯСУО"
+                    ><img
+                      src="assets/champions/faces/yasuo.webp"
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    /><span>ЯСУО</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="atlas-heading">
             <div>
-              <p class="eyebrow">ГАЙДЫ</p>
-              <h2>Мэл, Лиссандра и Синдра</h2>
+              <h1 id="overview-title">Карта Ущелья</h1>
+              <p>Нажмите на значок, чтобы открыть информацию</p>
             </div>
-            <a href="champions.html">Все чемпионы ↗</a>
+            <div class="atlas-layers" role="group" aria-label="Слой карты">
+              <button type="button" data-layer="objects" aria-pressed="true">Объекты</button
+              ><button type="button" data-layer="lanes" aria-pressed="false">Линии</button>
+            </div>
           </div>
-          <div class="champ-grid">
-            <article class="champ-card" style="--accent: #e4bb71">
-              <a href="mel.html"
-                ><img src="assets/mel.jpg" alt="Мэл" loading="lazy" />
-                <div class="champ-gradient"></div>
-                <span class="champ-role">МИД · МАГ</span>
-                <div class="champ-caption">
-                  <small>Отражение души</small>
-                  <h3>Мэл</h3>
-                  <span>Открыть гайд <b>↗</b></span>
-                </div></a
-              ><button
-                class="favorite"
-                data-favorite="mel"
-                aria-label="Добавить Мэл в избранное"
-                aria-pressed="false"
-              >
-                ☆
-              </button>
-            </article>
-            <article class="champ-card" style="--accent: #81d8ee">
-              <a href="lissandra.html"
-                ><img src="assets/lissandra.jpg" alt="Лиссандра" loading="lazy" />
-                <div class="champ-gradient"></div>
-                <span class="champ-role">МИД · МАГ</span>
-                <div class="champ-caption">
-                  <small>Ледяная ведьма</small>
-                  <h3>Лиссандра</h3>
-                  <span>Открыть гайд <b>↗</b></span>
-                </div></a
-              ><button
-                class="favorite"
-                data-favorite="lissandra"
-                aria-label="Добавить Лиссандра в избранное"
-                aria-pressed="false"
-              >
-                ☆
-              </button>
-            </article>
-            <article class="champ-card" style="--accent: #ba9af8">
-              <a href="syndra.html"
-                ><img src="assets/syndra.jpg" alt="Синдра" loading="lazy" />
-                <div class="champ-gradient"></div>
-                <span class="champ-role">МИД · МАГ</span>
-                <div class="champ-caption">
-                  <small>Темная властительница</small>
-                  <h3>Синдра</h3>
-                  <span>Открыть гайд <b>↗</b></span>
-                </div></a
-              ><button
-                class="favorite"
-                data-favorite="syndra"
-                aria-label="Добавить Синдра в избранное"
-                aria-pressed="false"
-              >
-                ☆
-              </button>
-            </article>
+          <div class="atlas-layout">
+            <div class="atlas-left">
+              <div class="atlas-map" aria-label="Интерактивная карта Wild Rift">
+                <div class="atlas-scene">
+                  <img
+                    class="atlas-map-image"
+                    src="assets/overview/wild-rift-map-clean.jpg"
+                    width="800"
+                    height="446"
+                    alt="Базовая карта Wild Rift: линии, река и лесные лагеря"
+                    fetchpriority="high"
+                  /><svg class="atlas-paths" viewBox="0 0 800 446" aria-hidden="true">
+                    <path data-route="baron" d="M110 370 Q140 285 170 140 Q190 45 280 38 L615 38" />
+                    <path data-route="mid" d="M110 370 Q290 265 625 65" />
+                    <path
+                      data-route="dragon"
+                      d="M110 370 C225 400 400 405 575 390 C650 382 699 344 705 285 L705 143 Q705 109 674 84"
+                    />
+                  </svg>
+                  <div class="atlas-pins"></div>
+                </div>
+                <div class="atlas-map-top">
+                  <span class="atlas-map-tag">КАРТА WILD RIFT</span
+                  ><span class="atlas-map-side">Синяя сторона</span>
+                </div>
+                <div class="atlas-map-bottom">
+                  <span class="atlas-selected-label">Выбран объект</span>
+                </div>
+              </div>
+              <div class="atlas-map-caption">
+                <span>Базовая карта · игровой материал Riot Games</span
+                ><span>Иония: стены и кусты отличаются</span>
+              </div>
+              <div class="atlas-phases" role="group" aria-label="Этап матча">
+                <button type="button" data-phase="start" aria-pressed="false">
+                  <span>01</span> Начало игры</button
+                ><button type="button" data-phase="objectives" aria-pressed="true">
+                  <span>02</span> Первые объекты</button
+                ><button type="button" data-phase="middle" aria-pressed="false">
+                  <span>03</span> Середина игры</button
+                ><button type="button" data-phase="late" aria-pressed="false">
+                  <span>04</span> Поздняя игра
+                </button>
+              </div>
+              <p class="atlas-phase-note" aria-live="polite"></p>
+              <details class="atlas-object-menu">
+                <summary>Все объекты карты <span aria-hidden="true">＋</span></summary>
+                <div class="atlas-object-list" role="group" aria-label="Все объекты карты"></div>
+              </details>
+            </div>
+            <aside class="atlas-inspector" aria-labelledby="atlas-detail-title">
+              <figure class="atlas-detail-photo" hidden>
+                <img alt="" decoding="async" width="600" height="360" />
+              </figure>
+              <div class="atlas-detail-art" aria-hidden="true"></div>
+              <div class="atlas-detail-content" aria-live="polite">
+                <p class="atlas-detail-type"></p>
+                <h2 id="atlas-detail-title"></h2>
+                <p class="atlas-detail-intro"></p>
+                <dl class="atlas-times"></dl>
+                <p class="atlas-timing-note"></p>
+                <a class="button atlas-detail-link" href="timers.html"
+                  >Открыть таймеры <span>↗</span></a
+                >
+                <details class="atlas-advice">
+                  <summary>Подсказки по объекту</summary>
+                  <ul></ul>
+                </details>
+              </div>
+            </aside>
           </div>
-        </section>
-        <section class="bottom-grid">
-          <div class="panel patch-feature">
-            <p class="eyebrow">ПОСЛЕДНИЙ НАЙДЕННЫЙ ПАТЧ</p>
-            <span class="patch-number">7.3f</span>
-            <h3>Сайлас и новый баланс</h3>
-            <p>
-              Новый чемпион Сайлас, изменения чемпионов и предметов, корректировки леса и AAA ARAM.
-            </p>
-            <a href="patches.html" class="text-button">Читать разбор →</a>
-          </div>
-          <div class="panel">
-            <p class="eyebrow">ПОДБОР ПРЕДМЕТОВ</p>
-            <h2>Выбор предметов<br />по ситуации</h2>
-            <p>
-              Дистанция, контроль и угроза от врага меняют приоритеты. В гайдах мы объясняем выбор и
-              отделяем советы от проверенных чисел.
-            </p>
-            <a href="items.html" class="text-button">Разобраться в предметах →</a>
+
+          <div class="atlas-destinations">
+            <a href="champions.html"
+              ><img src="assets/lanes/mid.png" alt="" />
+              <div>
+                <small>КАТАЛОГ</small>
+                <h2>Выбор чемпиона</h2>
+              </div>
+              <span>↗</span></a
+            ><a href="matchups.html"
+              ><img src="assets/lanes/baron.png" alt="" />
+              <div>
+                <small>МАТЧАПЫ</small>
+                <h2>Контрпики</h2>
+              </div>
+              <span>↗</span></a
+            ><a href="timers.html#practice"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="13" r="8" />
+                <path d="M12 8v5l3 2M9 2h6" />
+              </svg>
+              <div>
+                <small>ПРАКТИКА</small>
+                <h2>Тренировка таймингов</h2>
+              </div>
+              <span>↗</span></a
+            >
           </div>
         </section>
       </main>
