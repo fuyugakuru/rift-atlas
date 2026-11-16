@@ -22789,14 +22789,9 @@
           "id": "227",
           "items": [
             {
-              "name": "Boots of Mana",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
-              "icon": "assets/builds/items/boots-of-mana.png"
-            },
-            {
-              "name": "Liandry's Torment",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-              "icon": "assets/builds/items/liandrys-torment.png"
+              "name": "Plated Steelcaps",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+              "icon": "assets/builds/items/plated-steelcaps.png"
             },
             {
               "name": "Riftmaker",
@@ -22804,19 +22799,24 @@
               "icon": "assets/builds/items/riftmaker.png"
             },
             {
-              "name": "Hextech Rocketbelt",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/hextech-rocketbelt.png",
-              "icon": "assets/builds/items/hextech-rocketbelt.png"
+              "name": "Liandry's Torment",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
+              "icon": "assets/builds/items/liandrys-torment.png"
             },
             {
-              "name": "Bloodletter's Curse",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/bloodletters-curse.png",
-              "icon": "assets/builds/items/bloodletters-curse.png"
+              "name": "Unending Despair",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/unending-despair.png",
+              "icon": "assets/builds/items/unending-despair.png"
             },
             {
-              "name": "Rabadon's Deathcap",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-              "icon": "assets/builds/items/rabadons-deathcap.png"
+              "name": "Thornmail",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+              "icon": "assets/builds/items/thornmail.png"
+            },
+            {
+              "name": "Amaranth's Twinguard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+              "icon": "assets/builds/items/amaranths-twinguard.png"
             }
           ],
           "starting": [
@@ -22828,26 +22828,36 @@
           ],
           "core": [
             {
-              "name": "Liandry's Torment",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-              "icon": "assets/builds/items/liandrys-torment.png"
-            },
-            {
               "name": "Riftmaker",
               "sourceIcon": "https://www.wildriftfire.com/images/items/riftmaker.png",
               "icon": "assets/builds/items/riftmaker.png"
             },
             {
-              "name": "Hextech Rocketbelt",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/hextech-rocketbelt.png",
-              "icon": "assets/builds/items/hextech-rocketbelt.png"
+              "name": "Liandry's Torment",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
+              "icon": "assets/builds/items/liandrys-torment.png"
+            },
+            {
+              "name": "Unending Despair",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/unending-despair.png",
+              "icon": "assets/builds/items/unending-despair.png"
+            },
+            {
+              "name": "Thornmail",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+              "icon": "assets/builds/items/thornmail.png"
+            },
+            {
+              "name": "Amaranth's Twinguard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+              "icon": "assets/builds/items/amaranths-twinguard.png"
             }
           ],
           "boots": [
             {
-              "name": "Boots of Mana",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
-              "icon": "assets/builds/items/boots-of-mana.png"
+              "name": "Plated Steelcaps",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+              "icon": "assets/builds/items/plated-steelcaps.png"
             }
           ],
           "runes": [
@@ -22867,92 +22877,76 @@
               "icon": "assets/builds/runes/second-wind.png"
             },
             {
-              "name": "Overgrowth",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/overgrowth.png",
-              "icon": "assets/builds/runes/overgrowth.png"
+              "name": "Revitalize",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/revitalize.png",
+              "icon": "assets/builds/runes/revitalize.png"
             },
             {
-              "name": "Transcendence",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/transcendence.png",
-              "icon": "assets/builds/runes/transcendence.png"
+              "name": "Legend: Haste",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-haste.png",
+              "icon": "assets/builds/runes/legend-haste.png"
             }
           ],
           "spells": [
             {
+              "name": "Teleport",
+              "sourceIcon": "https://www.wildriftfire.com/images/summoners/teleport.png",
+              "icon": "assets/builds/summoners/teleport.png"
+            },
+            {
               "name": "Flash",
               "sourceIcon": "https://www.wildriftfire.com/images/summoners/flash.png",
               "icon": "assets/builds/summoners/flash.png"
-            },
-            {
-              "name": "Ignite",
-              "sourceIcon": "https://www.wildriftfire.com/images/summoners/ignite.png",
-              "icon": "assets/builds/summoners/ignite.png"
             }
           ],
           "lane": "solo",
           "label": "Solo",
           "situational": [
             {
-              "label": "vs Shielding",
+              "label": "vs Ability Power",
               "replace": {
-                "name": "Rabadon's Deathcap",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-                "icon": "assets/builds/items/rabadons-deathcap.png"
+                "name": "Plated Steelcaps",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+                "icon": "assets/builds/items/plated-steelcaps.png"
               },
               "item": {
-                "name": "Oceanid's Trident",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
-                "icon": "assets/builds/items/oceanids-trident.png"
-              }
-            },
-            {
-              "label": "vs Crowd Control",
-              "replace": {
-                "name": "Rabadon's Deathcap",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-                "icon": "assets/builds/items/rabadons-deathcap.png"
+                "name": "Mercury's Treads",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/mercurys-treads.png",
+                "icon": "assets/builds/items/mercurys-treads.png"
               },
-              "item": {
-                "name": "Banshee's Veil",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/banshees-veil.png",
-                "icon": "assets/builds/items/banshees-veil.png"
-              }
+              "additionalSwaps": [
+                {
+                  "replace": {
+                    "name": "Thornmail",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+                    "icon": "assets/builds/items/thornmail.png"
+                  },
+                  "item": {
+                    "name": "Warmog's Armor",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/warmogs-armor.png",
+                    "icon": "assets/builds/items/warmogs-armor.png"
+                  }
+                }
+              ]
             }
           ],
-          "situationalRunes": [
-            {
-              "label": "vs Crowd Control",
-              "replace": {
-                "name": "Overgrowth",
-                "sourceIcon": "https://www.wildriftfire.com/images/runes/overgrowth.png",
-                "icon": "assets/builds/runes/overgrowth.png"
-              },
-              "item": {
-                "name": "Perseverance",
-                "sourceIcon": "https://www.wildriftfire.com/images/runes/perseverance.png",
-                "icon": "assets/builds/runes/perseverance.png"
-              }
-            }
-          ]
+          "situationalRunes": [],
+          "source": "community-review",
+          "sourceLabel": "Сборка игроков",
+          "note": ""
         },
         {
           "id": "core-JUNGLE",
           "label": "Jungle",
           "lane": "jungle",
-          "source": "https://wildriftcore.com/en/champions/mordekaiser/builds/",
-          "sourceLabel": "Wild Rift Core",
+          "source": "community-review",
+          "sourceLabel": "Сборка игроков",
           "patch": "7.3",
-          "runeSource": "https://www.wildriftmeta.com/champions/mordekaiser/builds/jungle/",
           "items": [
             {
-              "name": "Boots of Dynamism",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-              "icon": "assets/builds/items/boots-of-dynamism.png"
-            },
-            {
-              "name": "Liandry's Torment",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-              "icon": "assets/builds/items/liandrys-torment.png"
+              "name": "Plated Steelcaps",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+              "icon": "assets/builds/items/plated-steelcaps.png"
             },
             {
               "name": "Riftmaker",
@@ -22960,19 +22954,24 @@
               "icon": "assets/builds/items/riftmaker.png"
             },
             {
-              "name": "Rabadon's Deathcap",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-              "icon": "assets/builds/items/rabadons-deathcap.png"
+              "name": "Liandry's Torment",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
+              "icon": "assets/builds/items/liandrys-torment.png"
             },
             {
-              "name": "Void Staff",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
-              "icon": "assets/builds/items/void-staff.png"
+              "name": "Unending Despair",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/unending-despair.png",
+              "icon": "assets/builds/items/unending-despair.png"
             },
             {
-              "name": "Zhonya's Hourglass",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-              "icon": "assets/builds/items/zhonyas-hourglass.png"
+              "name": "Thornmail",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+              "icon": "assets/builds/items/thornmail.png"
+            },
+            {
+              "name": "Amaranth's Twinguard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+              "icon": "assets/builds/items/amaranths-twinguard.png"
             }
           ],
           "starting": [
@@ -22984,36 +22983,36 @@
           ],
           "core": [
             {
-              "name": "Liandry's Torment",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-              "icon": "assets/builds/items/liandrys-torment.png"
-            },
-            {
               "name": "Riftmaker",
               "sourceIcon": "https://www.wildriftfire.com/images/items/riftmaker.png",
               "icon": "assets/builds/items/riftmaker.png"
             },
             {
-              "name": "Rabadon's Deathcap",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-              "icon": "assets/builds/items/rabadons-deathcap.png"
+              "name": "Liandry's Torment",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
+              "icon": "assets/builds/items/liandrys-torment.png"
             },
             {
-              "name": "Void Staff",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
-              "icon": "assets/builds/items/void-staff.png"
+              "name": "Unending Despair",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/unending-despair.png",
+              "icon": "assets/builds/items/unending-despair.png"
             },
             {
-              "name": "Zhonya's Hourglass",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-              "icon": "assets/builds/items/zhonyas-hourglass.png"
+              "name": "Thornmail",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+              "icon": "assets/builds/items/thornmail.png"
+            },
+            {
+              "name": "Amaranth's Twinguard",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/amaranths-twinguard.png",
+              "icon": "assets/builds/items/amaranths-twinguard.png"
             }
           ],
           "boots": [
             {
-              "name": "Boots of Dynamism",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-              "icon": "assets/builds/items/boots-of-dynamism.png"
+              "name": "Plated Steelcaps",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+              "icon": "assets/builds/items/plated-steelcaps.png"
             }
           ],
           "runes": [
@@ -23023,24 +23022,24 @@
               "icon": "assets/builds/runes/conqueror.png"
             },
             {
-              "name": "Battle Zeal",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/battle-zeal.png",
-              "icon": "assets/builds/runes/battle-zeal.png"
+              "name": "Demolish",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/demolish.png",
+              "icon": "assets/builds/runes/demolish.png"
             },
             {
-              "name": "Cut Down",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
-              "icon": "assets/builds/runes/cut-down.png"
+              "name": "Second Wind",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/second-wind.png",
+              "icon": "assets/builds/runes/second-wind.png"
             },
             {
-              "name": "Legend: Alacrity",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
-              "icon": "assets/builds/runes/legend-alacrity.png"
+              "name": "Revitalize",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/revitalize.png",
+              "icon": "assets/builds/runes/revitalize.png"
             },
             {
-              "name": "Bone Plating",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/bone-plating.png",
-              "icon": "assets/builds/runes/bone-plating.png"
+              "name": "Legend: Haste",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-haste.png",
+              "icon": "assets/builds/runes/legend-haste.png"
             }
           ],
           "spells": [
@@ -23055,144 +23054,37 @@
               "icon": "assets/builds/summoners/smite.png"
             }
           ],
-          "situational": [],
-          "situationalRunes": [],
-          "equipmentVariants": [
+          "situational": [
             {
-              "key": "pen",
-              "label": "Magic pen",
-              "items": [
+              "label": "vs Ability Power",
+              "replace": {
+                "name": "Plated Steelcaps",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/plated-steelcaps.png",
+                "icon": "assets/builds/items/plated-steelcaps.png"
+              },
+              "item": {
+                "name": "Mercury's Treads",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/mercurys-treads.png",
+                "icon": "assets/builds/items/mercurys-treads.png"
+              },
+              "additionalSwaps": [
                 {
-                  "name": "Boots of Dynamism",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-                  "icon": "assets/builds/items/boots-of-dynamism.png"
-                },
-                {
-                  "name": "Liandry's Torment",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-                  "icon": "assets/builds/items/liandrys-torment.png"
-                },
-                {
-                  "name": "Void Staff",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
-                  "icon": "assets/builds/items/void-staff.png"
-                },
-                {
-                  "name": "Riftmaker",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/riftmaker.png",
-                  "icon": "assets/builds/items/riftmaker.png"
-                },
-                {
-                  "name": "Rabadon's Deathcap",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
-                  "icon": "assets/builds/items/rabadons-deathcap.png"
-                },
-                {
-                  "name": "Zhonya's Hourglass",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-                  "icon": "assets/builds/items/zhonyas-hourglass.png"
+                  "replace": {
+                    "name": "Thornmail",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/thornmail.png",
+                    "icon": "assets/builds/items/thornmail.png"
+                  },
+                  "item": {
+                    "name": "Warmog's Armor",
+                    "sourceIcon": "https://www.wildriftfire.com/images/items/warmogs-armor.png",
+                    "icon": "assets/builds/items/warmogs-armor.png"
+                  }
                 }
-              ],
-              "runes": [
-                {
-                  "name": "Conqueror",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
-                  "icon": "assets/builds/runes/conqueror.png"
-                },
-                {
-                  "name": "Battle Zeal",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/battle-zeal.png",
-                  "icon": "assets/builds/runes/battle-zeal.png"
-                },
-                {
-                  "name": "Cut Down",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
-                  "icon": "assets/builds/runes/cut-down.png"
-                },
-                {
-                  "name": "Legend: Alacrity",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
-                  "icon": "assets/builds/runes/legend-alacrity.png"
-                },
-                {
-                  "name": "Bone Plating",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/bone-plating.png",
-                  "icon": "assets/builds/runes/bone-plating.png"
-                }
-              ],
-              "runeSource": "https://www.wildriftmeta.com/champions/mordekaiser/builds/jungle/",
-              "runeChecked": "2026-11-09",
-              "situationalRunes": []
-            },
-            {
-              "key": "safety",
-              "label": "Safety",
-              "items": [
-                {
-                  "name": "Boots of Dynamism",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-dynamism.png",
-                  "icon": "assets/builds/items/boots-of-dynamism.png"
-                },
-                {
-                  "name": "Liandry's Torment",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/liandrys-torment.png",
-                  "icon": "assets/builds/items/liandrys-torment.png"
-                },
-                {
-                  "name": "Zhonya's Hourglass",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-                  "icon": "assets/builds/items/zhonyas-hourglass.png"
-                },
-                {
-                  "name": "Riftmaker",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/riftmaker.png",
-                  "icon": "assets/builds/items/riftmaker.png"
-                },
-                {
-                  "name": "Rylai's Crystal Scepter",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/rylais-crystal-scepter.png",
-                  "icon": "assets/builds/items/rylais-crystal-scepter.png"
-                },
-                {
-                  "name": "Banshee's Veil",
-                  "sourceIcon": "https://www.wildriftfire.com/images/items/banshees-veil.png",
-                  "icon": "assets/builds/items/banshees-veil.png"
-                }
-              ],
-              "runes": [
-                {
-                  "name": "Conqueror",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/conqueror.png",
-                  "icon": "assets/builds/runes/conqueror.png"
-                },
-                {
-                  "name": "Battle Zeal",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/battle-zeal.png",
-                  "icon": "assets/builds/runes/battle-zeal.png"
-                },
-                {
-                  "name": "Cut Down",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/cut-down.png",
-                  "icon": "assets/builds/runes/cut-down.png"
-                },
-                {
-                  "name": "Legend: Alacrity",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/legend-alacrity.png",
-                  "icon": "assets/builds/runes/legend-alacrity.png"
-                },
-                {
-                  "name": "Bone Plating",
-                  "sourceIcon": "https://www.wildriftfire.com/images/runes/bone-plating.png",
-                  "icon": "assets/builds/runes/bone-plating.png"
-                }
-              ],
-              "runeSource": "https://www.wildriftmeta.com/champions/mordekaiser/builds/jungle/",
-              "runeChecked": "2026-11-09",
-              "situationalRunes": []
+              ]
             }
           ],
-          "runeStatus": "cross-checked",
-          "setupSource": "https://www.wildriftmeta.com/champions/mordekaiser/builds/jungle/"
+          "situationalRunes": [],
+          "note": ""
         }
       ],
       "additionalSources": [
@@ -37702,9 +37594,9 @@
           "id": "46",
           "items": [
             {
-              "name": "Boots of Mana",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
-              "icon": "assets/builds/items/boots-of-mana.png"
+              "name": "Infinity Orb",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+              "icon": "assets/builds/items/infinity-orb.png"
             },
             {
               "name": "Lich Bane",
@@ -37717,19 +37609,19 @@
               "icon": "assets/builds/items/rabadons-deathcap.png"
             },
             {
+              "name": "Boots of Mana",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+              "icon": "assets/builds/items/boots-of-mana.png"
+            },
+            {
+              "name": "Stormsurge",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+              "icon": "assets/builds/items/stormsurge.png"
+            },
+            {
               "name": "Void Staff",
               "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
               "icon": "assets/builds/items/void-staff.png"
-            },
-            {
-              "name": "Infinity Orb",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
-              "icon": "assets/builds/items/infinity-orb.png"
-            },
-            {
-              "name": "Zhonya's Hourglass",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-              "icon": "assets/builds/items/zhonyas-hourglass.png"
             }
           ],
           "starting": [
@@ -37741,6 +37633,11 @@
           ],
           "core": [
             {
+              "name": "Infinity Orb",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+              "icon": "assets/builds/items/infinity-orb.png"
+            },
+            {
               "name": "Lich Bane",
               "sourceIcon": "https://www.wildriftfire.com/images/items/lich-bane.png",
               "icon": "assets/builds/items/lich-bane.png"
@@ -37749,11 +37646,6 @@
               "name": "Rabadon's Deathcap",
               "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
               "icon": "assets/builds/items/rabadons-deathcap.png"
-            },
-            {
-              "name": "Void Staff",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
-              "icon": "assets/builds/items/void-staff.png"
             }
           ],
           "boots": [
@@ -37765,9 +37657,9 @@
           ],
           "runes": [
             {
-              "name": "Fleet Footwork",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/fleet-footwork.png",
-              "icon": "assets/builds/runes/fleet-footwork.png"
+              "name": "Electrocute",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/electrocute.png",
+              "icon": "assets/builds/runes/electrocute.png"
             },
             {
               "name": "Sudden Impact",
@@ -37775,9 +37667,9 @@
               "icon": "assets/builds/runes/sudden-impact.png"
             },
             {
-              "name": "Chain Assault",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/chain-assault.png",
-              "icon": "assets/builds/runes/chain-assault.png"
+              "name": "Tyrant",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/tyrant.png",
+              "icon": "assets/builds/runes/tyrant.png"
             },
             {
               "name": "Eyeball Collector",
@@ -37785,9 +37677,9 @@
               "icon": "assets/builds/runes/eyeball-collector.png"
             },
             {
-              "name": "Absolute Focus",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/absolute-focus.png",
-              "icon": "assets/builds/runes/absolute-focus.png"
+              "name": "Coup de Grace",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+              "icon": "assets/builds/runes/coup-de-grace.png"
             }
           ],
           "spells": [
@@ -37804,47 +37696,36 @@
           ],
           "situational": [
             {
-              "label": "vs Shielding",
+              "label": "vs Healing",
               "replace": {
-                "name": "Zhonya's Hourglass",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-                "icon": "assets/builds/items/zhonyas-hourglass.png"
+                "name": "Stormsurge",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+                "icon": "assets/builds/items/stormsurge.png"
               },
               "item": {
-                "name": "Oceanid's Trident",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
-                "icon": "assets/builds/items/oceanids-trident.png"
+                "name": "Morellonomicon",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+                "icon": "assets/builds/items/morellonomicon.png"
               }
             },
             {
-              "label": "vs Crowd Control",
+              "label": "vs Burst Damage",
               "replace": {
+                "name": "Stormsurge",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+                "icon": "assets/builds/items/stormsurge.png"
+              },
+              "item": {
                 "name": "Zhonya's Hourglass",
                 "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
                 "icon": "assets/builds/items/zhonyas-hourglass.png"
-              },
-              "item": {
-                "name": "Banshee's Veil",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/banshees-veil.png",
-                "icon": "assets/builds/items/banshees-veil.png"
               }
             }
           ],
-          "situationalRunes": [
-            {
-              "label": "vs Burst Damage",
-              "replace": {
-                "name": "Absolute Focus",
-                "sourceIcon": "https://www.wildriftfire.com/images/runes/absolute-focus.png",
-                "icon": "assets/builds/runes/absolute-focus.png"
-              },
-              "item": {
-                "name": "Bone Plating",
-                "sourceIcon": "https://www.wildriftfire.com/images/runes/bone-plating.png",
-                "icon": "assets/builds/runes/bone-plating.png"
-              }
-            }
-          ]
+          "situationalRunes": [],
+          "source": "community-review",
+          "sourceLabel": "Сборка игроков",
+          "note": "Предметы и руны со скриншота владельца сайта. Улучшение ботинок вынесено отдельно."
         },
         {
           "label": "Jungle",
@@ -37852,9 +37733,9 @@
           "id": "240",
           "items": [
             {
-              "name": "Boots of Mana",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
-              "icon": "assets/builds/items/boots-of-mana.png"
+              "name": "Infinity Orb",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+              "icon": "assets/builds/items/infinity-orb.png"
             },
             {
               "name": "Lich Bane",
@@ -37867,19 +37748,19 @@
               "icon": "assets/builds/items/rabadons-deathcap.png"
             },
             {
+              "name": "Boots of Mana",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/boots-of-mana.png",
+              "icon": "assets/builds/items/boots-of-mana.png"
+            },
+            {
+              "name": "Stormsurge",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+              "icon": "assets/builds/items/stormsurge.png"
+            },
+            {
               "name": "Void Staff",
               "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
               "icon": "assets/builds/items/void-staff.png"
-            },
-            {
-              "name": "Infinity Orb",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
-              "icon": "assets/builds/items/infinity-orb.png"
-            },
-            {
-              "name": "Zhonya's Hourglass",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-              "icon": "assets/builds/items/zhonyas-hourglass.png"
             }
           ],
           "starting": [
@@ -37891,6 +37772,11 @@
           ],
           "core": [
             {
+              "name": "Infinity Orb",
+              "sourceIcon": "https://www.wildriftfire.com/images/items/infinity-orb.png",
+              "icon": "assets/builds/items/infinity-orb.png"
+            },
+            {
               "name": "Lich Bane",
               "sourceIcon": "https://www.wildriftfire.com/images/items/lich-bane.png",
               "icon": "assets/builds/items/lich-bane.png"
@@ -37899,11 +37785,6 @@
               "name": "Rabadon's Deathcap",
               "sourceIcon": "https://www.wildriftfire.com/images/items/rabadons-deathcap.png",
               "icon": "assets/builds/items/rabadons-deathcap.png"
-            },
-            {
-              "name": "Void Staff",
-              "sourceIcon": "https://www.wildriftfire.com/images/items/void-staff.png",
-              "icon": "assets/builds/items/void-staff.png"
             }
           ],
           "boots": [
@@ -37915,9 +37796,9 @@
           ],
           "runes": [
             {
-              "name": "Fleet Footwork",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/fleet-footwork.png",
-              "icon": "assets/builds/runes/fleet-footwork.png"
+              "name": "Electrocute",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/electrocute.png",
+              "icon": "assets/builds/runes/electrocute.png"
             },
             {
               "name": "Sudden Impact",
@@ -37925,9 +37806,9 @@
               "icon": "assets/builds/runes/sudden-impact.png"
             },
             {
-              "name": "Hubris",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/hubris.png",
-              "icon": "assets/builds/runes/hubris.png"
+              "name": "Tyrant",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/tyrant.png",
+              "icon": "assets/builds/runes/tyrant.png"
             },
             {
               "name": "Eyeball Collector",
@@ -37935,9 +37816,9 @@
               "icon": "assets/builds/runes/eyeball-collector.png"
             },
             {
-              "name": "Absolute Focus",
-              "sourceIcon": "https://www.wildriftfire.com/images/runes/absolute-focus.png",
-              "icon": "assets/builds/runes/absolute-focus.png"
+              "name": "Coup de Grace",
+              "sourceIcon": "https://www.wildriftfire.com/images/runes/coup-de-grace.png",
+              "icon": "assets/builds/runes/coup-de-grace.png"
             }
           ],
           "spells": [
@@ -37954,33 +37835,36 @@
           ],
           "situational": [
             {
-              "label": "vs Shielding",
+              "label": "vs Healing",
               "replace": {
-                "name": "Zhonya's Hourglass",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
-                "icon": "assets/builds/items/zhonyas-hourglass.png"
+                "name": "Stormsurge",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+                "icon": "assets/builds/items/stormsurge.png"
               },
               "item": {
-                "name": "Oceanid's Trident",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/oceanids-trident.png",
-                "icon": "assets/builds/items/oceanids-trident.png"
+                "name": "Morellonomicon",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/morellonomicon.png",
+                "icon": "assets/builds/items/morellonomicon.png"
               }
             },
             {
-              "label": "vs Crowd Control",
+              "label": "vs Burst Damage",
               "replace": {
+                "name": "Stormsurge",
+                "sourceIcon": "https://www.wildriftfire.com/images/items/stormsurge.png",
+                "icon": "assets/builds/items/stormsurge.png"
+              },
+              "item": {
                 "name": "Zhonya's Hourglass",
                 "sourceIcon": "https://www.wildriftfire.com/images/items/zhonyas-hourglass.png",
                 "icon": "assets/builds/items/zhonyas-hourglass.png"
-              },
-              "item": {
-                "name": "Banshee's Veil",
-                "sourceIcon": "https://www.wildriftfire.com/images/items/banshees-veil.png",
-                "icon": "assets/builds/items/banshees-veil.png"
               }
             }
           ],
-          "situationalRunes": []
+          "situationalRunes": [],
+          "source": "community-review",
+          "sourceLabel": "Сборка игроков",
+          "note": "Предметы и руны со скриншота владельца сайта. Улучшение ботинок вынесено отдельно."
         }
       ],
       "additionalSources": [
