@@ -376,3 +376,6 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
  dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
  dialog.addEventListener('close',()=>{if(!document.querySelector('.matchup-dialog[open]'))document.body.classList.remove('matchup-modal-open');dialog.querySelectorAll('details[open]').forEach(d=>d.open=false);});
 });
+
+// Общие цвета в статических и динамических описаниях.
+(()=>{const script=document.createElement("script");script.src="stat-colors.js";script.defer=true;document.head.append(script);})();
