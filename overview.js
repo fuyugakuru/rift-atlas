@@ -437,16 +437,10 @@
       return (
         '<img class="atlas-monster-image" src="' + item.image + '" alt="" width="32" height="32">'
       );
-    const x = item.kind === "minions" ? 84.5 : item.icon === "tower" ? 31.4 : item.x;
-    const y = item.kind === "minions" ? 74.5 : item.icon === "tower" ? 67.3 : item.y;
-    return (
-      '<span class="atlas-map-badge" style="background-position:' +
-      (15.5 - x * 8) +
-      "px " +
-      (17 - y * 4.46) +
-      'px" aria-hidden="true"></span>'
-    );
+    const key=item.kind==='minions'?'minions':item.icon==='tower'?'tower':item.kind==='structure'?(item.name.startsWith('Нексус')?'nexus':'fountain'):Object.entries(objects).find(([,v])=>v===item)?.[0];
+    return '<img class="atlas-vector-badge" src="assets/overview/icons/'+key+'.svg" alt="" width="32" height="36">';
   }
+
   const phases = {
     start: {
       label: "Начало игры",

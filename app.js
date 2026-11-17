@@ -389,3 +389,23 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
     const date=el.querySelector('small');if(date)date.textContent=currentPatch.version+' · '+currentPatch.released;
   });
 })();
+// Private friendship notifications, loaded after account initialization.
+function loadFriendNotifications(){
+ if(!document.querySelector('.topbar'))return;
+ const css=document.createElement('link');css.rel='stylesheet';css.href='friend-notifications.css';document.head.append(css);
+ const script=document.createElement('script');script.src='friend-notifications.js';document.body.append(script);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadFriendNotifications,{once:true});else loadFriendNotifications();
+
+// Saved community builds: account-owned bookmarks, separate from authored builds.
+function loadSavedBuilds(){
+ const css=document.createElement('link');css.rel='stylesheet';css.href='saved-builds.css';document.head.append(css);
+ const script=document.createElement('script');script.src='saved-builds.js';document.body.append(script);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadSavedBuilds,{once:true});else loadSavedBuilds();
+
+function loadBuildFeedback(){
+ const css=document.createElement('link');css.rel='stylesheet';css.href='build-feedback.css';document.head.append(css);
+ const script=document.createElement('script');script.src='build-feedback.js';document.body.append(script);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadBuildFeedback,{once:true});else loadBuildFeedback();

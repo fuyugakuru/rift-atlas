@@ -491,3 +491,17 @@ a.pb-author:hover strong { color:#d8b2f1; }
 @media(max-width:800px){.public-profile-hero .profile-avatar-frame>.pb-author-avatar{width:83px;height:83px;}.public-profile-hero .profile-hero-actions{margin:0;}}
 @media(max-width:480px){.public-profile-hero .profile-avatar-frame>.pb-author-avatar{width:70px;height:70px;border-radius:13px;}.public-profile-hero .profile-hero-actions{width:100%;justify-content:flex-start;}.profile-friends-tile{padding:5px 9px;}.profile-stat-cell{white-space:normal;}.unified-profile-page .public-favorite-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 .profile-hero-bottom { justify-content:flex-start; }
+
+.pb-build-text-fields{display:grid;gap:12px;margin-bottom:20px}.pb-build-text-fields label{display:grid;gap:7px;color:#d9cce8;font-size:13px}.pb-build-text-fields input,.pb-build-text-fields textarea{box-sizing:border-box;width:100%;min-width:0;padding:10px 12px;border:1px solid #655077;border-radius:8px;background:#14131e;color:#eee7f8;font:inherit}.pb-build-text-fields textarea{resize:vertical;min-height:86px}.pb-build-text-fields input:focus,.pb-build-text-fields textarea:focus{outline:2px solid #af91d8;outline-offset:2px}.pb-build-text-count{font-size:11px;color:#a49caf}.pb-build-title{margin:13px 0 9px;font-size:16px;overflow-wrap:anywhere}.pb-build-description{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.65;color:#beb5cb;margin:8px 0 13px}.pb-build-explanation{margin:5px 0 13px}.pb-build-explanation summary{font-size:12px;color:#d8baff;cursor:pointer}
+
+.player-search-section h2{margin-top:0}.player-search-form{display:grid;gap:8px;margin:17px 0}.player-search-form label{font-size:13px;color:#c8b9d8}.player-search-form>div{display:flex;gap:10px}.player-search-form input{min-width:0;flex:1;padding:10px 12px;background:#14131e;border:1px solid #655077;border-radius:8px;color:#eee7f8;font:inherit}.player-search-form input:focus{outline:2px solid #af91d8;outline-offset:2px}.player-search-results .social-person{gap:12px;flex-wrap:wrap}.player-search-results .pb-author{min-width:0}.player-search-results .pb-author strong{overflow-wrap:anywhere}@media(max-width:480px){.player-search-form>div{gap:7px}.player-search-form input{width:100%;font-size:14px}.player-search-results .social-person>.pb-button{margin-left:46px;font-size:12px}}
+
+/* Friend tools belong to the friends page; privacy belongs to profile settings. */
+.account-friends-view #account-member > :not(.social-account):not(.player-search-section):not(.friends-page-back){display:none!important}
+.account-friends-view .friends-page-back{display:inline-flex;margin-bottom:18px}
+.social-account[hidden]{display:none!important}
+.profile-visibility-settings{border-top:1px solid #76608744;margin-top:22px;padding-top:18px}
+.profile-visibility-settings h3{font-size:16px;margin:0 0 12px}
+.profile-visibility-settings .visibility-controls{display:grid;gap:10px}
+.profile-visibility-settings .visibility-controls label{display:flex;align-items:center;gap:9px;font-size:13px}
+.public-friends .player-search-section{margin:20px 0}

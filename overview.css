@@ -1559,3 +1559,14 @@
 .atlas-wildrift-logo{width:164px;height:96px;padding-left:18px;opacity:1}
 @media(max-width:850px){.atlas-wildrift-logo{width:125px;height:78px;padding-left:12px}}
 @media(max-width:600px){.atlas-wildrift-logo{width:106px;height:65px;padding-left:0;border-left:0}}
+
+.atlas-pin .atlas-vector-badge,.atlas-detail-art .atlas-vector-badge{width:30px;height:34px;max-width:none;display:block;object-fit:contain;filter:none}.atlas-pin .atlas-vector-badge{pointer-events:none}@media(max-width:600px){.rift-overview[data-layer="objects"] .atlas-pin{width:30px;height:34px}.atlas-pin .atlas-vector-badge{width:26px;height:30px}}
+/* Compact map markers on phones; detail cards retain their size. */
+@media(max-width:600px){
+ .rift-overview[data-layer="objects"] .atlas-pin{width:24px;height:26px}
+ .atlas-pin .atlas-vector-badge{width:18px;height:21px}
+ .atlas-pin .atlas-monster-image{width:20px;height:20px}
+ .rift-overview[data-layer="objects"] .atlas-pin[aria-pressed="true"]{outline-width:1px;outline-offset:0}
+ .rift-overview[data-layer="lanes"] .atlas-pin{width:27px;height:29px}
+ .rift-overview[data-layer="lanes"] .atlas-pin>img{width:18px;height:18px}
+}

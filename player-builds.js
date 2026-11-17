@@ -52,6 +52,12 @@
     actions = section.querySelector(".pb-actions"),
     stats = section.querySelector(".pb-stats"),
     count = section.querySelector(".pb-count");
+  const buildText=el('div','pb-build-text-fields');
+  buildText.innerHTML='<label>Название сборки <input class="pb-build-title-input" type="text" maxlength="60" placeholder="Например: Сплитпуш против танков"></label><label>Как играть и когда брать <textarea class="pb-build-description-input" rows="3" maxlength="600" placeholder="Коротко объясни замысел сборки и ситуативные замены"></textarea></label><small class="pb-build-text-count">Необязательно · название до 60, описание до 600 символов</small>';
+  editor.prepend(buildText);
+  const buildTitleInput=buildText.querySelector('input'),buildDescriptionInput=buildText.querySelector('textarea');
+  for(const field of [buildTitleInput,buildDescriptionInput])field.addEventListener('input',()=>{dirty=true;});
+  function restoreBuildText(build){buildTitleInput.value=build?.title||'';buildDescriptionInput.value=build?.description||'';}
   for (const lane of champion.lanes) {
     const o = el("option", "", laneNames[lane] || lane);
     o.value = lane;
@@ -109,7 +115,7 @@
     editing = true;
     editor.hidden = false;
     renderSlots();
-    itemSlots.querySelector("button")?.focus();
+    buildTitleInput.focus();
   });
   heading.append(create);
   const dialog = el("dialog", "pb-dialog");
@@ -278,6 +284,7 @@
       items = saved ? [...saved.items] : Array(6).fill(null);
       runes = saved?.runes.length ? [...saved.runes] : Array(5).fill(null);
       spells = saved?.spells?.length ? [...saved.spells] : Array(2).fill(null);
+      restoreBuildText(saved);
       notify("");
     }),
     clearRunes = button("Без рун", () => {
@@ -306,7 +313,8 @@
     }
     if (saved) {
       const box = el("div", "pb-summary");
-      box.append(el("strong", "", "Моя сборка"));
+      box.append(el("strong", "", saved.title || "Моя сборка"));
+      if(saved.description)box.append(el("p","pb-build-description",saved.description));
       const row = el("div", "pb-selected");
       for (const key of saved.items) {
         const a = assets.get(key);
@@ -357,6 +365,7 @@
     userId = uid;
     loadFailed = false;
     saved = null;
+    restoreBuildText(null);
     editing = false;
     dirty = false;
     editor.hidden = true;
@@ -370,7 +379,7 @@
       const { data, error } = await timeout(
         client
           .from("player_builds")
-          .select("items,runes,spells,updated_at")
+          .select("items,runes,spells,title,description,updated_at")
           .eq("user_id", uid)
           .eq("champion_id", id)
           .eq("lane", lane)
@@ -380,6 +389,7 @@
       if (error) throw error;
       if (turn !== generation) return;
       saved = data;
+      restoreBuildText(data);
       items = data ? [...data.items] : items;
       runes = data?.runes.length ? [...data.runes] : runes;
       spells = data?.spells?.length ? [...data.spells] : Array(2).fill(null);
@@ -552,6 +562,8 @@
       notify("Выбери шесть разных предметов.", true);
       return;
     }
+    const buildTitle=buildTitleInput.value.trim(),buildDescription=buildDescriptionInput.value.trim();
+    if([...buildTitle].length>60||[...buildDescription].length>600){notify('Название — до 60 символов, описание — до 600.',true);return;}
     const selectedSpells = spells.filter(Boolean);
     if (selectedSpells.length !== 2 || new Set(selectedSpells).size !== 2) {
       notify("Выбери два разных заклинания.", true);
@@ -586,6 +598,8 @@
         items: [...items],
         runes: [...selectedRunes],
         spells: [...selectedSpells],
+        title: buildTitle,
+        description: buildDescription,
       };
     busy = true;
     editor.inert = true;

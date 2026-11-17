@@ -84,9 +84,13 @@
       "pb-saved-note",
       "Обновлено " + (Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString("ru-RU")),
     );
-    article.append(heading, items);
+    article.append(heading);
+    if(build.title)article.append(el('h3','pb-build-title',build.title));
+    if(build.description){const explanation=el('details','pb-build-explanation');explanation.append(el('summary','','Как играть'),el('p','pb-build-description',build.description));article.append(explanation);}
+    article.append(items);
     if (runes.children.length) article.append(runes);
     article.append(updated, link);
+    article.dataset.buildFeedback=JSON.stringify({profile:null,champion:build.champion_id,lane:build.lane,patch:build.patch});
     return article;
   }
   async function load(reset = false) {
@@ -115,7 +119,7 @@
       const result = await Promise.race([
         account.client
           .from("player_builds")
-          .select("champion_id,lane,patch,items,runes,spells,updated_at", { count: "exact" })
+          .select("champion_id,lane,patch,items,runes,spells,title,description,updated_at", { count: "exact" })
           .eq("user_id", next)
           .order("updated_at", { ascending: false })
           .order("champion_id")

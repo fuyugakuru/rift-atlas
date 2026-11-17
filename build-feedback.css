@@ -1,0 +1,125 @@
+/* Руны и заклинания в одной компактной строке. */
+.pb-build-loadout {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 16px;
+}
+.pb-build-loadout .pb-author-runes,
+.pb-build-loadout .pb-author-spells {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+.pb-build-loadout .pb-author-spells {
+  padding-left: 12px;
+  border-left: 1px solid #65537266;
+}
+.pb-build-loadout img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.pb-build-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pb-build-actions .pb-save-build {
+  margin: 0;
+}
+.pb-save-count {
+  min-width: 20px;
+  font-size: 12px;
+  color: #c6b0df;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.pb-vote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 48px;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid #615072;
+  background: #201a2a;
+  color: #bcaece;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.pb-vote svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+.pb-vote-dislike svg {
+  transform: rotate(180deg);
+}
+.pb-vote-like[aria-pressed="true"] {
+  color: #9ae0b3;
+  border-color: #588c6b;
+  background: #1d3328;
+}
+.pb-vote-dislike[aria-pressed="true"] {
+  color: #efa3b1;
+  border-color: #9e5a70;
+  background: #3b2230;
+}
+.pb-vote:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.pb-vote:focus-visible {
+  outline: 2px solid #ceb0f4;
+  outline-offset: 3px;
+}
+.pb-feedback-note,
+.pb-build-actions .saved-build-note {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 12px;
+  color: #c9afd8;
+}
+.pb-feedback-note:empty {
+  display: none;
+}
+@media (max-width: 600px) {
+  .pb-build-actions {
+    gap: 6px;
+  }
+  .pb-build-actions .pb-save-build {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .pb-vote {
+    padding: 6px 8px;
+    min-width: 42px;
+  }
+  .pb-build-loadout {
+    gap: 9px;
+  }
+  .pb-build-loadout .pb-author-runes,
+  .pb-build-loadout .pb-author-spells {
+    gap: 5px;
+  }
+  .pb-build-loadout .pb-author-spells {
+    padding-left: 9px;
+  }
+  .pb-build-loadout img {
+    width: 26px;
+    height: 26px;
+  }
+}
+.pb-build-actions .saved-build-note,
+.pb-feedback-note {
+  order: 10;
+}

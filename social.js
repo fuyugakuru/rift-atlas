@@ -51,10 +51,112 @@
     a.append(avatar(p.avatar), el("strong", "", p.nickname));
     return a;
   }
+  function createPlayerSearch(parent) {
+    const searchSection = el("section", "player-builds player-search-section");
+    searchSection.innerHTML =
+      '<h2>Найти игрока</h2><form class="player-search-form"><label for="player-search-nickname">Ник на Rift Atlas</label><div><input id="player-search-nickname" type="search" minlength="2" maxlength="32" autocomplete="off" placeholder="Введи минимум 2 символа" required><button class="pb-button" type="submit">Найти</button></div></form><p class="pb-status player-search-status" role="status" aria-live="polite">Найди игрока и открой его профиль, чтобы добавить в друзья.</p><div class="social-list player-search-results"></div>';
+    parent.append(searchSection);
+    const searchForm = searchSection.querySelector("form"),
+      searchInput = searchForm.querySelector("input"),
+      searchSubmit = searchForm.querySelector("button"),
+      searchStatus = searchSection.querySelector(".player-search-status"),
+      searchResults = searchSection.querySelector(".player-search-results");
+    let searchEpoch = 0,
+      searchOffset = 0,
+      searchQuery = "",
+      searchBusy = false,
+      searchUserId = account.user?.id;
+    const searchMore = button("Показать ещё", () => findPlayers(false));
+    searchMore.hidden = true;
+    searchSection.append(searchMore);
+    function clearPlayerSearch() {
+      searchEpoch++;
+      searchBusy = false;
+      searchOffset = 0;
+      searchQuery = "";
+      searchResults.replaceChildren();
+      searchMore.hidden = true;
+      searchSubmit.disabled = false;
+      searchStatus.textContent = "Найди игрока и открой его профиль, чтобы добавить в друзья.";
+    }
+    searchInput.addEventListener("input", clearPlayerSearch);
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      findPlayers(true);
+    });
+    async function findPlayers(reset) {
+      if (account.loading) {
+        searchStatus.textContent = "Подожди, профиль ещё загружается.";
+        return;
+      }
+      if (!account.user) {
+        searchStatus.textContent = "Войди в аккаунт для поиска игроков.";
+        return;
+      }
+      searchUserId = account.user.id;
+      const query = searchInput.value.trim();
+      if ([...query].length < 2 || [...query].length > 32) {
+        searchStatus.textContent = "Введи от 2 до 32 символов ника.";
+        return;
+      }
+      if (reset) {
+        searchEpoch++;
+        searchOffset = 0;
+        searchQuery = query;
+        searchResults.replaceChildren();
+        searchBusy = false;
+      }
+      if (searchBusy) return;
+      searchBusy = true;
+      const turn = searchEpoch,
+        user = account.user.id;
+      searchSubmit.disabled = true;
+      searchMore.disabled = true;
+      searchStatus.textContent = "Ищем игроков…";
+      try {
+        const data = await rpc("search_players", { p_query: searchQuery, p_offset: searchOffset });
+        if (turn !== searchEpoch || account.user?.id !== user) return;
+        for (const player of data.players || []) {
+          const row = el("div", "social-person");
+          row.append(author(player));
+          const open = el("a", "pb-button", "Открыть профиль");
+          open.href = "player.html?id=" + encodeURIComponent(player.id);
+          row.append(open);
+          searchResults.append(row);
+        }
+        searchOffset += (data.players || []).length;
+        searchStatus.textContent = data.total
+          ? "Найдено: " + data.total + " · показано " + searchOffset
+          : "Никого не нашли. Проверь ник или попробуй его часть.";
+        searchMore.hidden = !data.has_more;
+        searchMore.textContent = "Показать ещё";
+      } catch {
+        if (turn === searchEpoch) {
+          searchStatus.textContent = "Не удалось выполнить поиск. Попробуй ещё раз.";
+          searchMore.hidden = true;
+        }
+      } finally {
+        if (turn === searchEpoch) {
+          searchBusy = false;
+          searchSubmit.disabled = false;
+          searchMore.disabled = false;
+        }
+      }
+    }
+    window.addEventListener("rift-account-ready", () => {
+      if (searchUserId !== account.user?.id) {
+        searchUserId = account.user?.id;
+        clearPlayerSearch();
+      }
+    });
+
+    return searchSection;
+  }
   async function action(id, type, container, refresh) {
     container.querySelectorAll("button").forEach((b) => (b.disabled = true));
     try {
       await rpc("friendship_action", { p_profile: id, p_action: type });
+      window.dispatchEvent(new Event("rift-friendships-changed"));
       await refresh();
     } catch {
       container.append(
@@ -132,6 +234,7 @@
     publicRoot.replaceChildren(intro, header, status, favorites, friends, buildsTitle, list, more);
     favorites.hidden = allBuilds || allFriends;
     friends.hidden = !allFriends;
+    if (allFriends) createPlayerSearch(friends);
     buildsTitle.hidden = list.hidden = allFriends;
     more.hidden = true;
     if (allBuilds || allFriends) {
@@ -279,18 +382,30 @@
         li.append(pick(key, i + 1), el("span", "pb-community-name", assets.get(key)?.name || ""));
         line.append(li);
       });
-      card.append(head, line);
+      card.append(head);
+      if (build.title) card.append(el("h3", "pb-build-title", build.title));
+      if (build.description) {
+        const explanation = el("details", "pb-build-explanation");
+        explanation.append(
+          el("summary", "", "Как играть"),
+          el("p", "pb-build-description", build.description),
+        );
+        card.append(explanation);
+      }
+      card.append(line);
+      const loadout=el('div','pb-build-loadout');
       for (const [label, keys] of [
         ["Руны", build.runes],
         ["Заклинания", build.spells],
       ])
         if (keys?.length) {
-          const row = el("div", "pb-author-runes");
+          const row = el("div", label === "Заклинания" ? "pb-author-spells" : "pb-author-runes");
           row.setAttribute("aria-label", label);
           keys.forEach((key) => row.append(pick(key, 0)));
-          card.append(row);
+          loadout.append(row);
         }
-      card.append(detail);
+      card.append(loadout, detail);
+      const save=el('button','pb-button pb-save-build','☆ Сохранить сборку');save.dataset.saveBuild=JSON.stringify({profile:id,champion:build.champion_id,lane:build.lane,patch:build.patch});card.append(save);
       return card;
     }
     async function loadBuilds() {
@@ -362,8 +477,24 @@
   if (!member) return;
   const section = el("section", "player-builds social-account");
   section.innerHTML =
-    '<h2>Друзья</h2><div class="pb-actions social-tabs"></div><p class="pb-status" role="status"></p><div class="social-list"></div><h3>Публичный профиль</h3><p class="pb-caption">Ник, аватар и сохранённые сборки видны посетителям. Почта закрыта.</p><div class="visibility-controls"><label><input type="checkbox" id="show-public-riot"> Показывать игровой тег</label><label><input type="checkbox" id="show-public-favorites"> Показывать избранных чемпионов</label></div><div class="pb-actions visibility-actions"></div><p class="visibility-status pb-status" role="status"></p>';
+    '<h2>Друзья</h2><div class="pb-actions social-tabs"></div><p class="pb-status" role="status"></p><div class="social-list"></div>';
+  const friendsPage = new URLSearchParams(location.search).get("view") === "friends";
+  section.hidden = !friendsPage;
+  if (friendsPage) {
+    document.body.classList.add("account-friends-view");
+    document.title = "Друзья · Rift Atlas";
+    const pageTitle = document.querySelector("main h1");
+    if (pageTitle) pageTitle.textContent = "Друзья";
+    const back = el("a", "pb-button friends-page-back", "← Мой профиль");
+    back.href = "account.html";
+    member.append(back);
+    createPlayerSearch(member);
+  }
   member.append(section);
+  const visibilityPanel = el("section", "profile-visibility-settings");
+  visibilityPanel.innerHTML =
+    '<h3>Видимость профиля</h3><div class="visibility-controls"><label><input type="checkbox" id="show-public-riot"> Показывать игровой тег</label><label><input type="checkbox" id="show-public-favorites"> Показывать избранных чемпионов</label></div><div class="pb-actions visibility-actions"></div><p class="visibility-status pb-status" role="status"></p>';
+  document.querySelector("#profile-editor")?.append(visibilityPanel);
   const ownFriendTile = el("a", "profile-stat-cell profile-friends-tile");
   ownFriendTile.hidden = true;
   ownFriendTile.append(el("b", "", "0"), document.createTextNode("Друзья"));
@@ -371,9 +502,13 @@
   const tabs = section.querySelector(".social-tabs"),
     status = section.querySelector(".pb-status"),
     list = section.querySelector(".social-list"),
-    settingsStatus = section.querySelector(".visibility-status"),
-    settingActions = section.querySelector(".visibility-actions");
-  let mode = "friends",
+    settingsStatus = visibilityPanel.querySelector(".visibility-status"),
+    settingActions = visibilityPanel.querySelector(".visibility-actions");
+  let mode = ["friends", "incoming", "outgoing"].includes(
+      new URLSearchParams(location.search).get("tab"),
+    )
+      ? new URLSearchParams(location.search).get("tab")
+      : "friends",
     epoch = 0,
     offset = 0,
     uid = null,
@@ -462,8 +597,8 @@
     settingsStatus.textContent = "Сохраняем…";
     try {
       await rpc("profile_visibility", {
-        p_riot: section.querySelector("#show-public-riot").checked,
-        p_favorites: section.querySelector("#show-public-favorites").checked,
+        p_riot: visibilityPanel.querySelector("#show-public-riot").checked,
+        p_favorites: visibilityPanel.querySelector("#show-public-favorites").checked,
       });
       settingsStatus.textContent = "Настройки сохранены.";
     } catch {
@@ -486,15 +621,15 @@
     try {
       const data = await rpc("profile_visibility");
       if (uid !== next || !data) return;
-      section.querySelector("#show-public-riot").checked = data.show_riot_id;
-      section.querySelector("#show-public-favorites").checked = data.show_favorites;
+      visibilityPanel.querySelector("#show-public-riot").checked = data.show_riot_id;
+      visibilityPanel.querySelector("#show-public-favorites").checked = data.show_favorites;
       let link = settingActions.querySelector("a");
       if (!link) {
         link = el("a", "pb-button", "Открыть мой профиль ↗");
         settingActions.append(link);
       }
       link.href = "player.html?id=" + encodeURIComponent(data.id);
-      ownFriendTile.href = link.href + "&view=friends";
+      ownFriendTile.href = "account.html?view=friends";
       ownFriendTile.hidden = false;
       settingsLoaded = true;
       save.disabled = false;

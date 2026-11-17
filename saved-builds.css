@@ -1,0 +1,39 @@
+.saved-build-note {
+  display: block;
+  margin: 8px 0;
+  font-size: 12px;
+  color: #bca6d7;
+  overflow-wrap: anywhere;
+}
+.pb-save-build {
+  margin-top: 14px;
+}
+.saved-builds .pb-author {
+  margin: 12px 0;
+}
+.saved-build-asset {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  flex: none;
+}
+.saved-build-asset:focus-visible {
+  outline: 2px solid #c7a2f1;
+  outline-offset: 3px;
+  border-radius: 7px;
+}
+.saved-builds .profile-build-runes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.saved-builds .profile-build-runes img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.saved-build-remove {
+  margin-top: 14px;
+}

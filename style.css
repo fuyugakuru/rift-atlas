@@ -1962,3 +1962,30 @@ footer {
 .stat-speed,.ability-value.stat-speed { color:#e8d5a0; }
 .pb-community-detail .ability-value,.pb-dialog-detail .ability-value { font-size:inherit; }
 .pb-community-detail .stat-icon,.pb-dialog-detail .stat-icon { width:11px; height:11px; margin-right:3px; }
+
+/* Компактные каталоги на телефоне: четыре карточки и отдельная строка имени. */
+.favorite {
+ display:grid;place-items:center;padding:0;line-height:1;
+ font-family:Arial,sans-serif;text-align:center;
+}
+@media(max-width:600px){
+ .champ-grid.full-catalog{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 6px}
+ .champ-grid.full-catalog .champ-card{aspect-ratio:auto;min-width:0;border-radius:7px}
+ .full-catalog .champ-card>a{height:auto}
+ .full-catalog .champ-card img{display:block;height:auto;aspect-ratio:3/4;object-fit:cover}
+ .full-catalog .champ-gradient{display:none}
+ .full-catalog .champ-caption{position:static;padding:7px 3px 8px;min-width:0}
+ .full-catalog .champ-caption h3{font-size:10px;line-height:1.3;letter-spacing:0;margin:0;text-align:center;white-space:normal;overflow-wrap:anywhere;min-height:2.6em}
+ .full-catalog .champ-caption small,.full-catalog .champ-caption>span{display:none}
+ .full-catalog .champ-role{left:3px;top:4px;padding:3px;max-width:calc(100% - 28px)}
+ .full-catalog .champ-role .role-list{flex-direction:row;gap:3px}
+ .full-catalog .champ-role .role-token>span:not(.role-symbol){display:none}
+ .full-catalog .champ-role .role-symbol{width:10px;height:10px;flex-basis:10px}
+ .full-catalog .favorite{top:3px;right:3px;width:22px;height:22px;font-size:17px}
+ #items-list.item-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 6px}
+ #items-list.item-grid .item-card{min-height:0;padding:0;border-radius:7px}
+ #items-list .item-card-link{padding:9px 4px;align-items:center;text-align:center;min-width:0}
+ #items-list .catalog-item-icon{width:44px;height:44px;max-width:100%;object-fit:contain;margin:0 0 8px}
+ #items-list.item-grid .item-card h2{font-size:10px;line-height:1.35;letter-spacing:0;margin:0;overflow-wrap:anywhere;min-height:2.7em;width:100%}
+ #items-list .badge,#items-list .catalog-en,#items-list .item-card-open{display:none}
+}

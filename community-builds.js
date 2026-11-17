@@ -139,19 +139,25 @@
           );
           line.append(li);
         });
-        card.append(head, line);
+        card.append(head);
+        if(build.title)card.append(el('h3','pb-build-title',build.title));
+        if(build.description){const explanation=el('details','pb-build-explanation');explanation.append(el('summary','','Как играть'),el('p','pb-build-description',build.description));card.append(explanation);}
+        card.append(line);
+        const loadout=el('div','pb-build-loadout');
         if (build.runes.length) {
           const runes = el("div", "pb-author-runes");
           runes.setAttribute("aria-label", "Руны автора");
           build.runes.forEach((key) => runes.append(pick(key, 0, detail, card)));
-          card.append(runes);
+          loadout.append(runes);
         }
         const spells = el("div", "pb-author-spells");
         spells.setAttribute("aria-label", "Заклинания автора");
         if (build.spells?.length)
           build.spells.forEach((key) => spells.append(pick(key, 0, detail, card)));
         else spells.append(el("span", "pb-caption", "Заклинания пока не указаны"));
-        card.append(spells, detail);
+        loadout.append(spells);
+        card.append(loadout, detail);
+        if(build.profile_id){const save=el('button','pb-button pb-save-build','☆ Сохранить сборку');save.dataset.saveBuild=JSON.stringify({profile:build.profile_id,champion:id,lane,patch});card.append(save);}
         list.append(card);
         offset++;
       }
