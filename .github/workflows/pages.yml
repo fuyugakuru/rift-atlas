@@ -69,6 +69,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/website"
           cp -- *.html *.css *.js *.svg "$RUNNER_TEMP/website/"
+          cp -- sitemap.xml "$RUNNER_TEMP/website/"
           cp -R assets "$RUNNER_TEMP/website/assets"
           touch "$RUNNER_TEMP/website/.nojekyll"
 
@@ -79,3 +80,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
