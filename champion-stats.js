@@ -28,7 +28,7 @@
   const percent = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const dateLabel = date => new Intl.DateTimeFormat('ru-RU', { timeZone: 'UTC' }).format(new Date(date + 'T00:00:00Z'));
   const trendScript = document.createElement('script');
-  trendScript.src = 'champion-stats-trend.js';
+  trendScript.src = 'champion-stats-trend.js?v=' + encodeURIComponent(document.currentScript?.dataset.version || 'stats-20261120');
   document.head.append(trendScript);
   let snapshot;
   function render() {

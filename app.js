@@ -2,12 +2,14 @@
 
 // Shared champion statistics: load only on individual champion pages.
 if (document.querySelector('.character-profile')) {
+  const statsVersion = new URL(document.currentScript.src).searchParams.get('v') || 'stats-20261120';
   const statsStyle = document.createElement('link');
   statsStyle.rel = 'stylesheet';
-  statsStyle.href = 'champion-stats.css';
+  statsStyle.href = 'champion-stats.css?v=' + encodeURIComponent(statsVersion);
   document.head.appendChild(statsStyle);
   const statsScript = document.createElement('script');
-  statsScript.src = 'champion-stats.js';
+  statsScript.src = 'champion-stats.js?v=' + encodeURIComponent(statsVersion);
+  statsScript.dataset.version = statsVersion;
   document.head.appendChild(statsScript);
 }
 
