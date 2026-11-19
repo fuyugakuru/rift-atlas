@@ -1,5 +1,16 @@
 /* Google Analytics — Wild Rift Atlas */
 
+// Shared champion statistics: load only on individual champion pages.
+if (document.querySelector('.character-profile')) {
+  const statsStyle = document.createElement('link');
+  statsStyle.rel = 'stylesheet';
+  statsStyle.href = 'champion-stats.css';
+  document.head.appendChild(statsStyle);
+  const statsScript = document.createElement('script');
+  statsScript.src = 'champion-stats.js';
+  document.head.appendChild(statsScript);
+}
+
 window.dataLayer = window.dataLayer || [];
 
 window.gtag = function() {
