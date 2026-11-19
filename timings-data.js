@@ -4,15 +4,15 @@ window.RIFT_TIMINGS = [
     id: "scuttle",
     name: "Речной краб",
     category: "jungle",
-    first: 90,
+    first: 95,
     respawn: 120,
     patch: "7.3",
     source:
       "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3/",
-    note: "Первое появление — 01:30. Возрождение — через 02:00 после убийства; интервал уточнён автором сайта. Например: убили в 03:10 → появится в 05:10.",
+    note: "Первое появление — 01:35. Возрождение — через 02:00 после убийства; оба значения уточнены автором сайта. Например: убили в 03:10 → появится в 05:10.",
     sources: [
       {
-        label: "Первое появление · Riot 7.3",
+        label: "Базовое правило · Riot 7.3; время уточнено автором",
         url: "https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3/",
       },
     ],

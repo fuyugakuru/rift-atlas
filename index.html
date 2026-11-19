@@ -8,6 +8,7 @@
     <title>Rift Atlas — гайды League of Legends: Wild Rift</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="overview.css" />
+    <link rel="preload" as="image" href="assets/overview/wild-rift-map-clean.jpg" />
     <script src="timings-data.js" defer></script>
     <script src="overview.js" defer></script>
     <script src="data.js" defer></script>
@@ -3033,10 +3034,6 @@
                 </button>
               </div>
               <p class="atlas-phase-note" aria-live="polite"></p>
-              <details class="atlas-object-menu">
-                <summary>Все объекты карты <span aria-hidden="true">＋</span></summary>
-                <div class="atlas-object-list" role="group" aria-label="Все объекты карты"></div>
-              </details>
             </div>
             <aside class="atlas-inspector" aria-labelledby="atlas-detail-title">
               <figure class="atlas-detail-photo" hidden>
@@ -3062,14 +3059,21 @@
 
           <div class="atlas-destinations">
             <a href="champions.html"
-              ><img src="assets/lanes/mid.png" alt="" />
+              ><span class="atlas-destination-icon" aria-hidden="true">♜</span>
               <div>
                 <small>КАТАЛОГ</small>
-                <h2>Выбор чемпиона</h2>
+                <h2>Чемпионы</h2>
+              </div>
+              <span>↗</span></a
+            ><a href="items.html"
+              ><span class="atlas-destination-icon" aria-hidden="true">⬡</span>
+              <div>
+                <small>КАТАЛОГ</small>
+                <h2>Предметы</h2>
               </div>
               <span>↗</span></a
             ><a href="matchups.html"
-              ><img src="assets/lanes/baron.png" alt="" />
+              ><span class="atlas-destination-icon" aria-hidden="true">⚔</span>
               <div>
                 <small>МАТЧАПЫ</small>
                 <h2>Контрпики</h2>
@@ -3089,13 +3093,43 @@
           </div>
         </section>
       </main>
-      <footer>
-        <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span
-        ><span>Неофициальный фан-проект. Не связан с Riot Games.</span
-        ><a href="sources.html">Источники</a>
+      <footer class="atlas-footer">
+        <div class="atlas-footer-main">
+          <div class="atlas-footer-brand">
+            <a class="brand" href="index.html" aria-label="Rift Atlas — главная">
+              <span class="brand-mark">R</span><span>RIFT<span class="brand-light">ATLAS</span><small>WILD RIFT COMPANION</small></span>
+            </a>
+            <p>Чемпионы, сборки и инструменты для игроков Wild Rift.</p>
+          </div>
+          <nav aria-label="Справочник внизу страницы">
+            <h2>Справочник</h2>
+            <a href="champions.html">Чемпионы</a>
+            <a href="items.html">Предметы</a>
+            <a href="matchups.html">Контрпики</a>
+            <a href="meta.html">Мета</a>
+            <a href="timers.html">Таймеры</a>
+          </nav>
+          <nav aria-label="Сообщество внизу страницы">
+            <h2>Сообщество</h2>
+            <a href="account.html">Мой профиль</a>
+            <a href="account.html?view=friends">Друзья и поиск игроков</a>
+            <a href="account.html#saved-builds">Сохранённые сборки</a>
+            <a href="champions.html?favorites=1">Избранные чемпионы</a>
+          </nav>
+          <nav aria-label="Информация о проекте">
+            <h2>Rift Atlas</h2>
+            <a href="index.html">Карта Ущелья</a>
+            <a href="patches.html">Патчи</a>
+            <a href="sources.html">Источники и обновления</a>
+          </nav>
+        </div>
+        <div class="atlas-footer-bottom">
+          <span>© 2026 Rift Atlas</span>
+          <p>Неофициальный фан-проект. Не связан с Riot Games и не поддерживается ими. League of Legends и Wild Rift — товарные знаки Riot Games.</p>
+          <a href="#main">Наверх ↑</a>
+        </div>
       </footer>
     </div>
     <p id="account-toast" class="account-toast" role="status" hidden></p>
   </body>
 </html>
-

@@ -1436,6 +1436,9 @@
 .atlas-champion-strip.is-paused .atlas-champion-track {
   animation-play-state: paused;
 }
+.atlas-champion-strip.is-inactive .atlas-champion-track {
+  animation-play-state: paused;
+}
 @keyframes atlas-champions-flow {
   to {
     transform: translateX(-50%);
@@ -1568,5 +1571,174 @@
  .atlas-pin .atlas-monster-image{width:20px;height:20px}
  .rift-overview[data-layer="objects"] .atlas-pin[aria-pressed="true"]{outline-width:1px;outline-offset:0}
  .rift-overview[data-layer="lanes"] .atlas-pin{width:27px;height:29px}
+ .rift-overview[data-layer="lanes"] .atlas-pin>img{width:18px;height:18px}
+ /* Shared pits need separate touch targets on a narrow map. */
+ .atlas-pin[data-key="herald"]{left:49.6%!important}
+ .atlas-pin[data-key="elder"]{left:61%!important;top:50%!important}
+}
+
+/* Keep object details beside the map on smaller screens. */
+@media(max-width:850px){
+ .atlas-layout{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:10px;align-items:start}
+ .atlas-inspector{position:relative;min-width:0;margin:0;max-height:430px;overflow-y:auto;overscroll-behavior:contain}
+ .atlas-detail-photo{height:100px}
+ .atlas-inspector.has-photo .atlas-detail-art{top:110px}
+ .atlas-detail-art{left:9px;top:10px;width:26px;height:26px;border-radius:7px}
+ .atlas-detail-art .atlas-vector-badge,.atlas-detail-art>img,.atlas-detail-art svg{width:19px;height:21px}
+ .atlas-detail-content{padding:11px 9px}
+ .atlas-detail-type{margin-left:33px;font-size:7px;min-height:8px;margin-bottom:4px}
+ .atlas-detail-content h2{font-size:13px;margin-left:33px;min-height:25px;margin-bottom:10px;overflow-wrap:anywhere}
+ .atlas-detail-intro,.atlas-timing-note,.atlas-advice{font-size:11px;line-height:1.5}
+ .atlas-times{grid-template-columns:1fr;gap:0}
+ .atlas-times>div{flex-direction:column;align-items:flex-start;gap:4px;padding:8px 0}
+ .atlas-times dt,.atlas-times dd{font-size:11px;text-align:left}
+ .atlas-detail-link.button{width:100%;box-sizing:border-box;font-size:10px;padding:9px 6px;gap:5px;white-space:normal}
+ .atlas-advice>summary{font-size:10px;gap:4px}
+}
+@media(max-width:600px){
+ .atlas-layout{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:7px}
+ .atlas-inspector{max-height:290px;border-radius:9px}
+ .atlas-detail-photo{height:66px}
+ .atlas-inspector.has-photo .atlas-detail-art{top:74px}
+ .atlas-detail-art{width:21px;height:23px;left:7px;top:8px}
+ .atlas-detail-art .atlas-vector-badge,.atlas-detail-art>img,.atlas-detail-art svg{width:15px;height:17px}
+ .atlas-detail-content{padding:9px 7px}
+ .atlas-detail-type{margin-left:26px;font-size:6px;letter-spacing:.05em;min-height:7px}
+ .atlas-detail-content h2{margin-left:26px;font-size:11px;line-height:1.3;margin-bottom:8px;min-height:23px}
+ .atlas-detail-intro,.atlas-timing-note,.atlas-advice{font-size:10px;line-height:1.45;margin-bottom:8px}
+ .atlas-times dt,.atlas-times dd{font-size:10px;line-height:1.35}
+ .atlas-times>div{padding:7px 0}
+ .atlas-advice>summary{font-size:9px}
+ .rift-overview[data-layer="objects"] .atlas-pin{width:17px;height:19px}
+ .atlas-pin .atlas-vector-badge{width:12px;height:14px}
+ .atlas-pin .atlas-monster-image{width:14px;height:14px}
+ .rift-overview[data-layer="lanes"] .atlas-pin{width:19px;height:21px}
+ .rift-overview[data-layer="lanes"] .atlas-pin>img{width:14px;height:14px}
+ .atlas-map-top{padding:4px}
+ .atlas-map-tag{font-size:5px;padding:3px 4px;letter-spacing:0}
+ .atlas-map-side{display:none}
+ .atlas-map-bottom{padding:4px}
+ .atlas-selected-label{font-size:7px;padding:4px 5px}
+}
+
+/* Same champion and matchup symbols as the main navigation. */
+.atlas-destinations>a>.atlas-destination-icon{display:grid;place-items:center;flex:0 0 29px;width:29px;height:29px;margin:0;color:#bba1ef;font:29px/1 Georgia,serif}
+
+/* More readable labels and object details, including the inline phone panel. */
+.atlas-detail-intro,.atlas-timing-note{font-size:13px;line-height:1.55}
+.atlas-detail-type{font-size:10px}
+.atlas-detail-content h2{font-size:21px}
+.atlas-times dt,.atlas-times dd{font-size:13px;line-height:1.4}
+.atlas-advice,.atlas-advice>summary,.atlas-advice li{font-size:12px;line-height:1.5}
+.atlas-destinations small{font-size:10px}
+.atlas-destinations h2{font-size:15px}
+@media(max-width:850px){
+ .atlas-detail-content h2{font-size:16px}
+ .atlas-detail-type{font-size:9px}
+ .atlas-detail-intro,.atlas-timing-note{font-size:12px;line-height:1.5}
+ .atlas-times dt,.atlas-times dd{font-size:12px}
+ .atlas-inspector{max-height:470px}
+}
+@media(max-width:600px){
+ .atlas-layout{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+ .atlas-inspector{max-height:370px}
+ .atlas-detail-type{font-size:8px;line-height:1.3}
+ .atlas-detail-content h2{font-size:14px;line-height:1.3}
+ .atlas-detail-intro,.atlas-timing-note{font-size:12px;line-height:1.5}
+ .atlas-times dt,.atlas-times dd{font-size:12px;line-height:1.4}
+ .atlas-advice,.atlas-advice>summary,.atlas-advice li{font-size:11px;line-height:1.5}
+ .atlas-detail-link.button{font-size:11px;line-height:1.4}
+ .atlas-destinations small{font-size:10px}
+ .atlas-destinations h2{font-size:15px}
+ .atlas-phase-note{font-size:11px;line-height:1.5}
+ .atlas-map-caption{font-size:10px;line-height:1.4}
+}
+
+/* Emphasize the selected object without moving its map anchor. */
+.rift-overview .atlas-pin[aria-pressed="true"]{z-index:5;outline:2px solid #f0ceff;outline-offset:3px;box-shadow:0 0 16px #d5a2ff9c}
+.atlas-pin[aria-pressed="true"]::before{content:"";position:absolute;inset:-7px;border:1px solid #e5bbff;border-radius:50%;pointer-events:none;animation:atlas-selected-pulse 1.6s ease-out 3}
+.atlas-pin[aria-pressed="true"]>img{filter:drop-shadow(0 0 4px #e2b8ff)}
+@keyframes atlas-selected-pulse{0%{opacity:.8;transform:scale(.85)}100%{opacity:0;transform:scale(1.45)}}
+.atlas-zoom-controls{display:none}
+@media(max-width:850px){
+ .atlas-map-viewport{position:relative;width:100%;aspect-ratio:800/446;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#9c78b2 #16131f}
+ .atlas-map-viewport .atlas-scene{max-width:none;transition:none}
+ .atlas-zoom-controls{display:flex;align-items:center;gap:5px;margin-top:7px;min-width:0}
+ .atlas-zoom-controls>span{margin-right:auto;font-size:10px;color:#b4a4c4}
+ .atlas-zoom-controls button{display:grid;place-items:center;flex:none;min-width:29px;min-height:30px;padding:4px;border:1px solid #6d517f;border-radius:6px;background:#21192d;color:#ead8fa;font:inherit;font-size:15px;line-height:1;cursor:pointer}
+ .atlas-zoom-controls button:nth-of-type(2){font-size:11px;min-width:34px}
+ .atlas-zoom-controls button:disabled{opacity:.35;cursor:default}
+ .atlas-map[data-zoomed="true"]{cursor:grab}
+ .atlas-map[data-zoomed="true"] .atlas-map-top,.atlas-map[data-zoomed="true"] .atlas-map-bottom{opacity:.65}
+}
+@media(max-width:600px){
+ .atlas-zoom-controls{gap:4px}
+ .atlas-zoom-controls>span{font-size:9px;max-width:46px;line-height:1.25}
+ .rift-overview .atlas-pin[aria-pressed="true"]{outline-width:1.5px;outline-offset:2px}
+ .atlas-pin[aria-pressed="true"]::before{inset:-5px}
+ .rift-overview[data-layer="objects"] .atlas-map[data-zoomed="true"] .atlas-pin{width:24px;height:26px}
+ .atlas-map[data-zoomed="true"] .atlas-pin .atlas-vector-badge{width:18px;height:21px}
+ .atlas-map[data-zoomed="true"] .atlas-pin .atlas-monster-image{width:20px;height:20px}
+}
+@media(prefers-reduced-motion:reduce){.atlas-pin[aria-pressed="true"]::before{animation:none;opacity:.55}}
+
+
+/* Four navigation cards: champions, items, matchups and timing practice. */
+.atlas-destinations{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1050px) and (min-width:601px){.atlas-destinations{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.atlas-destinations{grid-template-columns:minmax(0,1fr)}}
+
+/* Overview footer: site navigation and project information. */
+.home-overview .atlas-footer{display:block;margin-top:46px;padding:36px 0 18px;border-top:1px solid #68527766;background:none;color:#a79ab9}
+.atlas-footer-main{display:grid;grid-template-columns:minmax(200px,1.5fr) repeat(3,minmax(0,1fr));gap:36px;align-items:start}
+.atlas-footer-brand .brand{padding:0;gap:11px;justify-content:flex-start;width:fit-content}
+.atlas-footer-brand .brand-mark{font-size:30px;width:36px;height:39px}
+.atlas-footer-brand .brand>span:last-child{font-size:19px;letter-spacing:.04em}
+.atlas-footer-brand .brand small{font-size:7px;margin-top:6px}
+.atlas-footer-brand p{max-width:250px;font-size:12px;line-height:1.7;margin:17px 0 0;color:#9d90ae}
+.atlas-footer nav{display:flex;flex-direction:column;gap:11px;min-width:0}
+.atlas-footer nav h2{font-size:13px;font-weight:600;letter-spacing:.02em;color:#e4d9f0;margin:3px 0 5px}
+.atlas-footer nav a{font-size:12px;line-height:1.5;color:#b2a3c5;text-decoration:none;overflow-wrap:anywhere}
+.atlas-footer nav a:hover,.atlas-footer-bottom>a:hover{color:#ead3ff}
+.atlas-footer a:focus-visible{outline:2px solid #c49ce7;outline-offset:4px;border-radius:3px}
+.atlas-footer-bottom{display:flex;align-items:flex-start;gap:22px;margin-top:32px;padding-top:19px;border-top:1px solid #68527744;font-size:10px;line-height:1.7}
+.atlas-footer-bottom>span{white-space:nowrap;color:#b3a0c8}
+.atlas-footer-bottom p{max-width:720px;margin:0;color:#8f829f}
+.atlas-footer-bottom>a{margin-left:auto;white-space:nowrap;color:#c0a6d6;text-decoration:none}
+@media(max-width:1050px){.atlas-footer-main{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}.atlas-footer-brand{grid-column:1/-1}.atlas-footer-brand p{max-width:420px}}
+@media(max-width:600px){.home-overview .atlas-footer{margin-top:30px;padding-top:26px}.atlas-footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 18px}.atlas-footer-main>nav:last-child{grid-column:1/-1}.atlas-footer nav a{font-size:12px}.atlas-footer nav h2{font-size:14px}.atlas-footer-bottom{flex-wrap:wrap;gap:10px 15px;margin-top:24px}.atlas-footer-bottom p{order:3;flex-basis:100%;font-size:10px}.atlas-footer-bottom>a{margin-left:auto}}
+
+.home-overview .atlas-footer{padding-left:40px;padding-right:40px}
+@media(max-width:850px){.home-overview .atlas-footer{padding-left:24px;padding-right:24px}}
+@media(max-width:600px){.home-overview .atlas-footer{padding-left:14px;padding-right:14px}}
+
+/* Compact object card below the map on phones and tablets. */
+@media(max-width:850px){
+ .atlas-layout{grid-template-columns:minmax(0,1fr);gap:14px}
+ .atlas-inspector{display:block;position:relative;max-height:none;overflow:visible;padding:14px;border-radius:12px;margin:0}
+ .atlas-detail-photo{float:left;width:100px;height:82px;margin:0 14px 8px 0;border-radius:8px;border:1px solid #6e537455}
+ .atlas-inspector .atlas-detail-art{display:none}
+ .atlas-inspector .atlas-detail-content{padding:0}
+ .atlas-inspector .atlas-detail-type{margin:0 0 5px;font-size:9px;min-height:0}
+ .atlas-inspector .atlas-detail-content h2{margin:0 0 7px;min-height:0;font-size:18px;line-height:1.3}
+ .atlas-inspector .atlas-detail-intro{margin:0 0 10px;font-size:12px;line-height:1.5}
+ .atlas-inspector .atlas-times{clear:both;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:0 0 8px}
+ .atlas-inspector .atlas-times>div{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:8px 0;min-width:0}
+ .atlas-inspector .atlas-times dt{font-size:11px;line-height:1.35}
+ .atlas-inspector .atlas-times dd{font-size:13px;line-height:1.35;text-align:left;margin:0;overflow-wrap:anywhere}
+ .atlas-inspector .atlas-timing-note{margin:0 0 9px;font-size:11px;line-height:1.45}
+ .atlas-inspector .atlas-detail-link.button{display:inline-flex;width:auto;min-height:32px;padding:7px 11px;font-size:11px;gap:20px}
+ .atlas-inspector .atlas-advice{clear:both;margin-top:10px;padding-top:9px}
+ .atlas-inspector .atlas-advice>summary,.atlas-inspector .atlas-advice li{font-size:11px;line-height:1.5}
+ .atlas-inspector::after{content:"";display:block;clear:both}
+ .atlas-zoom-controls>span{max-width:none;font-size:11px}
+}
+@media(max-width:600px){
+ .atlas-detail-photo{width:88px;height:76px;margin-right:12px}
+ .atlas-inspector .atlas-detail-content h2{font-size:17px}
+ .rift-overview[data-layer="objects"] .atlas-pin{width:23px;height:25px}
+ .atlas-pin .atlas-vector-badge{width:17px;height:20px}
+ .atlas-pin .atlas-monster-image{width:19px;height:19px}
+ .rift-overview[data-layer="lanes"] .atlas-pin{width:25px;height:27px}
  .rift-overview[data-layer="lanes"] .atlas-pin>img{width:18px;height:18px}
 }

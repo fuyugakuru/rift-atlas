@@ -4,6 +4,20 @@
   if (!root) return;
   const championStrip = root.querySelector(".atlas-champion-strip");
   const pauseChampions = championStrip?.querySelector(".atlas-champions-pause");
+  // Keep the user's pause setting separate from automatic background pauses.
+  let stripVisible = true;
+  const updateStripPlayback = () => {
+    championStrip?.classList.toggle("is-inactive", document.hidden || !stripVisible);
+  };
+  document.addEventListener("visibilitychange", updateStripPlayback);
+  if (championStrip && "IntersectionObserver" in window) {
+    const stripObserver = new IntersectionObserver(([entry]) => {
+      stripVisible = entry.isIntersecting;
+      updateStripPlayback();
+    });
+    stripObserver.observe(championStrip);
+  }
+  updateStripPlayback();
   pauseChampions?.addEventListener("click", () => {
     const paused = championStrip.classList.toggle("is-paused");
     pauseChampions.setAttribute("aria-pressed", String(paused));
@@ -226,22 +240,11 @@
     "У каждой башни 5 пластин. Они снимаются на порогах 90%, 75%, 55%, 30% и 0% здоровья.",
     "Пластины сохраняются весь матч. После потери пластины башня на 10 секунд получает 20 брони и сопротивления магии.",
   ];
+  // Centres of the visible allied towers on the 1200 × 669 map image.
   const towerPositions = {
-    mid: [
-      [46.8, 45.1],
-      [40.4, 60],
-      [31.4, 67.3],
-    ],
-    baron: [
-      [23, 35],
-      [20, 48],
-      [19, 62],
-    ],
-    dragon: [
-      [69, 86],
-      [53, 87],
-      [38, 86],
-    ],
+    mid: [[50.33,37.82],[40.33,59.34],[31.5,67.71]],
+    baron: [[23.67,19.13],[20.5,43.8],[19.33,62.78]],
+    dragon: [[75.83,85.95],[50.33,85.95],[32.83,84.45]],
   };
   const laneNames = { baron: "Барона", mid: "мид", dragon: "Дракона" };
   for (const [lane, positions] of Object.entries(towerPositions))
@@ -467,7 +470,6 @@
     phase = "objectives",
     selected = "dragon";
   const pins = root.querySelector(".atlas-pins"),
-    list = root.querySelector(".atlas-object-list"),
     times = root.querySelector(".atlas-times");
   const format = (s) =>
     Math.floor(s / 60)
@@ -483,6 +485,53 @@
       ),
     );
   }
+  // Native scrolling keeps map geometry and object markers aligned while zooming.
+  const map = root.querySelector('.atlas-map');
+  const scene = root.querySelector('.atlas-scene');
+  const mapViewport = document.createElement('div');
+  mapViewport.className='atlas-map-viewport';
+  mapViewport.setAttribute('role','region');
+  mapViewport.setAttribute('aria-label','Карта: после увеличения можно прокручивать');
+  scene.before(mapViewport);
+  mapViewport.append(scene);
+  const zoomMedia=window.matchMedia('(max-width: 850px)');
+  const zoomControls=document.createElement('div');
+  zoomControls.className='atlas-zoom-controls';
+  zoomControls.setAttribute('role','group');
+  zoomControls.setAttribute('aria-label','Масштаб карты');
+  const zoomOut=document.createElement('button');
+  const zoomReset=document.createElement('button');
+  const zoomIn=document.createElement('button');
+  for(const button of [zoomOut,zoomReset,zoomIn])button.type='button';
+  zoomOut.textContent='−';zoomOut.setAttribute('aria-label','Уменьшить карту');
+  zoomReset.textContent='1×';zoomReset.setAttribute('aria-label','Сбросить масштаб карты');
+  zoomIn.textContent='+';zoomIn.setAttribute('aria-label','Увеличить карту');
+  const zoomHint=document.createElement('span');
+  zoomHint.textContent='Масштаб карты';
+  zoomControls.append(zoomHint,zoomOut,zoomReset,zoomIn);
+  map.after(zoomControls);
+  let zoomLevel=1;
+  function setMapZoom(value){
+    zoomLevel=zoomMedia.matches?Math.max(1,Math.min(3,value)):1;
+    mapViewport.tabIndex=zoomMedia.matches?0:-1;
+    zoomHint.textContent=zoomLevel>1?'Двигай карту':'Масштаб карты';
+    scene.style.width=(zoomLevel*100)+'%';
+    map.dataset.zoomed=String(zoomLevel>1);
+    zoomReset.textContent=String(zoomLevel).replace('.',',')+'×';
+    zoomOut.disabled=zoomLevel===1;
+    zoomIn.disabled=zoomLevel===3;
+    if(zoomLevel===1){mapViewport.scrollLeft=0;mapViewport.scrollTop=0;}
+    else{
+      const item=entries()[selected];
+      mapViewport.scrollLeft=scene.offsetWidth*(item?.x??50)/100-mapViewport.clientWidth/2;
+      mapViewport.scrollTop=scene.offsetHeight*(item?.y??50)/100-mapViewport.clientHeight/2;
+    }
+  }
+  zoomIn.addEventListener('click',()=>setMapZoom(zoomLevel+.5));
+  zoomOut.addEventListener('click',()=>setMapZoom(zoomLevel-.5));
+  zoomReset.addEventListener('click',()=>setMapZoom(1));
+  zoomMedia.addEventListener('change',()=>setMapZoom(1));
+  setMapZoom(1);
   function choose(id) {
     selected = id;
     render(false);
@@ -492,7 +541,6 @@
     if (!data[selected]) selected = Object.keys(data)[0];
     if (rebuild) {
       pins.replaceChildren();
-      list.replaceChildren();
       for (const [id, item] of Object.entries(data)) {
         const b = document.createElement("button");
         b.type = "button";
@@ -508,12 +556,6 @@
         b.title = item.name;
         b.addEventListener("click", () => choose(id));
         pins.append(b);
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.dataset.key = id;
-        chip.textContent = item.name;
-        chip.addEventListener("click", () => choose(id));
-        list.append(chip);
       }
     }
     root
@@ -535,11 +577,12 @@
     art.classList.toggle("has-map-icon", layer === "objects");
     const photo = root.querySelector(".atlas-detail-photo");
     const photoImage = photo.querySelector("img");
+    photoImage.decoding = "async";
     const hasPhoto = layer === "objects" && !!item.photo;
     photo.hidden = !hasPhoto;
     root.querySelector(".atlas-inspector").classList.toggle("has-photo", hasPhoto);
     if (hasPhoto) {
-      photoImage.src = item.photo;
+      if (photoImage.getAttribute("src") !== item.photo) photoImage.src = item.photo;
       photoImage.alt = item.name + " — игровой вид";
       photo.dataset.photo = selected;
     } else {
@@ -597,6 +640,8 @@
     root.querySelector(".atlas-timing-note").textContent = time
       ? time.reference
         ? "Справочные замеры лагерей: значения требуют сверки с текущим клиентом."
+        : selected === "elder"
+          ? "Первая отметка — 19:00; переход от стихийных драконов зависит от состояния матча. Возрождение — после убийства."
         : Number.isFinite(time.respawn)
           ? "Возрождение отсчитывается после убийства."
           : "Герольд появляется только один раз за матч."
