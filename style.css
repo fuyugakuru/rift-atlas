@@ -1989,3 +1989,9 @@ footer {
  #items-list.item-grid .item-card h2{font-size:10px;line-height:1.35;letter-spacing:0;margin:0;overflow-wrap:anywhere;min-height:2.7em;width:100%}
  #items-list .badge,#items-list .catalog-en,#items-list .item-card-open{display:none}
 }
+/* Keep the ascending difficulty crystals on narrow screens. */
+@media(max-width:600px){
+ .character-facts .difficulty-gem:nth-child(1){height:22px}
+ .character-facts .difficulty-gem:nth-child(2){height:28px}
+ .character-facts .difficulty-gem:nth-child(3){height:34px}
+}
