@@ -4,6 +4,7 @@ on:
     - cron: '15 */6 * * *'
   workflow_dispatch:
 permissions:
+  actions: read
   contents: write
   pages: write
   id-token: write
@@ -13,9 +14,6 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -40,9 +38,18 @@ jobs:
           mkdir -p "$RUNNER_TEMP/website"
           cp -- *.html *.css *.js *.svg sitemap.xml champion-stats.json champion-stats-history.json "$RUNNER_TEMP/website/"
           cp -R assets "$RUNNER_TEMP/website/assets"
+          public_version=$(git rev-parse --short HEAD)
+          sed -i -E "s/src=\"app.js([?][^\"]*)?\"/src=\"app.js?v=$public_version\"/g" "$RUNNER_TEMP/website/"*.html
           touch "$RUNNER_TEMP/website/.nojekyll"
       - uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ runner.temp }}/website
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - uses: actions/deploy-pages@v4
         id: deployment
