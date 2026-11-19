@@ -70,6 +70,8 @@ jobs:
           mkdir -p "$RUNNER_TEMP/website"
           cp -- *.html *.css *.js *.svg "$RUNNER_TEMP/website/"
           cp -- sitemap.xml "$RUNNER_TEMP/website/"
+          if [ -f champion-stats.json ]; then cp -- champion-stats.json "$RUNNER_TEMP/website/"; fi
+          if [ -f champion-stats-history.json ]; then cp -- champion-stats-history.json "$RUNNER_TEMP/website/"; fi
           cp -R assets "$RUNNER_TEMP/website/assets"
           touch "$RUNNER_TEMP/website/.nojekyll"
 
@@ -80,4 +82,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
