@@ -10,7 +10,12 @@ if (document.querySelector('.character-profile')) {
   const statsScript = document.createElement('script');
   statsScript.src = 'champion-stats.js?v=' + encodeURIComponent(statsVersion);
   statsScript.dataset.version = statsVersion;
+  statsScript.async=false;
   document.head.appendChild(statsScript);
+  const trendScript=document.createElement('script');
+  trendScript.async=false;
+  trendScript.src='champion-stats-trend.js?v='+encodeURIComponent(statsVersion);
+  document.head.appendChild(trendScript);
 }
 
 window.dataLayer = window.dataLayer || [];
@@ -364,8 +369,8 @@ document.querySelectorAll('.champion-matchups').forEach(section=>{
 // Счётчик присутствия подключается на всех страницах с верхней панелью.
 function loadSitePresence(){
  if(!document.querySelector('.topbar'))return;
- const css=document.createElement('link');css.rel='stylesheet';css.href='site-presence.css';document.head.append(css);
- const script=document.createElement('script');script.src='site-presence.js';document.body.append(script);
+ const css=document.createElement('link');css.rel='stylesheet';css.href='site-presence.css?v=perf-20261121';document.head.append(css);
+ const script=document.createElement('script');script.src='site-presence.js?v=perf-20261121';document.body.append(script);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadSitePresence,{once:true});else loadSitePresence();
 
@@ -374,9 +379,9 @@ function loadPlayerBuilds(){
  const isProfile=!!document.querySelector('#account-member');
  if(!document.querySelector('.champion-builds')&&!isProfile)return;
  const css=document.createElement('link');css.rel='stylesheet';css.href='player-builds.css';document.head.append(css);
- const catalog=document.createElement('script');catalog.src='player-build-catalog.js';
- catalog.onload=()=>{const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js':'player-builds.js';document.body.append(editor);};
- document.body.append(catalog);
+ const catalog=document.createElement('script');catalog.src='player-build-catalog.js';catalog.async=false;
+ const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js':'player-builds.js?v=perf-20261121';editor.async=false;
+ document.body.append(catalog,editor);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadPlayerBuilds,{once:true});else loadPlayerBuilds();
 

@@ -406,7 +406,7 @@
       }
     }
   }
-  async function loadStats() {
+  async function loadStats(force = false) {
     const turn = ++statsGeneration;
     count.textContent = "Загружаем сборки…";
     stats.replaceChildren();
@@ -442,14 +442,19 @@
       return pick;
     }
     try {
-      const { data, error } = await timeout(
-        client.rpc("build_community_stats", {
+      const cacheKey = 'rift-community-stats:' + id + ':' + lane + ':' + patch;
+      let response;
+      if(force)try{sessionStorage.removeItem(cacheKey);}catch{}
+      if(!force)try{const cached=JSON.parse(sessionStorage.getItem(cacheKey)||'null');const age=Date.now()-cached?.at;if(age>=0&&age<30000&&cached.data)response={data:cached.data,error:null};}catch{}
+      if(!response){response = await timeout(client.rpc("build_community_stats", {
           p_champion: id,
           p_lane: lane,
           p_patch: patch,
           p_offset: 0,
-        }),
-      );
+        }));
+        if(!response.error&&response.data)try{sessionStorage.setItem(cacheKey,JSON.stringify({at:Date.now(),data:response.data}));}catch{}
+      }
+      const {data,error}=response;
       if (error) throw error;
       if (turn !== statsGeneration) return;
       const total = Number(data?.participants || 0),
@@ -620,7 +625,7 @@
       editing = false;
       editor.hidden = true;
       notify("Сборка сохранена. Статистика обновлена.");
-      await loadStats();
+      await loadStats(true);
     } catch {
       if (turn === generation)
         notify(
@@ -665,7 +670,7 @@
       runes = Array(5).fill(null);
       spells = Array(2).fill(null);
       notify("Сборка удалена.");
-      await loadStats();
+      await loadStats(true);
     } catch {
       notify("Не удалось удалить сборку. Попробуй ещё раз.", true);
     } finally {

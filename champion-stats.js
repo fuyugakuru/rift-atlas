@@ -27,9 +27,6 @@
   const preferredLane = [...profile.querySelectorAll('.champion-lanes img')].map(i => i.getAttribute('src')?.match(/\/([^/]+)\.png/)?.[1]).find(id => labels[id]);
   const percent = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const dateLabel = date => new Intl.DateTimeFormat('ru-RU', { timeZone: 'UTC' }).format(new Date(date + 'T00:00:00Z'));
-  const trendScript = document.createElement('script');
-  trendScript.src = 'champion-stats-trend.js?v=' + encodeURIComponent(document.currentScript?.dataset.version || 'stats-20261120');
-  document.head.append(trendScript);
   let snapshot;
   function render() {
     const row = snapshot.rows.find(r => r.champion === champion && r.rank === rank.value && r.lane === lane.value);
@@ -83,11 +80,14 @@
     if (request) return request;
     request = (async () => {
       try {
-        const res = await fetch('champion-stats.json', { cache: 'no-cache', signal: AbortSignal.timeout(12000) });
-        if (!res.ok) throw Error('HTTP ' + res.status);
-        const data = await res.json();
+        let data,fromCache=false;
+        try{const cached=JSON.parse(sessionStorage.getItem('rift-cn-stats-cache')||'null');const age=Date.now()-cached?.at;if(age>=0&&age<300000){data=cached.data;fromCache=true;}}catch{}
+        if(!data){const res = await fetch('champion-stats.json', { cache: 'no-cache', signal: AbortSignal.timeout(12000) });
+          if (!res.ok) throw Error('HTTP ' + res.status);
+          data = await res.json();}
         if (data.schema !== 1 || data.region !== 'CN' || !Array.isArray(data.rows) || !data.ranks || !Number.isFinite(Date.parse(data.fetchedAt))) throw Error('Invalid stats');
         snapshot = data;
+        if(!fromCache)try{sessionStorage.setItem('rift-cn-stats-cache',JSON.stringify({at:Date.now(),data}));}catch{}
         rank.disabled = false;
         const before = rank.value;
         rank.replaceChildren();
