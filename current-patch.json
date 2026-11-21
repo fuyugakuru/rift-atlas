@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "source": "https://wildrift.leagueoflegends.com",
+  "current": {
+    "version": "7.3f",
+    "title": "Обновление Wild Rift 7.3f",
+    "publishedAt": "2026-11-11T10:00:00.000Z",
+    "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3f",
+    "locale": "ru-ru",
+    "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+  },
+  "entries": [
+    {
+      "version": "7.3f",
+      "title": "Обновление Wild Rift 7.3f",
+      "publishedAt": "2026-11-11T10:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3f",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3e",
+      "title": "Обновление Wild Rift 7.3e",
+      "publishedAt": "2026-11-04T10:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3e",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3d",
+      "title": "Обновление Wild Rift 7.3d",
+      "publishedAt": "2026-10-28T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3d",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3c",
+      "title": "Обновление Wild Rift 7.3c",
+      "publishedAt": "2026-10-21T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3c",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3b",
+      "title": "Обновление Wild Rift 7.3b",
+      "publishedAt": "2026-10-14T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3b",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3a",
+      "title": "Обновление Wild Rift 7.3a",
+      "publishedAt": "2026-09-29T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3a",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.3",
+      "title": "Обновление Wild Rift 7.3",
+      "publishedAt": "2026-09-21T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-3",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.2d",
+      "title": "Обновление Wild Rift 7.2d",
+      "publishedAt": "2026-08-26T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-2d",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.2c",
+      "title": "Обновление Wild Rift 7.2c",
+      "publishedAt": "2026-08-12T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-2c",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.2b",
+      "title": "Обновление Wild Rift 7.2b",
+      "publishedAt": "2026-07-29T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-2b",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.2a",
+      "title": "Обновление Wild Rift 7.2a",
+      "publishedAt": "2026-07-15T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-2a",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.2",
+      "title": "Обновление Wild Rift 7.2",
+      "publishedAt": "2026-07-08T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-2",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1h",
+      "title": "Обновление Wild Rift 7.1h",
+      "publishedAt": "2026-06-24T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1h",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1g",
+      "title": "Обновление Wild Rift 7.1g",
+      "publishedAt": "2026-06-10T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1g",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1f",
+      "title": "Обновление Wild Rift 7.1f",
+      "publishedAt": "2026-05-27T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1f",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1e",
+      "title": "Обновление Wild Rift 7.1e",
+      "publishedAt": "2026-05-13T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1e",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1c",
+      "title": "Обновление Wild Rift 7.1c",
+      "publishedAt": "2026-04-22T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1c",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1b",
+      "title": "Обновление Wild Rift 7.1b",
+      "publishedAt": "2026-04-15T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1b",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.1",
+      "title": "Обновление Wild Rift 7.1",
+      "publishedAt": "2026-04-07T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-1",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    },
+    {
+      "version": "7.0g",
+      "title": "Обновление Wild Rift 7.0g",
+      "publishedAt": "2026-03-25T09:00:00.000Z",
+      "url": "https://wildrift.leagueoflegends.com/ru-ru/news/game-updates/wild-rift-patch-notes-7-0g",
+      "locale": "ru-ru",
+      "summary": "Опубликовано официальное описание обновления. Полный список изменений доступен в публикации Riot Games."
+    }
+  ]
+}

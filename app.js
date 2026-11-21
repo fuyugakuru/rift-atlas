@@ -401,6 +401,9 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
     for(const node of el.childNodes) if(node.nodeType===Node.TEXT_NODE&&node.textContent.includes('Данные проверены')) node.textContent=node.textContent.replace('Данные проверены','Текущий патч');
     const date=el.querySelector('small');if(date)date.textContent=currentPatch.version+' · '+currentPatch.released;
   });
+  const patchScript=document.createElement('script');
+  patchScript.src='patch-updates.js?v='+encodeURIComponent(new URL(document.currentScript?.src||location.href).searchParams.get('v')||'patches-20261121');
+  document.head.append(patchScript);
 })();
 // Private friendship notifications, loaded after account initialization.
 function loadFriendNotifications(){
