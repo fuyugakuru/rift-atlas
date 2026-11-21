@@ -72,6 +72,7 @@ jobs:
           cp -- sitemap.xml "$RUNNER_TEMP/website/"
           if [ -f champion-stats.json ]; then cp -- champion-stats.json "$RUNNER_TEMP/website/"; fi
           if [ -f champion-stats-history.json ]; then cp -- champion-stats-history.json "$RUNNER_TEMP/website/"; fi
+          if [ -f current-patch.json ]; then cp -- current-patch.json "$RUNNER_TEMP/website/"; fi
           cp -R assets "$RUNNER_TEMP/website/assets"
           public_version=$(git rev-parse --short HEAD)
           sed -i -E "s/src=\"app.js([?][^\"]*)?\"/src=\"app.js?v=$public_version\"/g" "$RUNNER_TEMP/website/"*.html

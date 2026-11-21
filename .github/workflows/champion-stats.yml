@@ -38,6 +38,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/website"
           cp -- *.html *.css *.js *.svg sitemap.xml champion-stats.json champion-stats-history.json "$RUNNER_TEMP/website/"
           cp -R assets "$RUNNER_TEMP/website/assets"
+          if [ -f current-patch.json ]; then cp -- current-patch.json "$RUNNER_TEMP/website/"; fi
           public_version=$(git rev-parse --short HEAD)
           sed -i -E "s/src=\"app.js([?][^\"]*)?\"/src=\"app.js?v=$public_version\"/g" "$RUNNER_TEMP/website/"*.html
           touch "$RUNNER_TEMP/website/.nojekyll"

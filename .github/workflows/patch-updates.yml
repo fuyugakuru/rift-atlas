@@ -1,0 +1,66 @@
+name: Check official Wild Rift patches
+on:
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check official Riot publications
+        run: node tools/update-patches.cjs
+      - name: Save new official publications
+        id: changes
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add current-patch.json
+          if ! git diff --cached --quiet; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            git commit -m 'Update official Wild Rift patch feed'
+            git push
+          else
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/configure-pages@v5
+        if: steps.changes.outputs.changed == 'true'
+      - name: Prepare public website
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/website"
+          cp -- *.html *.css *.js *.svg sitemap.xml champion-stats.json champion-stats-history.json "$RUNNER_TEMP/website/"
+          cp -R assets "$RUNNER_TEMP/website/assets"
+          if [ -f current-patch.json ]; then cp -- current-patch.json "$RUNNER_TEMP/website/"; fi
+          public_version=$(git rev-parse --short HEAD)
+          sed -i -E "s/src=\"app.js([?][^\"]*)?\"/src=\"app.js?v=$public_version\"/g" "$RUNNER_TEMP/website/"*.html
+          touch "$RUNNER_TEMP/website/.nojekyll"
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.changes.outputs.changed == 'true'
+        with:
+          path: ${{ runner.temp }}/website
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
