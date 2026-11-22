@@ -55,6 +55,7 @@
     const stale = Date.now() - Date.parse(snapshot.fetchedAt) > 48 * 3600000 || Date.now() - Date.parse((row?.date || snapshot.dates.at(-1)) + 'T00:00:00Z') > 72 * 3600000;
     section.classList.toggle('is-stale', stale);
     status.textContent = row ? 'Данные за ' + dateLabel(row.date) + (stale ? ' · Данные задерживаются, показаны последние доступные.' : '') : 'Для этого чемпиона, ранга и линии источник не опубликовал статистику.';
+    if(row)status.textContent+=' · Выборка источника: '+({'1':'Алмаз+','2':'Мастер+','3':'Претендент','4':'CN: 峡谷之巅'}[rank.value]||rank.value);
     section.querySelector('[data-cs="win"]').title = 'Доля побед в опубликованных матчах на выбранной линии и ранге.';
     section.querySelector('[data-cs="pick"]').title = 'Частота выбора на этой линии по методике Tencent.';
     section.querySelector('[data-cs="ban"]').title = 'Частота банов по данным Tencent; может совпадать для разных линий.';
@@ -92,14 +93,11 @@
         const before = rank.value;
         rank.replaceChildren();
         const availableRanks = Object.keys(snapshot.ranks).filter(id => snapshot.rows.some(row => row.champion === champion && row.rank === id));
-        for (const [id, text] of Object.entries(snapshot.ranks)) {
-          const available = availableRanks.includes(id);
-          const option = new Option(text + (available ? '' : ' — нет данных'), id);
-          option.disabled = !available;
-          rank.add(option);
-        }
+        const displayRanks=[['1','Алмаз+'],['2','Мастер+'],['3','Грандмастер'],['4','Претендент'],['sovereign','Суверен']];
+        for(const [id,text] of displayRanks){const available=availableRanks.includes(id);const option=new Option(text+(available?'':' — нет данных'),id);option.disabled=!available;rank.add(option);}
+        rank.title='Названия рангов настроены для сайта; исходная выборка указана под процентами.';
         rank.value = availableRanks.includes(before) ? before : availableRanks.includes('1') ? '1' : availableRanks[0] || '1';
-        rank.disabled = availableRanks.length < 2;
+        rank.disabled = !availableRanks.length;
         selectLanes();
       } catch {
         if (snapshot) { render(); status.textContent += ' · Проверка обновления не удалась.'; }
