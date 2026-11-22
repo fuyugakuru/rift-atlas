@@ -8,16 +8,16 @@
     <title>Матчапы чемпионов Wild Rift | Rift Atlas</title>
     <link rel="stylesheet" href="style.css" />
     <script src="data.js" defer></script>
-    <link rel="stylesheet" href="matchups-page.css?v=13" />
+    <link rel="stylesheet" href="matchups-page.css?v=19" />
     <script src="matchups-data.js?v=1" defer></script>
     <script src="matchup-videos.js?v=1" defer></script>
 <script src="synergies-data.js?v=1" defer></script>
-    <script src="matchups-page.js?v=12" defer></script>
+    <script src="matchups-page.js?v=13" defer></script>
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
     <script src="account.js" defer></script>
     <script src="matchup-community.js?v=2" defer></script>
-<script src="matchup-review.js?v=1" defer></script>
+<script src="matchup-review.js?v=2" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
       <link rel="canonical" href="https://fuyugakuru.github.io/rift-atlas/matchups.html" />
   </head>
@@ -81,8 +81,7 @@
  <section class="mx-all panel" aria-labelledby="mx-all-title">
    <div class="mx-all-heading"><div><p class="eyebrow">ВСЕ МАТЧАПЫ НА ЛИНИИ</p><h2 id="mx-all-title">Все соперники</h2></div><span id="mx-all-count"></span></div>
    <div class="mx-all-toolbar"><label class="mx-rival-search" for="mx-rival-search">Найти соперника<input type="search" id="mx-rival-search" placeholder="Имя чемпиона…" autocomplete="off"></label><div class="mx-all-filters" role="group" aria-label="Фильтр соперников"><button type="button" data-mx-filter="all" aria-pressed="true">Все</button><button type="button" data-mx-filter="hard" aria-pressed="false">Сложные</button><button type="button" data-mx-filter="easy" aria-pressed="false">Удобные</button><button type="button" data-mx-filter="unknown" aria-pressed="false">Без оценки</button></div></div>
-   <p class="mx-stats-note">Победы и поражения — в матчах выбранного чемпиона против соперника. Если подтверждённой статистики пары нет, показан прочерк.</p>
-   <div class="mx-stats-controls"><label for="mx-stats-source">Статистика <select id="mx-stats-source"><option value="riftgg">RiftGG</option><option value="community">Игроки сайта</option></select></label><label for="mx-rank">Ранг <select id="mx-rank" disabled></select></label><details class="mx-data-info"><summary>О статистике</summary><p id="mx-data-status" role="status">Загружаем статистику матчапов…</p></details></div>
+   <div class="mx-stats-controls"><label for="mx-stats-source">Статистика <select id="mx-stats-source"><option value="riftgg">RiftGG</option><option value="community">Игроки сайта</option></select></label><div class="mx-rank-actions"><label for="mx-rank">Ранг <select id="mx-rank" disabled></select></label></div></div>
    <div class="mx-table-heading" aria-hidden="true"><span>Соперник</span><span>Матчап</span><span>Победы</span><span>Поражения</span></div>
    <div id="mx-all-list"></div><p id="mx-all-empty" hidden>Соперники не найдены.</p><button type="button" id="mx-more" hidden>Показать ещё</button>
  </section>
