@@ -8,7 +8,7 @@ const { mergeHistory } = require('./stats-history.cjs');
 const SOURCE = 'https://lolm.qq.com/act/a20220818raider/index.html';
 const ENDPOINT = 'https://mlol.qt.qq.com/go/lgame_battle_info/hero_rank_list_v2';
 const HEROES = 'https://game.gtimg.cn/images/lgamem/act/lrlib/js/heroList/hero_list.js';
-const RANKS = { '1': 'Алмаз+', '2': 'Мастер+', '3': 'Претендент', '4': 'Легендарная очередь' };
+const RANKS = { '1': 'Алмаз+', '2': 'Мастер+', '3': 'Претендент', '4': 'CN: 峡谷之巅' };
 const LANES = { '1': 'mid', '2': 'baron', '3': 'dragon', '4': 'support', '5': 'jungle' };
 const normalize = value => value.toLowerCase().replace(/[^a-z0-9]/g, '');
 function transform(rankPayload, heroPayload, championIds, now = new Date()) {
