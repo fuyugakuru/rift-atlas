@@ -4,16 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#0c0e14" />
-    <meta name="description" content="Контрпики и удобные соперники чемпионов Wild Rift. Сравнивайте матчапы на разных линиях и переходите к сборкам и навыкам чемпионов." />
-    <title>Контрпики чемпионов Wild Rift | Rift Atlas</title>
+    <meta name="description" content="Матчапы и удобные соперники чемпионов Wild Rift. Сравнивайте матчапы на разных линиях и переходите к сборкам и навыкам чемпионов." />
+    <title>Матчапы чемпионов Wild Rift | Rift Atlas</title>
     <link rel="stylesheet" href="style.css" />
     <script src="data.js" defer></script>
-    <link rel="stylesheet" href="matchups-page.css?v=2" />
+    <link rel="stylesheet" href="matchups-page.css?v=13" />
     <script src="matchups-data.js?v=1" defer></script>
-    <script src="matchups-page.js?v=3" defer></script>
+    <script src="matchup-videos.js?v=1" defer></script>
+<script src="synergies-data.js?v=1" defer></script>
+    <script src="matchups-page.js?v=12" defer></script>
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
     <script src="account.js" defer></script>
+    <script src="matchup-community.js?v=2" defer></script>
+<script src="matchup-review.js?v=1" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
       <link rel="canonical" href="https://fuyugakuru.github.io/rift-atlas/matchups.html" />
   </head>
@@ -31,7 +35,7 @@
         <a href="index.html"><span class="nav-icon">◈</span>Обзор</a
         ><a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a
         ><a href="items.html"><span class="nav-icon">⬡</span>Предметы</a
-        ><a href="matchups.html" aria-current="page"><span class="nav-icon">⚔</span>Контрпики</a
+        ><a href="matchups.html" aria-current="page"><span class="nav-icon">⚔</span>Матчапы</a
         ><a href="meta.html"><span class="nav-icon">↗</span>Мета</a
         ><a href="patches.html"><span class="nav-icon">▤</span>Патчи</a
         ><a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
@@ -43,7 +47,7 @@
     </aside>
     <div class="workspace">
       <header class="topbar">
-        <span>WILD RIFT <b>/</b> Контрпики</span>
+        <span>WILD RIFT <b>/</b> Матчапы</span>
         <div>
           <span class="patch-pill">ПАТЧ 7.3f</span
           ><a href="champions.html?favorites=1" aria-label="Избранные чемпионы"
@@ -66,18 +70,23 @@
         </div>
       </header>
       <main id="main" class="mx-page">
- <div class="mx-heading"><div><p class="eyebrow">ВЫБОР ЧЕМПИОНА</p><h1>Контрпики</h1><p class="mx-intro">Выбери чемпиона и линию. Посмотри соперников и открой разбор матчапа.</p></div><span class="mx-heading-mark" aria-hidden="true">⚔</span></div>
+ <div class="mx-heading"><div><p class="eyebrow">ВЫБОР ЧЕМПИОНА</p><h1>Матчапы</h1><p class="mx-intro">Выбери чемпиона и линию. Посмотри соперников и открой разбор матчапа.</p></div><span class="mx-heading-mark" aria-hidden="true">⚔</span></div>
  <div class="mx-modes" role="group" aria-label="Режим подбора"><button type="button" data-mx-mode="own" aria-pressed="true">Я играю за чемпиона</button><button type="button" data-mx-mode="enemy" aria-pressed="false">Ищу выбор против</button></div>
  <section class="mx-selection" aria-label="Выбранный чемпион"><img id="mx-hero" alt="" decoding="async"><div class="mx-selection-shade"></div><div class="mx-selection-info"><span id="mx-selection-label" class="eyebrow">ТВОЙ ЧЕМПИОН</span><h2 id="mx-name"></h2><p id="mx-subtitle"></p><div class="mx-selection-actions"><button type="button" id="mx-picker-toggle" aria-expanded="false" aria-controls="mx-picker">Сменить чемпиона <span aria-hidden="true">⌄</span></button><a id="mx-guide" href="champions.html">Страница чемпиона ↗</a></div></div></section>
  <section id="mx-picker" class="mx-picker" aria-label="Выбор чемпиона" hidden><div class="mx-search-row"><label for="mx-search">Поиск чемпиона</label><input id="mx-search" type="search" placeholder="Имя чемпиона…" autocomplete="off"><button type="button" id="mx-picker-close" aria-label="Закрыть выбор чемпиона">×</button></div><div id="mx-champions" class="mx-champions"></div><p id="mx-search-empty" hidden>Чемпион не найден.</p></section>
+ <section id="mx-start" class="mx-start" aria-label="Быстрый выбор чемпиона"><div class="mx-start-heading"><h2>Выбери своего чемпиона</h2><span>Соперники и союзники</span></div><div id="mx-start-champions" class="mx-start-champions"></div><div class="mx-start-heading"><h2>Союзные пары</h2><span>Как играть вместе</span></div><div id="mx-start-pairs" class="mx-start-pairs"></div></section>
+
+ <div id="mx-view-tabs" class="mx-view-tabs" role="group" aria-label="Соперники или союзники" hidden><button type="button" data-mx-view="opponents" aria-pressed="true">Соперники</button><button type="button" data-mx-view="synergy" aria-pressed="false">Синергия</button></div>
  <div class="mx-lane-row"><span>Линия</span><div id="mx-lanes" role="group" aria-label="Линия матчапа"></div></div>
  <section class="mx-all panel" aria-labelledby="mx-all-title">
    <div class="mx-all-heading"><div><p class="eyebrow">ВСЕ МАТЧАПЫ НА ЛИНИИ</p><h2 id="mx-all-title">Все соперники</h2></div><span id="mx-all-count"></span></div>
-   <div class="mx-all-toolbar"><label class="mx-rival-search" for="mx-rival-search">Найти соперника<input type="search" id="mx-rival-search" placeholder="Имя чемпиона…" autocomplete="off"></label><div class="mx-all-filters" role="group" aria-label="Фильтр соперников"><button type="button" data-mx-filter="all" aria-pressed="true">Все</button><button type="button" data-mx-filter="hard" aria-pressed="false">Контрпики</button><button type="button" data-mx-filter="easy" aria-pressed="false">Удобные</button><button type="button" data-mx-filter="unknown" aria-pressed="false">Без оценки</button></div></div>
+   <div class="mx-all-toolbar"><label class="mx-rival-search" for="mx-rival-search">Найти соперника<input type="search" id="mx-rival-search" placeholder="Имя чемпиона…" autocomplete="off"></label><div class="mx-all-filters" role="group" aria-label="Фильтр соперников"><button type="button" data-mx-filter="all" aria-pressed="true">Все</button><button type="button" data-mx-filter="hard" aria-pressed="false">Сложные</button><button type="button" data-mx-filter="easy" aria-pressed="false">Удобные</button><button type="button" data-mx-filter="unknown" aria-pressed="false">Без оценки</button></div></div>
    <p class="mx-stats-note">Победы и поражения — в матчах выбранного чемпиона против соперника. Если подтверждённой статистики пары нет, показан прочерк.</p>
+   <div class="mx-stats-controls"><label for="mx-stats-source">Статистика <select id="mx-stats-source"><option value="riftgg">RiftGG</option><option value="community">Игроки сайта</option></select></label><label for="mx-rank">Ранг <select id="mx-rank" disabled></select></label><details class="mx-data-info"><summary>О статистике</summary><p id="mx-data-status" role="status">Загружаем статистику матчапов…</p></details></div>
    <div class="mx-table-heading" aria-hidden="true"><span>Соперник</span><span>Матчап</span><span>Победы</span><span>Поражения</span></div>
    <div id="mx-all-list"></div><p id="mx-all-empty" hidden>Соперники не найдены.</p><button type="button" id="mx-more" hidden>Показать ещё</button>
  </section>
+ <section id="mx-synergy" class="mx-synergy panel" hidden><p class="eyebrow">СОЮЗНЫЕ ПАРЫ</p><h2>С кем играть вместе</h2><p class="mx-synergy-note">Подборка по взаимодействию навыков, без процентов побед.</p><div id="mx-synergy-list"></div><p id="mx-synergy-empty" hidden>Для этого чемпиона союзные пары пока не добавлены.</p></section>
  <p class="mx-footnote">Преимущество в матчапе зависит от игры на линии, сборки и состава команд.</p>
  <noscript><p class="panel">Включи JavaScript для выбора чемпиона. Подборки также доступны на <a href="champions.html">страницах чемпионов</a>.</p></noscript>
 </main>
