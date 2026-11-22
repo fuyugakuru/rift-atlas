@@ -1995,3 +1995,4 @@ footer {
  .character-facts .difficulty-gem:nth-child(2){height:28px}
  .character-facts .difficulty-gem:nth-child(3){height:34px}
 }
+.matchup-all-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:40px;margin:0 0 16px;padding:9px 15px;box-sizing:border-box;border:1px solid #8d70ab;border-radius:8px;background:#30233f;color:#eadcf5;font-size:13px;font-weight:600;text-decoration:none}.matchup-all-link:hover{background:#463158;border-color:#c4a2e6}.matchup-all-link:focus-visible{outline:2px solid #eadcf5;outline-offset:3px}@media(max-width:650px){.matchup-all-link{min-height:40px;font-size:12px;margin-bottom:12px}}
