@@ -22,19 +22,12 @@
   function notifyContext(){window.dispatchEvent(new CustomEvent('rift-matchup-context'));}
   function statsStatus(){if(!selected)return;
     if(communityView()){
-      const choices=[['all','Все ранги'],['diamond','Алмаз'],['master','Мастер'],['grandmaster','Грандмастер'],['challenger','Претендент'],['sovereign','Суверен']];if(!choices.some(([id])=>id===rank))rank='all';$('mx-rank').replaceChildren();for(const [id,text] of choices){const o=element('option','',text);o.value=id;$('mx-rank').append(o);}$('mx-rank').value=rank;$('mx-rank').disabled=false;$('mx-rank').title='Ранг, указанный игроком в отчёте';$('mx-data-status').classList.remove('is-archive');$('mx-data-status').textContent='В расчёт входят только результаты со скриншотами, одобренные администратором. Это пользовательские отчёты, без подтверждения игровым API. Проценты рассчитаны по отчётам на выбранной линии, ранге и патче. Один матч может быть описан несколькими участниками.';return;
+      const choices=[['all','Все ранги'],['diamond','Алмаз'],['master','Мастер'],['grandmaster','Грандмастер'],['challenger','Претендент'],['sovereign','Суверен']];if(!choices.some(([id])=>id===rank))rank='all';$('mx-rank').replaceChildren();for(const [id,text] of choices){const o=element('option','',text);o.value=id;$('mx-rank').append(o);}$('mx-rank').value=rank;$('mx-rank').disabled=false;$('mx-rank').title='Ранг, указанный игроком в отчёте';return;
     }
     const available=Object.keys(rankNames).filter(id=>snapshot?.rows?.some(r=>r.lane===lane&&r.rank===id));
     if(available.length&&!available.includes(rank))rank=available[0];
     $('mx-rank').replaceChildren();
     for(const [id,name] of rankedOptions){const o=element('option','',name+(available.includes(id)?'':' — нет данных'));o.value=id;o.disabled=!available.includes(id);$('mx-rank').append(o);}$('mx-rank').value=rank;$('mx-rank').disabled=!available.length;$('mx-rank').title='Названия рангов настроены для сайта; исходная выборка указана рядом со статистикой.';
-    const dates=[...new Set(selectedRows().map(r=>r.date))].sort(),note=$('mx-data-status');
-    note.classList.remove('is-archive');
-    if(checking)note.textContent='Загружаем статистику матчапов…';
-    else if(dates.length){const oldest=dates[0],newest=dates.at(-1),archive=Date.now()-Date.parse(oldest)>30*86400000;note.classList.toggle('is-archive',archive);note.textContent=(archive?'Архивные данные · ':'Данные · ')+(oldest===newest?dateLabel(oldest):dateLabel(oldest)+' — '+dateLabel(newest))+' · Китай · RiftGG';}
-    else note.textContent='Для этого чемпиона и линии статистика пока недоступна.';
-    if(dates.length)note.textContent+=' · Выборка источника: '+rankNames[rank];
-    if(checkedAt)note.textContent+=' · Проверка источника: '+dateLabel(checkedAt);
   }
   async function loadStats(){if(!selected)return;const id=selected.id;if(snapshotId===id){statsStatus();return;}const turn=++loadEpoch;snapshotId=id;snapshot=null;checking=true;statsStatus();
     try{if(!snapshots.has(id)){const response=await fetch('assets/matchups/'+encodeURIComponent(id)+'.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();if(data.schema!==1||data.champion!==id||data.region!=='CN'||!Array.isArray(data.rows)||!data.rows.every(r=>byId.has(r.opponent)&&rankNames[r.rank]&&labels[r.lane]&&Number.isFinite(r.win)&&r.win>=0&&r.win<=100&&Number.isFinite(Date.parse(r.date))))throw Error('Invalid matchup data');snapshots.set(id,data);}if(turn===loadEpoch)snapshot=snapshots.get(id);
@@ -93,7 +86,6 @@
   const startIds=['yasuo','akali','sett','mordekaiser','ahri','viego','jinx','thresh','lux','lee-sin','xayah','lucian'];
   for(const id of startIds){const c=byId.get(id);if(!c)continue;const b=element('button','mx-start-champion');b.type='button';b.append(image('assets/champions/faces/'+id+'.webp'),element('span','',c.name));b.addEventListener('click',()=>chooseStart(id));$('mx-start-champions').append(b);}
   for(const id of ['yasuo','xayah','lucian']){const pair=(window.RIFT_SYNERGIES||[]).find(p=>p.a===id||p.b===id);if(!pair)continue;const a=byId.get(pair.a),b=byId.get(pair.b);if(!a||!b)continue;const card=element('button','mx-start-pair');card.type='button';const faces=element('span','mx-start-pair-faces');faces.append(image('assets/champions/faces/'+a.id+'.webp'),element('span','','+'),image('assets/champions/faces/'+b.id+'.webp'));card.append(faces,element('strong','',a.name+' + '+b.name),element('span','mx-start-pair-link','Смотреть синергию ↗'));card.addEventListener('click',()=>chooseStart(id,'synergy'));$('mx-start-pairs').append(card);}
-  const art=element('div','mx-start-art');art.setAttribute('aria-hidden','true');for(const id of ['yasuo','yone']){const c=byId.get(id);if(c)art.append(image(c.hero));}host.querySelector('.mx-selection').append(art);
   function renderSynergies(){const list=$('mx-synergy-list');list.replaceChildren();if(!selected)return;const pairs=(window.RIFT_SYNERGIES||[]).filter(p=>p.a===selected.id||p.b===selected.id);$('mx-synergy-empty').hidden=pairs.length>0;for(const p of pairs){const ally=byId.get(p.a===selected.id?p.b:p.a);if(!ally)continue;const card=element('article','mx-synergy-card'),head=element('div','mx-synergy-head');head.append(image('assets/champions/faces/'+ally.id+'.webp'),element('h3','',ally.name));card.append(head,element('p','',p.why),element('h4','','Как играть вместе'),element('p','',p.tip));const link=element('a','','Навыки и сборки ↗');link.href=ally.id+'.html';card.append(link);list.append(card);}}
   function renderView(){const chosen=!!selected;$('mx-start').hidden=chosen;document.querySelector('.mx-lane-row').hidden=!chosen||view==='synergy';document.querySelector('.mx-all').hidden=!chosen||view==='synergy';$('mx-synergy').hidden=!chosen||view!=='synergy';$('mx-view-tabs').hidden=!chosen;document.querySelector('.mx-modes').hidden=!chosen||view==='synergy';document.querySelectorAll('[data-mx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mxView===view)));if(chosen){$('mx-selection-label').textContent=view==='synergy'?'ТВОЙ ЧЕМПИОН':mode==='own'?'ТВОЙ ЧЕМПИОН':'ЧЕМПИОН ПРОТИВНИКА';renderSynergies();}}
   function render(){
@@ -103,7 +95,6 @@
     if(!lanes.includes(lane))lane=lanes[0]||'mid';
     $('mx-name').textContent=selected.name;$('mx-subtitle').textContent=selected.subtitle;
     $('mx-all-title').textContent=mode==='own'?'Все соперники':'Выбор против '+selected.name;
-    host.querySelector('.mx-stats-note').textContent='Победы и поражения '+selected.name+' в матчах против соперника. Оценки матчапов взяты из разборов. Если статистики пары нет, показан прочерк.';
     $('mx-selection-label').textContent=mode==='own'?'ТВОЙ ЧЕМПИОН':'ЧЕМПИОН ПРОТИВНИКА';
     $('mx-hero').src=selected.hero;$('mx-guide').href=selected.id+'.html';$('mx-lanes').replaceChildren();
     for(const id of lanes){const button=element('button','mx-lane');button.type='button';button.setAttribute('aria-pressed',String(id===lane));button.append(image('assets/lanes/'+id+'.png'),element('span','',labels[id]));button.addEventListener('click',()=>{lane=id;render();});$('mx-lanes').append(button);}
