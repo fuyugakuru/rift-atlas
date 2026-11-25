@@ -2,31 +2,6 @@
   "use strict";
   const root = document.querySelector(".rift-overview");
   if (!root) return;
-  const championStrip = root.querySelector(".atlas-champion-strip");
-  const pauseChampions = championStrip?.querySelector(".atlas-champions-pause");
-  // Keep the user's pause setting separate from automatic background pauses.
-  let stripVisible = true;
-  const updateStripPlayback = () => {
-    championStrip?.classList.toggle("is-inactive", document.hidden || !stripVisible);
-  };
-  document.addEventListener("visibilitychange", updateStripPlayback);
-  if (championStrip && "IntersectionObserver" in window) {
-    const stripObserver = new IntersectionObserver(([entry]) => {
-      stripVisible = entry.isIntersecting;
-      updateStripPlayback();
-    });
-    stripObserver.observe(championStrip);
-  }
-  updateStripPlayback();
-  pauseChampions?.addEventListener("click", () => {
-    const paused = championStrip.classList.toggle("is-paused");
-    pauseChampions.setAttribute("aria-pressed", String(paused));
-    pauseChampions.setAttribute(
-      "aria-label",
-      paused ? "Продолжить движение чемпионов" : "Приостановить движение чемпионов",
-    );
-    pauseChampions.textContent = paused ? "▶" : "Ⅱ";
-  });
   const timings = new Map((window.RIFT_TIMINGS || []).map((o) => [o.id, o]));
   const shapes = {
     tower: "M5 21h14M7 21V9H5V3h3v3h3V3h2v3h3V3h3v6h-2v12M10 21v-5h4v5",

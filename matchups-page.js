@@ -8,10 +8,11 @@
   const $=id=>document.getElementById(id);
   const normalize=s=>s.normalize('NFKC').toLocaleLowerCase('ru').replaceAll('ё','е').replace(/[^\p{L}\p{N}]/gu,'');
   let params=new URLSearchParams(location.search),selected=byId.get(params.get('champion'))||null;
-  let lane=params.get('lane'), mode=params.get('mode')==='enemy'?'enemy':'own';
+  let lane=params.get('lane'), mode='own';
   let view=params.get('view')==='synergy'?'synergy':'opponents';
-  let rivalFilter='all', visibleLimit=20;
+  let rivalFilter='all', visibleLimit=20, synergyLimit=8;
   let rank='1', snapshot=null, snapshotId=null, loadEpoch=0, checking=false, checkedAt=null;
+  let pickRows=[];
   const snapshots=new Map(),rankNames={'1':'Алмаз+','2':'Мастер+','3':'Претендент','4':'CN: 峡谷之巅'};
   const rankedOptions=[['1','Алмаз+'],['2','Мастер+'],['3','Грандмастер'],['4','Претендент'],['sovereign','Суверен']];
   const dateLabel=value=>new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC'}).format(new Date(value));
@@ -47,13 +48,14 @@
   }
   // A missing pairing has no assessment. Never infer a 50% rate or copy an
   // overall champion win rate into a head-to-head matchup.
+  function pickMap(){const sourceRank=!communityView()&&Object.hasOwn(rankNames,rank)?rank:'1';return new Map(pickRows.filter(r=>r.lane===lane&&r.rank===sourceRank).map(r=>[r.champion,r.pick]));}
   function allRivals(){if(!selected)return;
     const role=selected.roles[lane]||{hard:[],easy:[]};
     const hard=new Map(role.hard.map(e=>[e.id,e])),easy=new Map(role.easy.map(e=>[e.id,e]));
     const stats=new Map(selectedRows().map(r=>[r.opponent,r]));
-    const q=normalize($('mx-rival-search').value);
+    const q=normalize($('mx-rival-search').value),picks=pickMap();
     const rows=champions.filter(c=>c.id!==selected.id&&(c.lanes.includes(lane)||Object.hasOwn(c.roles,lane))).map(c=>({champion:c,kind:hard.has(c.id)?'hard':easy.has(c.id)?'easy':'unknown',advice:hard.get(c.id)||easy.get(c.id)}));
-    const filtered=rows.filter(r=>(rivalFilter==='all'||r.kind===rivalFilter)&&(!q||normalize(r.champion.name+' '+r.champion.id).includes(q))).sort((a,b)=>a.champion.name.localeCompare(b.champion.name,'ru'));
+    const filtered=rows.filter(r=>(rivalFilter==='all'||r.kind===rivalFilter)&&(!q||normalize(r.champion.name+' '+r.champion.id).includes(q))).sort((a,b)=>(picks.get(b.champion.id)??-1)-(picks.get(a.champion.id)??-1)||a.champion.name.localeCompare(b.champion.name,'ru'));
     $('mx-all-count').textContent=labels[lane]+' · '+filtered.length+' из '+rows.length;
     $('mx-all-list').replaceChildren();$('mx-all-empty').hidden=filtered.length>0;
     document.querySelectorAll('[data-mx-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mxFilter===rivalFilter)));
@@ -66,7 +68,7 @@
       const rate=(label,loss=false)=>{const roundedWin=stat?Math.round(stat.win*10)/10:null,number=stat?(loss?100-roundedWin:roundedWin):null,span=element('span','mx-pair-rate',number===null?'—':number.toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})+'%');span.setAttribute('aria-label',label+': '+(stat?span.textContent+', '+origin:'нет данных'));span.title=origin;if(stat)span.dataset.band=loss?'loss':stat.win>=50?'good':stat.win>=48?'middle':'bad';return span;};
       if(communityView()&&stat)classification.append(element('small','mx-report-count',stat.reports+' отчётов'));
       summary.append(identity,classification,rate('Победы '+selected.name),rate('Поражения '+selected.name,true));
-      const body=element('div','mx-rival-body');body.append(element('h3','',selected.name+' против '+c.name));
+      const body=element('div','mx-rival-body'),actions=element('div','mx-pair-actions'),result=element('button','mx-community-open mx-add-result','Добавить результат');result.type='button';result.addEventListener('click',()=>window.RiftMatchupCommunity?.open({...window.RiftMatchups.context(),opponent:c.id}));actions.append(element('h3','',selected.name+' против '+c.name),result);body.append(actions);
       const layout=element('div','mx-matchup-layout'),media=element('div','mx-matchup-media'),videoSlot=element('div','mx-matchup-video-slot'),advice=element('div','mx-matchup-advice');
       const videoId=window.RIFT_MATCHUP_VIDEOS?.[selected.id]?.[lane]?.[c.id],hasVideo=typeof videoId==='string'&&/^[A-Za-z0-9_-]{11}$/.test(videoId),videoTitle='Видеоразбор: '+selected.name+' против '+c.name;
       media.append(element('h4','','Видеоразбор'),videoSlot);layout.append(media,advice);body.append(layout);
@@ -75,20 +77,26 @@
       if(row.advice){advice.append(element('p','',row.advice.why));if(row.advice.tip)advice.append(element('h4','','Совет за '+selected.name),element('p','',row.advice.tip));}
       else advice.append(element('p','mx-unreviewed','Подробный разбор этой пары ещё не добавлен. Чемпион не отнесён к контрпикам или удобным соперникам.'));
       advice.append(element('p','mx-pair-missing',stat?origin+(communityView()?' · '+stat.wins+' побед / '+stat.losses+' поражений. Скриншоты проверены администратором; игрового подтверждения API нет.':'. Процент поражений рассчитан как 100% минус процент побед.'):'Победы / поражения: нет данных по этой паре.'));
-      const share=element('button','mx-community-open','Советы и результаты игроков');share.type='button';share.addEventListener('click',()=>window.RiftMatchupCommunity?.open({...window.RiftMatchups.context(),opponent:c.id}));advice.append(share);
-      const guide=element('a','',c.name+' — навыки и сборки ↗');guide.href=c.id+'.html';advice.append(guide);details.append(summary,body);
-      details.addEventListener('toggle',()=>{if(details.open){mountVideo();for(const other of $('mx-all-list').querySelectorAll('details'))if(other!==details)other.open=false;}else videoSlot.replaceChildren();});
+      const guide=element('a','',c.name+' — навыки и сборки ↗');guide.href=c.id+'.html';advice.append(guide);const tips=element('section','mx-inline-community');body.append(tips);details.append(summary,body);
+      details.addEventListener('toggle',()=>{if(details.open){mountVideo();window.RiftMatchupTips?.mount(tips,{...window.RiftMatchups.context(),opponent:c.id});for(const other of $('mx-all-list').querySelectorAll('details'))if(other!==details)other.open=false;}else videoSlot.replaceChildren();});
       $('mx-all-list').append(details);
     }
     $('mx-more').hidden=filtered.length<=visibleLimit;$('mx-more').textContent='Показать ещё · осталось '+Math.max(0,filtered.length-visibleLimit);
   }
   function chooseStart(id,tab='opponents'){selected=byId.get(id);view=tab;lane=null;render();closePicker();}
-  const startIds=['yasuo','akali','sett','mordekaiser','ahri','viego','jinx','thresh','lux','lee-sin','xayah','lucian'];
-  for(const id of startIds){const c=byId.get(id);if(!c)continue;const b=element('button','mx-start-champion');b.type='button';b.append(image('assets/champions/faces/'+id+'.webp'),element('span','',c.name));b.addEventListener('click',()=>chooseStart(id));$('mx-start-champions').append(b);}
+  const startIds=[...champions].sort((a,b)=>a.name.localeCompare(b.name,'ru')).map(c=>c.id);
+  for(const id of startIds){const c=byId.get(id);if(!c)continue;const b=element('button','mx-start-champion');b.type='button';b.append(image('assets/champions/faces/'+id+'.webp'),element('span','',c.name));b.dataset.startChampion=id;$('mx-start-champions').append(b);}
+  $('mx-start-champions').addEventListener('click',e=>{const b=e.target.closest('[data-start-champion]');if(b&&$('mx-start-champions').contains(b))chooseStart(b.dataset.startChampion);});
   for(const id of ['yasuo','xayah','lucian']){const pair=(window.RIFT_SYNERGIES||[]).find(p=>p.a===id||p.b===id);if(!pair)continue;const a=byId.get(pair.a),b=byId.get(pair.b);if(!a||!b)continue;const card=element('button','mx-start-pair');card.type='button';const faces=element('span','mx-start-pair-faces');faces.append(image('assets/champions/faces/'+a.id+'.webp'),element('span','','+'),image('assets/champions/faces/'+b.id+'.webp'));card.append(faces,element('strong','',a.name+' + '+b.name),element('span','mx-start-pair-link','Смотреть синергию ↗'));card.addEventListener('click',()=>chooseStart(id,'synergy'));$('mx-start-pairs').append(card);}
-  function renderSynergies(){const list=$('mx-synergy-list');list.replaceChildren();if(!selected)return;const pairs=(window.RIFT_SYNERGIES||[]).filter(p=>p.a===selected.id||p.b===selected.id);$('mx-synergy-empty').hidden=pairs.length>0;for(const p of pairs){const ally=byId.get(p.a===selected.id?p.b:p.a);if(!ally)continue;const card=element('article','mx-synergy-card'),head=element('div','mx-synergy-head');head.append(image('assets/champions/faces/'+ally.id+'.webp'),element('h3','',ally.name));card.append(head,element('p','',p.why),element('h4','','Как играть вместе'),element('p','',p.tip));const link=element('a','','Навыки и сборки ↗');link.href=ally.id+'.html';card.append(link);list.append(card);}}
-  function renderView(){const chosen=!!selected;$('mx-start').hidden=chosen;document.querySelector('.mx-lane-row').hidden=!chosen||view==='synergy';document.querySelector('.mx-all').hidden=!chosen||view==='synergy';$('mx-synergy').hidden=!chosen||view!=='synergy';$('mx-view-tabs').hidden=!chosen;document.querySelector('.mx-modes').hidden=!chosen||view==='synergy';document.querySelectorAll('[data-mx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mxView===view)));if(chosen){$('mx-selection-label').textContent=view==='synergy'?'ТВОЙ ЧЕМПИОН':mode==='own'?'ТВОЙ ЧЕМПИОН':'ЧЕМПИОН ПРОТИВНИКА';renderSynergies();}}
+  function renderSynergies(){
+    const list=$('mx-synergy-list');list.replaceChildren();if(!selected)return;
+    const q=normalize($('mx-ally-search').value),pairs=(window.RIFT_SYNERGIES||[]).filter(p=>p.a===selected.id||p.b===selected.id).map(p=>({pair:p,ally:byId.get(p.a===selected.id?p.b:p.a)})).filter(p=>p.ally&&(!q||normalize(p.ally.name+' '+p.ally.id).includes(q))).sort((a,b)=>a.ally.name.localeCompare(b.ally.name,'ru'));
+    $('mx-synergy-empty').hidden=pairs.length>0;$('mx-synergy-empty').textContent=q?'Союзники не найдены.':'Для этого чемпиона союзные пары пока не добавлены.';$('mx-synergy-count').textContent='Показано '+Math.min(synergyLimit,pairs.length)+' из '+pairs.length;$('mx-synergy-more').hidden=pairs.length<=synergyLimit;$('mx-synergy-more').textContent='Показать ещё · осталось '+Math.max(0,pairs.length-synergyLimit);
+    for(const {pair:p,ally} of pairs.slice(0,synergyLimit)){const card=element('article','mx-synergy-card'),head=element('div','mx-synergy-head');head.append(image('assets/champions/faces/'+ally.id+'.webp'),element('h3','',ally.name));card.append(head,element('p','mx-synergy-reason',p.why),element('p','',p.tip));const link=element('a','','Навыки и сборки ↗');link.href=ally.id+'.html';card.append(link);list.append(card);}
+  }
+  function renderView(){const chosen=!!selected;$('mx-start').hidden=chosen;document.querySelector('.mx-lane-row').hidden=!chosen||view==='synergy';document.querySelector('.mx-all').hidden=!chosen||view==='synergy';$('mx-synergy').hidden=!chosen||view!=='synergy';$('mx-view-tabs').hidden=!chosen;document.querySelectorAll('[data-mx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mxView===view)));if(chosen){$('mx-selection-label').textContent=view==='synergy'?'ТВОЙ ЧЕМПИОН':mode==='own'?'ТВОЙ ЧЕМПИОН':'ЧЕМПИОН ПРОТИВНИКА';renderSynergies();}}
   function render(){
+    synergyLimit=8;$('mx-ally-search').value='';
     const chosen=!!selected;host.querySelector('.mx-selection').classList.toggle('is-empty',!chosen);$('mx-hero').hidden=!chosen;$('mx-guide').hidden=!chosen;$('mx-picker-toggle').innerHTML=(chosen?'Сменить чемпиона':'Выбрать чемпиона')+' <span aria-hidden="true">⌄</span>';renderView();
     if(!selected){$('mx-name').textContent='Выбери чемпиона';$('mx-subtitle').textContent='Соперники, советы и хорошие союзные пары';$('mx-selection-label').textContent='RIFT ATLAS';$('mx-hero').removeAttribute('src');renderPicker();updateURL();notifyContext();return;}
     const lanes=[...new Set([...Object.keys(selected.roles),...selected.lanes])].filter(id=>labels[id]);
@@ -96,22 +104,24 @@
     $('mx-name').textContent=selected.name;$('mx-subtitle').textContent=selected.subtitle;
     $('mx-all-title').textContent=mode==='own'?'Все соперники':'Выбор против '+selected.name;
     $('mx-selection-label').textContent=mode==='own'?'ТВОЙ ЧЕМПИОН':'ЧЕМПИОН ПРОТИВНИКА';
-    $('mx-hero').src=selected.hero;$('mx-guide').href=selected.id+'.html';$('mx-lanes').replaceChildren();
+    $('mx-hero').src=selected.hero;const focus={sett:['52%','0%'],malphite:['55%','15%'],'aurelion-sol':['65%','10%'],chogath:['60%','10%'],nautilus:['55%','10%']}[selected.id]||['60%','0%'];$('mx-hero').style.setProperty('--mx-hero-x',focus[0]);$('mx-hero').style.setProperty('--mx-hero-y',focus[1]);$('mx-guide').href=selected.id+'.html';$('mx-lanes').replaceChildren();
     for(const id of lanes){const button=element('button','mx-lane');button.type='button';button.setAttribute('aria-pressed',String(id===lane));button.append(image('assets/lanes/'+id+'.png'),element('span','',labels[id]));button.addEventListener('click',()=>{lane=id;render();});$('mx-lanes').append(button);}
     document.querySelectorAll('[data-mx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mxMode===mode)));
     visibleLimit=20;rivalFilter='all';$('mx-rival-search').value='';renderPicker();updateURL();
     loadStats();allRivals();renderView();notifyContext();
   }
   document.querySelectorAll('[data-mx-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.mxView;renderView();updateURL();}));
+  $('mx-ally-search').addEventListener('input',()=>{synergyLimit=8;renderSynergies();});
+  $('mx-synergy-more').addEventListener('click',()=>{synergyLimit+=8;renderSynergies();});
   $('mx-picker-toggle').addEventListener('click',()=>{const open=$('mx-picker').hidden;$('mx-picker').hidden=!open;$('mx-picker-toggle').setAttribute('aria-expanded',String(open));if(open){$('mx-search').value='';renderPicker();$('mx-search').focus();}});
   $('mx-picker-close').addEventListener('click',()=>closePicker(true));$('mx-search').addEventListener('input',renderPicker);
   $('mx-picker').addEventListener('keydown',e=>{if(e.key==='Escape')closePicker(true);});
-  document.querySelectorAll('[data-mx-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mxMode;render();}));
   $('mx-rival-search').addEventListener('input',()=>{visibleLimit=20;allRivals();});
   document.querySelectorAll('[data-mx-filter]').forEach(b=>b.addEventListener('click',()=>{rivalFilter=b.dataset.mxFilter;visibleLimit=20;allRivals();}));
   $('mx-more').addEventListener('click',()=>{visibleLimit+=20;allRivals();});
   $('mx-rank').addEventListener('change',()=>{rank=$('mx-rank').value;visibleLimit=20;statsStatus();allRivals();notifyContext();});
   $('mx-stats-source').addEventListener('change',()=>{statsStatus();allRivals();notifyContext();});
   fetch('assets/matchups/index.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)}).then(r=>r.ok?r.json():null).then(index=>{if(index?.schema===1&&Number.isFinite(Date.parse(index.checkedAt))){checkedAt=index.checkedAt;statsStatus();}}).catch(()=>{});
+  fetch('champion-stats.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)}).then(r=>r.ok?r.json():null).then(data=>{if(data?.schema!==1||data.region!=='CN'||!Array.isArray(data.rows))return;pickRows=data.rows.filter(r=>byId.has(r.champion)&&labels[r.lane]&&Object.hasOwn(rankNames,r.rank)&&Number.isFinite(r.pick)&&r.pick>=0&&r.pick<=100);allRivals();}).catch(()=>{});
   render();
 })();
