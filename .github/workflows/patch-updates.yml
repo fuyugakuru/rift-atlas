@@ -22,14 +22,17 @@ jobs:
         with:
           node-version: '22'
       - name: Check official Riot publications
-        run: node tools/update-patches.cjs
+        run: |
+          node tools/update-patches.cjs
+          node tools/update-balance.cjs
+          node tools/build-balance-catalog.cjs
       - name: Save new official publications
         id: changes
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add current-patch.json
+          git add current-patch.json balance-candidates.js balance-catalog.js patch-entities.js
           if ! git diff --cached --quiet; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
             git commit -m 'Update official Wild Rift patch feed'
