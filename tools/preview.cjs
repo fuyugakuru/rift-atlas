@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'..');
 const refreshStats=()=>require('./update-champion-stats.cjs').update({maxAgeMs:6*3600000}).catch(error=>console.warn('Stats: last good snapshot retained:',error.message));
 refreshStats();
 setInterval(refreshStats,6*3600000).unref();
-const refreshPatches=()=>require('./update-patches.cjs').update().catch(error=>console.warn('Patches: previous feed retained:',error.message));
+const refreshPatches=()=>require('./update-patches.cjs').update().then(()=>require('./update-balance.cjs').update()).catch(error=>console.warn('Patches: previous feed retained:',error.message));
 refreshPatches();setInterval(refreshPatches,3600000).unref();
 const refreshMatchups=()=>require('./update-matchup-stats.cjs').update({maxAgeMs:24*3600000}).catch(error=>console.warn('Matchups: saved snapshots retained:',error.message));
 refreshMatchups();setInterval(refreshMatchups,24*3600000).unref();
