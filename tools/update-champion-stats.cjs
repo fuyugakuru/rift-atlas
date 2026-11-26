@@ -46,7 +46,9 @@ function transform(rankPayload, heroPayload, championIds, now = new Date()) {
         const key = champion + ':' + rank + ':' + lane;
         if (seen.has(key)) throw Error('Duplicate champion/rank/lane');
         seen.add(key); dates.add(date);
-        rows.push({ champion, rank, lane, win: values[0], pick: values[1], ban: values[2], date });
+        const tier = /^[0-5]$/.test(String(row.strength_level)) ? Number(row.strength_level) : null;
+        const positionInLane = /^\d+$/.test(String(row.strength)) && Number(row.strength)>0 ? Number(row.strength) : null;
+        rows.push({ champion, rank, lane, win: values[0], pick: values[1], ban: values[2], date, tier, positionInLane });
       }
     }
   }
