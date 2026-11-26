@@ -392,6 +392,7 @@
         );
         card.append(explanation);
       }
+      window.RiftStaffNotes?.append(card,build.staff_note);
       card.append(line);
       const loadout=el('div','pb-build-loadout');
       for (const [label, keys] of [

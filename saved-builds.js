@@ -170,6 +170,7 @@
       );
       article.append(d);
     }
+    window.RiftStaffNotes?.append(article,build.staff_note);
     const detail = el("p", "pb-community-detail");
     detail.hidden = true;
     for (const [cls, keys, labelText] of [

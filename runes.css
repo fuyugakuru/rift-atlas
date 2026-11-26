@@ -1,0 +1,43 @@
+/* Четыре ветки и три ряда внутри каждой — порядок игрового каталога. */
+.runes-page { max-width:1440px; margin:auto; padding:40px clamp(16px,3vw,48px) 64px; }
+.runes-heading { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
+.runes-heading h1 { margin:0; font-size:clamp(30px,4vw,44px); }
+.runes-heading .eyebrow { margin:0 0 6px; color:var(--violet); font-size:11px; letter-spacing:.2em; }
+.runes-count { color:var(--muted); font-size:13px; }
+.runes-keystones,.rune-tree { background:linear-gradient(145deg,#171722,#10131b); border:1px solid var(--line); border-radius:16px; padding:22px 16px; }
+.runes-keystones { margin-bottom:22px; --rune-color:var(--violet); }
+.runes-page h2 { margin:0 0 20px; font-size:17px; }
+.rune-tree h2 { color:var(--rune-color); text-align:center; }
+.runes-trees { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; align-items:start; }
+.runes-row { display:grid; grid-auto-columns:minmax(0,1fr); grid-auto-flow:column; gap:5px; padding:12px 0; }
+.rune-tree .runes-row + .rune-description-slot + .runes-row { border-top:1px solid #ffffff0c; }
+.runes-key-grid > .runes-row { grid-template-columns:repeat(13,minmax(0,1fr)); grid-auto-flow:row; gap:8px; }
+.rune-button { min-width:0; padding:8px 2px; border:1px solid transparent; border-radius:12px; background:transparent; color:var(--text); cursor:pointer; font:inherit; display:flex; flex-direction:column; align-items:center; gap:9px; transition:background .15s,border-color .15s; }
+.rune-button img { display:block; width:clamp(38px,4vw,60px); height:auto; aspect-ratio:1; object-fit:contain; }
+.rune-name { font-size:11px; line-height:1.4; overflow-wrap:anywhere; text-align:center; }
+.rune-button:hover { background:#ffffff08; }
+.rune-button[aria-expanded=true] { border-color:var(--rune-color,var(--violet)); background:#ffffff09; }
+.rune-button:focus-visible { outline:2px solid var(--rune-color,var(--violet)); outline-offset:3px; }
+.rune-description { margin:12px 0 4px; border:1px solid var(--line); border-left:3px solid var(--rune-color,var(--violet)); border-radius:10px; padding:16px; background:#0c0e17; }
+.rune-description-heading { display:flex; gap:12px; align-items:center; }
+.rune-description-heading img { width:40px; height:40px; object-fit:contain; }
+.rune-description h3 { margin:0; font-size:15px; }
+.rune-description p { margin:12px 0 0; white-space:pre-line; color:#c7c8d7; font-size:13px; line-height:1.75; }
+.rune-branch-label { margin:0 0 22px; text-align:center; color:var(--muted); font-size:12px; }
+.rune-branch-tabs { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); position:relative; gap:8px; margin-bottom:24px; }
+.rune-branch-tabs::before { content:''; position:absolute; top:24px; left:8%; right:8%; height:1px; background:var(--line); }
+.rune-branch-tab { position:relative; border:0; background:transparent; color:var(--muted); font:inherit; font-size:11px; padding:0; cursor:pointer; display:flex; align-items:center; flex-direction:column; gap:14px; }
+.rune-branch-diamond { display:grid; place-items:center; width:46px; height:46px; transform:rotate(45deg); border:1px solid #414352; background:#171923; }
+.rune-branch-diamond img { width:32px; height:32px; object-fit:contain; transform:rotate(-45deg); filter:grayscale(1); opacity:.6; }
+.rune-branch-tab[aria-pressed=true] { color:var(--branch-color); }
+.rune-branch-tab[aria-pressed=true] .rune-branch-diamond { border-color:var(--branch-color); box-shadow:0 0 18px #ffffff0a; }
+.rune-branch-tab[aria-pressed=true] img { filter:none; opacity:1; }
+.rune-branch-tab:focus-visible { outline:2px solid var(--branch-color); outline-offset:5px; }
+.rune-branch-content .runes-row { padding:20px 0; }
+.rune-branch-content .rune-button img { width:64px; border-radius:50%; }
+.rune-branch-content .rune-name { font-size:12px; }
+@media(max-width:1150px) { .runes-trees { grid-template-columns:repeat(2,minmax(0,1fr)); } .rune-name { font-size:12px; } .rune-button img { width:52px; } }
+@media(max-width:900px) { .runes-key-grid { overflow-x:auto; } .runes-key-grid > .runes-row { width:1000px; } }
+@media(max-width:560px) { .runes-page { padding:24px 12px 40px; } .runes-trees { gap:10px; grid-template-columns:repeat(2,minmax(0,1fr)); } .runes-keystones,.rune-tree { padding:16px 6px; } .rune-button img { width:42px; } .runes-heading { margin-bottom:20px; } .rune-branch-tabs { gap:2px; margin-bottom:18px; } .rune-branch-diamond { width:25px; height:25px; } .rune-branch-diamond img { width:20px; height:20px; } .rune-branch-tabs::before { top:13px; } .rune-branch-tab { font-size:8px; gap:10px; } .rune-branch-label { font-size:10px; } .rune-tree h2 { font-size:13px; } .rune-branch-content .rune-button img { width:clamp(26px,7vw,40px); } .rune-branch-content .rune-name { font-size:9px; } .runes-row { gap:1px; } .rune-description { padding:9px; } .rune-description-heading { flex-direction:column; gap:6px; } .rune-description h3 { font-size:12px; } .rune-description p { font-size:11px; } }
+.runes-key-grid .rune-name { overflow-wrap:normal; hyphens:auto; font-size:10px; }
+.rune-branch-content .rune-name { overflow-wrap:normal; hyphens:auto; }

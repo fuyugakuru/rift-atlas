@@ -119,7 +119,7 @@
       const result = await Promise.race([
         account.client
           .from("player_builds")
-          .select("champion_id,lane,patch,items,runes,spells,title,description,updated_at", { count: "exact" })
+          .select("moderation_id,champion_id,lane,patch,items,runes,spells,title,description,updated_at", { count: "exact" })
           .eq("user_id", next)
           .order("updated_at", { ascending: false })
           .order("champion_id")
@@ -132,7 +132,8 @@
       ]);
       if (turn !== epoch || account.user?.id !== next) return;
       if (result.error) throw result.error;
-      for (const build of result.data) list.append(card(build));
+      const cards=result.data.map(build=>({build,node:card(build)}));for(const {node}of cards)list.append(node);
+      if(cards.length)account.client.rpc('my_build_staff_notes',{p_ids:cards.map(x=>x.build.moderation_id)}).then(response=>{if(turn!==epoch||account.user?.id!==next||response.error)return;const notes=new Map((response.data||[]).map(x=>[x.id,x.note]));for(const {build,node}of cards)if(node.isConnected)window.RiftStaffNotes?.append(node,notes.get(build.moderation_id));}).catch(()=>{});
       offset += result.data.length;
       total = result.count || 0;
       status.textContent = total

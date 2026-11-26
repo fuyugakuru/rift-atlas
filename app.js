@@ -1,3 +1,6 @@
+// One shared menu entry keeps Runes immediately after Items on every page.
+(()=>{const nav=document.querySelector('.sidebar nav');if(!nav)return;let link=nav.querySelector('a[href="runes.html"]');if(!link){const items=nav.querySelector('a[href="items.html"]');if(!items)return;link=document.createElement('a');link.href='runes.html';const icon=document.createElement('span');icon.className='nav-icon';icon.textContent='✧';icon.setAttribute('aria-hidden','true');link.append(icon,document.createTextNode('Руны'));items.after(link);}if(location.pathname.endsWith('/runes.html'))link.setAttribute('aria-current','page');})();
+
 /* Google Analytics — Wild Rift Atlas */
 
 // Shared champion statistics: load only on individual champion pages.
@@ -380,7 +383,7 @@ function loadPlayerBuilds(){
  if(!document.querySelector('.champion-builds')&&!isProfile)return;
  const css=document.createElement('link');css.rel='stylesheet';css.href='player-builds.css';document.head.append(css);
  const catalog=document.createElement('script');catalog.src='player-build-catalog.js';catalog.async=false;
- const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js':'player-builds.js?v=perf-20261121';editor.async=false;
+ const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js?v=20261126-staff-notes':'player-builds.js?v=perf-20261121';editor.async=false;
  document.body.append(catalog,editor);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadPlayerBuilds,{once:true});else loadPlayerBuilds();
@@ -421,7 +424,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 // Saved community builds: account-owned bookmarks, separate from authored builds.
 function loadSavedBuilds(){
  const css=document.createElement('link');css.rel='stylesheet';css.href='saved-builds.css';document.head.append(css);
- const script=document.createElement('script');script.src='saved-builds.js';document.body.append(script);
+ const script=document.createElement('script');script.src='saved-builds.js?v=20261126-staff-notes';document.body.append(script);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadSavedBuilds,{once:true});else loadSavedBuilds();
 

@@ -142,6 +142,7 @@
         card.append(head);
         if(build.title)card.append(el('h3','pb-build-title',build.title));
         if(build.description){const explanation=el('details','pb-build-explanation');explanation.append(el('summary','','Как играть'),el('p','pb-build-description',build.description));card.append(explanation);}
+        window.RiftStaffNotes?.append(card,build.staff_note);
         card.append(line);
         const loadout=el('div','pb-build-loadout');
         if (build.runes.length) {
