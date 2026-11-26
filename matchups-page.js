@@ -8,7 +8,8 @@
   const $=id=>document.getElementById(id);
   const normalize=s=>s.normalize('NFKC').toLocaleLowerCase('ru').replaceAll('ё','е').replace(/[^\p{L}\p{N}]/gu,'');
   let params=new URLSearchParams(location.search),selected=byId.get(params.get('champion'))||null;
-  let lane=params.get('lane'), mode='own';
+  let lane=params.get('lane'), mode=params.get('mode')==='enemy'?'enemy':'own';
+  let navigationReady=false,restoringHistory=false;
   let view=params.get('view')==='synergy'?'synergy':'opponents';
   let rivalFilter='all', visibleLimit=20, synergyLimit=8;
   let rank='1', snapshot=null, snapshotId=null, loadEpoch=0, checking=false, checkedAt=null;
@@ -36,7 +37,14 @@
   function element(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text)el.textContent=text;return el;}
   function image(src,cls){const img=element('img',cls);img.src=src;img.alt='';img.loading='lazy';img.decoding='async';return img;}
   function closePicker(focus=false){$('mx-picker').hidden=true;$('mx-picker-toggle').setAttribute('aria-expanded','false');if(focus)$('mx-picker-toggle').focus();}
-  function updateURL(){const p=new URLSearchParams();if(params.get('review')==='1')p.set('review','1');if(selected){p.set('champion',selected.id);p.set('lane',lane);}if(view==='synergy')p.set('view','synergy');if(mode==='enemy')p.set('mode',mode);history.replaceState(null,'',location.pathname+(p.size?'?'+p:''));}
+  function updateURL(){
+    const p=new URLSearchParams();if(params.get('review')==='1')p.set('review','1');if(selected){p.set('champion',selected.id);p.set('lane',lane);}if(view==='synergy')p.set('view','synergy');if(mode==='enemy')p.set('mode',mode);
+    const url=location.pathname+(p.size?'?'+p:'')+location.hash;
+    if(restoringHistory)return;
+    const state={...history.state,riftMatchups:true};
+    if(!navigationReady)history.replaceState(state,'',url);
+    else if(url!==location.pathname+location.search+location.hash)history.pushState(state,'',url);
+  }
   function renderPicker(){const q=normalize($('mx-search').value);let count=0;
     for(const button of $('mx-champions').children){const c=byId.get(button.dataset.champion);button.hidden=q&&!normalize(c.name+' '+c.id).includes(q);button.setAttribute('aria-pressed',String(c.id===selected?.id));if(!button.hidden)count++;}
     $('mx-search-empty').hidden=count!==0;
@@ -123,5 +131,19 @@
   $('mx-stats-source').addEventListener('change',()=>{statsStatus();allRivals();notifyContext();});
   fetch('assets/matchups/index.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)}).then(r=>r.ok?r.json():null).then(index=>{if(index?.schema===1&&Number.isFinite(Date.parse(index.checkedAt))){checkedAt=index.checkedAt;statsStatus();}}).catch(()=>{});
   fetch('champion-stats.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)}).then(r=>r.ok?r.json():null).then(data=>{if(data?.schema!==1||data.region!=='CN'||!Array.isArray(data.rows))return;pickRows=data.rows.filter(r=>byId.has(r.champion)&&labels[r.lane]&&Object.hasOwn(rankNames,r.rank)&&Number.isFinite(r.pick)&&r.pick>=0&&r.pick<=100);allRivals();}).catch(()=>{});
-  render();
+  // A direct champion link also has a single Back step to the matchup overview.
+  // The marker survives reloads; Back/Forward never manufacture extra entries.
+  if(selected&&!history.state?.riftMatchups){
+    const deepURL=location.pathname+location.search+location.hash;
+    const startParams=new URLSearchParams();if(params.get('review')==='1')startParams.set('review','1');
+    history.replaceState({...history.state,riftMatchups:true},'',location.pathname+(startParams.size?'?'+startParams:'') );
+    history.pushState({riftMatchups:true},'',deepURL);
+  }
+  window.addEventListener('popstate',()=>{
+    params=new URLSearchParams(location.search);selected=byId.get(params.get('champion'))||null;lane=params.get('lane');view=params.get('view')==='synergy'?'synergy':'opponents';mode=params.get('mode')==='enemy'?'enemy':'own';
+    ++loadEpoch;snapshotId=null;snapshot=null;checking=false;
+    $('mx-all-list').replaceChildren();closePicker();
+    restoringHistory=true;try{render();}finally{restoringHistory=false;}
+  });
+  render();navigationReady=true;
 })();

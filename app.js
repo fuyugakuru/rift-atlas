@@ -1,5 +1,5 @@
 // One shared menu entry keeps Runes immediately after Items on every page.
-(()=>{const nav=document.querySelector('.sidebar nav');if(!nav)return;let link=nav.querySelector('a[href="runes.html"]');if(!link){const items=nav.querySelector('a[href="items.html"]');if(!items)return;link=document.createElement('a');link.href='runes.html';const icon=document.createElement('span');icon.className='nav-icon';icon.textContent='✧';icon.setAttribute('aria-hidden','true');link.append(icon,document.createTextNode('Руны'));items.after(link);}if(location.pathname.endsWith('/runes.html'))link.setAttribute('aria-current','page');})();
+(()=>{const nav=document.querySelector('.sidebar nav');if(!nav)return;let link=nav.querySelector('a[href="runes.html"]');if(!link){const items=nav.querySelector('a[href="items.html"]');if(!items)return;link=document.createElement('a');link.href='runes.html';const icon=document.createElement('span');icon.className='nav-icon';const image=document.createElement('img');image.src='assets/runes-mark.svg';image.alt='';image.width=22;image.height=22;image.style.verticalAlign='middle';image.style.filter='grayscale(1)';icon.append(image);icon.setAttribute('aria-hidden','true');link.append(icon,document.createTextNode('Руны'));items.after(link);}if(location.pathname.endsWith('/runes.html'))link.setAttribute('aria-current','page');})();
 
 /* Google Analytics — Wild Rift Atlas */
 
@@ -433,3 +433,6 @@ function loadBuildFeedback(){
  const script=document.createElement('script');script.src='build-feedback.js';document.body.append(script);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadBuildFeedback,{once:true});else loadBuildFeedback();
+
+// Approved balance values on champion/item/rune pages and build tools.
+(()=>{if(document.querySelector(".character-profile,.item-detail-page")||location.pathname.endsWith("/runes.html")||document.querySelector("script[src^=\"player-build-catalog.js\"]")){const s=document.createElement("script");s.src="balance-live.js?v=1";s.defer=true;document.head.append(s);}})();

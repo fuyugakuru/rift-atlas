@@ -35,6 +35,7 @@
         if (same) return;
         button.setAttribute('aria-expanded', 'true');
         const card = make('article', 'rune-description');
+        card.dataset.balanceRune = id;
         if (color) card.style.setProperty('--rune-color', color);
         const heading = make('div', 'rune-description-heading');
         heading.append(img.cloneNode(), make('h3', '', rune.name));

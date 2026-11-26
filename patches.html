@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0c0e14" />
     <meta name="description" content="Обновления Wild Rift: изменения чемпионов, предметов и игровых объектов. Информация о патчах и ссылки на официальные описания обновлений." />
     <title>Патчи Wild Rift — изменения игры | Rift Atlas</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" /><link rel="stylesheet" href="patches-page.css?v=20261126"><script src="balance-candidates.js?v=20261126" defer></script><script src="patch-entities.js?v=20261126" defer></script><script src="patches-page.js?v=20261126" defer></script>
     <script src="data.js" defer></script>
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
@@ -62,16 +62,10 @@
           >
         </div>
       </header>
-      <main id="main">
-        <div class="page-heading">
-          <p class="eyebrow">ЛЕНТА ИЗМЕНЕНИЙ</p>
-          <h1>Обновления Wild Rift</h1>
-          <p>Официальные публикации Riot Games и описания изменений Wild Rift.</p>
-        </div>
-        <div class="notice patch-sync-note">
-          Новые официальные публикации проверяются каждый час. Сборки и характеристики обновляются после отдельной проверки.
-        </div>
-        <div class="patch-list">
+      <main id="main" class="patch-browser-page"><div id="patch-browser"><div class="patch-page-heading"><div><p class="eyebrow">WILD RIFT</p><h1>Патчи</h1></div><label class="patch-picker">Обновление<select id="patch-release" aria-label="Выбрать патч"></select></label></div><section class="patch-current" aria-label="Выбранное обновление"><strong id="patch-current-number" class="patch-current-number"></strong><div class="patch-current-content"><time id="patch-current-date"></time><p id="patch-current-summary"></p></div><a id="patch-official-link" class="patch-source-link" target="_blank" rel="noopener noreferrer">Полное описание Riot ↗</a></section><div class="patch-controls"><div class="patch-kind-tabs" role="group" aria-label="Тип изменений"><button type="button" data-patch-kind="all" aria-pressed="true">Все<span>0</span></button><button type="button" data-patch-kind="champion" aria-pressed="false">Чемпионы<span>0</span></button><button type="button" data-patch-kind="item" aria-pressed="false">Предметы<span>0</span></button><button type="button" data-patch-kind="rune" aria-pressed="false">Руны<span>0</span></button></div><div class="patch-search-box"><input id="patch-search" type="search" maxlength="80" placeholder="Чемпион, предмет или руна…" aria-label="Поиск в выбранном патче"><button id="patch-clear-search" type="button" aria-label="Очистить поиск" hidden>×</button></div></div><p id="patch-result-count" class="patch-result-count" role="status" aria-live="polite"></p><div id="patch-change-list" class="patch-change-list"></div><p id="patch-empty" class="patch-empty" hidden></p><details id="patch-special" class="patch-special" hidden><summary>ARAM и особые режимы<span id="patch-special-count"></span></summary><p>Эти изменения действуют в указанных особых режимах.</p><div id="patch-special-list" class="patch-change-list"></div></details><noscript><p>Для выбора патча и поиска включи JavaScript. Сохранённые обзоры доступны ниже.</p></noscript></div><details class="patch-archive"><summary>Предыдущие обзоры обновлений</summary><div class="patch-archive-content">
+        
+        
+        <div class="patch-archive-list">
           <article class="panel patch-entry" id="patch-7-3f">
             <div>
               <span class="patch-number">7.3f</span><span class="badge">11 НОЯБРЯ 2026</span>
@@ -215,7 +209,7 @@
           rel="noopener"
           >Проверить новые публикации Riot ↗</a
         >
-      </main>
+      </div></details></main>
       <footer>
         <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span
         ><span>Неофициальный фан-проект. Не связан с Riot Games.</span

@@ -41,3 +41,14 @@
 @media(max-width:560px) { .runes-page { padding:24px 12px 40px; } .runes-trees { gap:10px; grid-template-columns:repeat(2,minmax(0,1fr)); } .runes-keystones,.rune-tree { padding:16px 6px; } .rune-button img { width:42px; } .runes-heading { margin-bottom:20px; } .rune-branch-tabs { gap:2px; margin-bottom:18px; } .rune-branch-diamond { width:25px; height:25px; } .rune-branch-diamond img { width:20px; height:20px; } .rune-branch-tabs::before { top:13px; } .rune-branch-tab { font-size:8px; gap:10px; } .rune-branch-label { font-size:10px; } .rune-tree h2 { font-size:13px; } .rune-branch-content .rune-button img { width:clamp(26px,7vw,40px); } .rune-branch-content .rune-name { font-size:9px; } .runes-row { gap:1px; } .rune-description { padding:9px; } .rune-description-heading { flex-direction:column; gap:6px; } .rune-description h3 { font-size:12px; } .rune-description p { font-size:11px; } }
 .runes-key-grid .rune-name { overflow-wrap:normal; hyphens:auto; font-size:10px; }
 .rune-branch-content .rune-name { overflow-wrap:normal; hyphens:auto; }
+/* Подписи остаются внутри своей ячейки даже в рядах из четырёх рун. */
+.rune-name { display:block; width:100%; min-width:0; max-width:100%; }
+.rune-branch-tab { min-width:0; }
+.rune-branch-tab > span:last-child { width:100%; min-width:0; overflow-wrap:anywhere; }
+@media(max-width:560px) {
+  .rune-branch-content .rune-name { overflow-wrap:anywhere; hyphens:auto; line-height:1.45; }
+  .rune-branch-content .rune-button { padding-inline:2px; }
+  .rune-branch-tabs { column-gap:5px; }
+  .rune-branch-tab { font-size:9px; line-height:1.4; }
+  .rune-branch-content .runes-row { align-items:start; }
+}

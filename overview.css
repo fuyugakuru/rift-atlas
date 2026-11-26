@@ -1742,3 +1742,8 @@
  .rift-overview[data-layer="lanes"] .atlas-pin{width:25px;height:27px}
  .rift-overview[data-layer="lanes"] .atlas-pin>img{width:18px;height:18px}
 }
+
+/* Six destinations in two balanced rows on desktop. */
+@media(min-width:1251px){.atlas-destinations{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1051px) and (max-width:1250px){.atlas-destinations{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.atlas-destination-icon img{display:block;width:28px;height:28px;object-fit:contain}
