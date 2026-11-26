@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#0c0e14" />
-    <meta name="description" content="Раздел меты Wild Rift: выбор чемпионов, игровые роли и переходы к справочнику чемпионов, сборкам и контрпикам." />
-    <title>Мета и выбор чемпионов Wild Rift | Rift Atlas</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="data.js" defer></script>
+    <meta name="description" content="Тир-лист чемпионов Wild Rift по линиям и рангам: китайские данные Tencent и общий рейтинг игроков Rift Atlas.">
+    <title>Тир-лист Wild Rift по линиям и рангам | Rift Atlas</title>
+    <link rel="stylesheet" href="style.css" /><link rel="stylesheet" href="tier-list.css?v=20261126-panel2"><script src="tier-catalog.js?v=20261126-panel2" defer></script><script src="tier-list.js?v=20261126-panel2" defer></script>
+
     <script src="app.js" defer></script>
     <script src="assets/vendor/supabase.js" defer></script>
     <script src="account.js" defer></script>
@@ -29,7 +29,7 @@
         ><a href="champions.html"><span class="nav-icon">♜</span>Чемпионы</a
         ><a href="items.html"><span class="nav-icon">⬡</span>Предметы</a
         ><a href="matchups.html"><span class="nav-icon">⚔</span>Матчапы</a
-        ><a href="meta.html" aria-current="page"><span class="nav-icon">↗</span>Мета</a
+        ><a href="meta.html" aria-current="page"><span class="nav-icon">↗</span>Тир-лист</a
         ><a href="patches.html"><span class="nav-icon">▤</span>Патчи</a
         ><a href="timers.html"><span class="nav-icon">◷</span>Таймеры</a>
       </nav>
@@ -40,7 +40,7 @@
     </aside>
     <div class="workspace">
       <header class="topbar">
-        <span>WILD RIFT <b>/</b> Мета</span>
+        <span>WILD RIFT <b>/</b> Тир-лист</span>
         <div>
           <span class="patch-pill">ПАТЧ 7.3f</span
           ><a href="champions.html?favorites=1" aria-label="Избранные чемпионы"
@@ -62,69 +62,7 @@
           >
         </div>
       </header>
-      <main id="main">
-        <div class="page-heading">
-          <p class="eyebrow">ИЗМЕНЕНИЯ БАЛАНСА</p>
-          <h1>Кто изменился в патче</h1>
-          <p>
-            Официальные бафы и нерфы 7.3d. Это список изменений, а не тир-лист текущей силы
-            чемпионов.
-          </p>
-        </div>
-        <div class="notice">
-          Статистический тир-лист пока не подключён. Для него нужны регион, ранг, размер выборки и
-          дата. Мы не подменяем эти данные догадками.
-        </div>
-        <div class="bottom-grid">
-          <section class="panel">
-            <span class="badge green">УСИЛЕНИЯ · 7.3d</span>
-            <h2>Усиленные чемпионы</h2>
-            <div class="change-row">
-              <b>Акали</b>
-              <p>Улучшены базовая броня и рост скорости атаки.</p>
-            </div>
-            <div class="change-row">
-              <b>Ли Син</b>
-              <p>Повышены рост скорости атаки и базовый урон ультимейта.</p>
-            </div>
-            <div class="change-row">
-              <b>Камилла</b>
-              <p>Повышен рост скорости атаки.</p>
-            </div>
-            <div class="change-row">
-              <b>Мисс Фортуна</b>
-              <p>Усилены пассивный эффект и критический урон ультимейта.</p>
-            </div>
-          </section>
-          <section class="panel">
-            <span class="badge red">ОСЛАБЛЕНИЯ · 7.3d</span>
-            <h2>Ослабленные чемпионы</h2>
-            <div class="change-row">
-              <b>Мальфит</b>
-              <p>Снижены щит и урон усиленной атаки.</p>
-            </div>
-            <div class="change-row">
-              <b>Экко</b>
-              <p>Снижены модификаторы урона по монстрам.</p>
-            </div>
-            <div class="change-row">
-              <b>Самира</b>
-              <p>Уменьшены коэффициенты урона двух способностей.</p>
-            </div>
-            <div class="change-row">
-              <b>Синджед</b>
-              <p>Снижены базовые здоровье и скорость передвижения.</p>
-            </div>
-          </section>
-        </div>
-        <a
-          class="button"
-          href="https://wildrift.leagueoflegends.com/en-us/news/game-updates/wild-rift-patch-notes-7-3d/"
-          target="_blank"
-          rel="noopener"
-          >Полный патч Riot ↗</a
-        >
-      </main>
+      <main id="main" class="tier-page"><div class="tier-heading"><div><p class="eyebrow">WILD RIFT</p><h1>Тир-лист</h1></div><a id="tier-source-link" href="https://lolm.qq.com/act/a20220818raider/index.html" target="_blank" rel="noopener noreferrer">Tencent ↗</a></div><div class="tier-source-tabs" role="group" aria-label="Источник тир-листа"><button type="button" data-tier-source="official" aria-pressed="true">Китай · Tencent</button><button type="button" data-tier-source="community" aria-pressed="false">Рейтинг игроков</button></div><div class="tier-controls"><div id="tier-lanes" class="tier-lanes" role="group" aria-label="Выбрать линию"></div><label class="tier-rank-label">Ранг<select id="tier-rank"></select></label></div><div class="tier-meta"><p id="tier-status" role="status" aria-live="polite"></p><button id="tier-rate-open" class="tier-rate-open" type="button" hidden>Добавить оценку</button></div><p id="tier-community-note" class="tier-community-note" hidden>Общий рейтинг по средним оценкам игроков. S+ — выше, D — ниже.</p><p id="tier-empty" class="tier-empty" hidden></p><div id="tier-board" class="tier-board"></div><noscript><p>Включи JavaScript для выбора линии и ранга.</p></noscript><aside id="tier-rating-dialog" class="tier-rating-dialog" aria-label="Оценка чемпиона" hidden><form id="tier-rating-form"><div class="tier-rating-heading"><h2>Оценка чемпиона</h2><button id="tier-rating-close" class="tier-rating-close" type="button" aria-label="Закрыть">×</button></div><p id="tier-rating-scope"></p><label>Чемпион<select id="tier-vote-champion" required></select></label><label>Твой ранг<select id="tier-vote-rank" required></select></label><label>Уровень силы<select id="tier-vote-level" required></select></label><p>Одна оценка на чемпиона и линию в этом патче. Её можно изменить.</p><p id="tier-rating-status" role="status"></p><div class="tier-rating-actions"><button id="tier-vote-save" type="submit">Сохранить оценку</button><button id="tier-vote-delete" type="button" hidden>Убрать оценку</button></div></form></aside></main>
       <footer>
         <span><b>RIFT ATLAS</b> · Справочник Wild Rift.</span
         ><span>Неофициальный фан-проект. Не связан с Riot Games.</span
@@ -134,3 +72,6 @@
     <p id="account-toast" class="account-toast" role="status" hidden></p>
   </body>
 </html>
+
+
+

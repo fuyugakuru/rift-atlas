@@ -1747,3 +1747,6 @@
 @media(min-width:1251px){.atlas-destinations{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:1051px) and (max-width:1250px){.atlas-destinations{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .atlas-destination-icon img{display:block;width:28px;height:28px;object-fit:contain}
+
+/* Seven destination cards: four above, three below. */
+@media(min-width:1051px){.atlas-destinations{grid-template-columns:repeat(12,minmax(0,1fr))}.atlas-destinations>a{grid-column:span 3}.atlas-destinations>a:nth-child(n+5){grid-column:span 4}}
