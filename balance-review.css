@@ -14,3 +14,12 @@
 .balance-selection-status[data-status=published]{color:#83dfaa}.balance-selection-status[data-status=pending]{color:#f18c94}
 @media(max-width:560px){.balance-review-card>summary{flex-wrap:wrap}.balance-review-card>summary>span{flex:1}.balance-selection-status{margin-left:32px}}
 @media(max-width:560px){.balance-review-page{padding:24px 14px}.balance-review-page h1{font-size:26px}.balance-review-card>summary{padding:14px;font-size:13px}.balance-review-body{padding:0 12px 16px}}
+/* Additive official skin discovery. */
+#skin-update-panel>label{display:inline-flex;gap:8px;align-items:center;margin:12px}
+#skin-update-panel{margin:24px 0 36px;padding:18px;border:1px solid #40344f;border-radius:12px;background:#141620}
+#skin-update-panel>div{max-height:480px;overflow-y:auto}
+#skin-update-panel input{appearance:auto;width:18px!important;min-width:18px;height:18px;accent-color:#bba4ed}
+.skin-update-row{display:flex;align-items:center;gap:12px;padding:10px;margin:8px 0;border:1px solid #40344f;border-radius:10px;cursor:pointer}
+.skin-update-row img{width:100px;aspect-ratio:16/9;object-fit:cover;border-radius:6px}
+.skin-update-row span{min-width:0;overflow-wrap:anywhere}
+@media(max-width:600px){.skin-update-row{gap:8px;font-size:12px}.skin-update-row img{width:68px}}

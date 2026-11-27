@@ -56,10 +56,10 @@ document.querySelectorAll('.champion-skins').forEach(section=>{
   const skins=JSON.parse(section.querySelector('.skin-data').textContent);
   const choices=[...section.querySelectorAll('.skin-choice')],image=section.querySelector('.skin-main-image'),name=section.querySelector('.skin-current-name'),watch=section.querySelector('.skin-watch'),slot=section.querySelector('.skin-video-slot'),source=section.querySelector('.skin-video-source'),missing=section.querySelector('.skin-video-missing');
   let selected=0;
-  choices.forEach((button,index)=>button.addEventListener('click',()=>{
+  const bindSkin=(button,index)=>button.addEventListener('click',()=>{
     selected=index;const skin=skins[index];
     choices.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-    image.src=skin.image+'&w=1280&auto=format';image.alt=skin.name;name.textContent=skin.name;
+    image.src=skin.image+(skin.image.includes('?')?'&':'?')+'w=1280&auto=format';image.alt=skin.name;name.textContent=skin.name;
     const badges=section.querySelector('.skin-current-badges');
     if(badges){badges.replaceChildren();const labels={base:'Базовый',standard:'Обычный',epic:'Эпический',legendary:'Легендарный',prestige:'Престижный',special:'Особый',unknown:'Редкость уточняется'};
       const badge=document.createElement('span');badge.className='skin-badge rarity-'+(skin.rarity||'unknown');badge.textContent=labels[skin.rarity]||labels.unknown;badges.append(badge);
@@ -67,13 +67,23 @@ document.querySelectorAll('.champion-skins').forEach(section=>{
     }
     slot.replaceChildren();slot.hidden=true;watch.hidden=!skin.video;watch.textContent='▶ Смотреть эффекты';watch.setAttribute('aria-expanded','false');missing.hidden=!!skin.video;source.hidden=!skin.video;
     if(skin.video)source.href=skin.videoSource;
-  }));
+  });
+  choices.forEach(bindSkin);
+  section.addEventListener('rift-skins-add',event=>{
+    for(const skin of event.detail||[]){
+      if(skins.some(s=>s.id===skin.id||s.image.split('?')[0]===skin.image.split('?')[0]||s.officialName?.toLowerCase()===skin.officialName?.toLowerCase()))continue;
+      const index=skins.length;skins.push(skin);const button=document.createElement('button');button.type='button';button.className='skin-choice';button.setAttribute('aria-pressed','false');button.setAttribute('aria-controls','skin-viewer');button.dataset.skinIndex=index;
+      const thumb=document.createElement('img');thumb.src=skin.image+(skin.image.includes('?')?'&':'?')+'w=320&auto=format';thumb.alt='';thumb.loading='lazy';const label=document.createElement('span');label.textContent=skin.name;const badges=document.createElement('span');badges.className='skin-choice-badges';const badge=document.createElement('span');badge.className='skin-badge rarity-unknown';badge.textContent='Редкость уточняется';badges.append(badge);button.append(thumb,label,badges);strip.append(button);choices.push(button);bindSkin(button,index);
+    }
+    const count=section.querySelector('.skins-heading>span');if(count)count.textContent=skins.length+' '+(skins.length%100>=11&&skins.length%100<=14?'образов':skins.length%10===1?'образ':skins.length%10>=2&&skins.length%10<=4?'образа':'образов');
+  });
   watch.addEventListener('click',()=>{
     if(!slot.hidden){slot.replaceChildren();slot.hidden=true;watch.textContent='▶ Смотреть эффекты';watch.setAttribute('aria-expanded','false');return;}
     const skin=skins[selected];if(!skin.video)return;
     const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+skin.video+'?playsinline=1'+(skin.videoStart?'&start='+Number(skin.videoStart):'')+(skin.videoEnd?'&end='+Number(skin.videoEnd):'');frame.title='Эффекты образа: '+skin.name;frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';slot.append(frame);slot.hidden=false;watch.textContent='Скрыть видео';watch.setAttribute('aria-expanded','true');
   });
 });
+if(document.querySelector('.champion-skins')){const script=document.createElement('script');script.src='skin-updates.js?v=20261127-auto';document.head.append(script);}
 let favorites = [];
 try {
   favorites = JSON.parse(localStorage.getItem("rift-favorites") || "[]");
