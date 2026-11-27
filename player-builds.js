@@ -53,7 +53,7 @@
     stats = section.querySelector(".pb-stats"),
     count = section.querySelector(".pb-count");
   const buildText=el('div','pb-build-text-fields');
-  buildText.innerHTML='<label>Название сборки <input class="pb-build-title-input" type="text" maxlength="60" placeholder="Например: Сплитпуш против танков"></label><label>Как играть и когда брать <textarea class="pb-build-description-input" rows="3" maxlength="600" placeholder="Коротко объясни замысел сборки и ситуативные замены"></textarea></label><small class="pb-build-text-count">Необязательно · название до 60, описание до 600 символов</small>';
+  buildText.innerHTML='<label>Название сборки <input class="pb-build-title-input" type="text" maxlength="60" placeholder="Например: Сплитпуш против танков"></label><label>Как играть и когда брать <textarea class="pb-build-description-input" rows="5" placeholder="Объясни, как играть со сборкой и когда менять предметы"></textarea></label><small class="pb-build-text-count">Необязательно · название до 60 символов, описание без ограничения длины</small>';
   editor.prepend(buildText);
   const buildTitleInput=buildText.querySelector('input'),buildDescriptionInput=buildText.querySelector('textarea');
   for(const field of [buildTitleInput,buildDescriptionInput])field.addEventListener('input',()=>{dirty=true;});
@@ -138,6 +138,7 @@
       return;
     }
     selection = { type, index };
+    list.runePickerState=null;
     search.value = "";
     description.textContent = "";
     dialog.querySelector("h3").textContent =
@@ -159,6 +160,15 @@
       selected = type === "item" ? items : type === "spell" ? spells : runes,
       needle = search.value.trim().toLocaleLowerCase("ru");
     let shown = 0;
+    list.classList.remove('rp-root');
+    if(type==='rune'&&window.renderRiftRunePicker){
+      const tree=assets.get(runes[1])?.tree;
+      window.renderRiftRunePicker(list,{assets:catalog.assets,query:needle,selected:runes,primaryTree:tree,keystone:index===0,
+        allowed:a=>a.keystone===(index===0)&&!selected.some((v,i)=>i!==index&&v===a.id)&&(index===0||(index===1?a.row===1:index===2?a.tree===tree&&a.row===2:index===3?a.tree===tree&&a.row===3:a.tree!==tree)),
+        describe:a=>description.textContent=a.description,
+        choose:a=>{selected[index]=a.id;if(index===1){for(const i of [2,3])if(assets.get(runes[i])?.tree!==a.tree)runes[i]=null;if(assets.get(runes[4])?.tree===a.tree)runes[4]=null;}dirty=true;dialog.close();renderSlots();}
+      });return;
+    }
     for (const a of catalog.assets) {
       if (a.type !== type || !a.name.toLocaleLowerCase("ru").includes(needle)) continue;
       if (type === "rune" && a.keystone !== (index === 0)) continue;
@@ -568,7 +578,7 @@
       return;
     }
     const buildTitle=buildTitleInput.value.trim(),buildDescription=buildDescriptionInput.value.trim();
-    if([...buildTitle].length>60||[...buildDescription].length>600){notify('Название — до 60 символов, описание — до 600.',true);return;}
+    if([...buildTitle].length>60){notify('Название — до 60 символов.',true);return;}
     const selectedSpells = spells.filter(Boolean);
     if (selectedSpells.length !== 2 || new Set(selectedSpells).size !== 2) {
       notify("Выбери два разных заклинания.", true);
@@ -718,3 +728,4 @@
   loadMine();
   loadStats();
 })();
+

@@ -385,8 +385,10 @@ function loadPlayerBuilds(){
  if(!document.querySelector('.champion-builds')&&!isProfile)return;
  const css=document.createElement('link');css.rel='stylesheet';css.href='player-builds.css';document.head.append(css);
  const catalog=document.createElement('script');catalog.src='player-build-catalog.js';catalog.async=false;
- const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js?v=20261126-staff-notes':'player-builds.js?v=perf-20261121';editor.async=false;
+ const editor=document.createElement('script');editor.src=isProfile?'profile-builds.js?v=20261126-staff-notes':'player-builds.js?v=20261127-rune-trees';editor.async=false;
+ if(!isProfile){const runeStyle=document.createElement('link');runeStyle.rel='stylesheet';runeStyle.href='rune-picker.css?v=20261127';document.head.append(runeStyle);for(const src of ['runes-data.js?v=20261127','rune-picker.js?v=20261127']){const runeScript=document.createElement('script');runeScript.src=src;runeScript.async=false;document.body.append(runeScript);}}
  document.body.append(catalog,editor);
+ if(!isProfile){const officialStyle=document.createElement('link');officialStyle.rel='stylesheet';officialStyle.href='official-builds.css?v=20261127';document.head.append(officialStyle);const official=document.createElement('script');official.src='official-builds.js?v=20261127-rune-trees';official.async=false;document.body.append(official);}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadPlayerBuilds,{once:true});else loadPlayerBuilds();
 
@@ -412,7 +414,7 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
     const date=el.querySelector('small');if(date)date.textContent=currentPatch.version+' · '+currentPatch.released;
   });
   const patchScript=document.createElement('script');
-  patchScript.src='patch-updates.js?v='+encodeURIComponent(new URL(document.currentScript?.src||location.href).searchParams.get('v')||'patches-20261121');
+  patchScript.src='patch-updates.js?v=20261127-notice';
   document.head.append(patchScript);
 })();
 // Private friendship notifications, loaded after account initialization.
@@ -438,3 +440,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 // Approved balance values on champion/item/rune pages and build tools.
 (()=>{if(document.querySelector(".character-profile,.item-detail-page")||location.pathname.endsWith("/runes.html")||document.querySelector("script[src^=\"player-build-catalog.js\"]")){const s=document.createElement("script");s.src="balance-live.js?v=1";s.defer=true;document.head.append(s);}})();
+
+
+

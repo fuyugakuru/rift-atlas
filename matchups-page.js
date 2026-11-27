@@ -86,6 +86,7 @@
       else advice.append(element('p','mx-unreviewed','Подробный разбор этой пары ещё не добавлен. Чемпион не отнесён к контрпикам или удобным соперникам.'));
       advice.append(element('p','mx-pair-missing',stat?origin+(communityView()?' · '+stat.wins+' побед / '+stat.losses+' поражений. Скриншоты проверены администратором; игрового подтверждения API нет.':'. Процент поражений рассчитан как 100% минус процент побед.'):'Победы / поражения: нет данных по этой паре.'));
       const guide=element('a','',c.name+' — навыки и сборки ↗');guide.href=c.id+'.html';advice.append(guide);const tips=element('section','mx-inline-community');body.append(tips);details.append(summary,body);
+      const prefetchTips=()=>window.RiftMatchupTips?.prefetch({...window.RiftMatchups.context(),opponent:c.id});summary.addEventListener('pointerenter',prefetchTips,{once:true});summary.addEventListener('focusin',prefetchTips,{once:true});
       details.addEventListener('toggle',()=>{if(details.open){mountVideo();window.RiftMatchupTips?.mount(tips,{...window.RiftMatchups.context(),opponent:c.id});for(const other of $('mx-all-list').querySelectorAll('details'))if(other!==details)other.open=false;}else videoSlot.replaceChildren();});
       $('mx-all-list').append(details);
     }
@@ -147,3 +148,4 @@
   });
   render();navigationReady=true;
 })();
+

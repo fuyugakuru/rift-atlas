@@ -1,0 +1,17 @@
+// One in-game rune layout shared by player and administrator build editors.
+window.renderRiftRunePicker=(host,options)=>{
+ const data=window.RIFT_RUNES;if(!data)return false;
+ const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
+ const assets=new Map(options.assets.filter(a=>a.type==='rune').map(a=>[a.id,a])),primary=options.primaryTree||'precision',state=host.runePickerState||(host.runePickerState={trees:[primary,primary==='domination'?'precision':'domination']});
+ host.replaceChildren();host.classList.add('rp-root');const query=(options.query||'').trim().toLocaleLowerCase('ru');
+ function row(ids,parent,label){const r=make('div','rp-row');r.setAttribute('role','group');r.setAttribute('aria-label',label);for(const id of ids){const a=assets.get('rune:'+id);if(!a)continue;const b=make('button','rp-rune');b.type='button';b.title=a.name+' — '+a.description;b.setAttribute('aria-label',a.name);b.setAttribute('aria-pressed',String(options.selected?.includes(a.id)||false));b.disabled=!!options.allowed&&!options.allowed(a);b.hidden=!!query&&!a.name.toLocaleLowerCase('ru').includes(query);const img=make('img');img.src=a.icon;img.alt='';img.width=48;img.height=48;img.loading='lazy';b.append(img,make('span','',a.name));b.onclick=()=>{if(!b.disabled)options.choose(a);};b.onfocus=b.onpointerenter=()=>options.describe?.(a);r.append(b);}parent.append(r);}
+ const keys=make('section','rp-keystones');keys.hidden=options.keystone===false;keys.append(make('h4','','Ключевые руны'));row(data.keystones,keys,'Ключевые руны');host.append(keys);
+ const branches=make('div','rp-branches'),painters=[];branches.hidden=options.keystone===true;host.append(branches);
+ for(let side=0;side<2;side++){const panel=make('section','rp-tree'),tabs=make('div','rp-tabs');tabs.setAttribute('role','group');tabs.setAttribute('aria-label',side?'Дополнительная ветка':'Основная ветка');panel.append(make('p','rp-label',side?'Дополнительная ветка':'Основная ветка'),tabs);const content=make('div','rp-content');
+  function paint(){const tree=data.trees.find(t=>t.id===state.trees[side])||data.trees[0];panel.style.setProperty('--rp-color',tree.color);tabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tree===tree.id)));content.replaceChildren(make('h4','',tree.name));tree.rows.forEach((ids,index)=>row(ids,content,tree.name+', ряд '+(index+1)));}
+  for(const tree of data.trees){const b=make('button','rp-tab');b.type='button';b.dataset.tree=tree.id;const icon=make('img');icon.src=data.runes[tree.rows[0][0]].icon;icon.alt='';icon.width=22;icon.height=22;b.append(icon,make('span','',tree.name));b.onclick=()=>{const other=1-side;if(state.trees[other]===tree.id)state.trees[other]=state.trees[side];state.trees[side]=tree.id;painters.forEach(p=>p());};tabs.append(b);}panel.append(content);branches.append(panel);painters.push(paint);paint();
+ }
+ // Search exposes every matching branch without requiring extra tab clicks.
+ if(query){branches.replaceChildren();for(const tree of data.trees){if(!tree.rows.flat().some(id=>assets.get('rune:'+id)?.name.toLocaleLowerCase('ru').includes(query)))continue;const panel=make('section','rp-tree');panel.style.setProperty('--rp-color',tree.color);panel.append(make('h4','',tree.name));tree.rows.forEach((ids,i)=>row(ids,panel,tree.name+', ряд '+(i+1)));branches.append(panel);}}
+ return true;
+};
