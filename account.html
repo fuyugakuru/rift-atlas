@@ -17,7 +17,7 @@
     <script src="profile-avatar.js" defer></script>
     <link rel="stylesheet" href="profile-loading.css?v=20261116" />
     <script src="profile-motion.js?v=20261116" defer></script>
-    <script src="account.js?v=20261116-profile" defer></script><link rel="stylesheet" href="player-builds.css?v=20261126-visibility"/><script src="community-avatars.js" defer></script><script src="social.js?v=20261126-staff-notes" defer></script>
+    <link rel="stylesheet" href="account-experience.css?v=20261128-google-only"><script src="auth-code.js?v=20261128" defer></script><script src="account.js?v=20261128-code" defer></script><script src="account-comfort.js?v=20261128" defer></script><script src="social-login.js?v=20261128-google-only" defer></script><link rel="stylesheet" href="player-builds.css?v=20261126-visibility"/><script src="community-avatars.js" defer></script><script src="social.js?v=20261126-staff-notes" defer></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
   <script src="admin-badge.js?v=20261126-staff" defer></script>
 <link rel="stylesheet" href="matchup-participation.css?v=3">
@@ -80,8 +80,8 @@
           <p id="account-message" class="account-message" role="status" hidden></p>
           <div id="account-loading" class="profile-loading" role="status" aria-label="Загрузка профиля"><span class="profile-loading-avatar" aria-hidden="true"></span><div class="profile-loading-lines"><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Загружаем профиль…</span></div></div>
           <section id="account-guest" class="account-card" hidden>
-            <h2>Твои чемпионы — на любом устройстве</h2>
-            <p class="muted">Войди, чтобы сохранять избранное в аккаунте.</p>
+            <h2>Твой аккаунт Rift Atlas</h2>
+            <p class="muted">Сохраняй сборки, находи друзей и делись советами.</p>
             <div class="account-modes">
               <button class="chip" data-auth-mode="signin" aria-pressed="true">Вход</button
               ><button class="chip" data-auth-mode="signup" aria-pressed="false">
@@ -99,11 +99,12 @@
               ><label
                 >Почта<input
                   id="auth-email"
+                  aria-describedby="auth-email-hint"
                   name="email"
                   type="email"
                   autocomplete="email"
                   required
-                  maxlength="254" /></label
+                  maxlength="254" /><small id="auth-email-hint" class="auth-email-hint">Письмо с кодом может попасть в папку «Спам». Если письмо не пришло, проверь её.</small></label
               ><label
                 >Пароль<input
                   id="auth-password"

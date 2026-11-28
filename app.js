@@ -10,7 +10,7 @@ if (document.querySelector('.character-profile')) {
   const statsVersion = new URL(document.currentScript.src).searchParams.get('v') || 'stats-20261120';
   const statsStyle = document.createElement('link');
   statsStyle.rel = 'stylesheet';
-  statsStyle.href = 'champion-stats.css?v=' + encodeURIComponent(statsVersion);
+  statsStyle.href = 'champion-stats.css?v=20261128-fixed-cover';
   document.head.appendChild(statsStyle);
   const statsScript = document.createElement('script');
   statsScript.src = 'champion-stats.js?v=' + encodeURIComponent(statsVersion);
@@ -19,11 +19,17 @@ if (document.querySelector('.character-profile')) {
   document.head.appendChild(statsScript);
   const trendScript=document.createElement('script');
   trendScript.async=false;
-  trendScript.src='champion-stats-trend.js?v='+encodeURIComponent(statsVersion);
+  trendScript.src='champion-stats-trend.js?v=20261128-fixed-cover';
   document.head.appendChild(trendScript);
 }
 
 window.dataLayer = window.dataLayer || [];
+
+// Shared animated cover, without rewriting the individual champion pages.
+if(document.querySelector('.character-profile .character-photo')){
+ const css=document.createElement('link');css.rel='stylesheet';css.href='champion-motion.css?v=20261128-immersive-all';document.head.append(css);
+ const manifest=document.createElement('script');manifest.src='champion-motion-data.js?v=20261128';manifest.onload=()=>{const script=document.createElement('script');script.src='champion-motion.js?v=20261128-immersive-all';document.head.append(script);};document.head.append(manifest);
+}
 
 window.gtag = function() {
   window.dataLayer.push(arguments);
@@ -84,6 +90,9 @@ document.querySelectorAll('.champion-skins').forEach(section=>{
   });
 });
 if(document.querySelector('.champion-skins')){const script=document.createElement('script');script.src='skin-updates.js?v=20261127-auto';document.head.append(script);}
+// Keep the champion favourite action compact and anchored to the card corner.
+const championFavorite=document.querySelector('.character-profile [data-favorite]');
+if(championFavorite){championFavorite.classList.remove('button');championFavorite.classList.add('favorite','champion-favorite');championFavorite.closest('.character-profile').append(championFavorite);}
 let favorites = [];
 try {
   favorites = JSON.parse(localStorage.getItem("rift-favorites") || "[]");
@@ -93,6 +102,7 @@ function paintFavorites() {
   document.querySelectorAll("[data-favorite]").forEach((b) => {
     const on = favorites.includes(b.dataset.favorite);
     b.setAttribute("aria-pressed", String(on));
+    if(b.classList.contains('champion-favorite')){const label=on?'Убрать чемпиона из избранного':'Добавить чемпиона в избранное';b.setAttribute('aria-label',label);b.title=label;}
     b.textContent = b.classList.contains("favorite")
       ? on
         ? "★"
@@ -431,7 +441,7 @@ document.querySelectorAll('.matchup-dialog').forEach(dialog=>{
 function loadFriendNotifications(){
  if(!document.querySelector('.topbar'))return;
  const css=document.createElement('link');css.rel='stylesheet';css.href='friend-notifications.css';document.head.append(css);
- const script=document.createElement('script');script.src='friend-notifications.js';document.body.append(script);
+ const script=document.createElement('script');script.src='friend-notifications.js?v=20261128-comfort';document.body.append(script);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadFriendNotifications,{once:true});else loadFriendNotifications();
 

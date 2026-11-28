@@ -1,0 +1,27 @@
+/* Living illustration blended into the champion card. */
+.character-profile{position:relative}
+.character-profile>.champion-favorite{position:absolute;top:14px;right:14px;z-index:4;display:grid;place-items:center;box-sizing:border-box;width:36px;height:36px;padding:0;border:1px solid #77618d;border-radius:50%;background:#201a2ce8;color:#cfb8eb;font-size:25px;line-height:1;cursor:pointer}
+.character-profile>.champion-favorite[aria-pressed=true]{color:#eadbff;background:#62417b;border-color:#bda0dd}
+.character-profile>.champion-favorite:focus-visible{outline:2px solid #d0b3f3;outline-offset:3px}
+.character-profile.has-motion-cover .character-info>.eyebrow{padding-right:35px}
+.character-profile.has-motion-cover{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px}
+.character-profile.has-motion-cover .character-info{padding:26px 26px 26px 0}
+.character-profile.has-motion-cover .character-info h1{font-size:clamp(30px,3.4vw,52px)}
+.character-profile.has-motion-cover .character-facts{margin:22px 0}
+.character-profile .character-photo.has-champion-motion{position:relative;isolation:isolate;height:auto;min-height:0;width:100%;aspect-ratio:var(--champion-motion-ratio,16/9);align-self:center;background:transparent;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 3%,#000 85%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 91%,transparent);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 85%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 91%,transparent);-webkit-mask-composite:source-in}
+.character-photo.has-champion-motion>img{display:block;width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.character-photo.has-champion-motion.is-animated>img{opacity:0}
+.character-photo .champion-motion-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .65s linear;pointer-events:none;z-index:1}
+.character-photo .champion-motion-video.is-visible{opacity:1}
+@media(min-width:761px){.character-profile.has-motion-cover .character-info>.eyebrow{margin-bottom:10px}.character-profile.has-motion-cover .character-info>h1{margin:0 0 12px}.character-profile.has-motion-cover .character-subtitle{margin-bottom:12px}.character-profile.has-motion-cover .character-facts{margin:14px 0}.character-profile.has-motion-cover .character-rating-row{margin:12px 0 14px}.character-profile.has-motion-cover .cs-difficulty{margin:0}.character-profile.has-motion-cover .champion-stats{margin-bottom:12px}}
+@media(max-width:760px){.character-profile.has-motion-cover,.nav-enhanced .character-profile.has-motion-cover{grid-template-columns:1fr;gap:0}.character-profile.has-motion-cover .character-info{padding:17px 18px}.character-profile.has-motion-cover .character-info h1{font-size:27px}.character-profile.has-motion-cover .character-facts{margin:16px 0}.character-profile .character-photo.has-champion-motion{mask-image:linear-gradient(to bottom,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);mask-composite:add;-webkit-mask-composite:source-over}}
+@media(prefers-reduced-motion:reduce){.character-photo .champion-motion-video,.character-photo.has-champion-motion>img{transition:none}}
+
+/* Shared open champion hero, with no enclosing card. */
+.character-profile.has-motion-cover.champion-hero-immersive{background:transparent;border:0;border-radius:0;overflow:visible;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:0;margin-bottom:22px}
+.character-profile.champion-hero-immersive .character-photo.has-champion-motion{width:118%;max-width:none;margin-left:-8%;mask-image:linear-gradient(to right,transparent,#000 17%,#000 79%,transparent),linear-gradient(to bottom,transparent,#000 16%,#000 83%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 17%,#000 79%,transparent),linear-gradient(to bottom,transparent,#000 16%,#000 83%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}
+.character-profile.champion-hero-immersive .character-info{position:relative;z-index:2;background:transparent;padding:22px 0 22px 16px}
+.character-profile.champion-hero-immersive .character-info h1{font-size:clamp(34px,3.8vw,62px);letter-spacing:-.04em}
+.character-profile.champion-hero-immersive>.champion-favorite{top:8px;right:0;background:#17131ed9}
+.champion-hero-immersive+.cs-trend-below{width:calc(100% / 2.55)}
+@media(max-width:760px){.character-profile.has-motion-cover.champion-hero-immersive,.nav-enhanced .character-profile.has-motion-cover.champion-hero-immersive{grid-template-columns:1fr;margin-top:0}.character-profile.champion-hero-immersive .character-photo.has-champion-motion{width:calc(100% + 28px);margin-left:-14px;mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 88%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}.character-profile.champion-hero-immersive .character-info{padding:4px 4px 16px}.character-profile.champion-hero-immersive .character-info h1{font-size:34px}.character-profile.champion-hero-immersive>.champion-favorite{top:7px;right:0}.champion-hero-immersive+.cs-trend-below{width:100%}}

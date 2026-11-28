@@ -16,3 +16,5 @@
 @media(max-width:600px){.cs-metric-button{padding:8px 6px}.cs-metric-cue{font-size:8px!important;gap:3px}.cs-metric-cue svg{width:10px;height:10px}.cs-chart-hint{font-size:9px}}
 @media(max-width:350px){.cs-metric-button{padding:7px 4px}.cs-metric-button strong{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.cs-metric-button,.cs-metric-cue i{transition:none}}
+.cs-trend.cs-trend-below{box-sizing:border-box;width:calc((100% - 22px)/2.3);margin:12px 0 24px auto;padding:16px;border:1px solid #604b7366;border-radius:10px;background:var(--panel);overflow-wrap:anywhere}
+@media(max-width:760px){.cs-trend.cs-trend-below{width:100%;margin:12px 0 20px}}

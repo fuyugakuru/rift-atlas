@@ -47,6 +47,7 @@
   }
   function count(n) {
     const total = Math.max(0, Number(n) || 0);
+    window.dispatchEvent(new CustomEvent('rift-notification-count',{detail:total}));
     counter.hidden = !total;
     counter.textContent = total > 99 ? "99+" : String(total);
     toggle.setAttribute(
@@ -351,6 +352,11 @@
     panel.hidden = !opening;
     toggle.setAttribute("aria-expanded", String(opening));
     if (opening) load();
+  });
+  window.addEventListener('rift-open-notifications',()=>{
+    if(!uid)return;
+    panel.hidden=false;toggle.setAttribute('aria-expanded','true');load();
+    toggle.focus();
   });
   host.querySelector(".notification-close").addEventListener("click", () => {
     close();

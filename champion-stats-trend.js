@@ -1,11 +1,12 @@
 (() => {
   const host = document.querySelector('.champion-stats');
-  if (!host || host.querySelector('.cs-trend')) return;
+  if (!host || document.getElementById('cs-metric-chart')) return;
   const panel = document.createElement('div');
   panel.className = 'cs-trend'; panel.id='cs-metric-chart'; panel.hidden=true;
   panel.setAttribute('role','region'); panel.setAttribute('aria-label','История статистики');
   panel.innerHTML='<div class="cs-trend-controls"><strong class="cs-chart-heading"></strong><label>Период <select aria-label="Период графика"><option value="7">7 дней</option><option value="30">30 дней</option></select></label><button type="button" class="cs-chart-close" aria-label="Закрыть график">×</button></div><p class="cs-trend-note"></p><div class="cs-trend-plot"></div><p class="cs-trend-point" aria-live="polite"></p>';
-  host.append(panel);
+  const hero=host.closest('.character-profile');
+  if(hero){panel.classList.add('cs-trend-below');hero.after(panel);}else host.append(panel);
   const names={win:'Победы',pick:'Пики',ban:'Баны'}, buttons={};
   let metric='win';
   for(const key of Object.keys(names)){
